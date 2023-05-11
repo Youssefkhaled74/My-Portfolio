@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Raleway
+    :ital,wght@0,500;0,600;1,400;1,500&family=Roboto:
+    ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&displa
+    y=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./wow.js/css/animate.css">
+    <link rel="stylesheet" href="./wow.js/css/animate wow.css">
+    <link rel="stylesheet" href="./css/funnytext.css">
+    <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <a href="">Welcome</a>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()" style="color: black;"></i>
+            </nav>
+            <div class="header-text">
+                <p>Full-Stack Developer</p> 
+                <p>Back-end Developer PHP&Mysql</p> 
+                <p>Back-end Developer Laravel</p> 
+                <h1>Hi, Iam <span class="select1">Youssef</span>, <br> Happy To See You Here! </h1>
+            </div>
+        </div>
+    </div>
+    <!-- --------------------------------------about ------------------------------>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="./image/photo_5902426259445629385_y.jpg" alt="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-tittel">About me</h1>
+                    <p>
+                          I am a student in the Department of Statistics and Computer Science at the Faculty of Science,
+                          Ain Shams University,
+                          and I also studied the science of web development and hold an accredited
+                          certificate in Full-Stack web development , i also studied the c++ language ,
+                          I am good at dealing front-end and back-end
+                    </p>
+                    <div class="tab-titteles">
+                        <p class="tab-links active-links" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents tab-active" id="skills">
+                        <ul>
+                            <li>
+                                <span>Front-end</span><br> Css <br> Html <br> Javascript <br> Bootstrab 
+                            </li>
+                            <li>
+                                <span>Back-end</span> <br> PHP&OOP <br> Mysql <br> Laravel  
+                            </li>
+                            <li>
+                                <span>Anthor Skills</span><br> Data Structure <br> C++ <br> Algoritm <br> SOLID Princple
+                            </li>
+                    </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li>
+                                <span>FreeLancing</span> <br> I have submitted more than one project through freelancing  
+                            </li>
+                            <li>
+                                <span>SSD Academy</span><br> Working for one year in 2021
+                            </li>
+                            <li>
+                                <span>IEEE</span><br> Working as Head-Back-End 
+                            </li>
+                    </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li>
+                                <span>SSD Academy</span><br>Full-Stack 
+                            </li>
+                            <li>
+                                <span>MECROSOFT</span><br>Data
+                            </li>
+                            <li>
+                                <span>Udemy</span><br>Laravel
+                            </li>
+                            <li>
+                                <span>Ain Shams University</span><br>Faculty of Science, Department of Statistics and Computer
+                            </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <!-- =========================================services============================ -->
+<div id="services">
+    <div class="container">
+        <h1 class="sub-tittel">
+            My services
+        </h1>
+        <div class="services-list">
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <h2>Web Design</h2>
+                <p>"Transform your online presence with expert web design that captivates your audience and boosts your business. Let's create your dream website today!"</p>
+            </div>
+            <div>
+                <i class="fa-brands fa-codepen"></i>
+                <h2>Front-end</h2>
+                <p> "Elevate your website's user experience with customized front-end development. No frameworks, just clean code and stunning designs that set you apart."</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-code-branch"></i>
+                <h2>Back-end</h2>
+                <p> "Unlock the full potential of your web application with robust back-end development powered by Laravel. From seamless data management to dynamic features, we'll elevate your online business to new heights of success."</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================================protfolio -->
+<div id="portfolio">
+    <div class="container">
+        <div class="sub-tittel">My Work</div>
+            <div class="work-list">
+                <div class="work">
+                    <img src="./image/project1.png">
+                    <div class="layer">
+                        <h3>Article-project</h3>
+                        <a href="https://github.com/Youssefkhaled74/article-project"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="./image/proect2.png">
+                    <div class="layer">
+                        <h3>CURD</h3>
+                        <a href="https://github.com/Youssefkhaled74/CURD"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="./image/project3.png">
+                    <div class="layer">
+                        <h3>Private-institutes</h3>
+                        <a href="https://github.com/Youssefkhaled74/private-institutes"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="https://github.com/Youssefkhaled74" class="btn">My GitHub</a>
+    </div>
+</div>
+<!-- ------------------------------contect------------------------ -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-tittel">Contact me</h1>
+                <p><i class="fa-sharp fa-solid fa-paper-plane"></i>iyoussefbusniesstowork.com</p>
+                <p><i class="fa-solid fa-phone"></i>01064338132</p>
+                <div class="social-icon"> 
+                    <a href="https://www.facebook.com/youssef.khaled.749"><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter-square"></i></a>
+                    <a href="https://www.instagram.com/youssefkhaled_74/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/youssef-khaled-613206261/"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="./My cv/Youssef_khaled_Resume_30-04-2023-23-28-39.pdf" class="btn btn2" download>Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet" onsubmit="sendEmail(event)">
+                    <input type="text" name="Name" placeholder="Your Name" required id="name" >
+                    <input type="email" name="Email" placeholder="Your Email" required id="FRom" value="iyoussefbusinesstowork@gmail.com">
+                    <textarea name="Message" rows="6" placeholder="Your message" id="sub"></textarea>
+                    <button type="submit" class="btn btn2">Sumbit</button>
+                </form>
+                <span id="msg">sended</span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p> copyright @ Youssef . Made  with <i class="fa-solid fa-heart"></i> </p>
+    </div>
+</div>
+<!-- <script> 
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbysepLTVAQnh5dcnywRx8IX5OsNYl_h_pxeq9AEdBUIGrQ6iRf_K95B8K84AC4ZYvie/exec'
+      const form = document.forms['submit-to-google-sheet']
+      const msg = document.getElementById("msg")
+      form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully !!!!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+   })
+   </script> -->
+   <script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script>
+    function sendEmail(e)
+    {
+        e.preventDefault();
+    Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "iyoussefbusinesstowork@gmail.com",
+    Password : "E500B049091D99871C3EBBB9D3C458D468CD",
+    To : 'iyoussefbusinesstowork@gmail.com',
+    From : document.getElementById('FRom').value,
+    Subject : document.getElementById('name').value,
+    Body : document.getElementById('sub').value,
+}).then(
+  message => alert(message)
+);
+return alert("Email sended successfuly !! ");
+msg.innerHTML = "Message sent successfully !!!!"
+// return true;
+    }
+</script>
+ 
+<script src="./js/main.js"></script>
+</body>
+</html
