@@ -2,7 +2,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'poppins', sans-serif; 
+    font-family: 'poppins', 'Times New Roman', Times, serif; 
     box-sizing: border-box;
 }
 html{
@@ -52,14 +52,14 @@ nav ul li a {
     position: relative;
     transition: 1s;
 }
-nav ul li a:hover{
+/* nav ul li a:hover{
     background-color: rgba(0, 0, 0, 0.1);
     transform:translate(100px ,0px)  ;
     border-radius: 5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 22px;
 
-}
+} */
 nav ul li a::after{
     content:'';
     width :0;
@@ -110,13 +110,13 @@ nav ul li a:hover::after{
 .about-col-2 p{
     transition: 3s;
 }
-.about-col-2 p:hover{
+/* .about-col-2 p:hover{
     background-color: rgba(0, 0, 0, 0.9);
     transform:scale(1.3)  ;
     border-radius: 10px;
     color:white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+} */
 .sub-tittel{
     font-size: 60px;
     font-weight: 600;
@@ -125,7 +125,7 @@ nav ul li a:hover::after{
     color: #080808;
 }
 .sub-tittel:hover{
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0);
     transform: scale(1.1);
     color: red;
 }
@@ -141,11 +141,11 @@ nav ul li a:hover::after{
     position: relative;
     transition: 1s;
 }
-.tab-links:hover{
+/* .tab-links:hover{
     background-color: rgba(0, 0, 0, 0.2);
     transform: scale(1.4);
     color: red;
-}
+} */
 .tab-links::after{
     content: '';
     width: 0;
@@ -164,16 +164,22 @@ nav ul li a:hover::after{
     margin: 10px 0; 
 }
 .tab-contents{
-    transition: 3s;
+    transition: 2s;
 }
 .tab-contents:hover{
     background-color: rgba(0, 0, 0, 0.2);
-    transform:scale(1.3)  ;
-    border-radius: 10px;
+    transform:scale(1.1)  ;
+    font-size: large;
+    border-radius: 120px;
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .tab-contents ul li span{
     color: red;
+    font-size:20px;
+}
+.tab-contents ul li span:hover{
+    color:blue;
     font-size: 14px;
 }
 .tab-contents{
@@ -451,6 +457,54 @@ nav .fa-solid{
     margin-top: -10px;
     display: block;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
