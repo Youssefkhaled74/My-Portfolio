@@ -3,6 +3,7 @@
         margin: 0;
         padding: 0;
         font-family: 'poppins', 'Times New Roman', Times, serif; 
+        font-weight: bold;
         box-sizing: border-box;
     }
     html{
@@ -86,6 +87,12 @@
     }
     .header-text h1 span {
         color: red;
+    }
+    .row2{
+        display: flex;
+        justify-content:space-between;
+        flex-wrap: wrap;
+        /* margin-bottom: 20px; */
     }
     .about-col-1-2{
         flex-basis: 35%;
@@ -212,7 +219,7 @@
         margin-top: 50px;
     }
     .services-list div{
-        background-color: #665b4c;
+        background-color: #161615;
         padding: 40px;
         font-size: 13px;
         font-weight: 300;
@@ -220,6 +227,7 @@
         border-radius: 10px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         transition: background 0.5s , transform 0.5s ;
+        color: #fff;
     }
     .services-list div i{
         font-size: 50px;
@@ -232,16 +240,17 @@
     }
     .services-list div a{
         text-decoration: none;
-        color: #fff;
+        color: white;
         font-size: 12px;
         margin-top: 15px;
         display: inline-block;
     }
     .services-list div p{
         font-size: 18px;
+        color: #fff;
     }
     .services-list div:hover{
-        background: #ff004f;
+        background: #7a4757;
         transform: translateY(-10px);
     }
     /* ==========================================portfolio */
@@ -457,15 +466,16 @@
             flex: basis 100%; 
         }
         .about-col-1-2{
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
         .about-col-1-2 img{
             width: 300px;
+            display: none; 
         }
         .about-col-2-2{
             font-size: 30px;
             margin-bottom: 30px;
-        }
+        } 
         .tab-links{
             font-size: 16px;
             margin-top: 20px;
@@ -476,6 +486,9 @@
         .copyright{
             font-size: 14px;
         }
+        .row2{
+            margin-bottom: 50px;
+        }
 
     }
     #msg{
@@ -483,6 +496,53 @@
         margin-top: -10px;
         display: block;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
