@@ -5,513 +5,655 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP, Laravel & MySQL Roadmap</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- For icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
-            padding-top: 30px;
-            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             color: #333;
+            padding-top: 20px;
         }
-        .roadmap-title {
-            text-align: center;
-            color: #c82333; /* Red */
-            margin-bottom: 30px;
+        /* Navigation sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #c82333; /* Red */
+            padding-top: 20px;
+            color: #fff;
         }
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #d9534f;
+        }
+        /* Main content area */
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        /* Section title */
         .section-title {
-            font-size: 24px;
-            margin-top: 20px;
-            color: #c82333;
+            background-color: #c82333;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
         }
         .lecture-list {
-            list-style-type: none;
+            list-style: none;
             padding-left: 0;
         }
         .lecture-item {
-            padding: 10px 0;
-            font-size: 18px;
+            padding: 10px;
+            background-color: #fff;
+            margin: 5px 0;
+            border-radius: 5px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
-        .checkbox {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
+        .progress-bar-container {
+            margin: 20px 0;
         }
-        .btn-download {
-            text-decoration: none;
+        .download-link {
             color: #fff;
             background-color: #c82333;
             padding: 5px 10px;
             border-radius: 5px;
-        }
-        /* Bonus message */
-        .bonus-message {
-            display: none;
-            margin-top: 10px;
-            font-size: 16px;
-            color: #28a745;
-            font-weight: bold;
-        }
-        /* Circle progress bar */
-        .circle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-        }
-        .circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 10px solid #ddd;
-            position: relative;
-            text-align: center;
-            line-height: 130px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #c82333;
-        }
-        .circle-progress {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 10px solid #c82333;
-            clip: rect(0px, 75px, 150px, 0px); /* Left half circle initially hidden */
-        }
-        .right-half {
-            clip: rect(0px, 150px, 150px, 75px); /* Right half circle */
-        }
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 14px;
-            color: #555;
-        }
-        .footer-links a {
-            color: #c82333;
             text-decoration: none;
-            margin: 0 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="roadmap-title">PHP, Laravel & MySQL Roadmap</h1>
 
-        <!-- Section 1 -->
-        <div class="section">
-            <h2 class="section-title">1. Foundational Concepts <span class="time-estimate"></span></h2>
-            <ul class="lecture-list">
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 1: Introduction to Networking
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <div class="bonus-message" id="bonus-1">🎉 Bonus unlocked: Networking Tips & Tricks!</div>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 2: How Browsers Work
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <div class="bonus-message" id="bonus-2">🎉 Congrats! Browser Insights Revealed!</div>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 3: Understanding HTTP Methods
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <div class="bonus-message" id="bonus-3">🎉 HTTP Mastery Achieved! Bonus Unlocked!</div>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 4: Domain Names and DNS
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <div class="bonus-message" id="bonus-4">🎉 DNS Champion! Bonus Unlocked!</div>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 5: Hosting Services Overview
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <div class="bonus-message" id="bonus-5">🎉 Hosting Expert! Bonus Unlocked!</div>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 6: Web Servers and How They Work
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <div class="bonus-message" id="bonus-6">🎉 Web Server Guru! Bonus Unlocked!</div>
-            </ul>
+    <!-- Sidebar navigation -->
+    <div class="sidebar">
+        <h4 class="text-center">Roadmap</h4>
+        <a href="#section1">Foundational Concepts</a>
+        <a href="#section2">Operating Systems</a>
+        <a href="#section3">Version Control</a>
+        <a href="#section4">Databases</a>
+        <a href="#section5">Languages & Frameworks</a>
+        <a href="#section6">Authentication & Security</a>
+        <a href="#section7">API Development</a>
+        <a href="#section8">System Design</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <h1 class="text-center mb-4">PHP, Laravel & MySQL Roadmap</h1>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <h5>Overall Progress</h5>
+            <div class="progress">
+                <div class="progress-bar bg-danger" id="overall-progress-bar" role="progressbar" style="width: 0%;">0%</div>
+            </div>
         </div>
 
-        <!-- Section 2 -->
-        <div class="section">
-            <h2 class="section-title">2. Operating Systems and Networking <span class="time-estimate"></span></h2>
-            <ul class="lecture-list">
+        <!-- Section 1: Foundational Concepts -->
+        <div id="section1">
+            <h2 class="section-title" onclick="toggleSection('foundational-concepts')">1. Foundational Concepts</h2>
+            <ul class="lecture-list" id="foundational-concepts" style="display: none;">
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 7: Introduction to Operating Systems
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 1: Introduction to Networking (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 8: Memory and Process Management
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 2: How Browsers Work (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 9: Command Line and Terminal Basics
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Section 3 -->
-        <div class="section">
-            <h2 class="section-title">3. Version Control (Git & GitHub) <span class="time-estimate">(10-20 hours)</span></h2>
-            <ul class="lecture-list">
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 10: Getting Started with Git
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 3: Understanding HTTP Methods (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 11: Git Collaboration and Workflows
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 4: Domain Names and DNS (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 12: Setting Up GitHub for Your Projects
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Section 4 -->
-        <div class="section">
-            <h2 class="section-title">4. Databases (MySQL Focus) <span class="time-estimate"></span></h2>
-            <ul class="lecture-list">
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 13: Introduction to MySQL
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 5: Hosting Services Overview (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 14: Setting Up a MySQL Database
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 15: SQL Basics (SELECT, INSERT, UPDATE, DELETE)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 16: Understanding Data Types in MySQL
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 17: JOINs and Relational Data
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 18: Database Design and Normalization (1NF, 2NF, 3NF)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 19: Advanced SQL Queries (GROUP BY, HAVING)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 20: Subqueries and Nested Queries
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 21: Transactions and ACID Properties
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 22: Indexing and Optimizing Queries
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 23: Database Replication and Sharding
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 24: Scaling MySQL for High Traffic
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 6: Web Servers and How They Work (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
             </ul>
         </div>
 
-        <!-- Section 5 -->
-        <div class="section">
-            <h2 class="section-title">5. Languages & Frameworks (PHP & Laravel Focus) <span class="time-estimate"></span></h2>
-            <ul class="lecture-list">
+        <!-- Section 2: Operating Systems and Networking -->
+        <div id="section2">
+            <h2 class="section-title" onclick="toggleSection('operating-systems')">2. Operating Systems and Networking</h2>
+            <ul class="lecture-list" id="operating-systems" style="display: none;">
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 25: Introduction to PHP and Syntax
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 26: Variables and Data Types in PHP
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 27: Conditional Statements and Loops
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 7: Introduction to Operating Systems (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 39: Functions in PHP
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 8: Memory and Process Management (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 40: Arrays and Array Functions
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 32: Introduction to OOP in PHP
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 33: Advanced OOP Concepts
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 34: Encapsulation and Access Modifiers
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 35: Constructors and Destructors
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 36: Static Methods and Properties
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 37:  Namespaces and Autoloading
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 38: Exception Handling in OOP
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 39: Design Patterns
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 40: Real-world OOP in PHP
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 41: Review and Advanced Topics
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                    <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 42: Introduction to Laravel Framework
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 43: MVC Architecture in Laravel
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 44: Routing and Controllers in Laravel
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 45: Blade Templating Engine
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 46: Eloquent ORM and Models
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 47: Database Migrations in Laravel
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 48: Forms and Validation in Laravel
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 49: Middleware in Laravel
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 50: Authentication in Laravel (Part 1)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 51: Authentication in Laravel (Part 2)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                </li>
-                <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 52: Building APIs with Laravel
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 11: Command Line and Terminal Basics (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
             </ul>
         </div>
 
-        <!-- Section 6 -->
-        <div class="section">
-            <h2 class="section-title">6. Authentication & Security <span class="time-estimate"></span></h2>
-            <ul class="lecture-list">
+        <!-- Section 3: Version Control (Git & GitHub) -->
+        <div id="section3">
+            <h2 class="section-title" onclick="toggleSection('version-control')">3. Version Control (Git & GitHub)</h2>
+            <ul class="lecture-list" id="version-control" style="display: none;">
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 53: Laravel Authentication (Part 1: Basics)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 12: Getting Started with Git (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 54: Laravel Authentication (Part 2: APIs and Tokens)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 13: Git Collaboration and Workflows (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 55: Web Security Best Practices
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 14: Setting Up GitHub for Your Projects (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
             </ul>
         </div>
 
-        <!-- Section 7: APIs -->
-        <div class="section">
-            <h2 class="section-title">7. API Development <span class="time-estimate"></span></h2>
-            <ul class="lecture-list">
+        <!-- Section 4: Databases (MySQL Focus) -->
+        <div id="section4">
+            <h2 class="section-title" onclick="toggleSection('databases')">4. Databases (MySQL Focus)</h2>
+            <ul class="lecture-list" id="databases" style="display: none;">
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 56: Introduction to APIs
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 15: Introduction to MySQL (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 57: REST API Concepts and HTTP Methods
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 16: Setting Up a MySQL Database (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 58: Building APIs in PHP
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 17: SQL Basics (SELECT, INSERT, UPDATE, DELETE) (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 59: Building APIs in Laravel
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 18: Understanding Data Types in MySQL (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 60: API Authentication (OAuth, JWT)
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 19: JOINs and Relational Data (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 61: Handling API Requests and Responses
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 20: Database Design and Normalization (1NF, 2NF, 3NF) (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 62: API Rate Limiting and Versioning
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 21: Advanced SQL Queries (GROUP BY, HAVING) (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 63: Securing APIs
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 22: Subqueries and Nested Queries (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 64: Testing and Documenting APIs
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 23: Transactions and ACID Properties (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 24: Indexing and Optimizing Queries (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 25: Database Replication and Sharding (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 26: Scaling MySQL for High Traffic (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 5: Languages & Frameworks (PHP & Laravel Focus) -->
+        <div id="section5">
+            <h2 class="section-title" onclick="toggleSection('languages-frameworks')">5. Languages & Frameworks (PHP & Laravel Focus)</h2>
+            <ul class="lecture-list" id="languages-frameworks" style="display: none;">
+                <li class="lecture-item">
+                    <span>Lecture 27: Introduction to PHP and Syntax (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 28: Variables and Data Types in PHP (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 29: Conditional Statements and Loops (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 30: Functions in PHP (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 31: Arrays and Array Functions (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 32: Object-Oriented Programming (OOP) in PHP (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 33: Working with Classes and Objects (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 34: Inheritance and Polymorphism (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 35: Traits and Interfaces in PHP (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 36: Introduction to Laravel Framework (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 37: MVC Architecture in Laravel (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 38: Routing and Controllers in Laravel (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 39: Blade Templating Engine (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 40: Eloquent ORM and Models (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 41: Database Migrations in Laravel (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 42: Forms and Validation in Laravel (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 43: Middleware in Laravel (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 44: Authentication in Laravel (Part 1) (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 45: Authentication in Laravel (Part 2) (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 46: Building APIs with Laravel (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 6: Authentication & Security -->
+        <div id="section6">
+            <h2 class="section-title" onclick="toggleSection('authentication-security')">6. Authentication & Security</h2>
+            <ul class="lecture-list" id="authentication-security" style="display: none;">
+                <li class="lecture-item">
+                    <span>Lecture 47: Laravel Authentication (Part 1: Basics) (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 48: Laravel Authentication (Part 2: APIs and Tokens) (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 49: Web Security Best Practices (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 7: API Development -->
+        <div id="section7">
+            <h2 class="section-title" onclick="toggleSection('api-development')">7. API Development</h2>
+            <ul class="lecture-list" id="api-development" style="display: none;">
+                <li class="lecture-item">
+                    <span>Lecture 50: Introduction to APIs (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 51: REST API Concepts and HTTP Methods (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 52: Building APIs in PHP (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 53: Building APIs in Laravel (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 54: API Authentication (OAuth, JWT) (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 55: Handling API Requests and Responses (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 56: API Rate Limiting and Versioning (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 57: Securing APIs (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                <li class="lecture-item">
+                    <span>Lecture 58: Testing and Documenting APIs (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
             </ul>
         </div>
 
         <!-- Section 8: System Design -->
-        <div class="section">
-            <h2 class="section-title">8. System Design <span class="time-estimate"></span></h2>
-            <ul class="lecture-list">
+        <div id="section8">
+            <h2 class="section-title" onclick="toggleSection('system-design')">8. System Design</h2>
+            <ul class="lecture-list" id="system-design" style="display: none;">
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 65: Introduction to System Design
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 59: Introduction to System Design (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 66: Load Balancing
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 60: Load Balancing (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 67: Caching Strategies
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 61: Caching Strategies (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 68: Database Sharding
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 62: Database Sharding (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 69: Consistency and Availability in Distributed Systems
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 63: Consistency and Availability in Distributed Systems (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 70: Microservices Architecture
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 64: Microservices Architecture (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 71: Designing for Scalability
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 65: Designing for Scalability (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 72: Message Queues and Asynchronous Communication
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 66: Message Queues and Asynchronous Communication (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 73: Monitoring and Observability
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 67: Monitoring and Observability (1.5 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
                 <li class="lecture-item">
-                    <input type="checkbox" class="checkbox" onclick="updateProgress()"> Lecture 74: Case Studies in System Design
-                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                    <span>Lecture 68: Case Studies in System Design (2 hours)</span>
+                    <div>
+                        <input type="checkbox" class="lecture-checkbox" onclick="updateProgress()"> 
+                        <a href="#" class="download-link"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </li>
             </ul>
         </div>
 
-        <!-- Circular Progress Counter -->
-        <div class="circle-container">
-            <div class="circle" id="circle">
-                <div class="circle-progress right-half" id="right-circle"></div>
-                <div class="circle-progress" id="left-circle"></div>
-                <span id="circle-percentage">0%</span>
+        <!-- Footer with social links -->
+        <footer class="footer">
+            <p>&copy; 2024 Youssef Khaled</p>
+            <div>
+                <a href="https://t.me/yourtelegramchannel" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a> |
+                <a href="https://www.youtube.com/youryoutubechannel" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
             </div>
-        </div>
+        </footer>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Youssef Khaled</p>
-        <div class="footer-links">
-            <a href="https://t.me/yourtelegramchannel" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <a href="https://www.youtube.com/youryoutubechannel" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-        </div>
-    </footer>
-
     <script>
-        // Total number of lectures
-        const totalLectures = 68;
-
-        // Function to update progress
-        function updateProgress() {
-            // Count checked checkboxes
-            const checkedLectures = document.querySelectorAll('.checkbox:checked').length;
-
-            // Calculate percentage
-            const percentage = Math.floor((checkedLectures / totalLectures) * 100);
-
-            // Update the circle percentage text
-            document.getElementById('circle-percentage').innerText = percentage + '%';
-
-            // Update the circular progress bar
-            updateCircleProgress(percentage);
-
-            // Show bonus message for completed lectures
-            for (let i = 1; i <= totalLectures; i++) {
-                if (document.querySelectorAll('.checkbox')[i-1].checked) {
-                    document.getElementById(`bonus-${i}`)?.style.display = 'block';
-                }
-            }
+        // Toggle section visibility
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.style.display = section.style.display === 'none' ? 'block' : 'none';
         }
 
-        function updateCircleProgress(percentage) {
-            const rightCircle = document.getElementById('right-circle');
-            const leftCircle = document.getElementById('left-circle');
+        // Update progress
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.lecture-checkbox');
+            const totalLectures = checkboxes.length;
+            const completedLectures = document.querySelectorAll('.lecture-checkbox:checked').length;
 
-            if (percentage <= 50) {
-                rightCircle.style.transform = `rotate(${percentage * 3.6}deg)`;
-                leftCircle.style.transform = 'rotate(0deg)';
-            } else {
-                rightCircle.style.transform = 'rotate(180deg)';
-                leftCircle.style.transform = `rotate(${(percentage - 50) * 3.6}deg)`;
-            }
+            // Calculate percentage
+            const percentage = Math.floor((completedLectures / totalLectures) * 100);
+
+            // Update progress bar
+            const progressBar = document.getElementById('overall-progress-bar');
+            progressBar.style.width = percentage + '%';
+            progressBar.innerText = percentage + '%';
         }
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
