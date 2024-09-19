@@ -23,6 +23,10 @@
             background-color: #007BFF; /* Blue */
             padding-top: 20px;
             color: #fff;
+            display: none;
+        }
+        .sidebar.active {
+            display: block;
         }
         .sidebar a {
             display: block;
@@ -46,8 +50,6 @@
             cursor: pointer;
             margin-top: 10px;
             border-radius: 5px;
-            display: flex;
-            align-items: center;
         }
         .section-title i {
             margin-right: 10px;
@@ -117,10 +119,10 @@
         /* Responsive styles */
         @media (max-width: 768px) {
             .sidebar {
+                display: block;
+                position: relative;
                 width: 100%;
                 height: auto;
-                position: relative;
-                padding: 10px;
             }
             .sidebar a {
                 display: inline-block;
@@ -147,8 +149,30 @@
 </head>
 <body>
 
-    <!-- Sidebar navigation -->
-    <div class="sidebar">
+    <!-- Navbar for mobile -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Roadmap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#section1">Foundational Concepts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section2">Operating Systems</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section3">Version Control</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section4">Databases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section5">Languages & Frameworks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section6">Authentication & Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section7">API Development</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section8">System Design</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar navigation for desktop -->
+    <div class="sidebar d-none d-lg-block">
         <h4 class="text-center">Roadmap</h4>
         <a href="#section1"><i class="fas fa-network-wired"></i> Foundational Concepts</a>
         <a href="#section2"><i class="fas fa-laptop-code"></i> Operating Systems</a>
@@ -233,7 +257,7 @@
             </ul>
         </div>
 
-        <!-- Add other sections here, following the same structure, with the respective lecture content -->
+        <!-- Include all other sections here following the same structure, with the lecture list for each section as you specified in the roadmap -->
 
         <!-- Footer with social links -->
         <footer class="footer">
@@ -245,6 +269,7 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Toggle section visibility
         function toggleSection(sectionId) {
@@ -270,4 +295,3 @@
 
 </body>
 </html>
-
