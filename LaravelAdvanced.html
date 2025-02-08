@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laravel Backend Developer Roadmap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #f8f9fa;
+    }
+    .navbar, .footer {
+      background-color: #343a40;
+    }
+    .checkbox-item {
+      margin-bottom: 10px;
+    }
+    .checkbox-item input[type="checkbox"] {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Youssef Khaled</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="https://laravel.com/docs" target="_blank">Laravel Docs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://laracasts.com" target="_blank">Laracasts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com" target="_blank">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Laravel Backend Developer Roadmap</h1>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <!-- Step 1: Core Laravel Concepts -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Step 1: Core Laravel Concepts</h3>
+            <p><strong>Why:</strong> Understanding the core concepts of Laravel is essential to build any application. This includes routing, controllers, middleware, and Blade templating.</p>
+            <ul>
+              <li class="checkbox-item">
+                <input type="checkbox" id="core-routing" data-topic="Core Routing">
+                <label for="core-routing">Routing</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="core-controllers" data-topic="Controllers">
+                <label for="core-controllers">Controllers</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="core-middleware" data-topic="Middleware">
+                <label for="core-middleware">Middleware</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="core-blade" data-topic="Blade Templating">
+                <label for="core-blade">Blade Templating</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 2: Database and Eloquent ORM -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Step 2: Database and Eloquent ORM</h3>
+            <p><strong>Why:</strong> Laravel's Eloquent ORM makes database interactions seamless. You need to master migrations, seeders, relationships, and query optimization.</p>
+            <ul>
+              <li class="checkbox-item">
+                <input type="checkbox" id="db-migrations" data-topic="Migrations">
+                <label for="db-migrations">Migrations</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="db-seeders" data-topic="Seeders">
+                <label for="db-seeders">Seeders</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="db-eloquent" data-topic="Eloquent ORM">
+                <label for="db-eloquent">Eloquent ORM</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="db-relationships" data-topic="Relationships">
+                <label for="db-relationships">Relationships (One-to-One, One-to-Many, Many-to-Many)</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="db-query-builder" data-topic="Query Builder">
+                <label for="db-query-builder">Query Builder</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 3: Advanced Laravel Features -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Step 3: Advanced Laravel Features</h3>
+            <p><strong>Why:</strong> To build scalable and maintainable applications, you need to master advanced features like queues, events, caching, and API development.</p>
+            <ul>
+              <li class="checkbox-item">
+                <input type="checkbox" id="adv-queues" data-topic="Queues">
+                <label for="adv-queues">Queues</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="adv-events" data-topic="Events and Listeners">
+                <label for="adv-events">Events and Listeners</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="adv-caching" data-topic="Caching">
+                <label for="adv-caching">Caching</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="adv-api" data-topic="API Development">
+                <label for="adv-api">API Development (RESTful APIs)</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 4: Real-Time Features (WebSockets) -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Step 4: Real-Time Features (WebSockets)</h3>
+            <p><strong>Why:</strong> For real-time applications like chat apps, you need to understand WebSockets and Laravel Echo.</p>
+            <ul>
+              <li class="checkbox-item">
+                <input type="checkbox" id="rt-websockets" data-topic="WebSockets">
+                <label for="rt-websockets">WebSockets</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="rt-laravel-echo" data-topic="Laravel Echo">
+                <label for="rt-laravel-echo">Laravel Echo</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="rt-broadcasting" data-topic="Broadcasting">
+                <label for="rt-broadcasting">Broadcasting</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 5: Payment Gateways -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Step 5: Payment Gateways</h3>
+            <p><strong>Why:</strong> Integrating payment gateways like Stripe or PayPal is crucial for e-commerce and subscription-based applications.</p>
+            <ul>
+              <li class="checkbox-item">
+                <input type="checkbox" id="pg-stripe" data-topic="Stripe Integration">
+                <label for="pg-stripe">Stripe Integration</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="pg-paypal" data-topic="PayPal Integration">
+                <label for="pg-paypal">PayPal Integration</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 6: Testing and Debugging -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Step 6: Testing and Debugging</h3>
+            <p><strong>Why:</strong> Writing tests ensures your application is reliable and bug-free. Debugging skills are essential for troubleshooting.</p>
+            <ul>
+              <li class="checkbox-item">
+                <input type="checkbox" id="test-unit" data-topic="Unit Testing">
+                <label for="test-unit">Unit Testing</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="test-feature" data-topic="Feature Testing">
+                <label for="test-feature">Feature Testing</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="test-debugging" data-topic="Debugging">
+                <label for="test-debugging">Debugging</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Step 7: Deployment and DevOps -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Step 7: Deployment and DevOps</h3>
+            <p><strong>Why:</strong> Deploying applications to production requires knowledge of servers, CI/CD pipelines, and Docker.</p>
+            <ul>
+              <li class="checkbox-item">
+                <input type="checkbox" id="deploy-ci-cd" data-topic="CI/CD Pipelines">
+                <label for="deploy-ci-cd">CI/CD Pipelines</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="deploy-docker" data-topic="Docker">
+                <label for="deploy-docker">Docker</label>
+              </li>
+              <li class="checkbox-item">
+                <input type="checkbox" id="deploy-forge" data-topic="Laravel Forge">
+                <label for="deploy-forge">Laravel Forge</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3">
+    <div class="container text-center">
+      <span class="text-muted">© 2023 Youssef Khaled. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Save checkbox state to localStorage
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      const topic = checkbox.getAttribute('data-topic');
+      checkbox.checked = localStorage.getItem(topic) === 'true';
+      checkbox.addEventListener('change', () => {
+        localStorage.setItem(topic, checkbox.checked);
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
