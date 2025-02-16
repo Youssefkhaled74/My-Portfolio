@@ -1,1 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis & Business Intelligence Roadmap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #f8f9fa;
+    }
+    .navbar, .footer {
+      background-color: #343a40;
+    }
+    .checkbox-item {
+      margin-bottom: 10px;
+    }
+    .checkbox-item input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #444;
+      text-align: left;
+    }
+    th {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Data Analysis Roadmap</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.codebasics.io" target="_blank">Codebasics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.kaggle.com" target="_blank">Kaggle</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.w3schools.com/sql" target="_blank">SQL Tutorial</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Data Analysis & Business Intelligence Roadmap</h1>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <!-- Weekly Breakdown Table -->
+        <div class="card mb-4 bg-dark text-white">
+          <div class="card-body">
+            <h3>Weekly Breakdown (1 Hour/Day)</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Week</th>
+                  <th>Day</th>
+                  <th>Topic to Study</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Week 1 -->
+                <tr>
+                  <td rowspan="7">Week 1</td>
+                  <td>Day 1</td>
+                  <td>Excel Basics</td>
+                  <td>Learn basic formulas: SUM, AVERAGE, PRODUCT.</td>
+                </tr>
+                <tr>
+                  <td>Day 2</td>
+                  <td>Excel Basics</td>
+                  <td>Learn MEAN, MEDIAN, IF, SUMIF.</td>
+                </tr>
+                <tr>
+                  <td>Day 3</td>
+                  <td>Excel Basics</td>
+                  <td>Practice Excel formulas with a budget sheet.</td>
+                </tr>
+                <tr>
+                  <td>Day 4</td>
+                  <td>Excel Advanced</td>
+                  <td>Learn VLOOKUP, MATCH, INDEX.</td>
+                </tr>
+                <tr>
+                  <td>Day 5</td>
+                  <td>Excel Advanced</td>
+                  <td>Practice VLOOKUP and INDEX with sample data.</td>
+                </tr>
+                <tr>
+                  <td>Day 6</td>
+                  <td>Excel Advanced</td>
+                  <td>Learn Pivot Tables in Excel.</td>
+                </tr>
+                <tr>
+                  <td>Day 7</td>
+                  <td>Excel Advanced</td>
+                  <td>Practice Pivot Tables and Charting.</td>
+                </tr>
+                <!-- Week 2 -->
+                <tr>
+                  <td rowspan="7">Week 2</td>
+                  <td>Day 8</td>
+                  <td>Business Math</td>
+                  <td>Learn arithmetic, percentages.</td>
+                </tr>
+                <tr>
+                  <td>Day 9</td>
+                  <td>Business Math</td>
+                  <td>Practice YoY growth calculations.</td>
+                </tr>
+                <tr>
+                  <td>Day 10</td>
+                  <td>Business Math</td>
+                  <td>Learn market share calculations.</td>
+                </tr>
+                <tr>
+                  <td>Day 11</td>
+                  <td>Statistics</td>
+                  <td>Study mean, median, standard deviation.</td>
+                </tr>
+                <tr>
+                  <td>Day 12</td>
+                  <td>Statistics</td>
+                  <td>Learn bell curve and percentile.</td>
+                </tr>
+                <tr>
+                  <td>Day 13</td>
+                  <td>Business Math</td>
+                  <td>Practice business math problems.</td>
+                </tr>
+                <tr>
+                  <td>Day 14</td>
+                  <td>Revision</td>
+                  <td>Revise Excel and business math concepts.</td>
+                </tr>
+                <!-- Add more weeks as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Daily Breakdown with Checkboxes -->
+        <div class="card mb-4 bg-dark text-white">
+  <div class="card-body">
+    <h3>Daily Breakdown (1 Hour/Day)</h3>
+    <ul>
+      <!-- Week 1 -->
+      <li class="checkbox-item">
+        <input type="checkbox" id="day1" data-topic="Day 1: Excel Basics">
+        <label for="day1">Day 1: Learn Excel: SUM, AVERAGE, PRODUCT.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day2" data-topic="Day 2: Excel Basics">
+        <label for="day2">Day 2: Learn Excel: MEAN, MEDIAN, IF, SUMIF.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day3" data-topic="Day 3: Excel Basics">
+        <label for="day3">Day 3: Practice Excel formulas with a budget sheet.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day4" data-topic="Day 4: Excel Advanced">
+        <label for="day4">Day 4: Learn Excel: VLOOKUP, MATCH, INDEX.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day5" data-topic="Day 5: Excel Advanced">
+        <label for="day5">Day 5: Practice VLOOKUP and INDEX with sample data.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day6" data-topic="Day 6: Excel Advanced">
+        <label for="day6">Day 6: Learn Pivot Tables in Excel.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day7" data-topic="Day 7: Excel Advanced">
+        <label for="day7">Day 7: Practice Pivot Tables and Charting.</label>
+      </li>
+
+      <!-- Week 2 -->
+      <li class="checkbox-item">
+        <input type="checkbox" id="day8" data-topic="Day 8: Business Math">
+        <label for="day8">Day 8: Learn Business Math: Arithmetic, Percentages.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day9" data-topic="Day 9: Business Math">
+        <label for="day9">Day 9: Practice YoY growth calculations.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day10" data-topic="Day 10: Business Math">
+        <label for="day10">Day 10: Learn Market Share calculations.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day11" data-topic="Day 11: Statistics">
+        <label for="day11">Day 11: Study Mean, Median, Standard Deviation.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day12" data-topic="Day 12: Statistics">
+        <label for="day12">Day 12: Learn Bell Curve and Percentile.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day13" data-topic="Day 13: Business Math">
+        <label for="day13">Day 13: Practice Business Math problems.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day14" data-topic="Day 14: Revision">
+        <label for="day14">Day 14: Revise Excel and Business Math concepts.</label>
+      </li>
+
+      <!-- Week 3 -->
+      <li class="checkbox-item">
+        <input type="checkbox" id="day15" data-topic="Day 15: Power BI Basics">
+        <label for="day15">Day 15: Start Power BI: Basics and Interface.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day16" data-topic="Day 16: Power BI Project">
+        <label for="day16">Day 16: Follow Power BI 'Sales Insights' project tutorial.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day17" data-topic="Day 17: Power BI Project">
+        <label for="day17">Day 17: Work on Power BI 'Personal Finance' project.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day18" data-topic="Day 18: Power BI Project">
+        <label for="day18">Day 18: Work on Power BI 'HR Analytics' project.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day19" data-topic="Day 19: Power BI Practice">
+        <label for="day19">Day 19: Practice creating dashboards in Power BI.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day20" data-topic="Day 20: Power BI Revision">
+        <label for="day20">Day 20: Revise Power BI concepts.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day21" data-topic="Day 21: Tableau Basics">
+        <label for="day21">Day 21: Explore Tableau basics (optional).</label>
+      </li>
+
+      <!-- Week 4 -->
+      <li class="checkbox-item">
+        <input type="checkbox" id="day22" data-topic="Day 22: SQL Basics">
+        <label for="day22">Day 22: Learn SQL: SELECT, WHERE, LIKE.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day23" data-topic="Day 23: SQL Practice">
+        <label for="day23">Day 23: Practice SQL queries on W3Schools.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day24" data-topic="Day 24: SQL Basics">
+        <label for="day24">Day 24: Learn SQL: DISTINCT, GROUP BY, ORDER BY.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day25" data-topic="Day 25: SQL Practice">
+        <label for="day25">Day 25: Practice GROUP BY and ORDER BY queries.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day26" data-topic="Day 26: SQL Advanced">
+        <label for="day26">Day 26: Learn SQL: CTE, Subqueries.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day27" data-topic="Day 27: SQL Practice">
+        <label for="day27">Day 27: Practice CTE and Subqueries.</label>
+      </li>
+      <li class="checkbox-item">
+        <input type="checkbox" id="day28" data-topic="Day 28: SQL Advanced">
+        <label for="day28">Day 28: Learn SQL: Window Functions.</label>
+      </li>
+
+      <!-- Add Weeks 5-12 similarly -->
+    </ul>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3">
+    <div class="container text-center">
+      <span class="text-muted">© 2023 Data Analysis Roadmap. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Save checkbox state to localStorage
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      const topic = checkbox.getAttribute('data-topic');
+      checkbox.checked = localStorage.getItem(topic) === 'true';
+      checkbox.addEventListener('change', () => {
+        localStorage.setItem(topic, checkbox.checked);
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
