@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,19 +13,47 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
-    <!-- Google Fonts: Inter and Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter, Montserrat, Noto Sans Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #f9fafb;
+            --text-color: #1f2937;
+            --card-bg: #fff;
+            --primary-color: #3b82f6;
+            --primary-hover: #1e40af;
+            --section-bg: #f1f5f9;
+            --footer-bg: #1e293b;
+            --footer-text: #fff;
+        }
+        [data-theme="dark"] {
+            --bg-color: #1e293b;
+            --text-color: #e5e7eb;
+            --card-bg: #2d3748;
+            --primary-color: #60a5fa;
+            --primary-hover: #3b82f6;
+            --section-bg: #374151;
+            --footer-bg: #111827;
+            --footer-text: #d1d5db;
+        }
+        [dir="rtl"] {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-weight: 600;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
         }
         .navbar {
-            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            background: #fff;
             position: fixed;
             top: 0;
             width: 100%;
@@ -33,23 +61,24 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .navbar-brand {
-            color: #fff !important;
+            color: #1e3a8a !important;
             font-weight: 600;
         }
         .navbar-toggler {
             border: none;
         }
         .navbar-collapse {
-            background-color: #1e3a8a;
+            background-color: #fff;
             border-radius: 8px;
             padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .nav-link {
-            color: #fff !important;
+            color: #1e3a8a !important;
             transition: color 0.3s;
         }
         .nav-link:hover {
-            color: #93c5fd !important;
+            color: #3b82f6 !important;
         }
         .nav-link i {
             margin-right: 8px;
@@ -61,13 +90,14 @@
             margin-bottom: 2rem;
         }
         .card {
+            background-color: var(--card-bg);
             border: none;
             border-radius: 12px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
         }
         .portfolio-img {
             height: 200px;
@@ -76,17 +106,18 @@
             border-top-right-radius: 12px;
         }
         .btn-primary {
-            background-color: #3b82f6;
-            border-color: #3b82f6;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
             border-radius: 8px;
             padding: 10px 20px;
+            transition: all 0.3s ease;
         }
         .btn-primary:hover {
-            background-color: #1e40af;
-            border-color: #1e40af;
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
         }
         .testimonial-card {
-            background-color: #fff;
+            background-color: var(--card-bg);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -108,52 +139,73 @@
             margin-bottom: 10px;
         }
         .collapse-toggle:hover {
-            color: #3b82f6;
+            color: var(--primary-color);
         }
         .collapse-toggle i {
             margin-right: 8px;
         }
         section {
-            padding-top: 80px;
+            padding-top: 100px;
+            background: var(--section-bg);
+            border-radius: 12px;
+            margin: 20px 0;
         }
-        /* Ensure collapse content is visible when shown */
         .collapse.show {
             visibility: visible !important;
             opacity: 1 !important;
             display: block !important;
+        }
+        #about .card-body, #about .text-muted, #about .skill-item strong {
+            color: #000 !important;
+        }
+        [data-theme="dark"] #about .card-body, [data-theme="dark"] #about .text-muted, [data-theme="dark"] #about .skill-item strong {
+            color: #fff !important;
+        }
+        .theme-toggle, .lang-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
+                <a class="navbar-brand" href="#" data-translate="navbar_brand"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa-solid fa-bars text-white"></i>
+                    <i class="fa-solid fa-bars" style="color: #1e3a8a;"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#header"><i class="fa-solid fa-home"></i>Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about"><i class="fa-solid fa-user"></i>About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services"><i class="fa-solid fa-gear"></i>Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio"><i class="fa-solid fa-briefcase"></i>Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="fa-solid fa-quote-left"></i>Testimonials</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./BackendRoadmap.html"><i class="fa-solid fa-road"></i>Back-end Track</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./LaravelAdvanced.html"><i class="fa-brands fa-laravel"></i>Laravel Advanced</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./DataAnalysisRoadmap.html"><i class="fa-solid fa-chart-line"></i>Data Analysis</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#header" data-translate="nav_home"><i class="fa-solid fa-home"></i>Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about" data-translate="nav_about"><i class="fa-solid fa-user"></i>About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services" data-translate="nav_services"><i class="fa-solid fa-gear"></i>Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio" data-translate="nav_portfolio"><i class="fa-solid fa-briefcase"></i>Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials" data-translate="nav_testimonials"><i class="fa-solid fa-quote-left"></i>Testimonials</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact" data-translate="nav_contact"><i class="fa-solid fa-envelope"></i>Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./BackendRoadmap.html" data-translate="nav_backend"><i class="fa-solid fa-road"></i>Back-end Track</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./LaravelAdvanced.html" data-translate="nav_laravel"><i class="fa-brands fa-laravel"></i>Laravel Advanced</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./DataAnalysisRoadmap.html" data-translate="nav_data"><i class="fa-solid fa-chart-line"></i>Data Analysis</a></li>
                     </ul>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-moon theme-toggle" id="themeToggle" title="Toggle Theme"></i>
+                        <span class="lang-toggle" id="langToggle" title="Toggle Language">EN</span>
+                    </div>
                 </div>
             </div>
         </nav>
         <div class="container py-5" id="header" data-aos="fade-up">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h1 class="display-4 fw-bold">Hi, I'm <span class="text-primary">Youssef Khaled</span></h1>
-                    <p class="lead">Laravel Full-Stack Developer | PHP Backend Developer | Data Analyst</p>
-                    <p class="text-muted">Back-end Developer at Evyx Company | B.Sc. Student</p>
+                    <h1 class="display-4 fw-bold" data-translate="header_greeting">Hi, I'm <span class="text-primary">Youssef Khaled</span></h1>
+                    <p class="lead" data-translate="header_roles">Laravel Full-Stack Developer | PHP Backend Developer | Data Analyst</p>
+                    <p class="text-muted" data-translate="header_position">Back-end Developer at Evyx Company | B.Sc. Student</p>
                 </div>
                 <div class="col-lg-6 text-center" data-aos="fade-left">
                     <img src="./About Me.jpeg" alt="Youssef Khaled" class="img-fluid rounded-circle" style="max-width: 300px;">
@@ -165,13 +217,13 @@
     <!-- About Section -->
     <section id="about" class="py-5">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center">About Me</h2>
+            <h2 class="section-title text-center" data-translate="about_title">About Me</h2>
             <div class="row">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
                     <div class="card shadow-sm h-100">
                         <div class="card-body">
-                            <h3 class="card-title">Biography</h3>
-                            <p class="text-muted">
+                            <h3 class="card-title" data-translate="about_bio_title">Biography</h3>
+                            <p class="text-muted" data-translate="about_bio">
                                 I am Youssef Khaled Anwar, a senior at the Faculty of Science, Ain Shams University, majoring in Statistics and Computer Science. I am currently a Back-end Developer at Evyx Company, specializing in Laravel and PHP. With a diploma in full-stack web development from SSD Academy, I have extensive experience as a freelance developer and intern at SSD Academy. I lead the backend department at IEEE Future Academy and share knowledge through my YouTube and Telegram channels. My goal is to build scalable and efficient web applications.
                             </p>
                         </div>
@@ -181,14 +233,13 @@
                     <div class="card shadow-sm h-100">
                         <div class="card-body">
                             <ul class="nav nav-tabs">
-                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#skills">Skills</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#experience">Experience</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#education">Education</a></li>
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#skills" data-translate="about_skills_tab">Skills</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#experience" data-translate="about_experience_tab">Experience</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#education" data-translate="about_education_tab">Education</a></li>
                             </ul>
                             <div class="tab-content mt-3">
-                                <div class="tab-pane fade show active" id="skills">
                                     <!-- Programming Languages -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#programmingLanguages" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#programmingLanguages" data-aos="fade-up" data-aos-delay="100" data-translate="skills_programming">
                                         <i class="fa-solid fa-code"></i> Programming Languages
                                     </div>
                                     <div class="collapse" id="programmingLanguages">
@@ -219,7 +270,7 @@
                                     </div>
 
                                     <!-- Frameworks -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#frameworks" data-aos="fade-up" data-aos-delay="150">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#frameworks" data-aos="fade-up" data-aos-delay="150" data-translate="skills_frameworks">
                                         <i class="fa-solid fa-cogs"></i> Frameworks
                                     </div>
                                     <div class="collapse" id="frameworks">
@@ -232,7 +283,7 @@
                                     </div>
 
                                     <!-- Web Development -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#webDevelopment" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#webDevelopment" data-aos="fade-up" data-aos-delay="200" data-translate="skills_webdev">
                                         <i class="fa-solid fa-globe"></i> Web Development
                                     </div>
                                     <div class="collapse" id="webDevelopment">
@@ -257,7 +308,7 @@
                                     </div>
 
                                     <!-- Databases -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#databases" data-aos="fade-up" data-aos-delay="250">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#databases" data-aos="fade-up" data-aos-delay="250" data-translate="skills_databases">
                                         <i class="fa-solid fa-database"></i> Databases
                                     </div>
                                     <div class="collapse" id="databases">
@@ -276,7 +327,7 @@
                                     </div>
 
                                     <!-- Algorithms and Data Structures -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#algorithms" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#algorithms" data-aos="fade-up" data-aos-delay="300" data-translate="skills_algorithms">
                                         <i class="fa-solid fa-sitemap"></i> Algorithms and Data Structures
                                     </div>
                                     <div class="collapse" id="algorithms">
@@ -289,7 +340,7 @@
                                     </div>
 
                                     <!-- Data Analysis -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#dataAnalysis" data-aos="fade-up" data-aos-delay="350">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#dataAnalysis" data-aos="fade-up" data-aos-delay="350" data-translate="skills_data_analysis">
                                         <i class="fa-solid fa-chart-bar"></i> Data Analysis
                                     </div>
                                     <div class="collapse" id="dataAnalysis">
@@ -308,7 +359,7 @@
                                     </div>
 
                                     <!-- Tools and Technologies -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#tools" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#tools" data-aos="fade-up" data-aos-delay="400" data-translate="skills_tools">
                                         <i class="fa-solid fa-tools"></i> Tools and Technologies
                                     </div>
                                     <div class="collapse" id="tools">
@@ -345,7 +396,7 @@
                                     </div>
 
                                     <!-- Parallel Computing -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#parallelComputing" data-aos="fade-up" data-aos-delay="450">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#parallelComputing" data-aos="fade-up" data-aos-delay="450" data-translate="skills_parallel">
                                         <i class="fa-solid fa-microchip"></i> Parallel Computing
                                     </div>
                                     <div class="collapse" id="parallelComputing">
@@ -357,7 +408,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="experience">
+                                <div class="tab-pane fade" id="experience" data-translate="experience_content">
                                     <ul class="list-unstyled">
                                         <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Back-end Developer, Evyx Company (Dec 2024 - Present):</strong> Developed scalable backend systems using Laravel and MySQL, designed REST APIs, and collaborated with front-end teams.</li>
                                         <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Full-Stack Developer, Yesooh Company (8 months):</strong> Built a full-stack web application with Laravel, PHP, and MySQL, including user authentication and RESTful APIs.</li>
@@ -367,7 +418,7 @@
                                         <li><i class="fa-solid fa-graduation-cap me-2"></i><strong>Intern, SSD Academy:</strong> Gained hands-on experience in full-stack web development.</li>
                                     </ul>
                                 </div>
-                                <div class="tab-pane fade" id="education">
+                                <div class="tab-pane fade" id="education" data-translate="education_content">
                                     <ul class="list-unstyled">
                                         <li><i class="fa-solid fa-university me-2"></i><strong>B.Sc. in Statistics and Computer Science:</strong> Ain Shams University (Expected Graduation: 2025)</li>
                                         <li><i class="fa-solid fa-certificate me-2"></i><strong>Full-Stack Web Development Diploma:</strong> SSD Academy (2022)</li>
@@ -383,16 +434,16 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5 bg-light">
+    <section id="services" class="py-5">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center">My Services</h2>
+            <h2 class="section-title text-center" data-translate="services_title">My Services</h2>
             <div class="row">
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-code fa-3x mb-3 text-primary"></i>
-                            <h3 class="card-title">Laravel Full-Stack Development</h3>
-                            <p class="card-text">Build comprehensive web applications using Laravel for both frontend and backend.</p>
+                            <h3 class="card-title" data-translate="services_laravel">Laravel Full-Stack Development</h3>
+                            <p class="card-text" data-translate="services_laravel_desc">Build comprehensive web applications using Laravel for both frontend and backend.</p>
                         </div>
                     </div>
                 </div>
@@ -400,17 +451,17 @@
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-cloud fa-3x mb-3 text-primary"></i>
-                            <h3 class="card-title">REST API Development</h3>
-                            <p class="card-text">Design and implement scalable RESTful APIs with Laravel for seamless integration.</p>
+                            <h3 class="card-title" data-translate="services_api">REST API Development</h3>
+                            <p class="card-text" data-translate="services_api_desc">Design and implement scalable RESTful APIs with Laravel for seamless integration.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos krok="fade-up" data-aos-delay="300">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-database fa-3x mb-3 text-primary"></i>
-                            <h3 class="card-title">Database Management</h3>
-                            <p class="card-text">Develop efficient database solutions with MySQL and MongoDB for robust data handling.</p>
+                            <h3 class="card-title" data-translate="services_db">Database Management</h3>
+                            <p class="card-text" data-translate="services_db_desc">Develop efficient database solutions with MySQL and MongoDB for robust data handling.</p>
                         </div>
                     </div>
                 </div>
@@ -421,15 +472,15 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-5">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center">Key Projects</h2>
+            <h2 class="section-title text-center" data-translate="portfolio_title">Key Projects</h2>
             <div class="row">
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1516321310766-66f4e3e88e9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ceaser Project">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fa-solid fa-briefcase me-2"></i>Ceaser</h5>
-                            <p class="card-text">A smart business management platform with Laravel Nova dashboard, QR code integration, and Google Maps for real-time monitoring.</p>
-                            <a href="https://github.com/EvyxDev/ceaser-backend.git" class="btn btn-primary">View Project</a>
+                            <h5 class="card-title" data-translate="portfolio_ceaser"><i class="fa-solid fa-briefcase me-2"></i>Ceaser</h5>
+                            <p class="card-text" data-translate="portfolio_ceaser_desc">A smart business management platform with Laravel Nova dashboard, QR code integration, and Google Maps for real-time monitoring.</p>
+                            <a href="https://github.com/EvyxDev/ceaser-backend.git" class="btn btn-primary" data-translate="portfolio_view">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -437,9 +488,9 @@
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ask Lawyer Project">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fa-solid fa-gavel me-2"></i>Ask Lawyer</h5>
-                            <p class="card-text">A legal consultation platform with a Laravel Nova admin dashboard for dynamic content management.</p>
-                            <a href="https://github.com/EvyxDev/askLawyer.git" class="btn btn-primary">View Project</a>
+                            <h5 class="card-title" data-translate="portfolio_lawyer"><i class="fa-solid fa-gavel me-2"></i>Ask Lawyer</h5>
+                            <p class="card-text" data-translate="portfolio_lawyer_desc">A legal consultation platform with a Laravel Nova admin dashboard for dynamic content management.</p>
+                            <a href="https://github.com/EvyxDev/askLawyer.git" class="btn btn-primary" data-translate="portfolio_view">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -447,34 +498,34 @@
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1516321310766-66f4e3e88e9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Peking Project">
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fa-solid fa-utensils me-2"></i>Peking</h5>
-                            <p class="card-text">A restaurant management system for multiple branches, handling dine-in, takeaway, and delivery orders.</p>
-                            <a href="https://github.com/EvyxDev/peking-backend.git" class="btn btn-primary">View Project</a>
+                            <h5 class="card-title" data-translate="portfolio_peking"><i class="fa-solid fa-utensils me-2"></i>Peking</h5>
+                            <p class="card-text" data-translate="portfolio_peking_desc">A restaurant management system for multiple branches, handling dine-in, takeaway, and delivery orders.</p>
+                            <a href="https://github.com/EvyxDev/peking-backend.git" class="btn btn-primary" data-translate="portfolio_view">View Project</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center">
-                <a href="projects.html" class="btn btn-primary"><i class="fa-solid fa-eye me-2"></i>See More Projects</a>
+                <a href="projects.html" class="btn btn-primary" data-translate="portfolio_more"><i class="fa-solid fa-eye me-2"></i>See More Projects</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5 bg-light">
+    <section id="testimonials" class="py-5">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center">Testimonials</h2>
+            <h2 class="section-title text-center" data-translate="testimonials_title">Testimonials</h2>
             <div class="row">
                 <div class="col-md-6 mb-4" data-aos="fade-right">
                     <div class="testimonial-card">
-                        <p><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Youssef's expertise in Laravel development transformed our project. His attention to detail and professionalism were outstanding.</p>
-                        <p class="fw-bold">John Doe, Project Manager</p>
+                        <p data-translate="testimonial_1"><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Youssef's expertise in Laravel development transformed our project. His attention to detail and professionalism were outstanding.</p>
+                        <p class="fw-bold" data-translate="testimonial_1_author">John Doe, Project Manager</p>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4" data-aos="fade-left">
                     <div class="testimonial-card">
-                        <p><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Working with Youssef was a pleasure. His backend solutions were robust, and his teaching content is exceptional.</p>
-                        <p class="fw-bold">Jane Smith, Developer</p>
+                        <p data-translate="testimonial_2"><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Working with Youssef was a pleasure. His backend solutions were robust, and his teaching content is exceptional.</p>
+                        <p class="fw-bold" data-translate="testimonial_2_author">Jane Smith, Developer</p>
                     </div>
                 </div>
             </div>
@@ -484,7 +535,7 @@
     <!-- Contact Section -->
     <section id="contact" class="py-5">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center">Contact Me</h2>
+            <h2 class="section-title text-center" data-translate="contact_title">Contact Me</h2>
             <div class="row">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
                     <p><i class="fa-sharp fa-solid fa-paper-plane fa-2x me-2 text-primary"></i>iyoussefbusniesstowork.com</p>
@@ -495,20 +546,20 @@
                         <a href="https://www.instagram.com/youssefkhaled_74/"><i class="fa-brands fa-instagram fa-2x text-primary"></i></a>
                         <a href="https://www.linkedin.com/in/youssef-khaled-613206261/"><i class="fa-brands fa-linkedin fa-2x text-primary"></i></a>
                     </div>
-                    <a href="./Youssef khaled.pdf" class="btn btn-primary" download><i class="fa-solid fa-download me-2"></i>Download CV</a>
+                    <a href="./Youssef khaled.pdf" class="btn btn-primary" download data-translate="contact_cv"><i class="fa-solid fa-download me-2"></i>Download CV</a>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <form name="submit-to-google-sheet" onsubmit="sendEmail(event)">
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="Name" placeholder="Your Name" required id="name">
+                            <input type="text" class="form-control" name="Name" placeholder="Your Name" required id="name" data-translate-placeholder="contact_name_placeholder">
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" name="Email" placeholder="Your Email" required id="FRom" value="iyoussefbusinesstowork@gmail.com">
+                            <input type="email" class="form-control" name="Email" placeholder="Your Email" required id="FRom" value="iyoussefbusinesstowork@gmail.com" data-translate-placeholder="contact_email_placeholder">
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" name="Message" rows="6" placeholder="Your Message" id="sub"></textarea>
+                            <textarea class="form-control" name="Message" rows="6" placeholder="Your Message" id="sub" data-translate-placeholder="contact_message_placeholder"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-2"></i>Submit</button>
+                        <button type="submit" class="btn btn-primary" data-translate="contact_submit"><i class="fa-solid fa-paper-plane me-2"></i>Submit</button>
                     </form>
                     <span id="msg" class="text-success"></span>
                 </div>
@@ -517,8 +568,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>Copyright © 2025 Youssef Khaled. Made with <i class="fa-solid fa-heart text-danger"></i></p>
+    <footer class="text-center py-3">
+        <p data-translate="footer">Copyright © 2025 Youssef Khaled. Made with <i class="fa-solid fa-heart text-danger"></i></p>
     </footer>
 
     <!-- Bootstrap JS -->
@@ -528,12 +579,175 @@
     <script>
         AOS.init({
             duration: 1000,
-            once: false // Allow animations to re-run when elements are shown again
+            once: false
         });
-    </script>
-    <!-- SMTP JS -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script>
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlRoot = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlRoot.setAttribute('data-theme', savedTheme);
+        themeToggle.className = savedTheme === 'dark' ? 'fas fa-sun theme-toggle' : 'fas fa-moon theme-toggle';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlRoot.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlRoot.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.className = newTheme === 'dark' ? 'fas fa-sun theme-toggle' : 'fas fa-moon theme-toggle';
+        });
+
+        // Language Toggle
+        const langToggle = document.getElementById('langToggle');
+        const translations = {
+            en: {
+                navbar_brand: "Youssef Khaled",
+                nav_home: "Home",
+                nav_about: "About",
+                nav_services: "Services",
+                nav_portfolio: "Portfolio",
+                nav_testimonials: "Testimonials",
+                nav_contact: "Contact",
+                nav_backend: "Back-end Track",
+                nav_laravel: "Laravel Advanced",
+                nav_data: "Data Analysis",
+                header_greeting: "Hi, I'm <span class='text-primary'>Youssef Khaled</span>",
+                header_roles: "Laravel Full-Stack Developer | PHP Backend Developer | Data Analyst",
+                header_position: "Back-end Developer at Evyx Company | B.Sc. Student",
+                about_title: "About Me",
+                about_bio_title: "Biography",
+                about_bio: "I am Youssef Khaled Anwar, a senior at the Faculty of Science, Ain Shams University, majoring in Statistics and Computer Science. I am currently a Back-end Developer at Evyx Company, specializing in Laravel and PHP. With a diploma in full-stack web development from SSD Academy, I have extensive experience as a freelance developer and intern at SSD Academy. I lead the backend department at IEEE Future Academy and share knowledge through my YouTube and Telegram channels. My goal is to build scalable and efficient web applications.",
+                about_skills_tab: "Skills",
+                about_experience_tab: "Experience",
+                about_education_tab: "Education",
+                skills_programming: "Programming Languages",
+                skills_frameworks: "Frameworks",
+                skills_webdev: "Web Development",
+                skills_databases: "Databases",
+                skills_algorithms: "Algorithms and Data Structures",
+                skills_data_analysis: "Data Analysis",
+                skills_tools: "Tools and Technologies",
+                skills_parallel: "Parallel Computing",
+                services_title: "My Services",
+                services_laravel: "Laravel Full-Stack Development",
+                services_laravel_desc: "Build comprehensive web applications using Laravel for both frontend and backend.",
+                services_api: "REST API Development",
+                services_api_desc: "Design and implement scalable RESTful APIs with Laravel for seamless integration.",
+                services_db: "Database Management",
+                services_db_desc: "Develop efficient database solutions with MySQL and MongoDB for robust data handling.",
+                portfolio_title: "Key Projects",
+                portfolio_ceaser: "Ceaser",
+                portfolio_ceaser_desc: "A smart business management platform with Laravel Nova dashboard, QR code integration, and Google Maps for real-time monitoring.",
+                portfolio_lawyer: "Ask Lawyer",
+                portfolio_lawyer_desc: "A legal consultation platform with a Laravel Nova admin dashboard for dynamic content management.",
+                portfolio_peking: "Peking",
+                portfolio_peking_desc: "A restaurant management system for multiple branches, handling dine-in, takeaway, and delivery orders.",
+                portfolio_view: "View Project",
+                portfolio_more: "See More Projects",
+                testimonials_title: "Testimonials",
+                testimonial_1: "Youssef's expertise in Laravel development transformed our project. His attention to detail and professionalism were outstanding.",
+                testimonial_1_author: "John Doe, Project Manager",
+                testimonial_2: "Working with Youssef was a pleasure. His backend solutions were robust, and his teaching content is exceptional.",
+                testimonial_2_author: "Jane Smith, Developer",
+                contact_title: "Contact Me",
+                contact_cv: "Download CV",
+                contact_name_placeholder: "Your Name",
+                contact_email_placeholder: "Your Email",
+                contact_message_placeholder: "Your Message",
+                contact_submit: "Submit",
+                footer: "Copyright © 2025 Youssef Khaled. Made with <i class='fa-solid fa-heart text-danger'></i>"
+            },
+            ar: {
+                navbar_brand: "يوسف خالد",
+                nav_home: "الرئيسية",
+                nav_about: "نبذة عني",
+                nav_services: "خدماتي",
+                nav_portfolio: "مشاريعي",
+                nav_testimonials: "آراء العملاء",
+                nav_contact: "اتصل بي",
+                nav_backend: "مسار الخلفية",
+                nav_laravel: "لارافيل متقدم",
+                nav_data: "تحليل البيانات",
+                header_greeting: "مرحباً، أنا <span class='text-primary'>يوسف خالد</span>",
+                header_roles: "مطور لارافيل كامل التكامل | مطور خلفية PHP | محلل بيانات",
+                header_position: "مطور خلفية في شركة Evyx | طالب بكالوريوس",
+                about_title: "نبذة عني",
+                about_bio_title: "السيرة الذاتية",
+                about_bio: "أنا يوسف خالد أنور، طالب في السنة النهائية بكلية العلوم، جامعة عين شمس، تخصص إحصاء وعلوم حاسب. أعمل حالياً كمطور خلفية في شركة Evyx، متخصص في لارافيل وPHP. حصلت على دبلوم في تطوير الويب كامل التكامل من أكاديمية SSD، ولدي خبرة واسعة كمطور مستقل ومتدرب في أكاديمية SSD. أقود قسم الخلفية في أكاديمية IEEE Future وأشارك المعرفة عبر قنواتي على يوتيوب وتيليجرام. هدفي هو بناء تطبيقات ويب قابلة للتطوير وفعالة.",
+                about_skills_tab: "المهارات",
+                about_experience_tab: "الخبرات",
+                about_education_tab: "التعليم",
+                skills_programming: "لغات البرمجة",
+                skills_frameworks: "إطارات العمل",
+                skills_webdev: "تطوير الويب",
+                skills_databases: "قواعد البيانات",
+                skills_algorithms: "الخوارزميات وهياكل البيانات",
+                skills_data_analysis: "تحليل البيانات",
+                skills_tools: "الأدوات والتقنيات",
+                skills_parallel: "الحوسبة المتوازية",
+                services_title: "خدماتي",
+                services_laravel: "تطوير لارافيل كامل التكامل",
+                services_laravel_desc: "بناء تطبيقات ويب شاملة باستخدام لارافيل للواجهة الأمامية والخلفية.",
+                services_api: "تطوير واجهات برمجة التطبيقات REST",
+                services_api_desc: "تصميم وتنفيذ واجهات برمجة تطبيقات REST قابلة للتطوير للتكامل السلس.",
+                services_db: "إدارة قواعد البيانات",
+                services_db_desc: "تطوير حلول قواعد بيانات فعالة باستخدام MySQL وMongoDB لمعالجة البيانات القوية.",
+                portfolio_title: "مشاريع رئيسية",
+                portfolio_ceaser: "سيزر",
+                portfolio_ceaser_desc: "منصة إدارة أعمال ذكية مع لوحة تحكم لارافيل نوفا، تكامل رمز QR، وخرائط جوجل للمراقبة في الوقت الفعلي.",
+                portfolio_lawyer: "اسأل محامي",
+                portfolio_lawyer_desc: "منصة استشارات قانونية مع لوحة تحكم لارافيل نوفا لإدارة المحتوى الديناميكي.",
+                portfolio_peking: "بيكينج",
+                portfolio_peking_desc: "نظام إدارة مطاعم لفروع متعددة، يتعامل مع الطلبات داخل المطعم، والتيك أواي، والتوصيل.",
+                portfolio_view: "عرض المشروع",
+                portfolio_more: "رؤية المزيد من المشاريع",
+                testimonials_title: "آراء العملاء",
+                testimonial_1: "خبرة يوسف في تطوير لارافيل غيرت مشروعنا. اهتمامه بالتفاصيل واحترافيته كانت رائعة.",
+                testimonial_1_author: "جون دو، مدير المشروع",
+                testimonial_2: "العمل مع يوسف كان ممتعاً. حلوله الخلفية كانت قوية، ومحتواه التعليمي استثنائي.",
+                testimonial_2_author: "جين سميث، مطور",
+                contact_title: "اتصل بي",
+                contact_cv: "تحميل السيرة الذاتية",
+                contact_name_placeholder: "اسمك",
+                contact_email_placeholder: "بريدك الإلكتروني",
+                contact_message_placeholder: "رسالتك",
+                contact_submit: "إرسال",
+                footer: "حقوق النشر © 2025 يوسف خالد. صنع بـ <i class='fa-solid fa-heart text-danger'></i>"
+            }
+        };
+
+        const savedLang = localStorage.getItem('language') || 'en';
+        htmlRoot.setAttribute('lang', savedLang);
+        htmlRoot.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+        langToggle.textContent = savedLang === 'ar' ? 'EN' : 'AR';
+        updateTranslations(savedLang);
+
+        langToggle.addEventListener('click', () => {
+            const currentLang = htmlRoot.getAttribute('lang');
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            htmlRoot.setAttribute('lang', newLang);
+            htmlRoot.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
+            localStorage.setItem('language', newLang);
+            langToggle.textContent = newLang === 'ar' ? 'EN' : 'AR';
+            updateTranslations(newLang);
+        });
+
+        function updateTranslations(lang) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-translate-placeholder');
+                if (translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+        }
+
+        // SMTP Email
         function sendEmail(e) {
             e.preventDefault();
             Email.send({
@@ -547,7 +761,7 @@
             }).then(
                 message => {
                     alert("Email sent successfully!");
-                    document.getElementById('msg').innerHTML = "Thanks for your message!";
+                    document.getElementById('msg').innerHTML = translations[htmlRoot.getAttribute('lang')].contact_submit + "!";
                     setTimeout(() => {
                         document.getElementById('msg').innerHTML = "";
                     }, 5000);
