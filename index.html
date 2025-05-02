@@ -116,6 +116,12 @@
         section {
             padding-top: 80px;
         }
+        /* Ensure collapse content is visible when shown */
+        .collapse.show {
+            visibility: visible !important;
+            opacity: 1 !important;
+            display: block !important;
+        }
     </style>
 </head>
 <body>
@@ -182,7 +188,7 @@
                             <div class="tab-content mt-3">
                                 <div class="tab-pane fade show active" id="skills">
                                     <!-- Programming Languages -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#programmingLanguages">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#programmingLanguages" data-aos="fade-up" data-aos-delay="100">
                                         <i class="fa-solid fa-code"></i> Programming Languages
                                     </div>
                                     <div class="collapse" id="programmingLanguages">
@@ -213,7 +219,7 @@
                                     </div>
 
                                     <!-- Frameworks -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#frameworks">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#frameworks" data-aos="fade-up" data-aos-delay="150">
                                         <i class="fa-solid fa-cogs"></i> Frameworks
                                     </div>
                                     <div class="collapse" id="frameworks">
@@ -226,7 +232,7 @@
                                     </div>
 
                                     <!-- Web Development -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#webDevelopment">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#webDevelopment" data-aos="fade-up" data-aos-delay="200">
                                         <i class="fa-solid fa-globe"></i> Web Development
                                     </div>
                                     <div class="collapse" id="webDevelopment">
@@ -251,7 +257,7 @@
                                     </div>
 
                                     <!-- Databases -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#databases">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#databases" data-aos="fade-up" data-aos-delay="250">
                                         <i class="fa-solid fa-database"></i> Databases
                                     </div>
                                     <div class="collapse" id="databases">
@@ -270,7 +276,7 @@
                                     </div>
 
                                     <!-- Algorithms and Data Structures -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#algorithms">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#algorithms" data-aos="fade-up" data-aos-delay="300">
                                         <i class="fa-solid fa-sitemap"></i> Algorithms and Data Structures
                                     </div>
                                     <div class="collapse" id="algorithms">
@@ -283,7 +289,7 @@
                                     </div>
 
                                     <!-- Data Analysis -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#dataAnalysis">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#dataAnalysis" data-aos="fade-up" data-aos-delay="350">
                                         <i class="fa-solid fa-chart-bar"></i> Data Analysis
                                     </div>
                                     <div class="collapse" id="dataAnalysis">
@@ -302,7 +308,7 @@
                                     </div>
 
                                     <!-- Tools and Technologies -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#tools">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#tools" data-aos="fade-up" data-aos-delay="400">
                                         <i class="fa-solid fa-tools"></i> Tools and Technologies
                                     </div>
                                     <div class="collapse" id="tools">
@@ -333,13 +339,13 @@
                                         <div class="skill-item">
                                             <strong>Docker (Intermediate)</strong>
                                             <div class="progress">
-                                                <div class="progress-bar bg-primary Cheyenne role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Parallel Computing -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#parallelComputing">
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#parallelComputing" data-aos="fade-up" data-aos-delay="450">
                                         <i class="fa-solid fa-microchip"></i> Parallel Computing
                                     </div>
                                     <div class="collapse" id="parallelComputing">
@@ -399,7 +405,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-4 mb-4" data-aos krok="fade-up" data-aos-delay="300">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-database fa-3x mb-3 text-primary"></i>
@@ -522,7 +528,7 @@
     <script>
         AOS.init({
             duration: 1000,
-            once: true
+            once: false // Allow animations to re-run when elements are shown again
         });
     </script>
     <!-- SMTP JS -->
