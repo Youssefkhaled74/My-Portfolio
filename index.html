@@ -14,121 +14,153 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
     <!-- Google Fonts: Inter, Montserrat, Noto Sans Arabic -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f9fafb;
             --text-color: #1f2937;
-            --card-bg: #fff;
-            --primary-color: #3b82f6;
+            --card-bg: #ffffff;
+            --card-gradient: linear-gradient(135deg, #ffffff, #f1f5f9);
+            --primary-color: #2563eb;
             --primary-hover: #1e40af;
-            --section-bg: #f1f5f9;
+            --section-bg: linear-gradient(180deg, #f1f5f9, #e2e8f0);
             --footer-bg: #1e293b;
-            --footer-text: #fff;
+            --footer-text: #f3f4f6;
+            --navbar-bg: #ffffff;
         }
         [data-theme="dark"] {
             --bg-color: #1e293b;
             --text-color: #e5e7eb;
             --card-bg: #2d3748;
+            --card-gradient: linear-gradient(135deg, #2d3748, #4b5563);
             --primary-color: #60a5fa;
             --primary-hover: #3b82f6;
-            --section-bg: #374151;
+            --section-bg: linear-gradient(180deg, #374151, #4b5563);
             --footer-bg: #111827;
             --footer-text: #d1d5db;
+            --navbar-bg: #2d3748;
         }
         [dir="rtl"] {
             font-family: 'Noto Sans Arabic', sans-serif;
         }
         [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
             font-family: 'Noto Sans Arabic', sans-serif;
-            font-weight: 600;
+            font-weight: 700;
         }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: all 0.3s ease;
+            line-height: 1.8;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
         .navbar {
-            background: #fff;
+            background: var(--navbar-bg);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
         }
         .navbar-brand {
             color: #1e3a8a !important;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
         .navbar-toggler {
             border: none;
+            padding: 10px;
+        }
+        .navbar-toggler i {
+            font-size: 1.5rem;
         }
         .navbar-collapse {
-            background-color: #fff;
+            background: var(--navbar-bg);
             border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        .navbar-collapse.show {
+            opacity: 1;
+            transform: translateY(0);
+            display: block !important;
+            visibility: visible !important;
         }
         .nav-link {
             color: #1e3a8a !important;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 10px 15px !important;
+            transition: color 0.3s, background 0.3s;
         }
         .nav-link:hover {
-            color: #3b82f6 !important;
+            color: var(--primary-color) !important;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 6px;
         }
         .nav-link i {
-            margin-right: 8px;
+            margin-right: 10px;
         }
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             color: #1e3a8a;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .card {
-            background-color: var(--card-bg);
+            background: var(--card-gradient);
             border: none;
-            border-radius: 12px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 16px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            overflow: hidden;
         }
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
         }
         .portfolio-img {
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
         }
         .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            border-radius: 8px;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+            border: none;
+            border-radius: 10px;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
         .btn-primary:hover {
-            background-color: var(--primary-hover);
-            border-color: var(--primary-hover);
+            background: linear-gradient(90deg, var(--primary-hover), var(--primary-color));
+            transform: translateY(-2px);
         }
         .testimonial-card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: var(--card-gradient);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
         .progress {
-            height: 8px;
-            border-radius: 4px;
-            margin-top: 8px;
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            background: #e5e7eb;
         }
         .skill-item {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         .collapse-toggle {
             cursor: pointer;
@@ -136,19 +168,31 @@
             color: #1e3a8a;
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
         }
         .collapse-toggle:hover {
             color: var(--primary-color);
         }
         .collapse-toggle i {
-            margin-right: 8px;
+            margin-right: 10px;
         }
         section {
-            padding-top: 100px;
+            padding: 120px 0;
             background: var(--section-bg);
-            border-radius: 12px;
-            margin: 20px 0;
+            border-radius: 16px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), transparent);
         }
         .collapse.show {
             visibility: visible !important;
@@ -163,12 +207,36 @@
         }
         .theme-toggle, .lang-toggle {
             cursor: pointer;
-            font-size: 1.2rem;
-            margin-left: 10px;
+            font-size: 1.4rem;
+            margin-left: 12px;
+            transition: transform 0.3s ease;
+        }
+        .theme-toggle:hover, .lang-toggle:hover {
+            transform: scale(1.2);
         }
         footer {
-            background-color: var(--footer-bg);
+            background: var(--footer-bg);
             color: var(--footer-text);
+            padding: 40px 0;
+            font-size: 1.1rem;
+        }
+        .header-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                margin-top: 10px;
+            }
+            .nav-link {
+                padding: 12px 10px !important;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -208,7 +276,7 @@
                     <p class="text-muted" data-translate="header_position">Back-end Developer at Evyx Company | B.Sc. Student</p>
                 </div>
                 <div class="col-lg-6 text-center" data-aos="fade-left">
-                    <img src="./About Me.jpeg" alt="Youssef Khaled" class="img-fluid rounded-circle" style="max-width: 300px;">
+                    <img src="./About Me.jpeg" alt="Youssef Khaled" class="img-fluid header-img">
                 </div>
             </div>
         </div>
@@ -238,6 +306,7 @@
                                 <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#education" data-translate="about_education_tab">Education</a></li>
                             </ul>
                             <div class="tab-content mt-3">
+                                <div class="tab-pane fade show active" id="skills">
                                     <!-- Programming Languages -->
                                     <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#programmingLanguages" data-aos="fade-up" data-aos-delay="100" data-translate="skills_programming">
                                         <i class="fa-solid fa-code"></i> Programming Languages
@@ -476,7 +545,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1516321310766-66f4e3e88e9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ceaser Project">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab8276846?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ceaser Business Dashboard">
                         <div class="card-body">
                             <h5 class="card-title" data-translate="portfolio_ceaser"><i class="fa-solid fa-briefcase me-2"></i>Ceaser</h5>
                             <p class="card-text" data-translate="portfolio_ceaser_desc">A smart business management platform with Laravel Nova dashboard, QR code integration, and Google Maps for real-time monitoring.</p>
@@ -486,7 +555,7 @@
                 </div>
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ask Lawyer Project">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ask Lawyer Consultation Platform">
                         <div class="card-body">
                             <h5 class="card-title" data-translate="portfolio_lawyer"><i class="fa-solid fa-gavel me-2"></i>Ask Lawyer</h5>
                             <p class="card-text" data-translate="portfolio_lawyer_desc">A legal consultation platform with a Laravel Nova admin dashboard for dynamic content management.</p>
@@ -496,7 +565,7 @@
                 </div>
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1516321310766-66f4e3e88e9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Peking Project">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Peking Restaurant Management System">
                         <div class="card-body">
                             <h5 class="card-title" data-translate="portfolio_peking"><i class="fa-solid fa-utensils me-2"></i>Peking</h5>
                             <p class="card-text" data-translate="portfolio_peking_desc">A restaurant management system for multiple branches, handling dine-in, takeaway, and delivery orders.</p>
