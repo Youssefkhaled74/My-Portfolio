@@ -4,362 +4,551 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youssef</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Raleway
-    :ital,wght@0,500;0,600;1,400;1,500&family=Roboto:
-    ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&displa
-    y=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./wow.js/css/animate.css">
-    <link rel="stylesheet" href="./wow.js/css/animate wow.css">
-    <link rel="stylesheet" href="./css/funnytext.css">
+    <title>Youssef Khaled - Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts: Inter and Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 600;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-collapse {
+            background-color: #1e3a8a;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .nav-link {
+            color: #fff !important;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #93c5fd !important;
+        }
+        .nav-link i {
+            margin-right: 8px;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+            border-radius: 8px;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color: #1e40af;
+            border-color: #1e40af;
+        }
+        .testimonial-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        .skill-item {
+            margin-bottom: 12px;
+        }
+        .collapse-toggle {
+            cursor: pointer;
+            font-weight: 600;
+            color: #1e3a8a;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .collapse-toggle:hover {
+            color: #3b82f6;
+        }
+        .collapse-toggle i {
+            margin-right: 8px;
+        }
+        section {
+            padding-top: 80px;
+        }
+    </style>
 </head>
 <body>
-    <div id="header">
-        <div class="container">
-            <nav>
-                <a href="">Thanks For Your Time..!</a>
-                <ul id="sidemenu">
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="./BackendRoadmap.html">Back-endTrack</a></li>
-                    <li><a href="./LaravelAdvanced.html">Go to Hero laravel</a></li>
-                    <li><a href="./DataAnalysisRoadmap.html">Data Analysis</a></li>
-                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
-                </ul>
-                <i class="fa-solid fa-bars" onclick="openmenu()" style="color: black;"></i>
-            </nav>
-            <div class="row2">
-                <div class="about-col-2-2">
-                    <div class="header-text">
-                        <p>Laravel-Fullstack Developer</p>
-                        <p>Php-Backend Developer</p>
-                        <p>Data Analyst</p>
-                        <p>Head of Backend-Department IEEE Future academy branch</p>
-                        <p>B.Sc Student</p>
-                        <h1>Hi, Iam <span class="select1">Dev Youssef</span>, <br> Happy To See You Here! </h1>
-                    </div>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars text-white"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#header"><i class="fa-solid fa-home"></i>Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about"><i class="fa-solid fa-user"></i>About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services"><i class="fa-solid fa-gear"></i>Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio"><i class="fa-solid fa-briefcase"></i>Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="fa-solid fa-quote-left"></i>Testimonials</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./BackendRoadmap.html"><i class="fa-solid fa-road"></i>Back-end Track</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./LaravelAdvanced.html"><i class="fa-brands fa-laravel"></i>Laravel Advanced</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./DataAnalysisRoadmap.html"><i class="fa-solid fa-chart-line"></i>Data Analysis</a></li>
+                    </ul>
                 </div>
-                <div class="about-col-1-2">
-                    <!-- <img src="./WhatsApp Image 2023-11-26 at 9.33.56 PM.jpeg" alt=""> -->
+            </div>
+        </nav>
+        <div class="container py-5" id="header" data-aos="fade-up">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold">Hi, I'm <span class="text-primary">Youssef Khaled</span></h1>
+                    <p class="lead">Laravel Full-Stack Developer | PHP Backend Developer | Data Analyst</p>
+                    <p class="text-muted">Back-end Developer at Evyx Company | B.Sc. Student</p>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="./About Me.jpeg" alt="Youssef Khaled" class="img-fluid rounded-circle" style="max-width: 300px;">
                 </div>
             </div>
         </div>
-    </div>
-    <!-- --------------------------------------about ------------------------------>
-    <div id="about">
-        <div class="container">
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title text-center">About Me</h2>
             <div class="row">
-                <div class="about-col-1">
-                    <img src="./About Me.jpeg" alt="">
-                </div>
-                <div class="about-col-2">
-                    <h1 class="sub-tittel">About me</h1>
-                    <p>
-                          I am Youssef Khaled Anwar, a senior at the Faculty of Science, Ain Shams University, majoring in Statistics and Computer Science. With a diploma in full-stack web development from SSD Academy, I specialize in Laravel and PHP. I have experience as a freelance developer, and I've completed an internship at SSD Academy. Currently, I lead the backend department at IEEE Future Academy and share my knowledge through my YouTube and Telegram channels. My goal is to build robust and scalable web applications that meet client needs.
-                    </p>
-                    <div class="tab-titteles">
-                        <p class="tab-links active-links" onclick="opentab('skills')">Skills</p>
-                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                        <p class="tab-links" onclick="opentab('education')">Education</p>
-                    </div>
-                    <div class="tab-contents tab-active" id="skills">
-                        <ul>
-                            <li>
-                                <span>Programming Languages:</span><br> PHP (Proficient) <br> C++ (Intermediate) <br> Python (Intermediate) <br> JavaScript (Intermediate) 
-                            </li>
-                            <li>
-                                <span>Frameworks:</span> <br> Laravel (Proficient) <br>
-                            </li>
-                            <li>
-                                <span>Web Development:</span><br> HTML (Advanced) <br> CSS (Advanced) <br> Bootstrap (Advanced) <br>
-                            </li>
-                            <li>
-                                <span>Databases:</span><br> MySQL (Proficient) <br> MongoDB (Intermediate) <br> Algoritm <br>
-                            </li>
-                            <li>
-                                <span>Algorithms and Data Structures:</span><br> Advanced <br>
-                            </li>
-                            <li>
-                                <span>Data Analysis:</span><br> Statistics for Data Analysis <br> Data Mining <br>
-                            </li>
-                            <li>
-                                <span>Tools and Technologies:</span><br> Git <br> GitHub <br> REST APIs <br> Docker <br>
-                            </li>
-                            <li>
-                                <span>Parallel Computing:</span><br> Experience with Parallel Algorithms <br>
-                            </li>
-                    </ul>
-                    </div>
-                    <div class="tab-contents" id="experience">
-                        <ul>
-                            <li>
-                                <span>Freelance Developer</span> <br> Developed and maintained multiple web applications using Laravel and PHP.Implemented RESTful APIs to enhance application functionality.Managed source code using Git and GitHub, ensuring version control and collaboration.   
-                            </li>
-                            <li>
-                                <span>Intern, SSD Academy</span><br> Completed a comprehensive internship focused on full-stack web development.Developed dynamic web applications using HTML, CSS, JavaScript, and Laravel.Collaborated with a team to design and implement database solutions using MySQL.
-                            </li>
-                            <li>
-                                <span>Back-end Track Instructor, Telegram Channel</span><br> Taught back-end development topics including PHP, Laravel, and MySQL to a growing community.Created educational content and tutorials for my YouTube channel, aimed at simplifying complex concepts.Provided mentorship and support to aspiring developers.
-                            </li>
-                            <li>
-                                <span>Head of Backend-Department, IEEE Future Academy</span><br> Led a team of developers in designing and implementing backend solutions.Organized workshops and training sessions to improve team skills and knowledge. 
-                            </li>
-                    </ul>
-                    </div>
-                    <div class="tab-contents" id="education">
-                        <ul>
-                            <li>
-                                <span>B.Sc. in Statistics and Computer Science</span><br>Faculty of Science, Ain Shams UniversitySenior (Expected Graduation: 2025)
-                            </li>
-                            <li>
-                                <span>Full-Stack Web Development Diploma (2022)</span><br>SSD Academy
-                            </li>
-                            <li>
-                                <span>Course in Laravel</span><br>Udemy
-                            </li>
-                    </ul>
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Biography</h3>
+                            <p class="text-muted">
+                                I am Youssef Khaled Anwar, a senior at the Faculty of Science, Ain Shams University, majoring in Statistics and Computer Science. I am currently a Back-end Developer at Evyx Company, specializing in Laravel and PHP. With a diploma in full-stack web development from SSD Academy, I have extensive experience as a freelance developer and intern at SSD Academy. I lead the backend department at IEEE Future Academy and share knowledge through my YouTube and Telegram channels. My goal is to build scalable and efficient web applications.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>        
-    </div>
-    <!-- =========================================services============================ -->
-<div id="services">
-    <div class="container">
-        <h1 class="sub-tittel">
-            My services
-        </h1>
-        <div class="services-list">
-            <div>
-                <i class="fa-solid fa-code"></i>
-                <h2>Laravel Full-Stack projects</h2>
-                <p>"Now you can create your website for your business from A to Z i use laravel Full-Stack"</p>
-            </div>
-            <div>
-                <i class="fa-brands fa-codepen"></i>
-                <h2>Front-end</h2>
-                <p> "Elevate your website's user experience with customized front-end development. No frameworks, just clean code and stunning designs that set you apart."</p>
-            </div>
-            <div>
-                <i class="fa-solid fa-code-branch"></i>
-                <h2>Back-end</h2>
-                <p> "Unlock the full potential of your web application with robust back-end development powered by Laravel. From seamless data management to dynamic features, we'll elevate your online business to new heights of success."</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ======================================protfolio -->
-<div id="portfolio">
-    <div class="container">
-        <div class="sub-tittel">My Work</div>
-            <div class="work-list">
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#skills">Skills</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#experience">Experience</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#education">Education</a></li>
+                            </ul>
+                            <div class="tab-content mt-3">
+                                <div class="tab-pane fade show active" id="skills">
+                                    <!-- Programming Languages -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#programmingLanguages">
+                                        <i class="fa-solid fa-code"></i> Programming Languages
+                                    </div>
+                                    <div class="collapse" id="programmingLanguages">
+                                        <div class="skill-item">
+                                            <strong>PHP (Proficient)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>C++ (Intermediate)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>Python (Intermediate)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>JavaScript (Intermediate)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <!-- Frameworks -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#frameworks">
+                                        <i class="fa-solid fa-cogs"></i> Frameworks
+                                    </div>
+                                    <div class="collapse" id="frameworks">
+                                        <div class="skill-item">
+                                            <strong>Laravel (Proficient)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                <div class="work">
-                    <img src="./project1.png">
-                    <div class="layer">
-                        <h3>Article-project</h3>
-                        <a href="https://www.linkedin.com/posts/youssef-khaled-613206261_laravel-laraveldeveloper-laraveldevelopment-activity-7137558383934513152-3Y7S?utm_source=share&utm_medium=member_desktop"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
+                                    <!-- Web Development -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#webDevelopment">
+                                        <i class="fa-solid fa-globe"></i> Web Development
+                                    </div>
+                                    <div class="collapse" id="webDevelopment">
+                                        <div class="skill-item">
+                                            <strong>HTML (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>CSS (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>Bootstrap (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Databases -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#databases">
+                                        <i class="fa-solid fa-database"></i> Databases
+                                    </div>
+                                    <div class="collapse" id="databases">
+                                        <div class="skill-item">
+                                            <strong>MySQL (Proficient)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>MongoDB (Intermediate)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Algorithms and Data Structures -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#algorithms">
+                                        <i class="fa-solid fa-sitemap"></i> Algorithms and Data Structures
+                                    </div>
+                                    <div class="collapse" id="algorithms">
+                                        <div class="skill-item">
+                                            <strong>Algorithms and Data Structures (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Data Analysis -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#dataAnalysis">
+                                        <i class="fa-solid fa-chart-bar"></i> Data Analysis
+                                    </div>
+                                    <div class="collapse" id="dataAnalysis">
+                                        <div class="skill-item">
+                                            <strong>Statistics for Data Analysis (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>Data Mining (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tools and Technologies -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#tools">
+                                        <i class="fa-solid fa-tools"></i> Tools and Technologies
+                                    </div>
+                                    <div class="collapse" id="tools">
+                                        <div class="skill-item">
+                                            <strong>Git (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>GitHub (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>REST APIs (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>Laravel Nova (Advanced)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <strong>Docker (Intermediate)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary Cheyenne role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Parallel Computing -->
+                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#parallelComputing">
+                                        <i class="fa-solid fa-microchip"></i> Parallel Computing
+                                    </div>
+                                    <div class="collapse" id="parallelComputing">
+                                        <div class="skill-item">
+                                            <strong>Parallel Computing (Intermediate)</strong>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="experience">
+                                    <ul class="list-unstyled">
+                                        <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Back-end Developer, Evyx Company (Dec 2024 - Present):</strong> Developed scalable backend systems using Laravel and MySQL, designed REST APIs, and collaborated with front-end teams.</li>
+                                        <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Full-Stack Developer, Yesooh Company (8 months):</strong> Built a full-stack web application with Laravel, PHP, and MySQL, including user authentication and RESTful APIs.</li>
+                                        <li><i class="fa-solid fa-graduation-cap me-2"></i><strong>Assistant Instructor, SSD Academy:</strong> Delivered Laravel lectures, supported students, and created instructional content.</li>
+                                        <li><i class="fa-solid fa-chalkboard-teacher me-2"></i><strong>Back-end Track Instructor:</strong> Taught PHP, Laravel, and MySQL via YouTube and Telegram.</li>
+                                        <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Freelance Developer:</strong> Developed multiple Laravel and PHP projects (available on GitHub).</li>
+                                        <li><i class="fa-solid fa-graduation-cap me-2"></i><strong>Intern, SSD Academy:</strong> Gained hands-on experience in full-stack web development.</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane fade" id="education">
+                                    <ul class="list-unstyled">
+                                        <li><i class="fa-solid fa-university me-2"></i><strong>B.Sc. in Statistics and Computer Science:</strong> Ain Shams University (Expected Graduation: 2025)</li>
+                                        <li><i class="fa-solid fa-certificate me-2"></i><strong>Full-Stack Web Development Diploma:</strong> SSD Academy (2022)</li>
+                                        <li><i class="fa-solid fa-book me-2"></i><strong>Course in Laravel:</strong> Udemy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
-                <div class="work">
-                    <img src="./newadd.png">
-                    <div class="layer">
-                        <h3>Coffee-system</h3>
-                        <a href="https://www.linkedin.com/posts/youssef-khaled-613206261_present-for-you-basic-project-website-for-activity-7087363503962910720-65rf?utm_source=share&utm_medium=member_desktop"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-
-
-                <div class="work">
-                    <img src="./project3.png">
-                    <div class="layer">
-                        <h3>Private-institutes</h3>
-                        <a href="https://www.linkedin.com/posts/youssef-khaled-613206261_embark-on-a-captivating-journey-through-activity-7088513495318589440-ypx_?utm_source=share&utm_medium=member_desktop"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                </div>
-                <div class="sub-tittel">More advanced</div>
-         <div class="work-list">
-
-
-                <div class="work">
-                    <img src="./addnew4.png">
-                    <div class="layer">
-                        <h3>Api-system</h3>
-                        <a href="https://www.linkedin.com/posts/youssef-khaled-613206261_laravel-laraveldeveloper-laraveldevelopment-activity-7132402019306201088-GUx6?utm_source=share&utm_medium=member_desktop"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-
-                <div class="work">
-                    <img src="./addnew2.png">
-                    <div class="layer">
-                        <h3>Blog-system</h3>
-                        <a href="https://www.linkedin.com/posts/youssef-khaled-613206261_discover-my-feature-rich-blog-project-built-activity-7075298677015089153-Ii63?utm_source=share&utm_medium=member_desktop"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-
-
-                <div class="work">
-                    <img src="./addnew3.png">
-                    <div class="layer">
-                        <h3> OTP-system </h3>
-                         <a href="https://www.vecteezy.com/vector-art/23128305-otp-one-time-password-login-code-verification-concept-icon-in-line-style-design-isolated-on-white-background-editable-stroke"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-
-             <div class="work">
-                    <img src="./addnew4.png">
-                    <div class="layer">
-                        <h3>Full-Stack project</h3>
-                        <a href="https://www.linkedin.com/posts/youssef-khaled-613206261_laraveldeveloper-otpsms-fullstackdeveloper-activity-7099083406583476224-KBJw?utm_source=share&utm_medium=member_desktop"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-             </div>
-
-                             <div class="work">
-                    <img src="./addnew4.png">
-                    <div class="layer">
-                        <h3>Validation Form In Graduation Project</h3>
-                        <a href="https://github.com/Youssefkhaled74/Laravel-Graduation-project-Dashboard.git"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-
-                <div class="work">
-                    <img src="https://m.media-amazon.com/images/I/71P9bmt5dhL._AC_UF1000,1000_QL80_.jpg">
-                    <div class="layer">
-                        <h3>Php-Fifa World Cup Project</h3>
-                        <a href="https://github.com/Youssefkhaled74/Php-FifaWorldCup.git"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-
-
-                <div class="work">
-                    <img src="./addnew3.png">
-                    <div class="layer">
-                        <h3> Php-Shatably </h3>
-                        <a href="https://github.com/Youssefkhaled74/Php-Shatably.git"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-
-             <div class="work">
-                    <img src="./addnew4.png">
-                    <div class="layer">
-                        <h3> Laravel-YesOoh Project</h3>
-                        <a href="https://github.com/Youssefkhaled74/Laravel-YesOoh.git"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-             </div>
-             
-             <div class="work">
-                    <img src="./addnew4.png">
-                    <div class="layer">
-                        <h3>Api-Send SMS</h3>
-                        <a href="https://github.com/Youssefkhaled74/Laravel-Api-Send-sms.git"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-             </div>
-             
-             <div class="work">
-                    <img src="./addnew4.png">
-                    <div class="layer">
-                        <h3>Php-Maktabty-System</h3>
-                        <a href="https://github.com/Youssefkhaled74/Maktabty.git"><i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-             </div>
-
-            </div>
-            </div>
-            <a href="https://github.com/Youssefkhaled74" class="btn">Git More Projects</a>
-            <a href="https://github.com/Youssefkhaled74" class="btn">My GitHub</a>
-    </div>
-</div>
-                            <!-- The Backend Trek --
-
-
-
-
-
-<!-- ------------------------------contect------------------------ -->
-<div id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-tittel">Contact me</h1>
-                <p><i class="fa-sharp fa-solid fa-paper-plane"></i>iyoussefbusniesstowork.com</p>
-                <p><i class="fa-solid fa-phone"></i>01064338132</p>
-                <div class="social-icon"> 
-                    <a href="https://www.facebook.com/youssef.khaled.749"><i class="fa-brands fa-facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-twitter-square"></i></a>
-                    <a href="https://www.instagram.com/youssefkhaled_74/"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/youssef-khaled-613206261/"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <a href="./Youssef khaled.pdf" class="btn btn2" download>Download CV</a>
-            </div>
-            <div class="contact-right">
-                <form name="submit-to-google-sheet" onsubmit="sendEmail(event)">
-                    <input type="text" name="Name" placeholder="Your Name" required id="name" >
-                    <input type="email" name="Email" placeholder="Your Email" required id="FRom" value="iyoussefbusinesstowork@gmail.com">
-                    <textarea name="Message" rows="6" placeholder="Your message" id="sub"></textarea>
-                    <button type="submit" class="btn btn2">Sumbit</button>
-                </form>
-                <span id="msg">sended</span>
             </div>
         </div>
-    </div>
-    <div class="copyright">
-        <p> copyright @ Youssef . Made  with <i class="fa-solid fa-heart"></i> </p>
-    </div>
-</div>
-<!-- <script> 
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbysepLTVAQnh5dcnywRx8IX5OsNYl_h_pxeq9AEdBUIGrQ6iRf_K95B8K84AC4ZYvie/exec'
-      const form = document.forms['submit-to-google-sheet']
-      const msg = document.getElementById("msg")
-      form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            msg.innerHTML = "Message sent successfully !!!!"
-            setTimeout(function(){
-                msg.innerHTML = ""
-            },5000)
-            form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
-   })
-   </script> -->
-   <script src="https://smtpjs.com/v3/smtp.js">
-</script>
-<script>
-    function sendEmail(e)
-    {
-        e.preventDefault();
-    Email.send({
-    Host : "smtp.elasticemail.com",
-    Username : "iyoussefbusinesstowork@gmail.com",
-    Password : "E500B049091D99871C3EBBB9D3C458D468CD",
-    To : 'iyoussefbusinesstowork@gmail.com',
-    From : document.getElementById('FRom').value,
-    Subject : document.getElementById('name').value,
-    Body : document.getElementById('sub').value,
-}).then(
-  message => alert(message)
-);
-return alert("Email sended successfuly !! ");
-msg.innerHTML = "Thanks for your time"
-// return true;
-    }
-</script>
- 
-<script src="./js/main.js"></script>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title text-center">My Services</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-code fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">Laravel Full-Stack Development</h3>
+                            <p class="card-text">Build comprehensive web applications using Laravel for both frontend and backend.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-cloud fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">REST API Development</h3>
+                            <p class="card-text">Design and implement scalable RESTful APIs with Laravel for seamless integration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-database fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">Database Management</h3>
+                            <p class="card-text">Develop efficient database solutions with MySQL and MongoDB for robust data handling.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title text-center">Key Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1516321310766-66f4e3e88e9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ceaser Project">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa-solid fa-briefcase me-2"></i>Ceaser</h5>
+                            <p class="card-text">A smart business management platform with Laravel Nova dashboard, QR code integration, and Google Maps for real-time monitoring.</p>
+                            <a href="https://github.com/EvyxDev/ceaser-backend.git" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Ask Lawyer Project">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa-solid fa-gavel me-2"></i>Ask Lawyer</h5>
+                            <p class="card-text">A legal consultation platform with a Laravel Nova admin dashboard for dynamic content management.</p>
+                            <a href="https://github.com/EvyxDev/askLawyer.git" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1516321310766-66f4e3e88e9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top portfolio-img" alt="Peking Project">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa-solid fa-utensils me-2"></i>Peking</h5>
+                            <p class="card-text">A restaurant management system for multiple branches, handling dine-in, takeaway, and delivery orders.</p>
+                            <a href="https://github.com/EvyxDev/peking-backend.git" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="projects.html" class="btn btn-primary"><i class="fa-solid fa-eye me-2"></i>See More Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title text-center">Testimonials</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <div class="testimonial-card">
+                        <p><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Youssef's expertise in Laravel development transformed our project. His attention to detail and professionalism were outstanding.</p>
+                        <p class="fw-bold">John Doe, Project Manager</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left">
+                    <div class="testimonial-card">
+                        <p><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Working with Youssef was a pleasure. His backend solutions were robust, and his teaching content is exceptional.</p>
+                        <p class="fw-bold">Jane Smith, Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title text-center">Contact Me</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <p><i class="fa-sharp fa-solid fa-paper-plane fa-2x me-2 text-primary"></i>iyoussefbusniesstowork.com</p>
+                    <p><i class="fa-solid fa-phone fa-2x me-2 text-primary"></i>+201064338132</p>
+                    <div class="d-flex gap-3 mb-3">
+                        <a href="https://www.facebook.com/youssef.khaled.749"><i class="fa-brands fa-facebook fa-2x text-primary"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter fa-2x text-primary"></i></a>
+                        <a href="https://www.instagram.com/youssefkhaled_74/"><i class="fa-brands fa-instagram fa-2x text-primary"></i></a>
+                        <a href="https://www.linkedin.com/in/youssef-khaled-613206261/"><i class="fa-brands fa-linkedin fa-2x text-primary"></i></a>
+                    </div>
+                    <a href="./Youssef khaled.pdf" class="btn btn-primary" download><i class="fa-solid fa-download me-2"></i>Download CV</a>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <form name="submit-to-google-sheet" onsubmit="sendEmail(event)">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="Name" placeholder="Your Name" required id="name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" name="Email" placeholder="Your Email" required id="FRom" value="iyoussefbusinesstowork@gmail.com">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" name="Message" rows="6" placeholder="Your Message" id="sub"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane me-2"></i>Submit</button>
+                    </form>
+                    <span id="msg" class="text-success"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>Copyright © 2025 Youssef Khaled. Made with <i class="fa-solid fa-heart text-danger"></i></p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+    <!-- SMTP JS -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(e) {
+            e.preventDefault();
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "iyoussefbusinesstowork@gmail.com",
+                Password: "E500B049091D99871C3EBBB9D3C458D468CD",
+                To: 'iyoussefbusinesstowork@gmail.com',
+                From: document.getElementById('FRom').value,
+                Subject: document.getElementById('name').value,
+                Body: document.getElementById('sub').value,
+            }).then(
+                message => {
+                    alert("Email sent successfully!");
+                    document.getElementById('msg').innerHTML = "Thanks for your message!";
+                    setTimeout(() => {
+                        document.getElementById('msg').innerHTML = "";
+                    }, 5000);
+                    document.forms['submit-to-google-sheet'].reset();
+                }
+            ).catch(error => console.error('Error!', error.message));
+        }
+    </script>
 </body>
-</html
+</html>
