@@ -53,6 +53,8 @@
             color: var(--text-color);
             transition: all 0.3s ease;
             line-height: 1.8;
+            margin-left: 5vw;
+            margin-right: 5vw;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
@@ -66,11 +68,13 @@
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: background 0.3s ease;
+            padding: 1rem 2rem;
         }
         .navbar-brand {
             color: #1e3a8a !important;
             font-size: 1.5rem;
             font-weight: 700;
+            margin-right: 2rem;
         }
         .navbar-toggler {
             border: none;
@@ -227,7 +231,17 @@
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
+        .container {
+            max-width: 90%;
+        }
         @media (max-width: 991px) {
+            body {
+                margin-left: 2vw;
+                margin-right: 2vw;
+            }
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
             .navbar-collapse {
                 margin-top: 10px;
             }
