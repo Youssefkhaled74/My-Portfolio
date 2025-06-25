@@ -168,6 +168,7 @@ img {
     display: flex;
     align-items: center;
     gap: 6px;
+    text-shadow: 0 0 1px rgba(0,0,0,0.3); /* Add text shadow for better visibility */
 }
 
 .nav-link i {

@@ -1,0 +1,271 @@
+/* Laravel Lectures Styling */
+
+:root {
+  --primary-color: #ff2d20; /* Laravel Red */
+  --secondary-color: #3490dc; /* Laravel Blue */
+  --dark-bg: #1a1a1a;
+  --dark-card: #2d3748;
+  --light-text: #f8f9fa;
+  --code-bg: #2e2e2e;
+  --success-color: #38c172;
+  --warning-color: #ffed4a;
+  --danger-color: #e3342f;
+  --info-color: #6cb2eb;
+}
+
+body.lecture-page {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  line-height: 1.8;
+  padding-top: 70px;
+}
+
+.lecture-navbar {
+  background-color: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 45, 32, 0.2);
+}
+
+.lecture-navbar .navbar-brand {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.lecture-navbar .nav-link {
+  color: var(--light-text) !important;
+  transition: color 0.3s;
+}
+
+.lecture-navbar .nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+.lecture-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.lecture-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px 0;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.lecture-header h1 {
+  color: var(--primary-color);
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.lecture-header p {
+  color: #adb5bd;
+  font-size: 1.1rem;
+}
+
+.lecture-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: var(--dark-card);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.lecture-section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.lecture-section h3 {
+  color: #e2e8f0;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.lecture-section p {
+  margin-bottom: 15px;
+}
+
+.lecture-section ul, .lecture-section ol {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.lecture-section li {
+  margin-bottom: 10px;
+}
+
+.code-block {
+  background-color: var(--code-bg);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 0;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  position: relative;
+}
+
+.code-block pre {
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.code-block .language-label {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 0.7rem;
+  color: #718096;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.key-concept {
+  background-color: rgba(52, 144, 220, 0.1);
+  border-left: 4px solid var(--secondary-color);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.arabic-text {
+  direction: rtl;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  background-color: rgba(56, 193, 114, 0.1);
+  border-left: 4px solid var(--success-color);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.quiz-section {
+  background-color: rgba(108, 178, 235, 0.1);
+  border: 1px solid var(--info-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.quiz-section h3 {
+  color: var(--info-color);
+}
+
+.quiz-question {
+  margin-bottom: 20px;
+}
+
+.quiz-options {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.quiz-option {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(45, 55, 72, 0.7);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.quiz-option:hover {
+  background-color: rgba(45, 55, 72, 1);
+}
+
+.quiz-option.selected {
+  background-color: rgba(52, 144, 220, 0.3);
+  border: 1px solid var(--secondary-color);
+}
+
+.quiz-option.correct {
+  background-color: rgba(56, 193, 114, 0.3);
+  border: 1px solid var(--success-color);
+}
+
+.quiz-option.incorrect {
+  background-color: rgba(227, 52, 47, 0.3);
+  border: 1px solid var(--danger-color);
+}
+
+.feedback {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  display: none;
+}
+
+.feedback.correct {
+  background-color: rgba(56, 193, 114, 0.1);
+  color: var(--success-color);
+  display: block;
+}
+
+.feedback.incorrect {
+  background-color: rgba(227, 52, 47, 0.1);
+  color: var(--danger-color);
+  display: block;
+}
+
+.progress-container {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .lecture-container {
+    padding: 10px;
+  }
+  
+  .lecture-header {
+    padding: 20px 0;
+  }
+  
+  .lecture-section {
+    padding: 15px;
+  }
+  
+  .code-block {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+} 
