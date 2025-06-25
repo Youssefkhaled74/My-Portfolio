@@ -310,3 +310,51 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// Lecture section functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Lecture filtering
+    const categoryButtons = document.querySelectorAll('.lecture-categories .btn');
+    const lectureItems = document.querySelectorAll('.lecture-item');
+    
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const category = this.getAttribute('data-category');
+            
+            // Filter lectures
+            lectureItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Lecture search
+    const searchInput = document.getElementById('lectureSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            lectureItems.forEach(item => {
+                const title = item.querySelector('.card-title').textContent.toLowerCase();
+                const description = item.querySelector('.card-text').textContent.toLowerCase();
+                const category = item.getAttribute('data-category').toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+});

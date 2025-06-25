@@ -36,35 +36,111 @@ document.addEventListener('DOMContentLoaded', function() {
         option.addEventListener('click', function() {
             const questionContainer = this.closest('.quiz-question');
             const options = questionContainer.querySelectorAll('.quiz-option');
-            const feedback = questionContainer.querySelector('.feedback');
             
-            // Reset all options
+            // Reset all options in this question
             options.forEach(opt => {
-                opt.classList.remove('selected', 'correct', 'incorrect');
+                opt.classList.remove('selected');
             });
             
             // Select current option
             this.classList.add('selected');
-            
-            // Check if correct
-            if (this.dataset.correct === 'true') {
-                this.classList.add('correct');
-                feedback.textContent = 'Correct! ' + this.dataset.explanation;
-                feedback.classList.add('correct');
-                feedback.classList.remove('incorrect');
-                feedback.style.display = 'block';
-                
-                // Update progress
-                updateProgress();
-            } else {
-                this.classList.add('incorrect');
-                feedback.textContent = 'Incorrect. ' + this.dataset.explanation;
-                feedback.classList.add('incorrect');
-                feedback.classList.remove('correct');
-                feedback.style.display = 'block';
-            }
         });
     });
+    
+    // Check Answers button
+    const checkAnswersBtn = document.getElementById('checkAnswers');
+    if (checkAnswersBtn) {
+        checkAnswersBtn.addEventListener('click', function() {
+            const questions = document.querySelectorAll('.quiz-question');
+            let score = 0;
+            let totalQuestions = questions.length;
+            
+            questions.forEach(question => {
+                const selectedOption = question.querySelector('.quiz-option.selected');
+                const feedback = question.querySelector('.feedback');
+                const options = question.querySelectorAll('.quiz-option');
+                
+                // Reset all options
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect');
+                });
+                
+                if (selectedOption) {
+                    if (selectedOption.getAttribute('data-correct') === 'true') {
+                        selectedOption.classList.add('correct');
+                        feedback.textContent = 'Correct! ' + selectedOption.getAttribute('data-explanation');
+                        feedback.classList.add('correct');
+                        feedback.classList.remove('incorrect');
+                        feedback.style.display = 'block';
+                        score++;
+                    } else {
+                        selectedOption.classList.add('incorrect');
+                        feedback.textContent = 'Incorrect. ' + selectedOption.getAttribute('data-explanation');
+                        feedback.classList.add('incorrect');
+                        feedback.classList.remove('correct');
+                        feedback.style.display = 'block';
+                        
+                        // Show the correct answer
+                        const correctOption = question.querySelector('.quiz-option[data-correct="true"]');
+                        if (correctOption) {
+                            correctOption.classList.add('correct');
+                        }
+                    }
+                } else {
+                    feedback.textContent = 'Please select an answer.';
+                    feedback.classList.add('incorrect');
+                    feedback.classList.remove('correct');
+                    feedback.style.display = 'block';
+                }
+            });
+            
+            // Show final score
+            const scoreAlert = document.createElement('div');
+            scoreAlert.className = 'alert alert-info mt-4';
+            scoreAlert.textContent = `Your score: ${score}/${totalQuestions}`;
+            
+            // Remove any existing score alert
+            const existingAlert = document.querySelector('.quiz-section .alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+            
+            // Add the new score alert
+            document.querySelector('.quiz-section').appendChild(scoreAlert);
+            
+            // Update progress
+            updateProgress(score, totalQuestions);
+        });
+    }
+    
+    // Reset Quiz button
+    const resetQuizBtn = document.getElementById('resetQuiz');
+    if (resetQuizBtn) {
+        resetQuizBtn.addEventListener('click', function() {
+            const questions = document.querySelectorAll('.quiz-question');
+            
+            questions.forEach(question => {
+                const options = question.querySelectorAll('.quiz-option');
+                const feedback = question.querySelector('.feedback');
+                
+                // Reset all options
+                options.forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                // Clear feedback
+                feedback.textContent = '';
+                feedback.style.display = 'none';
+                feedback.classList.remove('correct', 'incorrect');
+            });
+            
+            // Remove score alert
+            const existingAlert = document.querySelector('.quiz-section .alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+        });
+    }
     
     // Code highlighting
     document.querySelectorAll('.code-block').forEach(block => {
@@ -93,13 +169,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Save progress
-    function updateProgress() {
-        const totalQuestions = document.querySelectorAll('.quiz-question').length;
-        const answeredCorrectly = document.querySelectorAll('.quiz-option.correct').length;
-        
+    function updateProgress(score, totalQuestions) {
         localStorage.setItem('lectureProgress', JSON.stringify({
             lecture: document.querySelector('title').textContent,
-            progress: (answeredCorrectly / totalQuestions) * 100,
+            progress: (score / totalQuestions) * 100,
             lastVisited: new Date().toISOString()
         }));
     }

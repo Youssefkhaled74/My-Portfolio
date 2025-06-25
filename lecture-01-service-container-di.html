@@ -329,6 +329,49 @@ class SmsNotification implements NotificationService {
                     </ul>
                     <div class="feedback"></div>
                 </div>
+                
+                <div class="quiz-question">
+                    <p><strong>4. In Laravel, what happens if you try to resolve a concrete class that has not been bound to the container?</strong></p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false" data-explanation="Laravel will try to instantiate the class, not throw an exception.">
+                            It throws a BindingResolutionException
+                        </li>
+                        <li class="quiz-option" data-correct="true" data-explanation="Laravel will attempt to instantiate the class and resolve its dependencies automatically.">
+                            It tries to instantiate the class and resolve its dependencies
+                        </li>
+                        <li class="quiz-option" data-correct="false" data-explanation="Laravel doesn't return null when resolving unbound classes.">
+                            It returns null
+                        </li>
+                        <li class="quiz-option" data-correct="false" data-explanation="Laravel doesn't look for a default implementation.">
+                            It looks for a default implementation
+                        </li>
+                    </ul>
+                    <div class="feedback"></div>
+                </div>
+                
+                <div class="quiz-question">
+                    <p><strong>5. What is Inversion of Control (IoC)?</strong></p>
+                    <ul class="quiz-options">
+                        <li class="quiz-option" data-correct="false" data-explanation="This is not what IoC means.">
+                            Converting procedural code to object-oriented code
+                        </li>
+                        <li class="quiz-option" data-correct="false" data-explanation="This is not what IoC means.">
+                            Using static methods instead of instance methods
+                        </li>
+                        <li class="quiz-option" data-correct="true" data-explanation="IoC is a design principle where control over the flow of an application is inverted - the framework calls your code, not the other way around.">
+                            A design principle where control over the flow of an application is inverted
+                        </li>
+                        <li class="quiz-option" data-correct="false" data-explanation="This is not what IoC means.">
+                            Writing code that runs in reverse order
+                        </li>
+                    </ul>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" id="checkAnswers">Check Answers</button>
+                <button class="btn btn-outline-secondary ms-2" id="resetQuiz">Reset Quiz</button>
             </div>
         </section>
 
