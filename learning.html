@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Tracks | Youssef Khaled</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
+    <!-- AOS for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/lecture.css">
+    <style>
+        .learning-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 60px 0;
+            color: white;
+            margin-bottom: 40px;
+            border-radius: 0 0 50px 50px;
+        }
+        
+        .learning-header h1 {
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .learning-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .track-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .track-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .track-card .card-img-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .track-card .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .track-card .card-text {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .track-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .track-content {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .track-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .lecture-item {
+            transition: all 0.3s ease;
+        }
+        
+        .lecture-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .lecture-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        
+        .lecture-img {
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .search-container i {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            color: #6c757d;
+        }
+        
+        #trackSearch {
+            padding-right: 40px;
+            border-radius: 30px;
+        }
+        
+        .track-filter {
+            margin-bottom: 30px;
+        }
+        
+        .track-filter .btn {
+            margin: 5px;
+            border-radius: 30px;
+            padding: 8px 20px;
+        }
+        
+        .markdown-content {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        [data-theme="dark"] .markdown-content {
+            background-color: #2d3748;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="learning.html"><i class="fa-solid fa-graduation-cap"></i>Learning</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#laravel-track"><i class="fa-brands fa-laravel"></i>Laravel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#data-analysis-track"><i class="fa-solid fa-chart-line"></i>Data Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#system-design-track"><i class="fa-solid fa-diagram-project"></i>System Design</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#devops-track"><i class="fa-solid fa-server"></i>DevOps</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-moon theme-toggle" id="themeToggle" title="Toggle Theme"></i>
+                    <span class="lang-toggle" id="langToggle" title="Toggle Language">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Learning Header -->
+    <header class="learning-header">
+        <div class="container text-center">
+            <h1><i class="fa-solid fa-graduation-cap me-2"></i>Learning Tracks</h1>
+            <p>Explore comprehensive learning paths in Laravel, Data Analysis, System Design, and DevOps</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search and Filter -->
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <div class="search-container">
+                    <input type="text" id="trackSearch" class="form-control" placeholder="Search lectures...">
+                    <i class="fa-solid fa-search"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mb-5 track-filter text-center">
+            <div class="col-12">
+                <button class="btn btn-outline-primary active" data-track="all">All Tracks</button>
+                <button class="btn btn-outline-danger" data-track="laravel">Laravel</button>
+                <button class="btn btn-outline-success" data-track="data-analysis">Data Analysis</button>
+                <button class="btn btn-outline-info" data-track="system-design">System Design</button>
+                <button class="btn btn-outline-warning" data-track="devops">DevOps</button>
+            </div>
+        </div>
+
+        <!-- Track Cards -->
+        <div class="row mb-5">
+            <!-- Laravel Track -->
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card track-card" id="laravel-track">
+                    <img src="https://laraveldaily.com/uploads/2020/09/laravel-8-1024x538.png" class="card-img" alt="Laravel Track">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title text-white"><i class="fa-brands fa-laravel me-2"></i>Laravel</h5>
+                        <p class="card-text text-white">Advanced Laravel techniques for enterprise applications</p>
+                        <button class="btn btn-danger track-btn" data-track="laravel">View Lectures</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Analysis Track -->
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card track-card" id="data-analysis-track">
+                    <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Data_Analyst_Job_Description.jpg" class="card-img" alt="Data Analysis Track">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title text-white"><i class="fa-solid fa-chart-line me-2"></i>Data Analysis</h5>
+                        <p class="card-text text-white">Learn data analysis techniques and tools</p>
+                        <button class="btn btn-success track-btn" data-track="data-analysis">View Lectures</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Design Track -->
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card track-card" id="system-design-track">
+                    <img src="https://miro.medium.com/max/1400/1*Qm5AvgnCBJUE6JuuJ4j-eQ.jpeg" class="card-img" alt="System Design Track">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title text-white"><i class="fa-solid fa-diagram-project me-2"></i>System Design</h5>
+                        <p class="card-text text-white">Master architectural patterns and system design principles</p>
+                        <button class="btn btn-info track-btn" data-track="system-design">View Lectures</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DevOps Track -->
+            <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="card track-card" id="devops-track">
+                    <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/devops-engineer-roles-and-responsibilities.jpg" class="card-img" alt="DevOps Track">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title text-white"><i class="fa-solid fa-server me-2"></i>DevOps</h5>
+                        <p class="card-text text-white">Learn CI/CD, containerization, and deployment strategies</p>
+                        <button class="btn btn-warning track-btn" data-track="devops">View Lectures</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Track Content Sections -->
+        <div id="track-content-container">
+            <!-- Laravel Track Content -->
+            <div id="laravel-content" class="track-content">
+                <h2 class="mb-4"><i class="fa-brands fa-laravel me-2"></i>Laravel Track</h2>
+                <div class="row">
+                    <!-- Lecture 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="laravel">
+                        <div class="card h-100">
+                            <span class="badge bg-danger lecture-badge"><i class="fa-brands fa-laravel"></i> Laravel</span>
+                            <img src="https://laraveldaily.com/uploads/2019/08/laravel-service-container-1024x538.png" class="card-img-top lecture-img" alt="Service Container & Dependency Injection">
+                            <div class="card-body">
+                                <h5 class="card-title">Service Container & DI</h5>
+                                <p class="card-text">Learn about Laravel's powerful Service Container and Dependency Injection pattern.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-01-service-container-di.html" data-type="html">
+                                        <i class="fa-solid fa-book-open me-1"></i>Read Lecture
+                                    </a>
+                                    <a href="lecture-01-service-container-di.md" download class="btn btn-outline-secondary">
+                                        <i class="fa-solid fa-download me-1"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <i class="fa-solid fa-clock me-1"></i>Reading time: ~20 min
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lecture 2 -->
+                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="laravel">
+                        <div class="card h-100">
+                            <span class="badge bg-danger lecture-badge"><i class="fa-brands fa-laravel"></i> Laravel</span>
+                            <img src="https://laraveldaily.com/uploads/2019/12/eloquent-relationships-1024x538.png" class="card-img-top lecture-img" alt="Advanced Eloquent Techniques">
+                            <div class="card-body">
+                                <h5 class="card-title">Advanced Eloquent</h5>
+                                <p class="card-text">Master advanced Eloquent ORM techniques for complex database operations.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-02-advanced-eloquent-techniques.md" data-type="markdown">
+                                        <i class="fa-solid fa-book-open me-1"></i>Read Lecture
+                                    </a>
+                                    <a href="lecture-02-advanced-eloquent-techniques.md" download class="btn btn-outline-secondary">
+                                        <i class="fa-solid fa-download me-1"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <i class="fa-solid fa-clock me-1"></i>Reading time: ~25 min
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lecture 3 -->
+                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="laravel">
+                        <div class="card h-100">
+                            <span class="badge bg-danger lecture-badge"><i class="fa-brands fa-laravel"></i> Laravel</span>
+                            <img src="https://laracasts.com/images/series/thumbnails/svg/build-a-laravel-package.svg" class="card-img-top lecture-img" alt="Package Development">
+                            <div class="card-body">
+                                <h5 class="card-title">Package Development</h5>
+                                <p class="card-text">Learn how to create, publish, and maintain your own Laravel packages.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-03-package-development.md" data-type="markdown">
+                                        <i class="fa-solid fa-book-open me-1"></i>Read Lecture
+                                    </a>
+                                    <a href="lecture-03-package-development.md" download class="btn btn-outline-secondary">
+                                        <i class="fa-solid fa-download me-1"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <i class="fa-solid fa-clock me-1"></i>Reading time: ~30 min
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Analysis Track Content -->
+            <div id="data-analysis-content" class="track-content">
+                <h2 class="mb-4"><i class="fa-solid fa-chart-line me-2"></i>Data Analysis Track</h2>
+                <div class="row">
+                    <!-- Data Analysis Lecture 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="data-analysis">
+                        <div class="card h-100">
+                            <span class="badge bg-success lecture-badge"><i class="fa-solid fa-chart-line"></i> Data Analysis</span>
+                            <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Data_Visualization_Tools.jpg" class="card-img-top lecture-img" alt="Data Analysis Fundamentals">
+                            <div class="card-body">
+                                <h5 class="card-title">Data Analysis Fundamentals</h5>
+                                <p class="card-text">Introduction to data analysis concepts and methodologies.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="DataAnalysisRoadmap.html" class="btn btn-primary view-lecture" data-lecture="DataAnalysisRoadmap.html" data-type="html">
+                                        <i class="fa-solid fa-book-open me-1"></i>Read Lecture
+                                    </a>
+                                    <a href="#" class="btn btn-outline-secondary">
+                                        <i class="fa-solid fa-download me-1"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <i class="fa-solid fa-clock me-1"></i>Reading time: ~15 min
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Design Track Content -->
+            <div id="system-design-content" class="track-content">
+                <h2 class="mb-4"><i class="fa-solid fa-diagram-project me-2"></i>System Design Track</h2>
+                <div class="row">
+                    <!-- System Design Lecture 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="system-design">
+                        <div class="card h-100">
+                            <span class="badge bg-info lecture-badge"><i class="fa-solid fa-diagram-project"></i> System Design</span>
+                            <img src="https://miro.medium.com/max/1400/1*Qm5AvgnCBJUE6JuuJ4j-eQ.jpeg" class="card-img-top lecture-img" alt="System Design Fundamentals">
+                            <div class="card-body">
+                                <h5 class="card-title">System Design Fundamentals</h5>
+                                <p class="card-text">Introduction to system design principles and patterns.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-04-queues-jobs-events.md" data-type="markdown">
+                                        <i class="fa-solid fa-book-open me-1"></i>Read Lecture
+                                    </a>
+                                    <a href="lecture-04-queues-jobs-events.md" download class="btn btn-outline-secondary">
+                                        <i class="fa-solid fa-download me-1"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <i class="fa-solid fa-clock me-1"></i>Reading time: ~25 min
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DevOps Track Content -->
+            <div id="devops-content" class="track-content">
+                <h2 class="mb-4"><i class="fa-solid fa-server me-2"></i>DevOps Track</h2>
+                <div class="row">
+                    <!-- DevOps Lecture 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="devops">
+                        <div class="card h-100">
+                            <span class="badge bg-warning lecture-badge"><i class="fa-solid fa-server"></i> DevOps</span>
+                            <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/devops-engineer-roles-and-responsibilities.jpg" class="card-img-top lecture-img" alt="DevOps Fundamentals">
+                            <div class="card-body">
+                                <h5 class="card-title">DevOps Fundamentals</h5>
+                                <p class="card-text">Introduction to DevOps practices and CI/CD pipelines.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-08-websockets-realtime.md" data-type="markdown">
+                                        <i class="fa-solid fa-book-open me-1"></i>Read Lecture
+                                    </a>
+                                    <a href="lecture-08-websockets-realtime.md" download class="btn btn-outline-secondary">
+                                        <i class="fa-solid fa-download me-1"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <i class="fa-solid fa-clock me-1"></i>Reading time: ~20 min
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lecture Modal -->
+        <div class="modal fade" id="lectureModal" tabindex="-1" aria-labelledby="lectureModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lectureModalLabel">Lecture</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="htmlContent" style="display: none;">
+                            <iframe id="lectureFrame" style="width: 100%; height: 80vh; border: none;"></iframe>
+                        </div>
+                        <div id="markdownContent" class="markdown-content" style="display: none;">
+                            <!-- Markdown content will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a id="openInNewTab" href="#" target="_blank" class="btn btn-primary">Open in New Tab</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p>Copyright © 2025 Youssef Khaled. Made with <i class="fa-solid fa-heart text-danger"></i></p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Prism.js for code highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/learning.js"></script>
+</body>
+</html> 

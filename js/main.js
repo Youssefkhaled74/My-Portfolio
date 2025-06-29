@@ -96,11 +96,10 @@ const translations = {
         nav_about: "About",
         nav_services: "Services",
         nav_portfolio: "Portfolio",
+        nav_learning: "Learning",
         nav_testimonials: "Testimonials",
         nav_contact: "Contact",
-        nav_backend: "Back-end Track",
-        nav_laravel: "Laravel Advanced",
-        nav_data: "Data Analysis",
+        nav_tracks: "All Tracks",
         header_greeting: "Hi, I'm <span class='text-primary'>Youssef Khaled</span>",
         header_roles: "Laravel Full-Stack Developer | PHP Backend Developer | Data Analyst",
         header_position: "Back-end Developer at Evyx Company | B.Sc. Student",
@@ -156,11 +155,10 @@ const translations = {
         nav_about: "نبذة عني",
         nav_services: "خدماتي",
         nav_portfolio: "مشاريعي",
+        nav_learning: "التعلم",
         nav_testimonials: "آراء العملاء",
         nav_contact: "اتصل بي",
-        nav_backend: "مسار الخلفية",
-        nav_laravel: "لارافيل متقدم",
-        nav_data: "تحليل البيانات",
+        nav_tracks: "جميع المسارات",
         header_greeting: "مرحباً، أنا <span class='text-primary'>يوسف خالد</span>",
         header_roles: "مطور لارافيل كامل التكامل | مطور خلفية PHP | محلل بيانات",
         header_position: "مطور خلفية في شركة Evyx | طالب بكالوريوس",
@@ -357,4 +355,104 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+});
+
+// Lecture view functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Create modal for viewing lectures
+    const modalHtml = `
+    <div class="modal fade" id="lectureModal" tabindex="-1" aria-labelledby="lectureModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="lectureModalLabel">Lecture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="htmlContent" style="display: none;">
+                        <iframe id="lectureFrame" style="width: 100%; height: 80vh; border: none;"></iframe>
+                    </div>
+                    <div id="markdownContent" class="markdown-content" style="display: none;">
+                        <!-- Markdown content will be loaded here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a id="openInNewTab" href="#" target="_blank" class="btn btn-primary">Open in New Tab</a>
+                </div>
+            </div>
+        </div>
+    </div>`;
+    
+    // Append modal to body
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    
+    // Initialize modal
+    const lectureModal = new bootstrap.Modal(document.getElementById('lectureModal'));
+    
+    // Handle lecture view button clicks
+    const viewLectureButtons = document.querySelectorAll('.view-lecture');
+    viewLectureButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lecturePath = this.getAttribute('data-lecture');
+            const lectureType = this.getAttribute('data-type') || 
+                                (lecturePath && lecturePath.endsWith('.md') ? 'markdown' : 'html');
+            
+            if (lecturePath && lecturePath !== '#') {
+                // Set modal title based on lecture title
+                const lectureTitle = this.closest('.card-body').querySelector('.card-title').textContent.trim();
+                document.getElementById('lectureModalLabel').textContent = lectureTitle;
+                
+                // Set open in new tab link
+                const openInNewTabBtn = document.getElementById('openInNewTab');
+                openInNewTabBtn.href = lecturePath;
+                
+                // Handle different content types
+                const htmlContent = document.getElementById('htmlContent');
+                const markdownContent = document.getElementById('markdownContent');
+                
+                if (lectureType === 'html' || !lectureType) {
+                    // Show HTML content (iframe)
+                    htmlContent.style.display = 'block';
+                    markdownContent.style.display = 'none';
+                    
+                    // Set iframe source
+                    const lectureFrame = document.getElementById('lectureFrame');
+                    lectureFrame.src = lecturePath;
+                } else if (lectureType === 'markdown') {
+                    // Show Markdown content
+                    htmlContent.style.display = 'none';
+                    markdownContent.style.display = 'block';
+                    
+                    // Fetch and render markdown
+                    fetch(lecturePath)
+                        .then(response => response.text())
+                        .then(text => {
+                            if (typeof marked !== 'undefined') {
+                                markdownContent.innerHTML = marked.parse(text);
+                                
+                                // Apply syntax highlighting if Prism is available
+                                if (typeof Prism !== 'undefined') {
+                                    markdownContent.querySelectorAll('pre code').forEach((block) => {
+                                        Prism.highlightElement(block);
+                                    });
+                                }
+                            } else {
+                                markdownContent.innerHTML = `<div class="alert alert-warning">Markdown parser not loaded. Please open in new tab.</div>`;
+                            }
+                        })
+                        .catch(error => {
+                            markdownContent.innerHTML = `<div class="alert alert-danger">Error loading content: ${error.message}</div>`;
+                        });
+                }
+                
+                // Show modal
+                lectureModal.show();
+            } else {
+                // For "Coming Soon" lectures, show alert
+                alert('This lecture is coming soon! Stay tuned for updates.');
+            }
+        });
+    });
 });

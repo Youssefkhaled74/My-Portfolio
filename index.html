@@ -13,6 +13,8 @@
     <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
     <!-- AOS for Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/portfolio.css">
 </head>
@@ -35,11 +37,10 @@
                     <li class="nav-item"><a class="nav-link" href="#about" data-translate="nav_about"><i class="fa-solid fa-user"></i>About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services" data-translate="nav_services"><i class="fa-solid fa-gear"></i>Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio" data-translate="nav_portfolio"><i class="fa-solid fa-briefcase"></i>Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#featured-lectures" data-translate="nav_learning"><i class="fa-solid fa-graduation-cap"></i>Learning</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonials" data-translate="nav_testimonials"><i class="fa-solid fa-quote-left"></i>Testimonials</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-translate="nav_contact"><i class="fa-solid fa-envelope"></i>Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./BackendRoadmap.html" data-translate="nav_backend"><i class="fa-solid fa-road"></i>Back-end Track</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./LaravelAdvanced.html" data-translate="nav_laravel"><i class="fa-brands fa-laravel"></i>Laravel Advanced</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./DataAnalysisRoadmap.html" data-translate="nav_data"><i class="fa-solid fa-chart-line"></i>Data Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./learning.html" data-translate="nav_tracks"><i class="fa-solid fa-book"></i>All Tracks</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <i class="fas fa-moon theme-toggle" id="themeToggle" title="Toggle Theme"></i>
@@ -373,61 +374,32 @@
         </div>
     </section>
 
-    <!-- Laravel Advanced Lectures Section -->
-    <section id="lectures" class="py-5">
+    <!-- Featured Lectures Section -->
+    <section id="featured-lectures" class="py-5">
         <div class="container" data-aos="fade-up">
             <h2 class="section-title text-center">
-                <i class="fa-brands fa-laravel me-2"></i>Laravel Advanced Lectures
+                <i class="fa-solid fa-graduation-cap me-2"></i>Featured Lectures
             </h2>
             
-            <!-- Search Bar -->
-            <div class="row mb-4">
-                <div class="col-md-8 mx-auto">
-                    <div class="search-bar">
-                        <input type="text" id="lectureSearch" class="form-control" placeholder="Search lectures...">
-                        <i class="fa-solid fa-search"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Lecture Categories -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="lecture-categories text-center">
-                        <button class="btn btn-outline-primary active" data-category="all">All</button>
-                        <button class="btn btn-outline-primary" data-category="advanced-laravel">
-                            <i class="fa-brands fa-laravel"></i> Advanced Laravel
-                        </button>
-                        <button class="btn btn-outline-primary" data-category="system-design">
-                            <i class="fa-solid fa-diagram-project"></i> System Design
-                        </button>
-                        <button class="btn btn-outline-primary" data-category="devops">
-                            <i class="fa-solid fa-server"></i> DevOps
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <p class="text-center mb-5">Explore featured lectures from our learning tracks</p>
             
             <!-- Lectures Grid -->
             <div class="row lecture-grid">
-                <!-- Lecture 1 -->
-                <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="advanced-laravel" data-aos="fade-up" data-aos-delay="100">
+                <!-- Laravel Lecture -->
+                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100">
                         <div class="card-img-overlay lecture-overlay">
-                            <span class="badge bg-danger"><i class="fa-brands fa-laravel"></i> Advanced Laravel</span>
+                            <span class="badge bg-danger"><i class="fa-brands fa-laravel"></i> Laravel</span>
                         </div>
-                        <img src="newbggg.png" class="card-img-top lecture-img" alt="Service Container & Dependency Injection">
+                        <img src="https://laraveldaily.com/uploads/2019/08/laravel-service-container-1024x538.png" class="card-img-top lecture-img" alt="Service Container & Dependency Injection">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <i class="fa-solid fa-box me-2 text-danger"></i>Service Container & DI
                             </h5>
-                            <p class="card-text">Learn about Laravel's powerful Service Container and Dependency Injection pattern, the foundation of Laravel's architecture.</p>
+                            <p class="card-text">Learn about Laravel's powerful Service Container and Dependency Injection pattern.</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="lecture-01-service-container-di.html" class="btn btn-primary">
+                                <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-01-service-container-di.html">
                                     <i class="fa-solid fa-book-open me-1"></i>Read Lecture
-                                </a>
-                                <a href="lecture-01-service-container-di.md" download class="btn btn-outline-secondary">
-                                    <i class="fa-solid fa-download me-1"></i>Download
                                 </a>
                             </div>
                         </div>
@@ -437,24 +409,45 @@
                     </div>
                 </div>
                 
-                <!-- Lecture 2 -->
-                <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="advanced-laravel" data-aos="fade-up" data-aos-delay="200">
+                <!-- Data Analysis Lecture -->
+                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100">
                         <div class="card-img-overlay lecture-overlay">
-                            <span class="badge bg-danger"><i class="fa-brands fa-laravel"></i> Advanced Laravel</span>
+                            <span class="badge bg-success"><i class="fa-solid fa-chart-line"></i> Data Analysis</span>
                         </div>
-                        <img src="newbggg.png" class="card-img-top lecture-img" alt="Advanced Eloquent Techniques">
+                        <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Data_Visualization_Tools.jpg" class="card-img-top lecture-img" alt="Data Analysis Fundamentals">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <i class="fa-solid fa-database me-2 text-danger"></i>Advanced Eloquent
+                                <i class="fa-solid fa-chart-bar me-2 text-success"></i>Data Analysis Fundamentals
                             </h5>
-                            <p class="card-text">Master advanced Eloquent ORM techniques for complex database operations and optimized queries.</p>
+                            <p class="card-text">Introduction to data analysis concepts and methodologies.</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">
-                                    <i class="fa-solid fa-book-open me-1"></i>Coming Soon
+                                <a href="DataAnalysisRoadmap.html" class="btn btn-primary view-lecture" data-lecture="DataAnalysisRoadmap.html">
+                                    <i class="fa-solid fa-book-open me-1"></i>Read Lecture
                                 </a>
-                                <a href="lecture-02-advanced-eloquent-techniques.md" download class="btn btn-outline-secondary">
-                                    <i class="fa-solid fa-download me-1"></i>Download
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <i class="fa-solid fa-clock me-1"></i>Reading time: ~15 min
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- System Design Lecture -->
+                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-img-overlay lecture-overlay">
+                            <span class="badge bg-info"><i class="fa-solid fa-diagram-project"></i> System Design</span>
+                        </div>
+                        <img src="https://miro.medium.com/max/1400/1*Qm5AvgnCBJUE6JuuJ4j-eQ.jpeg" class="card-img-top lecture-img" alt="System Design Fundamentals">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fa-solid fa-sitemap me-2 text-info"></i>System Design Fundamentals
+                            </h5>
+                            <p class="card-text">Introduction to system design principles and patterns.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-04-queues-jobs-events.md">
+                                    <i class="fa-solid fa-book-open me-1"></i>Read Lecture
                                 </a>
                             </div>
                         </div>
@@ -464,37 +457,34 @@
                     </div>
                 </div>
                 
-                <!-- Lecture 3 -->
-                <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="system-design" data-aos="fade-up" data-aos-delay="300">
+                <!-- DevOps Lecture -->
+                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="400">
                     <div class="card h-100">
                         <div class="card-img-overlay lecture-overlay">
-                            <span class="badge bg-info"><i class="fa-solid fa-diagram-project"></i> System Design</span>
+                            <span class="badge bg-warning"><i class="fa-solid fa-server"></i> DevOps</span>
                         </div>
-                        <img src="newbggg.png" class="card-img-top lecture-img" alt="Package Development">
+                        <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/devops-engineer-roles-and-responsibilities.jpg" class="card-img-top lecture-img" alt="DevOps Fundamentals">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <i class="fa-solid fa-box-open me-2 text-info"></i>Package Development
+                                <i class="fa-solid fa-code-branch me-2 text-warning"></i>DevOps Fundamentals
                             </h5>
-                            <p class="card-text">Learn how to create, publish, and maintain your own Laravel packages for code reusability.</p>
+                            <p class="card-text">Introduction to DevOps practices and CI/CD pipelines.</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">
-                                    <i class="fa-solid fa-book-open me-1"></i>Coming Soon
-                                </a>
-                                <a href="lecture-03-package-development.md" download class="btn btn-outline-secondary">
-                                    <i class="fa-solid fa-download me-1"></i>Download
+                                <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-08-websockets-realtime.md">
+                                    <i class="fa-solid fa-book-open me-1"></i>Read Lecture
                                 </a>
                             </div>
                         </div>
                         <div class="card-footer text-muted">
-                            <i class="fa-solid fa-clock me-1"></i>Reading time: ~30 min
+                            <i class="fa-solid fa-clock me-1"></i>Reading time: ~20 min
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="text-center mt-4">
-                <a href="LaravelAdvanced.html" class="btn btn-primary">
-                    <i class="fa-solid fa-graduation-cap me-2"></i>View All Lectures
+                <a href="learning.html" class="btn btn-primary">
+                    <i class="fa-solid fa-graduation-cap me-2"></i>Explore All Learning Tracks
                 </a>
             </div>
         </div>
@@ -571,6 +561,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Email JS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Prism.js for code highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
     <!-- Custom JS -->
     <script src="js/main.js"></script>
 </body>
