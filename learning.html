@@ -90,6 +90,82 @@
             to { opacity: 1; }
         }
         
+        .lecture-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .lecture-link {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="dark"] .lecture-link {
+            background: #2d3748;
+            color: #fff;
+        }
+        
+        .lecture-link:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .lecture-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        [data-theme="dark"] .lecture-number {
+            color: #60a5fa;
+        }
+        
+        .lecture-info {
+            flex: 1;
+            margin: 0 20px;
+        }
+        
+        .lecture-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+        
+        .lecture-info p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: #666;
+        }
+        
+        [data-theme="dark"] .lecture-info p {
+            color: #cbd5e0;
+        }
+        
+        .lecture-link i {
+            font-size: 1.2rem;
+            color: #3b82f6;
+            transition: transform 0.3s ease;
+        }
+        
+        [data-theme="dark"] .lecture-link i {
+            color: #60a5fa;
+        }
+        
+        .lecture-link:hover i {
+            transform: translateX(5px);
+        }
+        
         .lecture-item {
             transition: all 0.3s ease;
         }
@@ -146,6 +222,35 @@
         
         [data-theme="dark"] .markdown-content {
             background-color: #2d3748;
+        }
+        
+        /* Card Grid Layout Fix */
+        .lecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .lecture-link {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .lecture-number {
+                margin-bottom: 10px;
+            }
+            
+            .lecture-info {
+                margin: 10px 0;
+            }
+            
+            .lecture-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -265,9 +370,9 @@
             <!-- Laravel Track Content -->
             <div id="laravel-content" class="track-content">
                 <h2 class="mb-4"><i class="fa-brands fa-laravel me-2"></i>Laravel Track</h2>
-                <div class="row">
+                <div class="lecture-grid">
                     <!-- Lecture 1 -->
-                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="laravel">
+                    <div class="lecture-item" data-category="laravel">
                         <div class="card h-100">
                             <span class="badge bg-danger lecture-badge"><i class="fa-brands fa-laravel"></i> Laravel</span>
                             <img src="https://laraveldaily.com/uploads/2019/08/laravel-service-container-1024x538.png" class="card-img-top lecture-img" alt="Service Container & Dependency Injection">
@@ -275,7 +380,7 @@
                                 <h5 class="card-title">Service Container & DI</h5>
                                 <p class="card-text">Learn about Laravel's powerful Service Container and Dependency Injection pattern.</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-01-service-container-di.html" data-type="html">
+                                    <a href="lecture-01-service-container-di.html" class="btn btn-primary">
                                         <i class="fa-solid fa-book-open me-1"></i>Read Lecture
                                     </a>
                                     <a href="lecture-01-service-container-di.md" download class="btn btn-outline-secondary">
@@ -289,57 +394,59 @@
                         </div>
                     </div>
                     
-                    <!-- Lecture 2 -->
-                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="database">
-                        <div class="card h-100">
-                            <span class="badge bg-info lecture-badge"><i class="fa-solid fa-database"></i> Database</span>
-                            <img src="https://laraveldaily.com/uploads/2019/11/eloquent-relationships-1024x538.png" class="card-img-top lecture-img" alt="Advanced Eloquent Techniques">
-                            <div class="card-body">
-                                <h5 class="card-title">Advanced Eloquent Techniques</h5>
-                                <p class="card-text">Master complex database relationships, query optimization, model events, and more with Laravel's powerful ORM.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="lecture-02-advanced-eloquent-techniques.html" class="btn btn-outline-info">Read Lecture</a>
-                                    <span class="reading-time"><i class="fa-solid fa-clock me-1"></i>25 min</span>
+                    <!-- Additional Lectures -->
+                    <ul class="lecture-list">
+                        <li>
+                            <a href="lecture-02-advanced-eloquent-techniques.html" class="lecture-link">
+                                <span class="lecture-number">02</span>
+                                <div class="lecture-info">
+                                    <h3>Advanced Eloquent Techniques</h3>
+                                    <p>Master complex database relationships, query optimization, and model events.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Lecture 3 -->
-                    <div class="col-md-6 col-lg-4 mb-4 lecture-item" data-category="package-development">
-                        <div class="card h-100">
-                            <span class="badge bg-success lecture-badge"><i class="fa-solid fa-box"></i> Package Development</span>
-                            <img src="https://laraveldaily.com/uploads/2019/11/package-development-1024x538.png" class="card-img-top lecture-img" alt="Package Development">
-                            <div class="card-body">
-                                <h5 class="card-title">Package Development</h5>
-                                <p class="card-text">Learn how to create, test, and distribute professional Laravel packages.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="lecture-03-package-development.html" class="btn btn-outline-success">Read Lecture</a>
-                                    <span class="reading-time"><i class="fa-solid fa-clock me-1"></i>30 min</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="lecture-03-package-development.html" class="lecture-link">
+                                <span class="lecture-number">03</span>
+                                <div class="lecture-info">
+                                    <h3>Package Development</h3>
+                                    <p>Learn how to create, test, and distribute professional Laravel packages.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <li>
-                        <a href="lecture-05-octane-performance.html" class="lecture-link">
-                            <span class="lecture-number">05</span>
-                            <div class="lecture-info">
-                                <h3>Laravel Octane & Performance Optimization</h3>
-                                <p>Supercharge your Laravel application with Octane and learn advanced performance optimization techniques.</p>
-                            </div>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="lecture-06-testing.html" class="lecture-link">
-                            <span class="lecture-number">06</span>
-                            <div class="lecture-info">
-                                <h3>Testing in Laravel</h3>
-                                <p>Master unit testing, feature testing, and test-driven development in Laravel applications.</p>
-                            </div>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="lecture-04-queues-jobs-events.html" class="lecture-link">
+                                <span class="lecture-number">04</span>
+                                <div class="lecture-info">
+                                    <h3>Queues, Jobs & Events</h3>
+                                    <p>Build scalable applications with Laravel's queuing system and event broadcasting.</p>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="lecture-05-octane-performance.html" class="lecture-link">
+                                <span class="lecture-number">05</span>
+                                <div class="lecture-info">
+                                    <h3>Laravel Octane & Performance Optimization</h3>
+                                    <p>Supercharge your Laravel application with Octane and learn advanced performance optimization techniques.</p>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="lecture-06-testing.html" class="lecture-link">
+                                <span class="lecture-number">06</span>
+                                <div class="lecture-info">
+                                    <h3>Testing in Laravel</h3>
+                                    <p>Master unit testing, feature testing, and test-driven development in Laravel applications.</p>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
