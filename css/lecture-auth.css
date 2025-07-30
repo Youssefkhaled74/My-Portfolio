@@ -1,0 +1,118 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: #fff !important;
+    transition: color 0.3s;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #0d6efd !important;
+}
+
+.lecture-header {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #fff;
+    padding: 60px 0;
+}
+
+.lecture-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.lecture-meta span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.lecture-tags .tag {
+    display: inline-block;
+    background: #0d6efd;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 5px;
+    font-size: 0.8rem;
+}
+
+.accordion-button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-body {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 0 0 5px 5px;
+}
+
+.alert-info, .alert-light {
+    border-left: 4px solid #0d6efd;
+    margin-bottom: 1.5rem;
+}
+
+pre {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+.btn-primary {
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+}
+
+.btn-success.completed {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.footer {
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .lecture-header {
+        padding: 40px 0;
+    }
+    .lecture-header h1 {
+        font-size: 2rem;
+    }
+    .accordion-button {
+        font-size: 1rem;
+    }
+}

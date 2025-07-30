@@ -1,218 +1,366 @@
-// Lecture Page JavaScript
-
+// Lectures Redesigned JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Progress bar functionality
-    const progressBar = document.querySelector('.progress-bar');
-    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    // Initialize AOS (Animate On Scroll)
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    }
+
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlRoot = document.getElementById('html-root');
     
-    window.addEventListener('scroll', function() {
-        const progress = (window.scrollY / totalHeight) * 100;
-        progressBar.style.width = progress + '%';
-        
-        // Show/hide back to top button
-        const backToTop = document.querySelector('.back-to-top');
-        if (window.scrollY > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
+    // Load saved theme or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
     
-    // Back to top functionality
-    const backToTop = document.querySelector('.back-to-top');
-    if (backToTop) {
-        backToTop.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = htmlRoot.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
         });
     }
     
-    // Quiz functionality
-    const quizOptions = document.querySelectorAll('.quiz-option');
+    function setTheme(theme) {
+        htmlRoot.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        
+        if (themeToggle) {
+            themeToggle.className = theme === 'light' ? 'fas fa-moon theme-toggle' : 'fas fa-sun theme-toggle';
+        }
+    }
+
+    // Search Functionality
+    const searchInput = document.getElementById('lectureSearch');
+    const statusFilter = document.getElementById('statusFilter');
+    const lectureCards = document.querySelectorAll('.lecture-card');
     
-    quizOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const questionContainer = this.closest('.quiz-question');
-            const options = questionContainer.querySelectorAll('.quiz-option');
+    if (searchInput) {
+        searchInput.addEventListener('input', filterLectures);
+    }
+    
+    if (statusFilter) {
+        statusFilter.addEventListener('change', filterLectures);
+    }
+    
+    function filterLectures() {
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+        const statusValue = statusFilter ? statusFilter.value : 'all';
+        
+        lectureCards.forEach(card => {
+            const title = card.querySelector('.lecture-title')?.textContent.toLowerCase() || '';
+            const description = card.querySelector('.lecture-description')?.textContent.toLowerCase() || '';
+            const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+            const status = card.getAttribute('data-status') || '';
             
-            // Reset all options in this question
-            options.forEach(opt => {
-                opt.classList.remove('selected');
-            });
+            const matchesSearch = title.includes(searchTerm) || 
+                                description.includes(searchTerm) || 
+                                tags.includes(searchTerm);
+            const matchesStatus = statusValue === 'all' || status === statusValue;
             
-            // Select current option
-            this.classList.add('selected');
+            if (matchesSearch && matchesStatus) {
+                card.classList.remove('hidden');
+                card.style.display = 'block';
+            } else {
+                card.classList.add('hidden');
+                card.style.display = 'none';
+            }
+        });
+        
+        // Update empty state
+        updateEmptyState();
+    }
+    
+    function updateEmptyState() {
+        const visibleCards = document.querySelectorAll('.lecture-card:not(.hidden)');
+        const activeTabPane = document.querySelector('.tab-pane.active');
+        
+        if (activeTabPane) {
+            let emptyState = activeTabPane.querySelector('.empty-state');
+            
+            if (visibleCards.length === 0) {
+                if (!emptyState) {
+                    emptyState = document.createElement('div');
+                    emptyState.className = 'empty-state text-center py-5';
+                    emptyState.innerHTML = `
+                        <div class="mb-3">
+                            <i class="fas fa-search fa-3x text-muted"></i>
+                        </div>
+                        <h5 class="text-muted">No lectures found</h5>
+                        <p class="text-muted">Try adjusting your search or filter criteria</p>
+                    `;
+                    activeTabPane.querySelector('.lecture-grid').appendChild(emptyState);
+                }
+            } else if (emptyState) {
+                emptyState.remove();
+            }
+        }
+    }
+
+    // Tab Change Handler
+    const trackTabs = document.querySelectorAll('[data-bs-toggle="pill"]');
+    trackTabs.forEach(tab => {
+        tab.addEventListener('shown.bs.tab', function() {
+            // Re-run filters when switching tabs
+            filterLectures();
+            
+            // Animate cards in the new tab
+            const activeTabPane = document.querySelector(tab.getAttribute('data-bs-target'));
+            if (activeTabPane) {
+                const cards = activeTabPane.querySelectorAll('.lecture-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                    card.classList.add('fade-in');
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 100);
+                });
+            }
         });
     });
-    
-    // Check Answers button
-    const checkAnswersBtn = document.getElementById('checkAnswers');
-    if (checkAnswersBtn) {
-        checkAnswersBtn.addEventListener('click', function() {
-            const questions = document.querySelectorAll('.quiz-question');
-            let score = 0;
-            let totalQuestions = questions.length;
-            
-            questions.forEach(question => {
-                const selectedOption = question.querySelector('.quiz-option.selected');
-                const feedback = question.querySelector('.feedback');
-                const options = question.querySelectorAll('.quiz-option');
-                
-                // Reset all options
-                options.forEach(opt => {
-                    opt.classList.remove('correct', 'incorrect');
-                });
-                
-                if (selectedOption) {
-                    if (selectedOption.getAttribute('data-correct') === 'true') {
-                        selectedOption.classList.add('correct');
-                        feedback.textContent = 'Correct! ' + selectedOption.getAttribute('data-explanation');
-                        feedback.classList.add('correct');
-                        feedback.classList.remove('incorrect');
-                        feedback.style.display = 'block';
-                        score++;
-                    } else {
-                        selectedOption.classList.add('incorrect');
-                        feedback.textContent = 'Incorrect. ' + selectedOption.getAttribute('data-explanation');
-                        feedback.classList.add('incorrect');
-                        feedback.classList.remove('correct');
-                        feedback.style.display = 'block';
-                        
-                        // Show the correct answer
-                        const correctOption = question.querySelector('.quiz-option[data-correct="true"]');
-                        if (correctOption) {
-                            correctOption.classList.add('correct');
-                        }
-                    }
-                } else {
-                    feedback.textContent = 'Please select an answer.';
-                    feedback.classList.add('incorrect');
-                    feedback.classList.remove('correct');
-                    feedback.style.display = 'block';
+
+    // Lecture Card Interactions
+    lectureCards.forEach(card => {
+        // Add hover effects
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+        
+        // Add click to expand functionality
+        const detailsToggle = card.querySelector('.details-toggle');
+        if (detailsToggle) {
+            detailsToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const details = card.querySelector('.lecture-details');
+                if (details) {
+                    details.classList.toggle('expanded');
+                    this.textContent = details.classList.contains('expanded') ? 'Show Less' : 'Show More';
                 }
             });
-            
-            // Show final score
-            const scoreAlert = document.createElement('div');
-            scoreAlert.className = 'alert alert-info mt-4';
-            scoreAlert.textContent = `Your score: ${score}/${totalQuestions}`;
-            
-            // Remove any existing score alert
-            const existingAlert = document.querySelector('.quiz-section .alert');
-            if (existingAlert) {
-                existingAlert.remove();
-            }
-            
-            // Add the new score alert
-            document.querySelector('.quiz-section').appendChild(scoreAlert);
-            
-            // Update progress
-            updateProgress(score, totalQuestions);
-        });
-    }
-    
-    // Reset Quiz button
-    const resetQuizBtn = document.getElementById('resetQuiz');
-    if (resetQuizBtn) {
-        resetQuizBtn.addEventListener('click', function() {
-            const questions = document.querySelectorAll('.quiz-question');
-            
-            questions.forEach(question => {
-                const options = question.querySelectorAll('.quiz-option');
-                const feedback = question.querySelector('.feedback');
-                
-                // Reset all options
-                options.forEach(opt => {
-                    opt.classList.remove('selected', 'correct', 'incorrect');
-                });
-                
-                // Clear feedback
-                feedback.textContent = '';
-                feedback.style.display = 'none';
-                feedback.classList.remove('correct', 'incorrect');
-            });
-            
-            // Remove score alert
-            const existingAlert = document.querySelector('.quiz-section .alert');
-            if (existingAlert) {
-                existingAlert.remove();
-            }
-        });
-    }
-    
-    // Code highlighting
-    document.querySelectorAll('.code-block').forEach(block => {
-        const languageLabel = document.createElement('div');
-        languageLabel.className = 'language-label';
-        languageLabel.textContent = block.dataset.language || 'php';
-        block.appendChild(languageLabel);
-    });
-    
-    // Interactive examples
-    const examples = document.querySelectorAll('.interactive-example');
-    examples.forEach(example => {
-        const runButton = example.querySelector('.run-button');
-        const outputArea = example.querySelector('.output-area');
-        
-        if (runButton && outputArea) {
-            runButton.addEventListener('click', function() {
-                const codeBlock = example.querySelector('pre');
-                const code = codeBlock.textContent;
-                
-                // Simulate code execution (just for demonstration)
-                outputArea.innerHTML = '<div class="output-content">Code execution simulated!</div>';
-                outputArea.style.display = 'block';
-            });
         }
     });
-    
-    // Save progress
-    function updateProgress(score, totalQuestions) {
-        localStorage.setItem('lectureProgress', JSON.stringify({
-            lecture: document.querySelector('title').textContent,
-            progress: (score / totalQuestions) * 100,
-            lastVisited: new Date().toISOString()
-        }));
-    }
-    
-    // Download functionality
-    const downloadButtons = document.querySelectorAll('.download-lecture');
-    downloadButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+
+    // Resource Link Interactions
+    const resourceLinks = document.querySelectorAll('.resource-link');
+    resourceLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Get lecture content
-            const lectureContent = document.querySelector('.lecture-container').innerHTML;
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
             
-            // Create a blob
-            const blob = new Blob([`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>${document.title}</title>
-                    <style>
-                        ${document.querySelector('style') ? document.querySelector('style').innerHTML : ''}
-                    </style>
-                </head>
-                <body>
-                    ${lectureContent}
-                </body>
-                </html>
-            `], {type: 'text/html'});
-            
-            // Create download link
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = document.title.replace(/\s+/g, '-').toLowerCase() + '.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            // Show tooltip or handle resource opening
+            const title = this.getAttribute('title');
+            showTooltip(this, `Opening ${title}...`);
         });
     });
-}); 
+
+    // Progress Bar Animations
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+    }
+
+    // Animate progress bars when they come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateProgressBars();
+            }
+        });
+    });
+
+    const trackHeaders = document.querySelectorAll('.track-header');
+    trackHeaders.forEach(header => {
+        observer.observe(header);
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', function(e) {
+        // Press 'S' to focus search
+        if (e.key === 's' && !e.ctrlKey && !e.metaKey && e.target.tagName !== 'INPUT') {
+            e.preventDefault();
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
+        
+        // Press 'Escape' to clear search
+        if (e.key === 'Escape' && searchInput && document.activeElement === searchInput) {
+            searchInput.value = '';
+            filterLectures();
+            searchInput.blur();
+        }
+    });
+
+    // Loading States
+    function showLoading(element) {
+        element.classList.add('loading');
+    }
+    
+    function hideLoading(element) {
+        element.classList.remove('loading');
+    }
+
+    // Tooltip System
+    function showTooltip(element, message) {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'custom-tooltip';
+        tooltip.textContent = message;
+        tooltip.style.cssText = `
+            position: absolute;
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        `;
+        
+        document.body.appendChild(tooltip);
+        
+        const rect = element.getBoundingClientRect();
+        tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+        tooltip.style.top = rect.top - tooltip.offsetHeight - 8 + 'px';
+        
+        setTimeout(() => {
+            tooltip.style.opacity = '1';
+        }, 10);
+        
+        setTimeout(() => {
+            tooltip.style.opacity = '0';
+            setTimeout(() => {
+                if (tooltip.parentNode) {
+                    tooltip.parentNode.removeChild(tooltip);
+                }
+            }, 300);
+        }, 2000);
+    }
+
+    // Statistics Counter Animation
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent);
+            const increment = target / 50;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = Math.floor(current) + (counter.textContent.includes('+') ? '+' : '');
+                }
+            }, 40);
+        });
+    }
+
+    // Animate counters when header comes into view
+    const headerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                headerObserver.unobserve(entry.target);
+            }
+        });
+    });
+
+    const statsContainer = document.querySelector('.stats-container');
+    if (statsContainer) {
+        headerObserver.observe(statsContainer);
+    }
+
+    // Initialize filters on page load
+    filterLectures();
+    
+    // Add fade-in animation to initial cards
+    setTimeout(() => {
+        const initialCards = document.querySelectorAll('.tab-pane.active .lecture-card');
+        initialCards.forEach((card, index) => {
+            card.classList.add('fade-in');
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 100);
+        });
+    }, 300);
+});
+
+// Global function to open lectures (called from HTML)
+function openLecture(lectureId) {
+    console.log(`Opening lecture: ${lectureId}`);
+    
+    // Add loading state
+    const button = event.target.closest('button');
+    const originalText = button.innerHTML;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Loading...';
+    button.disabled = true;
+    
+    // Simulate loading
+    setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        // Here you would typically navigate to the lecture page
+        // For demo purposes, we'll just show an alert
+        alert(`Opening lecture: ${lectureId}\n\nThis would normally navigate to the lecture page.`);
+    }, 1000);
+}
+
+// Utility Functions
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Export functions for potential external use
+window.LecturesApp = {
+    openLecture,
+    showTooltip: function(element, message) {
+        showTooltip(element, message);
+    }
+};
+
