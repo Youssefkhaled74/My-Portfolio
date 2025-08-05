@@ -1,314 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authentication & Authorization | Youssef Khaled</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
-    <!-- Custom CSS -->
+    <title>Mastering Laravel Auth: Breeze, Sanctum & Permissions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/lecture-auth.css">
 </head>
+
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top bg-dark navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fa-solid fa-code me-2"></i>Youssef Khaled
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fa-solid fa-home"></i> Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="learning.html">
-                            <i class="fa-solid fa-graduation-cap"></i> Learning
-                        </a>
-                    </li>
-                </ul>
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-moon theme-toggle ms-3" id="themeToggle" title="Toggle Theme"></i>
+    <div class="lecture-wrapper">
+        <!-- Lecture Header -->
+        <header class="lecture-header bg-dark text-white py-5">
+            <div class="container">
+                <div class="badge-container mb-3">
+                    <span class="badge bg-primary me-2">Laravel Advanced</span>
+                    <span class="badge bg-secondary me-2"><i class="far fa-clock me-1"></i>90 mins</span>
+                    <span class="badge bg-warning text-dark"><i class="fas fa-bolt me-1"></i>Intermediate</span>
+                </div>
+                <h1 class="display-4 fw-bold">Authentication & Authorization in Laravel</h1>
+                <p class="lead mt-3">Build secure applications using Laravel Breeze, Sanctum, and advanced permission
+                    systems</p>
+                <div class="mt-4">
+                    <button id="mark-completed" class="btn btn-outline-light">
+                        <i class="far fa-circle me-2"></i>Mark as Completed
+                    </button>
                 </div>
             </div>
-        </div>
-    </nav>
+        </header>
 
-    <!-- Header -->
-    <header class="lecture-header py-5 text-center bg-gradient">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                    <li class="breadcrumb-item"><a href="learning.html" class="text-white">Learning Tracks</a></li>
-                    <li class="breadcrumb-item active text-white" aria-current="page">Authentication & Authorization</li>
-                </ol>
-            </nav>
-            <h1 class="display-4 fw-bold mb-3">Authentication & Authorization</h1>
-            <p class="lead mb-3">Learn Laravel Breeze, Sanctum, and advanced permission management for secure applications. Includes a practical project.</p>
-            <div class="lecture-meta d-flex justify-content-center gap-3 flex-wrap">
-                <span><i class="fas fa-clock me-1"></i>90 min</span>
-                <span><i class="fas fa-signal me-1"></i>Advanced</span>
-                <span><i class="fas fa-folder me-1"></i>Laravel Advanced</span>
-            </div>
-            <div class="lecture-tags mt-3">
-                <span class="tag">Breeze</span>
-                <span class="tag">Sanctum</span>
-                <span class="tag">Permissions</span>
-            </div>
-            <button id="markCompletedBtn" class="btn btn-success mt-4">
-                <i class="fas fa-check-circle me-2"></i>Mark as Completed
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container py-5">
-        <div class="accordion" id="lectureAccordion">
-            <!-- Introduction -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="introHeading">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#introCollapse">
-                        <i class="fas fa-info-circle me-2"></i>Introduction
-                    </button>
+        <!-- Lecture Content -->
+        <main class="container my-5">
+            <!-- Introduction Section -->
+            <section class="lecture-section mb-5">
+                <h2 class="section-title d-flex align-items-center">
+                    <i class="fas fa-door-open me-3"></i>Introduction
                 </h2>
-                <div id="introCollapse" class="accordion-collapse collapse show" data-bs-parent="#lectureAccordion">
-                    <div class="accordion-body">
-                        <p>This lecture dives into building secure Laravel applications using authentication and authorization. We'll cover Laravel Breeze for quick setup, Sanctum for API authentication, and advanced permission management with roles and permissions. By the end, you'll build a practical project: a multi-user dashboard with role-based access.</p>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>إيه الموضوع؟</strong> بص يا معلم، المحاضرة دي شبه إنك بتحط بوابة أمان على بيتك (التطبيق بتاعك). Authentication هي إزاي تعرف إن اللي بيخبط على الباب ده فعلاً صاحب البيت، وAuthorization هي إنك تقرر إيه اللي يقدر يدخل يعمله جوا. هنستخدم Breeze وSanctum عشان نعمل الحكاية دي بسرعة ونظام، وهنتعلم كمان إزاي ندي صلاحيات مختلفة لكل واحد.
-                        </p>
+                <div class="section-content mt-4">
+                    <p class="fw-bold">Why authentication and authorization matter:</p>
+                    <p>In this lecture, you'll master Laravel's robust security systems to protect your applications.
+                        We'll cover everything from basic authentication setup to advanced permission management used in
+                        enterprise applications.</p>
+
+                    <div class="key-concepts bg-light p-4 rounded-3 mt-4">
+                        <h5><i class="fas fa-key me-2"></i>Key Concepts You'll Learn:</h5>
+                        <ul class="mt-3">
+                            <li>Laravel Breeze for rapid authentication scaffolding</li>
+                            <li>Sanctum for API token-based authentication</li>
+                            <li>Role-based and permission-based access control</li>
+                            <li>Route protection and middleware strategies</li>
+                            <li>Performance considerations for auth systems</li>
+                        </ul>
+                    </div>
+
+                    <div class="local-explanation mt-4 p-4 rounded-3">
+                        <h5><i class="fas fa-comment-dots me-2"></i>باللهجة المصرية:</h5>
+                        <p class="mt-2">الـ Authentication والـ Authorization دول أساس أي نظام آمن. تخيل إن عندك عمارة -
+                            الـ Authentication ده زي البوابة الرئيسية اللي بتثبت إنك ساكن في العمارة، والـ Authorization
+                            ده زي المفتاح اللي يخليك تدخل الشقة بتاعتك بس مش شقة جارك! في Laravel هنعرف ننفذ النظام ده
+                            بطريقة محترفة.</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Main Concepts -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="conceptsHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#conceptsCollapse">
-                        <i class="fas fa-book me-2"></i>Main Concepts
-                    </button>
+            <!-- Main Concepts Section -->
+            <section class="lecture-section mb-5">
+                <h2 class="section-title d-flex align-items-center">
+                    <i class="fas fa-cubes me-3"></i>Core Concepts
                 </h2>
-                <div id="conceptsCollapse" class="accordion-collapse collapse" data-bs-parent="#lectureAccordion">
-                    <div class="accordion-body">
-                        <h3>1. Laravel Breeze</h3>
-                        <p>A lightweight package for scaffolding authentication (login, registration, password reset). It's perfect for quick setup.</p>
-                        <p class="real-life-analogy alert alert-light">
-                            <strong>Real-life Analogy:</strong> Think of Breeze as a ready-made security gate for your app. You just install it, and it handles the basics like letting users in or out, without building everything from scratch.
-                        </p>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>يعني إيه Breeze؟</strong> تخيّل إنك عايز تبني بوابة أمان لبيتك، بس بدل ما تبنيها من الصفر، فيه واحد جاهز جايب لك البوابة دي ومظبطها. Breeze كده، بيخليك تعمل اللوجن والريجيستر بسرعة من غير تعقيد.
-                        </p>
+                <div class="section-content mt-4">
+                    <!-- Laravel Breeze -->
+                    <div class="concept-card card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="h5 mb-0"><i class="fas fa-wind me-2"></i>Laravel Breeze</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Laravel Breeze is a minimal, simple implementation of all Laravel's authentication
+                                features, including views and controllers.</p>
 
-                        <h3>2. Laravel Sanctum</h3>
-                        <p>Provides API token authentication and SPA authentication. Ideal for securing APIs without complex OAuth setups.</p>
-                        <p class="real-life-analogy alert alert-light">
-                            <strong>Real-life Analogy:</strong> Sanctum is like giving a VIP pass to trusted users. They show the pass (token), and your app lets them access private areas without asking for ID every time.
-                        </p>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>إيه بقى Sanctum؟</strong> فكر فيه زي كارت ممغنط بيطلع للزبون المهم. الزبون بيوري الكارت ده (التوكن) والتطبيق بيفتح له الباب من غير ما يسأله كل مرة هو مين. كده Sanctum بيأمن الـAPI بطريقة سهلة.
-                        </p>
+                            <div class="code-block bg-dark text-white p-3 rounded-3 mt-3">
+                                <pre><code class="language-bash"># Install Breeze
+composer require laravel/breeze --dev
 
-                        <h3>3. Roles and Permissions</h3>
-                        <p>Manage what users can do using packages like Spatie Laravel Permission. Assign roles (e.g., admin, editor) and specific permissions (e.g., edit-post).</p>
-                        <p class="real-life-analogy alert alert-light">
-                            <strong>Real-life Analogy:</strong> Imagine a company where the CEO can do everything, managers can approve projects, and employees can only view tasks. Roles and permissions work the same way, controlling who can do what in your app.
-                        </p>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>الرولز والبرميشنز دي إيه؟</strong> زي ما تكون في شركة، المدير الكبير يقدر يعمل كل حاجة، والموظف الصغير يقدر بس يشوف شغله. الرولز بتحدد مين هو المدير ومين الموظف، والبرميشنز بتقول كل واحد يقدر يعمل إيه بالظبط.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Code Examples -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="codeHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#codeCollapse">
-                        <i class="fas fa-code me-2"></i>Code Examples
-                    </button>
-                </h2>
-                <div id="codeCollapse" class="accordion-collapse collapse" data-bs-parent="#lectureAccordion">
-                    <div class="accordion-body">
-                        <h3>Installing Laravel Breeze</h3>
-                        <pre class="bg-dark text-light p-3 rounded"><code>composer require laravel/breeze --dev
+# Scaffold authentication
 php artisan breeze:install
+
+# Compile frontend assets
 npm install && npm run dev
+
+# Run migrations
 php artisan migrate</code></pre>
-                        <p><strong>Explanation:</strong> This sets up authentication scaffolding with views, routes, and controllers for login, registration, and more.</p>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>إيه اللي بنعمله هنا؟</strong> كأنك بتشتري أدوات جاهزة لبناء البوابة بتاعتك. Composer بيجيب Breeze، والباقي بيظبط السيستم عشان يشتغل فورًا.
-                        </p>
+                            </div>
 
-                        <h3>Setting Up Sanctum for API</h3>
-                        <pre class="bg-dark text-light p-3 rounded"><code>composer require laravel/sanctum
-php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-php artisan migrate
+                            <div class="advanced-tip mt-3 p-3 bg-info bg-opacity-10 rounded-3">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Pro Tip:</h6>
+                                <p>Customize the published views in <code>resources/views/auth</code> to match your
+                                    application's design system.</p>
+                            </div>
 
-// In config/sanctum.php
-'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', 'localhost,127.0.0.1')),
+                            <div class="local-explanation mt-3 p-3 rounded-3">
+                                <h6><i class="fas fa-comment-dots me-2"></i>باللهجة المصرية:</h6>
+                                <p class="mt-2">الـ Breeze ده زي ما يكون عربية جاهزة ماشية من المعرض! بدل ما تبدأ من
+                                    الصفر في نظام التسجيل واللوجين، الـ Breeze بيجيبهولك جاهز مع الشكل الأساسي والتستنج.
+                                    بس تقدر تزود عليه اللي انت عاوزه بعد كده.</p>
+                            </div>
+                        </div>
+                    </div>
 
-// In app/Http/Kernel.php
-protected $middlewareGroups = [
-    'api' => [
-        \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-        'throttle:api',
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-    ],
-];
+                    <!-- Sanctum Section -->
+                    <div class="concept-card card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="h5 mb-0"><i class="fas fa-shield-alt me-2"></i>Laravel Sanctum</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Sanctum provides a featherweight authentication system for SPAs, mobile applications, and
+                                simple token-based APIs.</p>
 
-// Protecting an API route
+                            <div class="code-block bg-dark text-white p-3 rounded-3 mt-3">
+                                <pre><code class="language-php">// Authenticating API requests
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});</code></pre>
-                        <p><strong>Explanation:</strong> Sanctum enables token-based API authentication. The middleware ensures only authenticated users access protected routes.</p>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>ده بيعمل إيه؟</strong> زي ما تقول للناس اللي عايزة تدخل الـAPI لازم توري الكارت الممغنط. لو الكارت صح، يدخلوا، لو لأ، الباب يفضل مقفول.
-                        </p>
+});
 
-                        <h3>Roles and Permissions with Spatie</h3>
-                        <pre class="bg-dark text-light p-3 rounded"><code>composer require spatie/laravel-permission
-php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-php artisan migrate
+// Creating tokens
+$token = $user->createToken('api-token', ['server:update'])->plainTextToken;</code></pre>
+                            </div>
 
-// In a seeder
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+                            <div class="analogy mt-3 p-3 bg-light rounded-3">
+                                <h6><i class="fas fa-brain me-2"></i>Real-life Analogy:</h6>
+                                <p class="mt-2">Sanctum tokens work like hotel key cards. Each guest (user) gets a
+                                    unique card (token) that grants access to specific rooms (routes) for a limited time
+                                    (token expiration).</p>
+                            </div>
 
-Role::create(['name' => 'admin']);
-Permission::create(['name' => 'edit-post']);
-$user->assignRole('admin');
-$user->givePermissionTo('edit-post');
+                            <div class="local-explanation mt-3 p-3 rounded-3">
+                                <h6><i class="fas fa-comment-dots me-2"></i>باللهجة المصرية:</h6>
+                                <p class="mt-2">الـ Sanctum ده شبه لما تروح النادي ويدوك كارت دخول. الكارت ده بيخليك
+                                    تدخل النادي بس مش كل الحمامات أو الأماكن المخصصة للأعضاء الدايمين. الـ API token في
+                                    Sanctum نفس الفكرة بالظبط!</p>
+                            </div>
+                        </div>
+                    </div>
 
-// In a controller
-if (auth()->user()->hasPermissionTo('edit-post')) {
-    // Allow editing
-}</code></pre>
-                        <p><strong>Explanation:</strong> Spatie's package allows assigning roles and permissions to users, enabling fine-grained access control.</p>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>الكود ده بيعمل إيه؟</strong> كأنك بتدي بطاقة تعريف لكل موظف في الشركة، وبتقول مين يقدر يعدل الحاجات ومين بس يتفرج. Spatie بيخليك تتحكم في ده بسهولة.
-                        </p>
+                    <!-- Permission System -->
+                    <div class="concept-card card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="h5 mb-0"><i class="fas fa-user-lock me-2"></i>Permission Management</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Laravel provides two primary ways to authorize actions: gates and policies.</p>
+
+                            <div class="code-block bg-dark text-white p-3 rounded-3 mt-3">
+                                <pre><code class="language-php">// Defining a Gate
+Gate::define('edit-post', function (User $user, Post $post) {
+    return $user->id === $post->user_id;
+});
+
+// Creating a Policy
+php artisan make:policy PostPolicy --model=Post
+
+// Authorizing in controller
+$this->authorize('update', $post);</code></pre>
+                            </div>
+
+                            <div class="advanced-tip mt-3 p-3 bg-info bg-opacity-10 rounded-3">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Senior Dev Tip:</h6>
+                                <p>For complex applications, consider using packages like
+                                    <code>spatie/laravel-permission</code> for role/permission management with database
+                                    backing.</p>
+                            </div>
+
+                            <div class="local-explanation mt-3 p-3 rounded-3">
+                                <h6><i class="fas fa-comment-dots me-2"></i>باللهجة المصرية:</h6>
+                                <p class="mt-2">الـ Gates والـ Policies دول شبه اللوايح في الشركة. تخيل إنك في شركة فيها
+                                    موظفين ومديرين - كل واحد ليه صلاحيات مختلفة. الـ Gate ده زي الحارس اللي بيقول "مين
+                                    اللي يقدر يدخل هنا؟" والـ Policy بيكون مجموعة القواعد المكتوبة اللي بتحكم الصلاحيات
+                                    دي.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Advanced Tips -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="tipsHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tipsCollapse">
-                        <i class="fas fa-lightbulb me-2"></i>Advanced Tips
-                    </button>
+            <!-- Mini Project -->
+            <section class="lecture-section mb-5">
+                <h2 class="section-title d-flex align-items-center">
+                    <i class="fas fa-laptop-code me-3"></i>Mini Project
                 </h2>
-                <div id="tipsCollapse" class="accordion-collapse collapse" data-bs-parent="#lectureAccordion">
-                    <div class="accordion-body">
-                        <ul>
-                            <li><strong>Custom Middleware for Permissions:</strong> Instead of checking permissions in controllers, create a middleware like <code>can:edit-post</code> for cleaner code.</li>
-                            <li><strong>Sanctum Token Abilities:</strong> Use Sanctum's token abilities to limit what an API token can do (e.g., <code>$user->createToken('api-token', ['read-posts'])</code>).</li>
-                            <li><strong>Cache Roles and Permissions:</strong> Cache permission checks using Laravel's cache to reduce database queries in high-traffic apps.</li>
-                            <li><strong>Audit Logs:</strong> Implement audit logging for user actions (e.g., who edited a post) to enhance security and traceability.</li>
-                        </ul>
-                        <p class="egyptian-explanation alert alert-info">
-                            <strong>نصايح للمعلمين الكبار:</strong> لو عايز تشتغل زي المحترفين، خلي الكود بتاعك نضيف. يعني بدل ما تفحص الصلاحيات في كل حتة، اعمل ميدلوير تخلّص المهمة دي مرة واحدة. ولو التطبيق كبير، استخدم الكاش عشان توفر وقت الداتابيز.
-                        </p>
+                <div class="section-content mt-4">
+                    <div class="project-card card border-success">
+                        <div class="card-header bg-success text-white">
+                            <h3 class="h5 mb-0">Blog System with Roles</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Build a blog system with the following requirements:</p>
+                            <ul>
+                                <li>Three user roles: Admin, Editor, Subscriber</li>
+                                <li>Admins can manage all content and users</li>
+                                <li>Editors can create/edit their own posts</li>
+                                <li>Subscribers can only view content</li>
+                                <li>Implement API access for mobile clients</li>
+                            </ul>
+
+                            <div class="mt-3">
+                                <button class="btn btn-outline-success" data-bs-toggle="collapse"
+                                    data-bs-target="#project-solution">
+                                    <i class="fas fa-lightbulb me-2"></i>Show Solution Approach
+                                </button>
+
+                                <div id="project-solution" class="collapse mt-3">
+                                    <div class="p-3 bg-light rounded-3">
+                                        <h6>Implementation Steps:</h6>
+                                        <ol>
+                                            <li>Install Laravel Breeze for authentication</li>
+                                            <li>Add role field to users table (migration)</li>
+                                            <li>Create Post model with CRUD operations</li>
+                                            <li>Define gates/policies for post access control</li>
+                                            <li>Install Sanctum for API authentication</li>
+                                            <li>Create API routes with role middleware</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Quiz -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="quizHeading">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#quizCollapse">
-                        <i class="fas fa-question-circle me-2"></i>Interactive Quiz
-                    </button>
+            <!-- Quiz Section -->
+            <section class="lecture-section mb-5">
+                <h2 class="section-title d-flex align-items-center">
+                    <i class="fas fa-question-circle me-3"></i>Knowledge Check
                 </h2>
-                <div id="quizCollapse" class="accordion-collapse collapse" data-bs-parent="#lectureAccordion">
-                    <div class="accordion-body">
-                        <form id="quizForm">
-                            <h3>Question 1: What is the primary function of Laravel Breeze?</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" id="q1a" value="a">
-                                <label class="form-check-label" for="q1a">API token authentication</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" id="q1b" value="b">
-                                <label class="form-check-label" for="q1b">Scaffolding basic authentication features</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q1" id="q1c" value="c">
-                                <label class="form-check-label" for="q1c">Managing roles and permissions</label>
-                            </div>
+                <div class="section-content mt-4">
+                    <div class="quiz-card card">
+                        <div class="card-header bg-dark text-white">
+                            <h3 class="h5 mb-0">Test Your Understanding</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="lecture-quiz">
+                                <!-- Question 1 -->
+                                <div class="quiz-question mb-4">
+                                    <p class="fw-bold">1. What's the main purpose of Laravel Sanctum?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q1" id="q1a" value="a">
+                                        <label class="form-check-label" for="q1a">To provide a full-stack authentication
+                                            system with views</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q1" id="q1b" value="b">
+                                        <label class="form-check-label" for="q1b">To handle API token authentication for
+                                            SPAs and mobile apps</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q1" id="q1c" value="c">
+                                        <label class="form-check-label" for="q1c">To manage database migrations</label>
+                                    </div>
+                                </div>
 
-                            <h3>Question 2: What does Laravel Sanctum provide?</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q2" id="q2a" value="a">
-                                <label class="form-check-label" for="q2a">Full OAuth implementation</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q2" id="q2b" value="b">
-                                <label class="form-check-label" for="q2b">API token and SPA authentication</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q2" id="q2c" value="c">
-                                <label class="form-check-label" for="q2c">Database migrations only</label>
-                            </div>
+                                <!-- Question 2 -->
+                                <div class="quiz-question mb-4">
+                                    <p class="fw-bold">2. Where would you customize the login view when using Laravel
+                                        Breeze?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q2" id="q2a" value="a">
+                                        <label class="form-check-label" for="q2a">In the vendor directory</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q2" id="q2b" value="b">
+                                        <label class="form-check-label" for="q2b">In resources/views/auth</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q2" id="q2c" value="c">
+                                        <label class="form-check-label" for="q2c">In the config/auth.php file</label>
+                                    </div>
+                                </div>
 
-                            <h3>Question 3: How does Spatie Laravel Permission help?</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q3" id="q3a" value="a">
-                                <label class="form-check-label" for="q3a">By providing API routing</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q3" id="q3b" value="b">
-                                <label class="form-check-label" for="q3b">By managing roles and permissions</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q3" id="q3c" value="c">
-                                <label class="form-check-label" for="q3c">By optimizing database queries</label>
-                            </div>
+                                <!-- Question 3 -->
+                                <div class="quiz-question mb-4">
+                                    <p class="fw-bold">3. What's the difference between a Gate and a Policy in Laravel?
+                                    </p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q3" id="q3a" value="a">
+                                        <label class="form-check-label" for="q3a">Gates are for simple checks, Policies
+                                            organize logic around a model</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q3" id="q3b" value="b">
+                                        <label class="form-check-label" for="q3b">Policies are deprecated in favor of
+                                            Gates</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q3" id="q3c" value="c">
+                                        <label class="form-check-label" for="q3c">There is no difference</label>
+                                    </div>
+                                </div>
 
-                            <h3>Question 4: Why cache permission checks?</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q4" id="q4a" value="a">
-                                <label class="form-check-label" for="q4a">To reduce database queries</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q4" id="q4b" value="b">
-                                <label class="form-check-label" for="q4b">To increase API latency</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="q4" id="q4c" value="c">
-                                <label class="form-check-label" for="q4c">To simplify migrations</label>
-                            </div>
+                                <!-- Question 4 -->
+                                <div class="quiz-question mb-4">
+                                    <p class="fw-bold">4. How would you protect a route to only allow authenticated
+                                        users?</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q4" id="q4a" value="a">
+                                        <label class="form-check-label" for="q4a">Route::get('/profile',
+                                            [ProfileController::class, 'show'])->middleware('auth');</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q4" id="q4b" value="b">
+                                        <label class="form-check-label" for="q4b">Route::get('/profile',
+                                            [ProfileController::class, 'show'])->middleware('admin');</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q4" id="q4c" value="c">
+                                        <label class="form-check-label" for="q4c">Route::get('/profile',
+                                            [ProfileController::class, 'show'])->middleware('guest');</label>
+                                    </div>
+                                </div>
 
-                            <button type="button" class="btn btn-primary mt-3" onclick="submitQuiz()">Submit Answers</button>
-                        </form>
-                        <div id="quizResult" class="mt-3"></div>
+                                <button type="submit" class="btn btn-primary mt-3">
+                                    <i class="fas fa-check-circle me-2"></i>Submit Answers
+                                </button>
+                            </form>
+
+                            <div id="quiz-results" class="mt-4 p-3 rounded-3 d-none">
+                                <h5 class="mb-3">Your Results:</h5>
+                                <div class="progress mb-3" style="height: 25px;">
+                                    <div id="quiz-progress" class="progress-bar" role="progressbar" style="width: 0%">
+                                    </div>
+                                </div>
+                                <p id="quiz-score" class="fw-bold"></p>
+                                <p id="quiz-feedback"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
+        </main>
+
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container text-center">
+                <p class="mb-0">Part of the <strong>Laravel Advanced Track</strong> in the Backend Developer Roadmap</p>
+                <p class="mt-2 text-muted">© 2023 Professional Developer Portfolio</p>
             </div>
-        </div>
-    </main>
+        </footer>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer mt-5 py-4 bg-dark text-white">
-        <div class="container text-center">
-            <p>&copy; 2024 Youssef Khaled. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/lecture-auth.js"></script>
 </body>
+
 </html>
