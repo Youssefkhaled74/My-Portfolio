@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel Task Scheduling | Advanced</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="css/lecture-scheduling.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="fa-solid fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="learning.html"><i class="fa-solid fa-graduation-cap me-1"></i>Learning</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="lecture-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="learning.html" class="text-white-50">Learning Tracks</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Task Scheduling</li>
+                </ol>
+            </nav>
+            <h1 class="display-5 fw-bold">Laravel Task Scheduling</h1>
+            <p class="lead mb-4">Automate recurring tasks using the scheduler: frequency options, timezones, mutex, overlapping prevention, maintenance windows, and monitoring.</p>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+                <span class="badge rounded-pill bg-info-subtle text-info"><i class="fas fa-signal me-1"></i>Difficulty: Intermediate</span>
+                <span class="badge rounded-pill bg-warning-subtle text-warning"><i class="fas fa-clock me-1"></i>Duration: 45 min</span>
+                <span class="badge rounded-pill bg-success-subtle text-success"><i class="fas fa-calendar-check me-1"></i>Scheduling</span>
+                <button id="markCompletedBtn" class="btn btn-outline-light ms-auto"><i class="far fa-check-circle me-2"></i>Mark as Completed</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container content-container">
+        <section class="mb-5" data-aos="fade-up">
+            <h2 class="section-title"><i class="fas fa-info-circle me-2"></i>Introduction</h2>
+            <p>Use Laravel’s scheduler to reliably run commands and closures on a schedule. We’ll cover setup, preventing overlaps, on-one-server, timezones, and visibility.</p>
+            <div class="arabic-explain">
+                <strong>يعني إيه Scheduling؟</strong>
+                <p>زي منبّه بتظبطه. السيستم يصحى كل شوية يعمل مهمة معينة: يبعت إيميلات، ينظّف داتا، أو يعمل نسخ احتياطية.</p>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="50">
+            <h2 class="section-title"><i class="fas fa-layer-group me-2"></i>Main Concepts</h2>
+            <div class="accordion" id="conceptsAccordion">
+                <!-- Setup & Single Cron -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSetup">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSetup" aria-expanded="true" aria-controls="collapseSetup">
+                            Setup: one cron, many schedules
+                        </button>
+                    </h2>
+                    <div id="collapseSetup" class="accordion-collapse collapse show" aria-labelledby="headingSetup" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-bash"># System cron (runs every minute)
+* * * * * php /path/to/artisan schedule:run >> /dev/null 2>&1</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">// app/Console/Kernel.php
+protected function schedule(Schedule $schedule): void
+{
+    $schedule->command('invoices:send')->dailyAt('08:00');
+    $schedule->job(new \App\Jobs\CleanupLogs)->hourly();
+}</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li>A single cron triggers Laravel’s scheduler every minute.</li>
+                                <li>Define all recurring tasks centrally in <code>Console\Kernel</code>.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>ليه “كرون واحد”؟</strong>
+                                <p>بدل ما تعمل مية جدول، بتخلي كرون واحد يصحّي لارفيل، وهو يتكفّل بباقي المواعيد.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frequencies, Timezones -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFreq">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFreq" aria-expanded="false" aria-controls="collapseFreq">
+                            Frequencies, timezones, and maintenance windows
+                        </button>
+                    </h2>
+                    <div id="collapseFreq" class="accordion-collapse collapse" aria-labelledby="headingFreq" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">$schedule->command('emails:weekly')->weeklyOn(1, '09:00')->timezone('Africa/Cairo');
+$schedule->command('cache:prune')->twiceDaily(1, 13);
+$schedule->command('reports:generate')->mondays()->between('08:00', '18:00');</code></pre>
+                            </div>
+                            <div class="arabic-explain">
+                                <strong>توقيت؟</strong>
+                                <p>لو عندك مستخدمين في مصر والسعودية، تضبط التوقيت المناسب لكل مهمة بحيث الرسائل توصل في وقت معقول.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overlaps & Mutex -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingMutex">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMutex" aria-expanded="false" aria-controls="collapseMutex">
+                            Prevent overlaps and run-once semantics
+                        </button>
+                    </h2>
+                    <div id="collapseMutex" class="accordion-collapse collapse" aria-labelledby="headingMutex" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">$schedule->command('import:csv')->everyFiveMinutes()->withoutOverlapping(15);
+$schedule->command('backup:run')->daily()->onOneServer();</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li><code>withoutOverlapping(15)</code>: don’t start a new run for 15 minutes if previous still running.</li>
+                                <li><code>onOneServer()</code>: in multi-server setups, only one runs the task.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>يعني إيه Overlapping؟</strong>
+                                <p>متشغّلش نفس الشغل مرتين فوق بعض. زي ما تكون بتنسخ ملفات ولسه مخلصتش، متبدأش نسخة جديدة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output, Ping, Conditional -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOps">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOps" aria-expanded="false" aria-controls="collapseOps">
+                            Ops: output, pings, conditions, and notifications
+                        </button>
+                    </h2>
+                    <div id="collapseOps" class="accordion-collapse collapse" aria-labelledby="headingOps" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">$schedule->command('reports:generate')
+    ->sendOutputTo(storage_path('logs/reports.log'))
+    ->emailOutputTo('ops@example.com')
+    ->when(fn() => app()->environment('production'))
+    ->before(function () { /* notify start */ })
+    ->after(function () { /* notify end */ });</code></pre>
+                            </div>
+                            <div class="arabic-explain">
+                                <strong>المتابعة</strong>
+                                <p>خلي دايماً فيه أثر مكتوب ومتابعة بالإيميل عشان تعرف لو حاجة وقفت أو استغرقت وقت غير معتاد.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horizon / Monitoring (bonus) -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingMonitor">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMonitor" aria-expanded="false" aria-controls="collapseMonitor">
+                            Monitoring and health checks
+                        </button>
+                    </h2>
+                    <div id="collapseMonitor" class="accordion-collapse collapse" aria-labelledby="headingMonitor" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <p>Use third-party cron monitors (e.g., Healthchecks, Cronitor) to verify jobs run on time and alert on failures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="section-title"><i class="fas fa-user-friends me-2"></i>Real-life Analogies</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="analogy-card">
+                        <h6><i class="fas fa-clock me-2"></i>Shifts</h6>
+                        <p>زي شفتات الموظفين. كل مهمة ليها موعد، ومينفعش شيفت يتداخل مع اللي بعده.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="analogy-card">
+                        <h6><i class="fas fa-server me-2"></i>One Server</h6>
+                        <p>لما يكون عندك فرعين، بتختار فرع واحد بس يعمل المهمة عشان ميبقاش فيه تضارب.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="150">
+            <h2 class="section-title"><i class="fas fa-user-tie me-2"></i>Advanced Developer Tips</h2>
+            <ul class="tips-list">
+                <li>Prefer commands/jobs over closures for testability and reuse.</li>
+                <li>Log duration per task and alert on anomalies.</li>
+                <li>Use <code>onOneServer</code> with a shared cache (Redis) in multi-node setups.</li>
+                <li>Document all schedules in README/runbook for ops.</li>
+            </ul>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="section-title"><i class="fas fa-project-diagram me-2"></i>Mini Project: Housekeeping</h2>
+            <p>Implement housekeeping: prune logs daily, purge temp files hourly, and send weekly summaries.</p>
+            <div class="code-block">
+<pre><code class="language-php">protected function schedule(Schedule $schedule): void
+{
+    $schedule->command('logs:prune')->dailyAt('02:30')->withoutOverlapping();
+    $schedule->job(new \App\Jobs\PurgeTempFiles)->hourly();
+    $schedule->command('summary:weekly')->weeklyOn(7, '09:00');
+}</code></pre>
+            </div>
+            <div class="arabic-explain">
+                <strong>ليه الترتيب مهم؟</strong>
+                <p>لأن مهام الصيانة أحياناً بتعتمد على بعض. خلي التقارير بعد التنضيف عشان الأرقام تطلع مزبوطة.</p>
+            </div>
+        </section>
+
+        <section class="mb-5" id="quiz" data-aos="fade-up" data-aos-delay="250">
+            <h2 class="section-title"><i class="fas fa-question-circle me-2"></i>Interactive Quiz</h2>
+            <form id="quizForm" class="quiz-form">
+                <div class="quiz-question">
+                    <p><strong>1.</strong> How many crons do you typically need on the server?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="a" id="q1a"><label class="form-check-label" for="q1a">One</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="b" id="q1b"><label class="form-check-label" for="q1b">One per task</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="c" id="q1c"><label class="form-check-label" for="q1c">None</label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>2.</strong> How do you avoid running a task twice concurrently?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="a" id="q2a"><label class="form-check-label" for="q2a"><code>withoutOverlapping()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="b" id="q2b"><label class="form-check-label" for="q2b"><code>everyMinute()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="c" id="q2c"><label class="form-check-label" for="q2c"><code>twiceDaily()</code></label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>3.</strong> Which method ensures only one server runs the task?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="a" id="q3a"><label class="form-check-label" for="q3a"><code>onOneServer()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="b" id="q3b"><label class="form-check-label" for="q3b"><code>after()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="c" id="q3c"><label class="form-check-label" for="q3c"><code>timezone()</code></label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>4.</strong> How do you capture a task’s output to a file?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="a" id="q4a"><label class="form-check-label" for="q4a"><code>sendOutputTo()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="b" id="q4b"><label class="form-check-label" for="q4b"><code>emailOutputTo()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="c" id="q4c"><label class="form-check-label" for="q4c"><code>weeklyOn()</code></label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>5.</strong> What’s a good practice for production schedules?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="a" id="q5a"><label class="form-check-label" for="q5a">Use closures everywhere</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="b" id="q5b"><label class="form-check-label" for="q5b">Prefer commands/jobs, log duration, and monitor</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="c" id="q5c"><label class="form-check-label" for="q5c">Disable emails</label></div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button type="button" id="submitQuiz" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Submit</button>
+                    <div id="quizResult" class="quiz-result" aria-live="polite"></div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer mt-5 py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Youssef Khaled. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/languages/php.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+    <script src="js/lecture-scheduling.js"></script>
+</body>
+</html>
+

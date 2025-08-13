@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel Queues, Jobs & Workers | Advanced</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="css/lecture-queues.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="learning.html"><i class="fa-solid fa-graduation-cap me-1"></i>Learning</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="lecture-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="learning.html" class="text-white-50">Learning Tracks</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Queues, Jobs & Workers</li>
+                </ol>
+            </nav>
+            <h1 class="display-5 fw-bold">Queues, Jobs & Workers</h1>
+            <p class="lead mb-4">Master asynchronous processing: drivers, workers, retries, backoff, chaining, batching, idempotency, Horizon, and production hardening.</p>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+                <span class="badge rounded-pill bg-info-subtle text-info"><i class="fas fa-signal me-1"></i>Difficulty: Advanced</span>
+                <span class="badge rounded-pill bg-warning-subtle text-warning"><i class="fas fa-clock me-1"></i>Duration: 90 min</span>
+                <span class="badge rounded-pill bg-success-subtle text-success"><i class="fas fa-tasks me-1"></i>Queues</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary"><i class="fas fa-robot me-1"></i>Workers</span>
+                <button id="markCompletedBtn" class="btn btn-outline-light ms-auto"><i class="far fa-check-circle me-2"></i>Mark as Completed</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container content-container">
+        <section class="mb-5" data-aos="fade-up">
+            <h2 class="section-title"><i class="fas fa-info-circle me-2"></i>Introduction</h2>
+            <p>Queues decouple slow tasks from web requests. You’ll learn to design resilient pipelines with retries, backoff, idempotency, and monitoring.</p>
+            <div class="arabic-explain">
+                <strong>يعني إيه Queue؟</strong>
+                <p>تخيل مطعم كبير. الطلبات بتتسجل وتتكدس في طابور، والطباخين (الـ Workers) بياخدوا طلب طلب ويجهزوه. كده الزبون ما يستناش في الصف كتير، وبيرجعله الرد بسرعة.</p>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="50">
+            <h2 class="section-title"><i class="fas fa-layer-group me-2"></i>Main Concepts</h2>
+            <div class="accordion" id="conceptsAccordion">
+                <!-- Drivers & Setup -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingDrivers">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDrivers" aria-expanded="true" aria-controls="collapseDrivers">
+                            Queue drivers and project setup
+                        </button>
+                    </h2>
+                    <div id="collapseDrivers" class="accordion-collapse collapse show" aria-labelledby="headingDrivers" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <p>Laravel supports <strong>sync</strong>, <strong>database</strong>, <strong>Redis</strong>, and <strong>SQS</strong> drivers. Use Redis for production speed and features.</p>
+                            <div class="code-block">
+<pre><code class="language-bash"># Using database driver (simple & great for demos)
+php artisan queue:table
+php artisan migrate
+
+# Using Redis (recommended)
+composer require predis/predis
+redis-server # or a managed Redis service</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li><code>queue:table</code> creates the jobs table for DB driver.</li>
+                                <li>Redis offers speed, delays, priorities, and Horizon.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>Driver يعني إيه؟</strong>
+                                <p>الدرايفر هو المخزن اللي بنحط فيه الطوابير. زي مخزن ورقي (Database) أو مخزن سريع (Redis) أو خدمة خارجية (SQS).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creating Jobs -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingJobs">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJobs" aria-expanded="false" aria-controls="collapseJobs">
+                            Creating jobs and dispatching
+                        </button>
+                    </h2>
+                    <div id="collapseJobs" class="accordion-collapse collapse" aria-labelledby="headingJobs" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-bash">php artisan make:job SendWelcomeEmail</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">// app/Jobs/SendWelcomeEmail.php
+namespace App\Jobs;
+
+use App\Models\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+class SendWelcomeEmail implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public int $tries = 3;              // retry attempts
+    public int $backoff = 10;           // seconds between retries
+
+    public function __construct(public User $user) {}
+
+    public function handle(): void
+    {
+        // send email...
+    }
+}</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">// Dispatching
+SendWelcomeEmail::dispatch($user)
+    ->onQueue('emails')
+    ->delay(now()->addMinutes(5));
+
+// Fire-and-forget after response returns
+SendWelcomeEmail::dispatchAfterResponse($user);</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li><code>ShouldQueue</code> tells Laravel to queue instead of run immediately.</li>
+                                <li><code>$tries</code> and <code>$backoff</code> control retry strategy.</li>
+                                <li><code>dispatchAfterResponse</code> avoids delaying HTTP response.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>يعني إيه Worker؟</strong>
+                                <p>عامل شاطر قاعد ياخد شغلانة ورا التانية من الطابور. لو حاجة وقعت، بيعيدها تاني حسب القواعد.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chaining & Batching -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingPipeline">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePipeline" aria-expanded="false" aria-controls="collapsePipeline">
+                            Chaining, batching, and progress
+                        </button>
+                    </h2>
+                    <div id="collapsePipeline" class="accordion-collapse collapse" aria-labelledby="headingPipeline" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">use Illuminate\Support\Facades\Bus;
+
+// Chain: run in sequence; stop if one fails
+Bus::chain([
+    new GenerateThumbnail($image),
+    new OptimizeImage($image),
+    new NotifyUser($image->user_id),
+])->onQueue('media')->dispatch();
+
+// Batch: run in parallel; handle lifecycle callbacks
+Bus::batch([
+    new ImportRow($rows[0]),
+    new ImportRow($rows[1]),
+    // ...
+])->then(function ($batch) {
+    // all jobs completed
+})->catch(function ($batch, $e) {
+    // first failure
+})->finally(function ($batch) {
+    // finished (success or fail)
+})->allowFailures()->name('csv-import')->dispatch();</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li>Use chain for strict ordering; batch for concurrency and lifecycle hooks.</li>
+                                <li><code>allowFailures()</code> prevents the whole batch from failing early.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>Chain ولا Batch؟</strong>
+                                <p>تخيلك بتطبخ وجبة. الشاي بعد الغليان (سلسلة مرتبة = Chain). إنما تقطيع السلطة مع سلق المكرونة في نفس الوقت (Batch) وبعدين تجمع الكل سوا.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Idempotency & Uniqueness -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingIdem">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIdem" aria-expanded="false" aria-controls="collapseIdem">
+                            Idempotency, uniqueness, and locks
+                        </button>
+                    </h2>
+                    <div id="collapseIdem" class="accordion-collapse collapse" aria-labelledby="headingIdem" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">use Illuminate\Contracts\Queue\ShouldBeUnique;
+
+class ProcessOrder implements ShouldQueue, ShouldBeUnique
+{
+    // Unique for 10 seconds to collapse duplicates
+    public function uniqueFor(): int { return 10; }
+    public function uniqueId(): string { return 'order:'.$this->orderId; }
+}</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">use Illuminate\Support\Facades\Cache;
+
+Cache::lock('order:'.$order->id, 10)->block(5, function () use ($order) {
+    // process once
+});</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li><code>ShouldBeUnique</code> avoids duplicating the same job.</li>
+                                <li>Cache locks implement critical sections for non-job logic.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>Idempotent يعني إيه؟</strong>
+                                <p>يعني لو نفس العملية اتكررت بالغلط، النتيجة تفضل واحدة. كأنك بتطبع فاتورة مرة واحدة حتى لو دست الزر مرتين.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workers, Retries, Failures, Horizon -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingWorkers">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWorkers" aria-expanded="false" aria-controls="collapseWorkers">
+                            Workers, retries, failures, and Horizon
+                        </button>
+                    </h2>
+                    <div id="collapseWorkers" class="accordion-collapse collapse" aria-labelledby="headingWorkers" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-bash"># Start a worker
+php artisan queue:work --queue=emails,default --tries=3 --backoff=10 --timeout=120
+
+# Failed jobs table and retry
+php artisan queue:failed-table && php artisan migrate
+php artisan queue:retry all
+
+# Horizon for Redis
+composer require laravel/horizon
+php artisan horizon:install
+php artisan horizon</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">// Tagging jobs for Horizon
+public function tags(): array
+{
+    return ['import', 'user:'.$this->userId];
+}</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li>Use <code>queue:work</code> with tuned <code>--tries</code>, <code>--backoff</code>, and <code>--timeout</code>.</li>
+                                <li>Horizon provides dashboards, balancing, and alerts (Redis only).</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>Backoff يعني إيه؟</strong>
+                                <p>فاصل زمني بين المحاولات. زي لما تجرب تتصل بحد ومايردش؛ تستنى شوية وبعدين تحاول تاني.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="section-title"><i class="fas fa-user-friends me-2"></i>Real-life Analogies</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="analogy-card">
+                        <h6><i class="fas fa-truck me-2"></i>Delivery Company</h6>
+                        <p>Packages (jobs) line up in a warehouse (queue). Drivers (workers) deliver them; fragile ones may be retried with care (backoff).</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="analogy-card">
+                        <h6><i class="fas fa-diagram-project me-2"></i>Assembly Line</h6>
+                        <p>Some steps must be sequential (chain), others can run in parallel (batch) and merge results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="150">
+            <h2 class="section-title"><i class="fas fa-user-tie me-2"></i>Advanced Developer Tips</h2>
+            <ul class="tips-list">
+                <li>Use dedicated queues per concern (<code>emails</code>, <code>media</code>, <code>imports</code>) and scale workers independently.</li>
+                <li>Prefer <code>dispatchSync</code> for small maintenance scripts to reuse job logic without the queue.</li>
+                <li>Design jobs to be idempotent and small; compose with chain/batch for complex workflows.</li>
+                <li>Log correlation IDs to trace a job across services.</li>
+            </ul>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="section-title"><i class="fas fa-project-diagram me-2"></i>Mini Project: Image Pipeline</h2>
+            <p>Implement an image processing pipeline: store upload, generate thumbnails, optimize, and notify.</p>
+            <ul>
+                <li>Use a chain for sequential steps; move heavy steps to a <code>media</code> queue.</li>
+                <li>Batch imports for bulk uploads with progress callbacks.</li>
+                <li>Ensure idempotency (e.g., skip if thumbnails already exist).</li>
+            </ul>
+            <div class="code-block">
+<pre><code class="language-php">Bus::chain([
+    new StoreOriginal($path),
+    new GenerateThumbs($path),
+    new OptimizeImage($path),
+    new NotifyUser($userId),
+])->onQueue('media')->dispatch();</code></pre>
+            </div>
+            <div class="arabic-explain">
+                <strong>ليه بنقسمها Jobs؟</strong>
+                <p>علشان كل خطوة تبقى مستقلة وسهلة تعاد لو حصل فشل. وكمان تقدر توزعها على عمال كتير حسب الضغط.</p>
+            </div>
+        </section>
+
+        <section class="mb-5" id="quiz" data-aos="fade-up" data-aos-delay="250">
+            <h2 class="section-title"><i class="fas fa-question-circle me-2"></i>Interactive Quiz</h2>
+            <form id="quizForm" class="quiz-form">
+                <div class="quiz-question">
+                    <p><strong>1.</strong> Which driver unlocks Horizon and advanced features?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="a" id="q1a"><label class="form-check-label" for="q1a">Database</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="b" id="q1b"><label class="form-check-label" for="q1b">Redis</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="c" id="q1c"><label class="form-check-label" for="q1c">Sync</label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>2.</strong> What’s the difference between chain and batch?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="a" id="q2a"><label class="form-check-label" for="q2a">Chain = parallel, Batch = sequential</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="b" id="q2b"><label class="form-check-label" for="q2b">Chain = sequential, Batch = can be parallel</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="c" id="q2c"><label class="form-check-label" for="q2c">They are identical</label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>3.</strong> How do you prevent a job from running twice for the same input?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="a" id="q3a"><label class="form-check-label" for="q3a">Implement <code>ShouldBeUnique</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="b" id="q3b"><label class="form-check-label" for="q3b">Increase <code>$tries</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="c" id="q3c"><label class="form-check-label" for="q3c">Use <code>dispatchSync</code></label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>4.</strong> Which flags tune worker retry behavior?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="a" id="q4a"><label class="form-check-label" for="q4a"><code>--tries</code> and <code>--backoff</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="b" id="q4b"><label class="form-check-label" for="q4b"><code>--verbose</code> and <code>--env</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="c" id="q4c"><label class="form-check-label" for="q4c"><code>--queue</code> only</label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>5.</strong> What’s a good practice for job design?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="a" id="q5a"><label class="form-check-label" for="q5a">Put all logic in one huge job</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="b" id="q5b"><label class="form-check-label" for="q5b">Make jobs small and idempotent</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="c" id="q5c"><label class="form-check-label" for="q5c">Avoid logging</label></div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button type="button" id="submitQuiz" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Submit</button>
+                    <div id="quizResult" class="quiz-result" aria-live="polite"></div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer mt-5 py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Youssef Khaled. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/languages/php.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+    <script src="js/lecture-queues.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel Events & Listeners | Advanced</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="css/lecture-events.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="learning.html"><i class="fa-solid fa-graduation-cap me-1"></i>Learning</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="lecture-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="learning.html" class="text-white-50">Learning Tracks</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Events & Listeners</li>
+                </ol>
+            </nav>
+            <h1 class="display-5 fw-bold">Laravel Events & Listeners</h1>
+            <p class="lead mb-4">Architect event-driven features: dispatching, listeners, queued listeners, subscribers, transactions, and observability. Includes advanced production tips.</p>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+                <span class="badge rounded-pill bg-info-subtle text-info"><i class="fas fa-signal me-1"></i>Difficulty: Advanced</span>
+                <span class="badge rounded-pill bg-warning-subtle text-warning"><i class="fas fa-clock me-1"></i>Duration: 60 min</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary"><i class="fas fa-bell me-1"></i>Events</span>
+                <span class="badge rounded-pill bg-success-subtle text-success"><i class="fas fa-headset me-1"></i>Listeners</span>
+                <button id="markCompletedBtn" class="btn btn-outline-light ms-auto"><i class="far fa-check-circle me-2"></i>Mark as Completed</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container content-container">
+        <section class="mb-5" data-aos="fade-up">
+            <h2 class="section-title"><i class="fas fa-info-circle me-2"></i>Introduction</h2>
+            <p>Events decouple “what happened” from “what to do next”. You’ll design maintainable, testable side-effects using listeners and subscribers.</p>
+            <div class="arabic-explain">
+                <strong>يعني إيه Event؟</strong>
+                <p>تخيل زرار إنذار في المصنع. لما حد يدوس عليه (حدث حصل)، ناس تانية بتتحرّك تلقائياً (Listeners) من غير ما اللي دوس يعرفهم واحد واحد.</p>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="50">
+            <h2 class="section-title"><i class="fas fa-layer-group me-2"></i>Main Concepts</h2>
+            <div class="accordion" id="conceptsAccordion">
+                <!-- Defining & Dispatching -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingDefine">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDefine" aria-expanded="true" aria-controls="collapseDefine">
+                            Define and dispatch events
+                        </button>
+                    </h2>
+                    <div id="collapseDefine" class="accordion-collapse collapse show" aria-labelledby="headingDefine" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-bash">php artisan make:event OrderPlaced
+php artisan make:listener SendOrderEmail --event=OrderPlaced</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">// app/Events/OrderPlaced.php
+namespace App\Events;
+
+use App\Models\Order;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Queue\SerializesModels;
+
+class OrderPlaced
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public function __construct(public Order $order) {}
+}</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">// Dispatching an event
+event(new \App\Events\OrderPlaced($order));</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li>Event carries data (the order) but knows nothing about handlers.</li>
+                                <li>Listeners subscribe to events to perform side-effects.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>ليه الأحداث مفيدة؟</strong>
+                                <p>بتفصل بين “الحاجة حصلت” و”هنعمل إيه بعدها”. الكود يبقى مرتب، وتقدر تزود مستمعين جداد من غير ما تغيّر الأساس.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Listeners & Queued Listeners -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingQueued">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQueued" aria-expanded="false" aria-controls="collapseQueued">
+                            Listeners, queued listeners, and after-commit
+                        </button>
+                    </h2>
+                    <div id="collapseQueued" class="accordion-collapse collapse" aria-labelledby="headingQueued" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">// app/Listeners/SendOrderEmail.php
+namespace App\Listeners;
+
+use App\Events\OrderPlaced;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendOrderEmail implements ShouldQueue
+{
+    public bool $afterCommit = true; // wait until DB transaction commits
+
+    public function handle(OrderPlaced $event): void
+    {
+        // send mail using $event->order
+    }
+}</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li><code>ShouldQueue</code> executes the listener via queues for performance.</li>
+                                <li><code>$afterCommit</code> prevents running before DB commit, avoiding stale data.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>afterCommit يعني إيه؟</strong>
+                                <p>لو عندك عملية حفظ في قاعدة البيانات، بنستنى لحد ما تتثبت 100%. ساعتها الإيميل يطلع ببيانات صحيحة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subscribers vs Listeners, Discovery -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSubs">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSubs" aria-expanded="false" aria-controls="collapseSubs">
+                            Event subscribers, discovery, and organization
+                        </button>
+                    </h2>
+                    <div id="collapseSubs" class="accordion-collapse collapse" aria-labelledby="headingSubs" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">// app/Listeners/OrderEventSubscriber.php
+namespace App\Listeners;
+
+use App\Events\OrderPlaced;
+use App\Events\OrderCancelled;
+
+class OrderEventSubscriber
+{
+    public function subscribe($events): void
+    {
+        $events->listen(OrderPlaced::class, [self::class, 'onPlaced']);
+        $events->listen(OrderCancelled::class, [self::class, 'onCancelled']);
+    }
+
+    public function onPlaced($event): void { /* ... */ }
+    public function onCancelled($event): void { /* ... */ }
+}</code></pre>
+                            </div>
+                            <div class="code-block">
+<pre><code class="language-php">// app/Providers/EventServiceProvider.php
+protected $subscribe = [
+    \App\Listeners\OrderEventSubscriber::class,
+];
+
+// Or: enable auto-discovery (Laravel auto-finds events/listeners)
+public function shouldDiscoverEvents(): bool { return true; }</code></pre>
+                            </div>
+                            <div class="arabic-explain">
+                                <strong>Subscriber ولا Listener؟</strong>
+                                <p>الـ Listener بيتابع حدث واحد. الـ Subscriber زي مدير فريق بيسجّل كذا حدث ويحدد مين يتصرف في أي سيناريو.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Observers vs Events, Domain Events -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingObs">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObs" aria-expanded="false" aria-controls="collapseObs">
+                            Model observers vs domain events
+                        </button>
+                    </h2>
+                    <div id="collapseObs" class="accordion-collapse collapse" aria-labelledby="headingObs" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">// app/Observers/OrderObserver.php
+namespace App\Observers;
+
+use App\Models\Order;
+use App\Events\OrderPlaced;
+
+class OrderObserver
+{
+    public function created(Order $order): void
+    {
+        event(new OrderPlaced($order));
+    }
+}</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li>Observers hook into model lifecycle; useful for cross-cutting concerns.</li>
+                                <li>Domain events are explicit and expressive about business happenings.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>أستخدم أيه إمتى؟</strong>
+                                <p>لو الحدث “واقعة بيزنس” مهمة، استخدم Event واضح باسمها. لو مجرد متابعة تغيّر في الموديل، Observer قد يكون أبسط.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testing & Observability -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTest">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTest" aria-expanded="false" aria-controls="collapseTest">
+                            Testing, fakes, and logging
+                        </button>
+                    </h2>
+                    <div id="collapseTest" class="accordion-collapse collapse" aria-labelledby="headingTest" data-bs-parent="#conceptsAccordion">
+                        <div class="accordion-body">
+                            <div class="code-block">
+<pre><code class="language-php">use Illuminate\Support\Facades\Event;
+
+Event::fake();
+
+// ...code that dispatches events
+
+Event::assertDispatched(OrderPlaced::class, function ($e) use ($order) {
+    return $e->order->id === $order->id;
+});</code></pre>
+                            </div>
+                            <ol class="explain-list">
+                                <li>Use <code>Event::fake()</code> to isolate tests from side-effects.</li>
+                                <li>Assert payload correctness with callbacks.</li>
+                            </ol>
+                            <div class="arabic-explain">
+                                <strong>ليه بنفصل التست؟</strong>
+                                <p>علشان منجرّبش نبعث إيميلات حقيقية! بنثبت إن الحدث اترمى، وبس.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="section-title"><i class="fas fa-user-friends me-2"></i>Real-life Analogies</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="analogy-card">
+                        <h6><i class="fas fa-bullhorn me-2"></i>Broadcast & Respond</h6>
+                        <p>زي إعلان داخلي في الشركة: الإعلان بيطلع مرة واحدة، كل فريق بياخد الإجراء المناسب عنده.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="analogy-card">
+                        <h6><i class="fas fa-network-wired me-2"></i>Control Room</h6>
+                        <p>الأحداث بتدخل غرفة تحكم، وتتوزع على المختصين حسب نوعها من غير تدخل مباشر منك.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="150">
+            <h2 class="section-title"><i class="fas fa-user-tie me-2"></i>Advanced Developer Tips</h2>
+            <ul class="tips-list">
+                <li>Queue heavy listeners and set <code>$afterCommit = true</code> when they depend on DB state.</li>
+                <li>Use subscribers/modules to group domain reactions by bounded context.</li>
+                <li>Log event correlation IDs to trace complex flows.</li>
+                <li>Consider broadcasting (WebSockets) for real-time UI updates; don’t mix with domain events carelessly.</li>
+            </ul>
+        </section>
+
+        <section class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="section-title"><i class="fas fa-project-diagram me-2"></i>Mini Project: Order Lifecycle</h2>
+            <p>Design events for an order lifecycle: <code>OrderPlaced</code>, <code>PaymentCaptured</code>, <code>OrderShipped</code>.</p>
+            <ul>
+                <li>Queued listeners send emails and push notifications after commit.</li>
+                <li>Subscriber coordinates inventory and invoicing reactions.</li>
+                <li>Add tests with <code>Event::fake()</code> to validate dispatch and payloads.</li>
+            </ul>
+            <div class="code-block">
+<pre><code class="language-bash">php artisan make:event PaymentCaptured
+php artisan make:listener UpdateInvoice --event=PaymentCaptured</code></pre>
+            </div>
+            <div class="arabic-explain">
+                <strong>ليه Event-Driven؟</strong>
+                <p>علشان تكبّر السيستم بسهولة. لما تزود خدمة جديدة، بس اسمع الحدث المناسب وخلاص—من غير ما تغيّر قلب التطبيق.</p>
+            </div>
+        </section>
+
+        <section class="mb-5" id="quiz" data-aos="fade-up" data-aos-delay="250">
+            <h2 class="section-title"><i class="fas fa-question-circle me-2"></i>Interactive Quiz</h2>
+            <form id="quizForm" class="quiz-form">
+                <div class="quiz-question">
+                    <p><strong>1.</strong> How do you ensure a queued listener runs after DB commit?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="a" id="q1a"><label class="form-check-label" for="q1a">Set <code>$afterCommit</code> = true</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="b" id="q1b"><label class="form-check-label" for="q1b">Use <code>dispatchSync</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" value="c" id="q1c"><label class="form-check-label" for="q1c">Add <code>sleep(2)</code></label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>2.</strong> What’s the main benefit of event subscribers?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="a" id="q2a"><label class="form-check-label" for="q2a">They replace events completely</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="b" id="q2b"><label class="form-check-label" for="q2b">Group multiple event handlers in one class</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" value="c" id="q2c"><label class="form-check-label" for="q2c">They are faster than listeners</label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>3.</strong> Which is a good reason to prefer domain events over observers?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="a" id="q3a"><label class="form-check-label" for="q3a">Clearer business semantics</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="b" id="q3b"><label class="form-check-label" for="q3b">Better database performance</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" value="c" id="q3c"><label class="form-check-label" for="q3c">They bypass validation</label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>4.</strong> How do you register a subscriber?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="a" id="q4a"><label class="form-check-label" for="q4a">In <code>EventServiceProvider::$subscribe</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="b" id="q4b"><label class="form-check-label" for="q4b">In <code>RouteServiceProvider</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" value="c" id="q4c"><label class="form-check-label" for="q4c">In the model</label></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>5.</strong> Which tool helps monitor queued listeners?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="a" id="q5a"><label class="form-check-label" for="q5a">Telescope only</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="b" id="q5b"><label class="form-check-label" for="q5b">Horizon (for Redis)</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" value="c" id="q5c"><label class="form-check-label" for="q5c">Config cache</label></div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button type="button" id="submitQuiz" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Submit</button>
+                    <div id="quizResult" class="quiz-result" aria-live="polite"></div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer mt-5 py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Youssef Khaled. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/languages/php.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+    <script src="js/lecture-events.js"></script>
+</body>
+</html>
+

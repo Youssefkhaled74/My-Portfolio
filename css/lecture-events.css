@@ -1,0 +1,8 @@
+@import url('lecture-auth.css');
+
+.lecture-hero {
+    background: radial-gradient(1200px 400px at 20% -10%, rgba(59, 130, 246, 0.18), transparent),
+                radial-gradient(1000px 400px at 80% -20%, rgba(16, 185, 129, 0.15), transparent),
+                linear-gradient(180deg, #0b1326 0%, #0f172a 100%);
+}
+

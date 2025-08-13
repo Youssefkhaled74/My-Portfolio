@@ -1,3 +1,83 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize AOS
+    if (window.AOS) {
+        AOS.init({ duration: 600, once: true, easing: 'ease-out' });
+    }
+
+    // Initialize highlight.js and line numbers
+    if (window.hljs) {
+        hljs.highlightAll();
+        if (window.hljs && hljs.initLineNumbersOnLoad) {
+            hljs.initLineNumbersOnLoad();
+        }
+    }
+
+    // Mark as Completed toggle with localStorage
+    const completedKey = 'lecture_auth_completed_v1';
+    const completedBtn = document.getElementById('markCompletedBtn');
+    const setCompletedUI = (isCompleted) => {
+        if (!completedBtn) return;
+        if (isCompleted) {
+            completedBtn.classList.add('completed');
+            completedBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i>Completed';
+        } else {
+            completedBtn.classList.remove('completed');
+            completedBtn.innerHTML = '<i class="far fa-check-circle me-2"></i>Mark as Completed';
+        }
+    };
+    const initialCompleted = localStorage.getItem(completedKey) === '1';
+    setCompletedUI(initialCompleted);
+    if (completedBtn) {
+        completedBtn.addEventListener('click', function () {
+            const newState = !(localStorage.getItem(completedKey) === '1');
+            localStorage.setItem(completedKey, newState ? '1' : '0');
+            setCompletedUI(newState);
+        });
+    }
+
+    // Quiz logic
+    const quizAnswers = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'a',
+        q4: 'b',
+        q5: 'b'
+    };
+    const quizKey = 'lecture_auth_quiz_score_v1';
+    const quizForm = document.getElementById('quizForm');
+    const quizResult = document.getElementById('quizResult');
+    const submitBtn = document.getElementById('submitQuiz');
+
+    const renderStoredScore = () => {
+        const stored = localStorage.getItem(quizKey);
+        if (stored && quizResult) {
+            quizResult.textContent = `Previous score: ${stored}/5`;
+            quizResult.classList.add('text-info');
+        }
+    };
+    renderStoredScore();
+
+    if (submitBtn && quizForm) {
+        submitBtn.addEventListener('click', function () {
+            let score = 0;
+            Object.keys(quizAnswers).forEach((q) => {
+                const selected = quizForm.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === quizAnswers[q]) {
+                    score += 1;
+                }
+            });
+            if (quizResult) {
+                quizResult.textContent = `Your score: ${score}/5`;
+                quizResult.classList.remove('text-info');
+                quizResult.classList.toggle('text-success', score >= 4);
+                quizResult.classList.toggle('text-warning', score === 3);
+                quizResult.classList.toggle('text-danger', score <= 2);
+            }
+            localStorage.setItem(quizKey, String(score));
+        });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Mark as completed functionality
     const markCompletedBtn = document.getElementById('mark-completed');

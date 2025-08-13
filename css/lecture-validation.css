@@ -1,0 +1,9 @@
+@import url('lecture-auth.css');
+
+/* Overrides or additions specific to validation lecture */
+.lecture-hero {
+    background: radial-gradient(1200px 400px at 20% -10%, rgba(16, 185, 129, 0.15), transparent),
+                radial-gradient(1000px 400px at 80% -20%, rgba(99, 102, 241, 0.18), transparent),
+                linear-gradient(180deg, #0b1326 0%, #0f172a 100%);
+}
+
