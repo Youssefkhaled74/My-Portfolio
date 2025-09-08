@@ -405,6 +405,14 @@ form .btn2{
 nav .fa-solid{
     display: none;
 }
+/* Store Buttons */
+.store-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+.store-btn { display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; padding: .5rem .85rem; font-weight: 600; text-decoration: none; }
+.store-btn i { font-size: 1rem; }
+.store-btn.app { background: #0f172a; color: #fff; border: 1px solid rgba(255,255,255,.15); }
+.store-btn.play { background: #10b981; color: #062a1c; border: 1px solid rgba(0,0,0,.05); }
+.store-btn:hover { transform: translateY(-1px); }
+.store-btn:active { transform: translateY(0); }
 /* ------------------------------------- small screen -------------------------------------------*/
 @media only screen and (max-width: 600px){
     /* #header{
