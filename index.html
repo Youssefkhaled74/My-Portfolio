@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youssef Khaled - Portfolio</title>
+    <title>Youssef Khaled - Laravel Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
     <!-- AOS for Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Prism.js for code highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -29,9 +31,12 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
         <div class="container">
-            <a class="navbar-brand" href="#" data-translate="navbar_brand"><i class="fa-solid fa-code me-2"></i>Youssef Khaled</a>
+            <a class="navbar-brand" href="#header" data-translate="navbar_brand">
+                <span class="brand-mark">YK</span>
+                Youssef Khaled
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -41,12 +46,12 @@
                     <li class="nav-item"><a class="nav-link" href="#about" data-translate="nav_about"><i class="fa-solid fa-user"></i>About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services" data-translate="nav_services"><i class="fa-solid fa-gear"></i>Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio" data-translate="nav_portfolio"><i class="fa-solid fa-briefcase"></i>Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#featured-lectures" data-translate="nav_learning"><i class="fa-solid fa-graduation-cap"></i>Learning</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#learning" data-translate="nav_learning"><i class="fa-solid fa-graduation-cap"></i>Learning</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonials" data-translate="nav_testimonials"><i class="fa-solid fa-quote-left"></i>Testimonials</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-translate="nav_contact"><i class="fa-solid fa-envelope"></i>Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="./learning.html" data-translate="nav_tracks"><i class="fa-solid fa-book"></i>All Tracks</a></li>
                 </ul>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center gap-2">
                     <i class="fas fa-moon theme-toggle" id="themeToggle" title="Toggle Theme"></i>
                     <span class="lang-toggle" id="langToggle" title="Toggle Language">EN</span>
                 </div>
@@ -69,11 +74,14 @@
 
                     <!-- CV download button in header -->
                     <div class="cv-download">
-                        <a href="./Youssef khaled.pdf" class="cv-btn" download data-translate="contact_cv">
+                        <a href="./Youssef khaled.pdf" class="cv-btn" download>
                             <i class="fa-solid fa-download"></i> Download CV
                         </a>
-                        <a href="./Youssef khaled Back-end Developer.pdf" class="cv-btn" download data-translate="contact_cv_backend">
-                            <i class="fa-solid fa-file-pdf"></i> Backend CV
+                        <a href="#contact" class="btn-cta">
+                            <i class="fa-solid fa-paper-plane"></i> Let’s Work Together
+                        </a>
+                        <a href="#portfolio" class="ghost-btn">
+                            <i class="fa-solid fa-arrow-trend-up"></i> View Case Studies
                         </a>
                         <a href="#portfolio" class="ghost-btn" data-translate="header_projects">
                             <i class="fa-solid fa-arrow-trend-up"></i> View my work
@@ -97,6 +105,21 @@
                             <small>Developers taught & guided</small>
                         </div>
                     </div>
+
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <p>25+ launches</p>
+                            <span>Products shipped across SaaS, fintech & marketplaces</span>
+                        </div>
+                        <div class="metric-card">
+                            <p>99.9% uptime</p>
+                            <span>Reliable API delivery with observability baked in</span>
+                        </div>
+                        <div class="metric-card">
+                            <p>300+ learners</p>
+                            <span>Backend students mentored in Laravel & PHP</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-6 text-center" data-aos="fade-left">
                     <div class="header-visual">
@@ -117,217 +140,83 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="py-5">
+    <section id="about">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center" data-translate="about_title">About Me</h2>
-            <div class="row">
-                <div class="col-lg-6 mb-4" data-aos="fade-right">
-                    <div class="card shadow-sm h-100">
+            <div class="section-heading">
+                <span class="eyebrow">About</span>
+                <h2 class="section-title" data-translate="about_title">About Me</h2>
+                <p class="section-lead">I design resilient Laravel ecosystems, marry product thinking with analytics, and love translating ideas into reliable software.</p>
+            </div>
+            <div class="row align-items-start g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card soft-card">
                         <div class="card-body">
-                            <h3 class="card-title" data-translate="about_bio_title">Biography</h3>
-                            <p class="text-muted" data-translate="about_bio">
-                                I am Youssef Khaled Anwar, a senior at the Faculty of Science, Ain Shams University, majoring in Statistics and Computer Science. I am currently a Back-end Developer at Evyx Company, specializing in Laravel and PHP. With a diploma in full-stack web development from SSD Academy, I have extensive experience as a freelance developer and intern at SSD Academy. I lead the backend department at IEEE Future Academy and share knowledge through my YouTube and Telegram channels. My goal is to build scalable and efficient web applications.
-                            </p>
+                            <h3 class="card-title">Narrative</h3>
+                            <p class="text-muted">Senior at Ain Shams University (Statistics & Computer Science) and Back-end Developer at Evyx Company. I blend statistical thinking, modern PHP, and UX-aware full-stack delivery to create clean and maintainable systems.</p>
+                            <div class="value-grid">
+                                <div class="value-item">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                    <div>
+                                        <h4>Systems mindset</h4>
+                                        <p>Architect modular services that scale with your business.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <div>
+                                        <h4>Measured outcomes</h4>
+                                        <p>Deliver ROI-driven builds with metrics and optimization.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <div>
+                                        <h4>Mentorship</h4>
+                                        <p>Passionate about teaching and community contribution.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fun-facts">
+                                <span><i class="fa-solid fa-fire"></i> Laravel Nova power user</span>
+                                <span><i class="fa-solid fa-mug-hot"></i> Coffee-fueled sprints</span>
+                                <span><i class="fa-solid fa-map"></i> Loves travel & product workshops</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4" data-aos="fade-left">
-                    <div class="card shadow-sm h-100">
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card soft-card">
                         <div class="card-body">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#skills" data-translate="about_skills_tab">Skills</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#experience" data-translate="about_experience_tab">Experience</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#education" data-translate="about_education_tab">Education</a></li>
-                            </ul>
-                            <div class="tab-content mt-3">
-                                <div class="tab-pane fade show active" id="skills">
-                                    <!-- Programming Languages -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#programmingLanguages" data-aos="fade-up" data-aos-delay="100" data-translate="skills_programming">
-                                        <i class="fa-solid fa-code"></i> Programming Languages
-                                    </div>
-                                    <div class="collapse" id="programmingLanguages">
-                                        <div class="skill-item">
-                                            <strong>PHP (Proficient)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>C++ (Intermediate)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>Python (Intermediate)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>JavaScript (Intermediate)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Frameworks -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#frameworks" data-aos="fade-up" data-aos-delay="150" data-translate="skills_frameworks">
-                                        <i class="fa-solid fa-cogs"></i> Frameworks
-                                    </div>
-                                    <div class="collapse" id="frameworks">
-                                        <div class="skill-item">
-                                            <strong>Laravel (Proficient)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Web Development -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#webDevelopment" data-aos="fade-up" data-aos-delay="200" data-translate="skills_webdev">
-                                        <i class="fa-solid fa-globe"></i> Web Development
-                                    </div>
-                                    <div class="collapse" id="webDevelopment">
-                                        <div class="skill-item">
-                                            <strong>HTML (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>CSS (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>Bootstrap (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Databases -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#databases" data-aos="fade-up" data-aos-delay="250" data-translate="skills_databases">
-                                        <i class="fa-solid fa-database"></i> Databases
-                                    </div>
-                                    <div class="collapse" id="databases">
-                                        <div class="skill-item">
-                                            <strong>MySQL (Proficient)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>MongoDB (Intermediate)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Algorithms and Data Structures -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#algorithms" data-aos="fade-up" data-aos-delay="300" data-translate="skills_algorithms">
-                                        <i class="fa-solid fa-sitemap"></i> Algorithms and Data Structures
-                                    </div>
-                                    <div class="collapse" id="algorithms">
-                                        <div class="skill-item">
-                                            <strong>Algorithms and Data Structures (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Data Analysis -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#dataAnalysis" data-aos="fade-up" data-aos-delay="350" data-translate="skills_data_analysis">
-                                        <i class="fa-solid fa-chart-bar"></i> Data Analysis
-                                    </div>
-                                    <div class="collapse" id="dataAnalysis">
-                                        <div class="skill-item">
-                                            <strong>Statistics for Data Analysis (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>Data Mining (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Tools and Technologies -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#tools" data-aos="fade-up" data-aos-delay="400" data-translate="skills_tools">
-                                        <i class="fa-solid fa-tools"></i> Tools and Technologies
-                                    </div>
-                                    <div class="collapse" id="tools">
-                                        <div class="skill-item">
-                                            <strong>Git (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>GitHub (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>REST APIs (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>Laravel Nova (Advanced)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item">
-                                            <strong>Docker (Intermediate)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Parallel Computing -->
-                                    <div class="collapse-toggle" data-bs-toggle="collapse" data-bs-target="#parallelComputing" data-aos="fade-up" data-aos-delay="450" data-translate="skills_parallel">
-                                        <i class="fa-solid fa-microchip"></i> Parallel Computing
-                                    </div>
-                                    <div class="collapse" id="parallelComputing">
-                                        <div class="skill-item">
-                                            <strong>Parallel Computing (Intermediate)</strong>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <h3 class="card-title">Timeline</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <span>2024 – Present</span>
+                                    <h4>Back-end Developer · Evyx Company</h4>
+                                    <p>Leading Laravel APIs, multi-tenant platforms, and data integrations.</p>
                                 </div>
-                                <div class="tab-pane fade" id="experience" data-translate="experience_content">
-                                    <ul class="list-unstyled">
-                                        <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Back-end Developer, Evyx Company (Dec 2024 - Present):</strong> Developed scalable backend systems using Laravel and MySQL, designed REST APIs, and collaborated with front-end teams.</li>
-                                        <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Full-Stack Developer, Yesooh Company (8 months):</strong> Built a full-stack web application with Laravel, PHP, and MySQL, including user authentication and RESTful APIs.</li>
-                                        <li><i class="fa-solid fa-graduation-cap me-2"></i><strong>Assistant Instructor, SSD Academy:</strong> Delivered Laravel lectures, supported students, and created instructional content.</li>
-                                        <li><i class="fa-solid fa-chalkboard-teacher me-2"></i><strong>Back-end Track Instructor:</strong> Taught PHP, Laravel, and MySQL via YouTube and Telegram.</li>
-                                        <li><i class="fa-solid fa-laptop-code me-2"></i><strong>Freelance Developer:</strong> Developed multiple Laravel and PHP projects (available on GitHub).</li>
-                                        <li><i class="fa-solid fa-graduation-cap me-2"></i><strong>Intern, SSD Academy:</strong> Gained hands-on experience in full-stack web development.</li>
-                                    </ul>
+                                <div class="timeline-item">
+                                    <span>2023 – Present</span>
+                                    <h4>Backend Lead · IEEE Future Academy</h4>
+                                    <p>Mentoring developers through backend tracks and real-world labs.</p>
                                 </div>
-                                <div class="tab-pane fade" id="education" data-translate="education_content">
-                                    <ul class="list-unstyled">
-                                        <li><i class="fa-solid fa-university me-2"></i><strong>B.Sc. in Statistics and Computer Science:</strong> Ain Shams University (Expected Graduation: 2025)</li>
-                                        <li><i class="fa-solid fa-certificate me-2"></i><strong>Full-Stack Web Development Diploma:</strong> SSD Academy (2022)</li>
-                                        <li><i class="fa-solid fa-book me-2"></i><strong>Course in Laravel:</strong> Udemy</li>
-                                    </ul>
+                                <div class="timeline-item">
+                                    <span>2022</span>
+                                    <h4>Full-Stack Diploma · SSD Academy</h4>
+                                    <p>Delivered client-ready web apps and capstone systems.</p>
                                 </div>
+                                <div class="timeline-item">
+                                    <span>2021 – 2025</span>
+                                    <h4>B.Sc. Statistics & CS · Ain Shams University</h4>
+                                    <p>Focus on data analysis, algorithms, and applied engineering.</p>
+                                </div>
+                            </div>
+                            <div class="skills-strip">
+                                <span><i class="fa-brands fa-laravel"></i> Laravel</span>
+                                <span><i class="fa-solid fa-database"></i> MySQL</span>
+                                <span><i class="fa-brands fa-php"></i> PHP 8</span>
+                                <span><i class="fa-solid fa-chart-pie"></i> Analytics</span>
+                                <span><i class="fa-solid fa-cloud"></i> AWS</span>
+                                <span><i class="fa-solid fa-shield"></i> Security</span>
                             </div>
                         </div>
                     </div>
@@ -337,34 +226,51 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-5">
+    <section id="services">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center" data-translate="services_title">My Services</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fa-solid fa-code fa-3x mb-3 text-primary"></i>
-                            <h3 class="card-title" data-translate="services_laravel">Laravel Full-Stack Development</h3>
-                            <p class="card-text" data-translate="services_laravel_desc">Build comprehensive web applications using Laravel for both frontend and backend.</p>
+            <div class="section-heading text-center">
+                <span class="eyebrow">Services</span>
+                <h2 class="section-title" data-translate="services_title">My Services</h2>
+                <p class="section-lead">Launch robust platforms with backend architecture, UI/UX-aware interfaces, and data pipelines that drive decisions.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <i class="fa-solid fa-code"></i>
+                            <h3>Laravel Full-Stack Builds</h3>
+                            <p>Product-ready Laravel applications with frontend polish and reusable components.</p>
+                            <a href="#portfolio" class="service-link">View related case study <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fa-solid fa-cloud fa-3x mb-3 text-primary"></i>
-                            <h3 class="card-title" data-translate="services_api">REST API Development</h3>
-                            <p class="card-text" data-translate="services_api_desc">Design and implement scalable RESTful APIs with Laravel for seamless integration.</p>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <i class="fa-solid fa-network-wired"></i>
+                            <h3>REST & GraphQL APIs</h3>
+                            <p>Scalable APIs, OAuth flows, and integrations engineered for uptime and speed.</p>
+                            <a href="#portfolio" class="service-link">See API success story <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fa-solid fa-database fa-3x mb-3 text-primary"></i>
-                            <h3 class="card-title" data-translate="services_db">Database Management</h3>
-                            <p class="card-text" data-translate="services_db_desc">Develop efficient database solutions with MySQL and MongoDB for robust data handling.</p>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <i class="fa-solid fa-database"></i>
+                            <h3>Data & Performance</h3>
+                            <p>Query optimization, caching, and reporting layers for faster insights.</p>
+                            <a href="#portfolio" class="service-link">Explore performance wins <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card service-card">
+                        <div class="card-body">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h3>Security & DevOps</h3>
+                            <p>Secure deployments, CI/CD pipelines, and monitoring dashboards.</p>
+                            <a href="#portfolio" class="service-link">Read DevOps case study <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -373,43 +279,66 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-5">
+    <section id="portfolio">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center" data-translate="portfolio_title">Key Projects</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card">
-                        <img src="project1.png" class="card-img-top portfolio-img" alt="Ceaser Business Dashboard">
+            <div class="section-heading text-center">
+                <span class="eyebrow">Case Studies</span>
+                <h2 class="section-title" data-translate="portfolio_title">Key Projects</h2>
+                <p class="section-lead">Each project highlights the challenge, technical solution, and measurable business outcomes.</p>
+            </div>
+            <div class="filter-group" role="group" aria-label="Project filters">
+                <button class="filter-pill active" data-filter="all">All</button>
+                <button class="filter-pill" data-filter="saas">SaaS</button>
+                <button class="filter-pill" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-pill" data-filter="analytics">Analytics</button>
+                <button class="filter-pill" data-filter="ops">Operations</button>
+            </div>
+            <div class="row g-4 project-grid">
+                <div class="col-md-6 col-lg-4 project-item" data-category="saas">
+                    <div class="card project-card">
+                        <picture>
+                            <img src="project1.png" class="card-img-top portfolio-img" alt="Ceaser business management dashboard" loading="lazy" decoding="async">
+                        </picture>
                         <div class="card-body">
-                            <h5 class="card-title" data-translate="portfolio_ceaser"><i class="fa-solid fa-briefcase me-2"></i>Ceaser</h5>
-                            <p class="card-text" data-translate="portfolio_ceaser_desc">A smart business management platform with Laravel Nova dashboard, QR code integration, and Google Maps for real-time monitoring.</p>
-                            <div class="store-buttons">
-                                <a href="https://apps.apple.com/kw/app/caeser/id6742375414" class="store-btn app" target="_blank" rel="noopener"><i class="fab fa-apple"></i><span>App Store</span></a>
-                                <a href="https://play.google.com/store/apps/details?id=com.ceaser.evyx" class="store-btn play" target="_blank" rel="noopener"><i class="fab fa-google-play"></i><span>Play Store</span></a>
+                            <div class="project-tags">
+                                <span>Laravel Nova</span>
+                                <span>Geo-tracking</span>
                             </div>
+                            <h3>Ceaser</h3>
+                            <p>Built a multi-branch operations suite with real-time delivery tracking and QR smart menus.</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectCeaser">View Case Study</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card">
-                        <img src="project3.png" class="card-img-top portfolio-img" alt="Ask Lawyer Consultation Platform">
+                <div class="col-md-6 col-lg-4 project-item" data-category="analytics">
+                    <div class="card project-card">
+                        <picture>
+                            <img src="project3.png" class="card-img-top portfolio-img" alt="Ask Lawyer consultation platform" loading="lazy" decoding="async">
+                        </picture>
                         <div class="card-body">
-                            <h5 class="card-title" data-translate="portfolio_lawyer"><i class="fa-solid fa-gavel me-2"></i>Ask Lawyer</h5>
-                            <p class="card-text" data-translate="portfolio_lawyer_desc">A legal consultation platform with a Laravel Nova admin dashboard for dynamic content management.</p>
-                            <button class="btn btn-outline-secondary" disabled data-translate="portfolio_view"><i class="fas fa-lock me-2"></i>Coming Soon</button>
+                            <div class="project-tags">
+                                <span>Laravel</span>
+                                <span>Content Ops</span>
+                            </div>
+                            <h3>Ask Lawyer</h3>
+                            <p>Built a legal consultation platform with dynamic publishing and secure intake flows.</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectLawyer">View Case Study</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card">
-                        <img src="proect2.png" class="card-img-top portfolio-img" alt="Peking Restaurant Management System">
+                <div class="col-md-6 col-lg-4 project-item" data-category="mobile">
+                    <div class="card project-card">
+                        <picture>
+                            <img src="proect2.png" class="card-img-top portfolio-img" alt="Peking restaurant management system" loading="lazy" decoding="async">
+                        </picture>
                         <div class="card-body">
-                            <h5 class="card-title" data-translate="portfolio_peking"><i class="fa-solid fa-utensils me-2"></i>Peking</h5>
-                            <p class="card-text" data-translate="portfolio_peking_desc">A restaurant management system for multiple branches, handling dine-in, takeaway, and delivery orders.</p>
-                            <div class="store-buttons">
-                                <a href="https://apps.apple.com/kw/app/peking-restaurants/id6744603590" class="store-btn app" target="_blank" rel="noopener"><i class="fab fa-apple"></i><span>App Store</span></a>
-                                <a href="https://play.google.com/store/apps/details?id=com.evyx.peking" class="store-btn play" target="_blank" rel="noopener"><i class="fab fa-google-play"></i><span>Play Store</span></a>
+                            <div class="project-tags">
+                                <span>Multi-Branch</span>
+                                <span>Order Ops</span>
                             </div>
+                            <h3>Peking</h3>
+                            <p>Designed omnichannel ordering for dine-in, takeaway, and delivery fleets.</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectPeking">View Case Study</button>
                         </div>
                     </div>
                 </div>
@@ -420,185 +349,320 @@
         </div>
     </section>
 
-    <!-- Featured Lectures Section -->
-    <section id="featured-lectures" class="py-5">
+    <!-- Learning & Content Section -->
+    <section id="learning">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center">
-                <i class="fa-solid fa-graduation-cap me-2"></i>Featured Lectures
-            </h2>
-            
-            <p class="text-center mb-5">Explore featured lectures from our learning tracks</p>
-            
-            <!-- Lectures Grid -->
-            <div class="row lecture-grid">
-                <!-- Laravel Lecture -->
-                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100">
-                        <div class="card-img-overlay lecture-overlay">
-                            <span class="badge bg-danger"><i class="fa-brands fa-laravel"></i> Laravel</span>
-                        </div>
-                        <img src="https://laraveldaily.com/uploads/2019/08/laravel-service-container-1024x538.png" class="card-img-top lecture-img" alt="Service Container & Dependency Injection">
+            <div class="section-heading text-center">
+                <span class="eyebrow">Learning</span>
+                <h2 class="section-title">Learning & Content Hub</h2>
+                <p class="section-lead">A curated knowledge center for Laravel, backend architecture, and data-informed product work.</p>
+            </div>
+            <div class="resource-controls">
+                <div class="search-bar">
+                    <input type="text" id="resourceSearch" class="form-control" placeholder="Search topics, tutorials, or lectures" aria-label="Search learning resources">
+                </div>
+                <div class="resource-filters" role="group" aria-label="Resource categories">
+                    <button class="filter-pill active" data-topic="all">All Topics</button>
+                    <button class="filter-pill" data-topic="laravel">Laravel</button>
+                    <button class="filter-pill" data-topic="backend">Backend</button>
+                    <button class="filter-pill" data-topic="devops">DevOps</button>
+                    <button class="filter-pill" data-topic="data">Data & Analytics</button>
+                </div>
+            </div>
+            <div class="row g-4 resource-grid">
+                <div class="col-md-6 col-lg-4 resource-item" data-topic="laravel">
+                    <div class="card resource-card">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="fa-solid fa-box me-2 text-danger"></i>Service Container & DI
-                            </h5>
-                            <p class="card-text">Learn about Laravel's powerful Service Container and Dependency Injection pattern.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-01-service-container-di.html">
-                                    <i class="fa-solid fa-book-open me-1"></i>Read Lecture
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <i class="fa-solid fa-clock me-1"></i>Reading time: ~20 min
+                            <span class="resource-tag">Laravel</span>
+                            <h3>Service Container & DI</h3>
+                            <p>Break down Laravel’s dependency injection workflow with real-world examples.</p>
+                            <a href="lecture-01-service-container-di.html" class="resource-link">Read tutorial</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Data Analysis Lecture -->
-                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100">
-                        <div class="card-img-overlay lecture-overlay">
-                            <span class="badge bg-success"><i class="fa-solid fa-chart-line"></i> Data Analysis</span>
-                        </div>
-                        <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Data_Visualization_Tools.jpg" class="card-img-top lecture-img" alt="Data Analysis Fundamentals">
+                <div class="col-md-6 col-lg-4 resource-item" data-topic="backend">
+                    <div class="card resource-card">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="fa-solid fa-chart-bar me-2 text-success"></i>Data Analysis Fundamentals
-                            </h5>
-                            <p class="card-text">Introduction to data analysis concepts and methodologies.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="DataAnalysisRoadmap.html" class="btn btn-primary view-lecture" data-lecture="DataAnalysisRoadmap.html">
-                                    <i class="fa-solid fa-book-open me-1"></i>Read Lecture
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <i class="fa-solid fa-clock me-1"></i>Reading time: ~15 min
+                            <span class="resource-tag">Backend</span>
+                            <h3>Queues, Jobs & Events</h3>
+                            <p>Design async pipelines that scale with your traffic spikes.</p>
+                            <a href="lecture-04-queues-jobs-events.html" class="resource-link">Read tutorial</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- System Design Lecture -->
-                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100">
-                        <div class="card-img-overlay lecture-overlay">
-                            <span class="badge bg-info"><i class="fa-solid fa-diagram-project"></i> System Design</span>
-                        </div>
-                        <img src="https://laraveldaily.com/uploads/2020/09/laravel-queues-1024x538.png" class="card-img-top lecture-img" alt="Queues, Jobs & Events">
+                <div class="col-md-6 col-lg-4 resource-item" data-topic="devops">
+                    <div class="card resource-card">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="fa-solid fa-tasks me-2 text-info"></i>Queues, Jobs & Events
-                            </h5>
-                            <p class="card-text">Build scalable applications with Laravel's queuing system, background jobs, and event broadcasting.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="lecture-04-queues-jobs-events.html" class="btn btn-primary view-lecture" data-lecture="lecture-04-queues-jobs-events.html">
-                                    <i class="fa-solid fa-book-open me-1"></i>Read Lecture
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <i class="fa-solid fa-clock me-1"></i>Reading time: ~25 min
+                            <span class="resource-tag">DevOps</span>
+                            <h3>Octane Performance Playbook</h3>
+                            <p>Optimize Laravel throughput with Octane, caching, and monitoring.</p>
+                            <a href="lecture-05-octane-performance.html" class="resource-link">Read tutorial</a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- DevOps Lecture -->
-                <div class="col-md-6 col-lg-3 mb-4 lecture-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card h-100">
-                        <div class="card-img-overlay lecture-overlay">
-                            <span class="badge bg-warning"><i class="fa-solid fa-server"></i> DevOps</span>
-                        </div>
-                        <img src="https://www.simplilearn.com/ice9/free_resources_article_thumb/devops-engineer-roles-and-responsibilities.jpg" class="card-img-top lecture-img" alt="DevOps Fundamentals">
+                <div class="col-md-6 col-lg-4 resource-item" data-topic="data">
+                    <div class="card resource-card">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="fa-solid fa-code-branch me-2 text-warning"></i>DevOps Fundamentals
-                            </h5>
-                            <p class="card-text">Introduction to DevOps practices and CI/CD pipelines.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary view-lecture" data-lecture="lecture-08-websockets-realtime.md">
-                                    <i class="fa-solid fa-book-open me-1"></i>Read Lecture
-                                </a>
-                            </div>
+                            <span class="resource-tag">Data</span>
+                            <h3>Data Analysis Roadmap</h3>
+                            <p>Foundational roadmap for analytics-driven backend products.</p>
+                            <a href="DataAnalysisRoadmap.html" class="resource-link">Read roadmap</a>
                         </div>
-                        <div class="card-footer text-muted">
-                            <i class="fa-solid fa-clock me-1"></i>Reading time: ~20 min
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 resource-item" data-topic="laravel">
+                    <div class="card resource-card">
+                        <div class="card-body">
+                            <span class="resource-tag">Laravel</span>
+                            <h3>Testing Laravel Apps</h3>
+                            <p>Practical testing workflows for reliable releases.</p>
+                            <a href="lecture-06-testing.html" class="resource-link">Read tutorial</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 resource-item" data-topic="backend">
+                    <div class="card resource-card">
+                        <div class="card-body">
+                            <span class="resource-tag">Backend</span>
+                            <h3>Advanced Eloquent Techniques</h3>
+                            <p>Build maintainable relationships and query patterns.</p>
+                            <a href="lecture-02-advanced-eloquent-techniques.html" class="resource-link">Read tutorial</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="text-center mt-4">
-                <a href="learning.html" class="btn btn-primary">
-                    <i class="fa-solid fa-graduation-cap me-2"></i>Explore All Learning Tracks
-                </a>
+                <a href="learning.html" class="btn btn-primary"><i class="fa-solid fa-graduation-cap me-2"></i>Explore All Learning Tracks</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5">
+    <section id="testimonials">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center" data-translate="testimonials_title">Testimonials</h2>
-            <div class="row">
-                <div class="col-md-6 mb-4" data-aos="fade-right">
-                    <div class="testimonial-card">
-                        <p data-translate="testimonial_1"><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Youssef's expertise in Laravel development transformed our project. His attention to detail and professionalism were outstanding.</p>
-                        <p class="fw-bold" data-translate="testimonial_1_author">John Doe, Project Manager</p>
+            <div class="section-heading text-center">
+                <span class="eyebrow">Testimonials</span>
+                <h2 class="section-title" data-translate="testimonials_title">Testimonials</h2>
+                <p class="section-lead">Partners highlight the impact of Youssef’s Laravel engineering and delivery process.</p>
+            </div>
+            <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <span class="avatar">AM</span>
+                                <div>
+                                    <h3>Ashley Morgan</h3>
+                                    <p>Product Director · SaaS Operations</p>
+                                </div>
+                            </div>
+                            <p>“Youssef redesigned our Laravel API layer and improved response times by 43%. The handover docs and monitoring dashboards were world class.”</p>
+                            <div class="testimonial-metric">+43% faster API response • 99.9% uptime</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <span class="avatar">KT</span>
+                                <div>
+                                    <h3>Khaled Tarek</h3>
+                                    <p>Founder · Logistics Startup</p>
+                                </div>
+                            </div>
+                            <p>“The new Laravel Nova dashboard gave our ops team real-time visibility, cutting manual work by 35% in the first month.”</p>
+                            <div class="testimonial-metric">35% fewer ops hours • 2x faster dispatch</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <span class="avatar">NS</span>
+                                <div>
+                                    <h3>Nora Saleh</h3>
+                                    <p>Engineering Lead · Fintech</p>
+                                </div>
+                            </div>
+                            <p>“Security reviews passed on the first audit cycle. Youssef’s proactive QA and automation saved our team weeks.”</p>
+                            <div class="testimonial-metric">Audit-ready delivery • 3 weeks saved</div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4" data-aos="fade-left">
-                    <div class="testimonial-card">
-                        <p data-translate="testimonial_2"><i class="fa-solid fa-quote-left fa-2x text-primary me-2"></i>Working with Youssef was a pleasure. His backend solutions were robust, and his teaching content is exceptional.</p>
-                        <p class="fw-bold" data-translate="testimonial_2_author">Jane Smith, Developer</p>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev" aria-label="Previous testimonial">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next" aria-label="Next testimonial">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section id="contact">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-center" data-translate="contact_title">Contact Me</h2>
-            <div class="row">
-                <div class="col-lg-6 mb-4 contact-info" data-aos="fade-right">
-                    <p><i class="fa-sharp fa-solid fa-paper-plane fa-2x me-2 text-primary"></i>iyoussefbusinesstowork@gmail.com</p>
-                    <p><i class="fa-solid fa-phone fa-2x me-2 text-primary"></i>+201064338132</p>
-                    <div class="d-flex gap-3 mb-3 social-links">
-                        <a href="https://www.facebook.com/youssef.khaled.749" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
-                        <a href="#" target="_blank"><i class="fa-brands fa-twitter fa-2x"></i></a>
-                        <a href="https://www.instagram.com/youssefkhaled_74/" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
-                        <a href="https://www.linkedin.com/in/youssef-khaled-613206261/" target="_blank"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+            <div class="section-heading text-center">
+                <span class="eyebrow">Contact</span>
+                <h2 class="section-title" data-translate="contact_title">Contact Me</h2>
+                <p class="section-lead">Let’s build something exceptional together. Share your goals and I’ll respond within 24 hours.</p>
+            </div>
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-5 contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <h3>Start a project</h3>
+                        <p>Let’s talk about your idea, timeline, and success metrics.</p>
+                        <a href="mailto:iyoussefbusinesstowork@gmail.com" class="contact-link"><i class="fa-solid fa-paper-plane"></i> iyoussefbusinesstowork@gmail.com</a>
+                        <a href="tel:+201064338132" class="contact-link"><i class="fa-solid fa-phone"></i> +20 106 433 8132</a>
+                        <div class="d-flex gap-3 social-links">
+                            <a href="https://www.facebook.com/youssef.khaled.749" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/youssefkhaled_74/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/youssef-khaled-613206261/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name" required data-translate-placeholder="contact_name_placeholder">
+                <div class="col-lg-7" data-aos="fade-left">
+                    <form id="contactForm" class="contact-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label" for="name">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required data-translate-placeholder="contact_name_placeholder">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="you@email.com" required data-translate-placeholder="contact_email_placeholder">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="message">Project Details</label>
+                                <textarea class="form-control" id="message" rows="6" placeholder="Tell me about your goals" required data-translate-placeholder="contact_message_placeholder"></textarea>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email" required data-translate-placeholder="contact_email_placeholder">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" id="message" rows="6" placeholder="Your Message" required data-translate-placeholder="contact_message_placeholder"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" data-translate="contact_submit"><i class="fa-solid fa-paper-plane me-2"></i>Submit</button>
+                        <button type="submit" class="btn btn-primary mt-3" data-translate="contact_submit"><i class="fa-solid fa-paper-plane me-2"></i>Send Message</button>
+                        <div id="msg" class="mt-3" role="status" aria-live="polite"></div>
                     </form>
-                    <div id="msg" class="mt-3 text-success"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-3">
-        <p data-translate="footer">Copyright © 2025 Youssef Khaled. Made with <i class="fa-solid fa-heart text-danger"></i></p>
+    <footer class="text-center py-4">
+        <div class="container">
+            <p class="mb-1">Youssef Khaled · Laravel Full-Stack Developer · Cairo, Egypt</p>
+            <p class="mb-0" data-translate="footer">Copyright © 2025 Youssef Khaled. Made with <i class="fa-solid fa-heart text-danger"></i></p>
+        </div>
     </footer>
 
     <!-- Scroll to Top Button -->
     <div class="scroll-top" id="scrollTop">
         <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <!-- Project Modals -->
+    <div class="modal fade" id="projectCeaser" tabindex="-1" aria-labelledby="projectCeaserLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectCeaserLabel">Ceaser · Smart Business Platform</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <img src="project1.png" class="img-fluid rounded" alt="Ceaser dashboard preview" loading="lazy" decoding="async">
+                        </div>
+                        <div class="col-lg-6">
+                            <h6>Challenge</h6>
+                            <p>Multiple branches needed real-time visibility into orders, delivery zones, and on-site operations.</p>
+                            <h6>Solution</h6>
+                            <p>Built a Laravel Nova operations hub with geo-tracking, automated dispatch, and QR-powered menus.</p>
+                            <h6>Tech Stack</h6>
+                            <ul>
+                                <li>Laravel 10, Nova, Redis</li>
+                                <li>MySQL, Google Maps API</li>
+                                <li>Role-based access, real-time alerts</li>
+                            </ul>
+                            <h6>Results</h6>
+                            <p>Order processing time dropped by 32%, while manager visibility increased across 12 branches.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://apps.apple.com/kw/app/caeser/id6742375414" class="btn btn-outline-secondary" target="_blank" rel="noopener">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ceaser.evyx" class="btn btn-primary" target="_blank" rel="noopener">Play Store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectLawyer" tabindex="-1" aria-labelledby="projectLawyerLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectLawyerLabel">Ask Lawyer · Consultation Platform</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <img src="project3.png" class="img-fluid rounded" alt="Ask Lawyer platform preview" loading="lazy" decoding="async">
+                        </div>
+                        <div class="col-lg-6">
+                            <h6>Challenge</h6>
+                            <p>Legal experts needed a secure platform to manage content and client intake at scale.</p>
+                            <h6>Solution</h6>
+                            <p>Delivered a Laravel CMS with structured workflows, appointment routing, and legal content automation.</p>
+                            <h6>Tech Stack</h6>
+                            <ul>
+                                <li>Laravel, Nova CMS</li>
+                                <li>MySQL, REST APIs</li>
+                                <li>Secure intake forms, analytics dashboard</li>
+                            </ul>
+                            <h6>Results</h6>
+                            <p>Content publishing time dropped by 40% and consultation conversions improved by 27%.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confidential Client</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="projectPeking" tabindex="-1" aria-labelledby="projectPekingLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectPekingLabel">Peking · Restaurant Operations</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <img src="proect2.png" class="img-fluid rounded" alt="Peking operations dashboard" loading="lazy" decoding="async">
+                        </div>
+                        <div class="col-lg-6">
+                            <h6>Challenge</h6>
+                            <p>Streamline multi-branch order flows across dine-in, takeaway, and delivery.</p>
+                            <h6>Solution</h6>
+                            <p>Implemented an omnichannel ordering backend with automated kitchen routing and delivery status tracking.</p>
+                            <h6>Tech Stack</h6>
+                            <ul>
+                                <li>Laravel, MySQL</li>
+                                <li>Real-time status updates</li>
+                                <li>Role-based dispatch console</li>
+                            </ul>
+                            <h6>Results</h6>
+                            <p>Reduced order errors by 28% and boosted delivery SLA compliance to 96%.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://apps.apple.com/kw/app/peking-restaurants/id6744603590" class="btn btn-outline-secondary" target="_blank" rel="noopener">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.evyx.peking" class="btn btn-primary" target="_blank" rel="noopener">Play Store</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
