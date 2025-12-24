@@ -16,7 +16,11 @@
     <!-- Prism.js for code highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
     <!-- Preloader -->
@@ -52,13 +56,17 @@
 
     <!-- Header Section -->
     <header id="header">
-        <div class="container py-5" data-aos="fade-up">
+        <div class="container py-5 hero-shell" data-aos="fade-up">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
+                    <div class="status-pill">
+                        <span class="pulse"></span>
+                        <span data-translate="header_status">Open to exciting backend opportunities</span>
+                    </div>
                     <h1 class="display-4 fw-bold" data-translate="header_greeting">Hi, I'm <span class="text-primary">Youssef Khaled</span></h1>
                     <p class="lead" data-translate="header_roles">Laravel Full-Stack Developer | PHP Backend Developer | Data Analyst</p>
                     <p class="text-muted" data-translate="header_position">Back-end Developer at Evyx Company | B.Sc. Student</p>
-                    
+
                     <!-- CV download button in header -->
                     <div class="cv-download">
                         <a href="./Youssef khaled.pdf" class="cv-btn" download data-translate="contact_cv">
@@ -67,10 +75,42 @@
                         <a href="./Youssef khaled Back-end Developer.pdf" class="cv-btn" download data-translate="contact_cv_backend">
                             <i class="fa-solid fa-file-pdf"></i> Backend CV
                         </a>
+                        <a href="#portfolio" class="ghost-btn" data-translate="header_projects">
+                            <i class="fa-solid fa-arrow-trend-up"></i> View my work
+                        </a>
+                    </div>
+
+                    <div class="hero-highlights">
+                        <div class="highlight-card">
+                            <span class="label">Projects</span>
+                            <strong>25+</strong>
+                            <small>Shipped products & prototypes</small>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="label">Experience</span>
+                            <strong>3+ yrs</strong>
+                            <small>Laravel, PHP & modern stacks</small>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="label">Mentorship</span>
+                            <strong>100+</strong>
+                            <small>Developers taught & guided</small>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center" data-aos="fade-left">
-                    <img src="./About Me.jpeg" alt="Youssef Khaled" class="img-fluid header-img">
+                    <div class="header-visual">
+                        <div class="floating-blob blob-primary"></div>
+                        <div class="floating-blob blob-secondary"></div>
+                        <img src="./About Me.jpeg" alt="Youssef Khaled" class="img-fluid header-img">
+                        <div class="floating-card">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <div>
+                                <p class="mb-0">Performance-focused builds</p>
+                                <small>Reliable, secure & scalable delivery</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
