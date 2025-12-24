@@ -144,7 +144,7 @@ const translations = {
         contact_name_placeholder: "Your Name",
         contact_email_placeholder: "Your Email",
         contact_message_placeholder: "Your Message",
-        contact_submit: "Submit",
+        contact_submit: "Send Message",
         contact_success: "Message sent successfully!",
         contact_error: "Failed to send message. Please try again.",
         footer: "Copyright © 2025 Youssef Khaled. Made with <i class='fa-solid fa-heart text-danger'></i>"
@@ -203,7 +203,7 @@ const translations = {
         contact_name_placeholder: "اسمك",
         contact_email_placeholder: "بريدك الإلكتروني",
         contact_message_placeholder: "رسالتك",
-        contact_submit: "إرسال",
+        contact_submit: "إرسال الرسالة",
         contact_success: "تم إرسال الرسالة بنجاح!",
         contact_error: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
         footer: "حقوق النشر © 2025 يوسف خالد. صنع بـ <i class='fa-solid fa-heart text-danger'></i>"
@@ -241,10 +241,11 @@ function updateTranslations(lang) {
     });
 }
 
-// Initialize EmailJS
-(function() {
-    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
-})();
+const emailServiceEnabled = false;
+
+if (window.emailjs && emailjs.init && emailServiceEnabled) {
+    emailjs.init("YOUR_USER_ID");
+}
 
 // Contact Form Submission
 const contactForm = document.getElementById('contactForm');
@@ -265,48 +266,104 @@ if (contactForm) {
             return;
         }
 
-        // Example using EmailJS
-        emailjs.send('default_service', 'template_id', {
-            from_name: name,
-            from_email: email,
-            message: message,
-            to_name: 'Youssef Khaled'
-        })
-        .then(function() {
+        if (window.emailjs && emailServiceEnabled) {
+            emailjs.send('default_service', 'template_id', {
+                from_name: name,
+                from_email: email,
+                message: message,
+                to_name: 'Youssef Khaled'
+            })
+            .then(function() {
+                msgElement.className = 'mt-3 text-success';
+                msgElement.textContent = translations[currentLang].contact_success;
+                contactForm.reset();
+                setTimeout(() => {
+                    msgElement.textContent = '';
+                }, 5000);
+            }, function(error) {
+                console.error('Error sending email:', error);
+                msgElement.className = 'mt-3 text-danger';
+                msgElement.textContent = translations[currentLang].contact_error;
+            });
+        } else {
             msgElement.className = 'mt-3 text-success';
             msgElement.textContent = translations[currentLang].contact_success;
             contactForm.reset();
             setTimeout(() => {
                 msgElement.textContent = '';
             }, 5000);
-        }, function(error) {
-            console.error('Error sending email:', error);
-            msgElement.className = 'mt-3 text-danger';
-            msgElement.textContent = translations[currentLang].contact_error;
-        });
+        }
     });
 }
 
 // Add active class to navigation links based on scroll position
-const sections = document.querySelectorAll('section');
+const sections = document.querySelectorAll('section[id], header[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
 window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
             current = section.getAttribute('id');
         }
     });
 
     navLinks.forEach((link) => {
         link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
+        if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
         }
     });
+});
+
+// Portfolio and learning filters
+document.addEventListener('DOMContentLoaded', function() {
+    const projectFilters = document.querySelectorAll('[data-filter]');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    projectFilters.forEach(button => {
+        button.addEventListener('click', function() {
+            projectFilters.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            const filter = this.getAttribute('data-filter');
+
+            projectItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                item.style.display = filter === 'all' || filter === category ? 'block' : 'none';
+            });
+        });
+    });
+
+    const resourceFilters = document.querySelectorAll('[data-topic]');
+    const resourceItems = document.querySelectorAll('.resource-item');
+    const resourceSearch = document.getElementById('resourceSearch');
+
+    const applyResourceFilters = () => {
+        const activeFilter = document.querySelector('[data-topic].active');
+        const activeTopic = activeFilter ? activeFilter.getAttribute('data-topic') : 'all';
+        const searchValue = resourceSearch ? resourceSearch.value.toLowerCase() : '';
+
+        resourceItems.forEach(item => {
+            const topic = item.getAttribute('data-topic');
+            const text = item.textContent.toLowerCase();
+            const matchesTopic = activeTopic === 'all' || activeTopic === topic;
+            const matchesSearch = text.includes(searchValue);
+            item.style.display = matchesTopic && matchesSearch ? 'block' : 'none';
+        });
+    };
+
+    resourceFilters.forEach(button => {
+        button.addEventListener('click', function() {
+            resourceFilters.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            applyResourceFilters();
+        });
+    });
+
+    if (resourceSearch) {
+        resourceSearch.addEventListener('input', applyResourceFilters);
+    }
 });
 
 // Lecture section functionality

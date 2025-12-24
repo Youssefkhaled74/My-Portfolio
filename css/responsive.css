@@ -1,0 +1,108 @@
+/**
+ * Responsive tweaks for smaller screens.
+ */
+
+@media (max-width: 991px) {
+    body {
+        padding-top: 64px;
+    }
+
+    .navbar .container {
+        max-width: 100%;
+    }
+
+    .navbar-collapse {
+        margin-top: 12px;
+    }
+
+    .hero-section {
+        padding-top: 110px;
+    }
+
+    .header-img {
+        width: 280px;
+        height: 320px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-download {
+        justify-content: center;
+    }
+
+    .hero-portrait {
+        margin-top: 32px;
+    }
+
+    .floating-card {
+        position: static;
+        margin-top: 16px;
+        justify-content: center;
+    }
+
+    .floating-card.secondary {
+        margin-top: 12px;
+    }
+
+    section {
+        padding: 72px 0;
+        margin: 24px 0;
+    }
+
+    .resource-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-group,
+    .resource-filters {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .brand-mark {
+        width: 32px;
+        height: 32px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .header-img {
+        width: 240px;
+        height: 280px;
+    }
+
+    .portfolio-img {
+        height: 200px;
+    }
+
+    .contact-card {
+        text-align: center;
+    }
+
+    .contact-link {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}

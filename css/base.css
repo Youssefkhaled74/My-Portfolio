@@ -1,0 +1,114 @@
+/**
+ * Base variables and typography for the portfolio.
+ */
+
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #0f172a;
+    --muted-color: #475569;
+    --primary-color: #0f2a5f;
+    --secondary-color: #2563eb;
+    --accent-color: #38bdf8;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --navbar-bg: rgba(248, 250, 252, 0.9);
+    --footer-bg: #0f172a;
+    --footer-text: #e2e8f0;
+    --search-bg: rgba(255, 255, 255, 0.9);
+    --shadow-sm: 0 6px 16px rgba(15, 23, 42, 0.08);
+    --shadow-md: 0 20px 40px rgba(15, 23, 42, 0.12);
+    --shadow-lg: 0 30px 60px rgba(15, 23, 42, 0.18);
+}
+
+[data-theme="dark"] {
+    --bg-color: #0b1220;
+    --text-color: #e2e8f0;
+    --muted-color: #94a3b8;
+    --primary-color: #93c5fd;
+    --secondary-color: #38bdf8;
+    --accent-color: #22d3ee;
+    --card-bg: #111827;
+    --card-border: #1f2937;
+    --navbar-bg: rgba(15, 23, 42, 0.9);
+    --footer-bg: #020617;
+    --footer-text: #cbd5f5;
+    --search-bg: rgba(15, 23, 42, 0.85);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 0;
+    overflow-x: hidden;
+    padding-top: 72px;
+}
+
+[dir="rtl"] {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+p {
+    color: var(--muted-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+section {
+    padding: 96px 0;
+    margin: 32px 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 32px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    scroll-margin-top: 90px;
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] section {
+    background: rgba(17, 24, 39, 0.75);
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 55%);
+    pointer-events: none;
+}
+
+section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+::selection {
+    background: rgba(37, 99, 235, 0.2);
+}
