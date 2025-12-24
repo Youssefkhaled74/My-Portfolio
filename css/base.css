@@ -2,113 +2,113 @@
  * Base variables and typography for the portfolio.
  */
 
+/* ==== Variables ==== */
 :root {
-    --bg-color: #f8fafc;
-    --text-color: #0f172a;
-    --muted-color: #475569;
-    --primary-color: #0f2a5f;
-    --secondary-color: #2563eb;
-    --accent-color: #38bdf8;
+    /* Light Theme */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #1e3a8a; /* Deep blue */
+    --secondary-color: #0d6efd; /* Bright blue */
     --card-bg: #ffffff;
-    --card-border: #e2e8f0;
-    --navbar-bg: rgba(248, 250, 252, 0.9);
-    --footer-bg: #0f172a;
-    --footer-text: #e2e8f0;
-    --search-bg: rgba(255, 255, 255, 0.9);
-    --shadow-sm: 0 6px 16px rgba(15, 23, 42, 0.08);
-    --shadow-md: 0 20px 40px rgba(15, 23, 42, 0.12);
-    --shadow-lg: 0 30px 60px rgba(15, 23, 42, 0.18);
+    --card-border: #e5e7eb;
+    --navbar-bg: #ffffff;
+    --footer-bg: #f9fafb;
+    --card-gradient: linear-gradient(135deg, #ffffff, #f1f5f9);
+    --section-bg: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+    --footer-text: #f3f4f6;
+    --search-bg: rgba(255, 255, 255, 0.8);
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Dark Theme */
 [data-theme="dark"] {
-    --bg-color: #0b1220;
-    --text-color: #e2e8f0;
-    --muted-color: #94a3b8;
-    --primary-color: #93c5fd;
-    --secondary-color: #38bdf8;
-    --accent-color: #22d3ee;
-    --card-bg: #111827;
-    --card-border: #1f2937;
-    --navbar-bg: rgba(15, 23, 42, 0.9);
-    --footer-bg: #020617;
-    --footer-text: #cbd5f5;
-    --search-bg: rgba(15, 23, 42, 0.85);
+    --bg-color: #121212;
+    --text-color: #e5e5e5;
+    --primary-color: #3b82f6; /* Bright blue for dark theme */
+    --secondary-color: #60a5fa; /* Lighter blue for dark theme */
+    --card-bg: #1e1e1e;
+    --card-border: #2d2d2d;
+    --navbar-bg: #1a1a1a;
+    --footer-bg: #1a1a1a;
+    --card-gradient: linear-gradient(135deg, #2d3748, #4b5563);
+    --section-bg: linear-gradient(180deg, #374151, #4b5563);
+    --footer-text: #d1d5db;
+    --search-bg: rgba(45, 55, 72, 0.8);
 }
 
-* {
-    box-sizing: border-box;
-}
-
+/* ==== Base Styles ==== */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08), transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.08), transparent 25%),
+        linear-gradient(180deg, rgba(99, 102, 241, 0.04), rgba(14, 165, 233, 0.04));
     color: var(--text-color);
-    line-height: 1.7;
-    margin: 0;
+    transition: all 0.3s ease;
+    line-height: 1.8;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    position: relative;
     overflow-x: hidden;
-    padding-top: 72px;
+    padding-top: 60px; /* Reduced padding-top to match smaller navbar */
 }
 
 [dir="rtl"] {
     font-family: 'Noto Sans Arabic', sans-serif;
 }
 
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-weight: 700;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    color: var(--text-color);
-}
-
-p {
-    color: var(--muted-color);
 }
 
 a {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--accent-color);
+    color: var(--secondary-color);
 }
 
 img {
     max-width: 100%;
-    display: block;
 }
 
+/* ==== Section Styles ==== */
 section {
-    padding: 96px 0;
-    margin: 32px 0;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 32px;
-    border: 1px solid rgba(15, 23, 42, 0.06);
-    box-shadow: var(--shadow-sm);
+    padding: 80px 0;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    margin: 30px 0;
     position: relative;
     overflow: hidden;
-    scroll-margin-top: 90px;
-    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(14px);
 }
 
 [data-theme="dark"] section {
-    background: rgba(17, 24, 39, 0.75);
-    border-color: rgba(148, 163, 184, 0.2);
+    background: rgba(30, 30, 30, 0.7);
+    border-color: #2d2d2d;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 55%);
-    pointer-events: none;
-}
-
-section > .container {
-    position: relative;
-    z-index: 1;
-}
-
-::selection {
-    background: rgba(37, 99, 235, 0.2);
+/* First section after header needs no extra margin */
+#about {
+    margin-top: 0;
 }

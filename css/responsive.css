@@ -2,9 +2,14 @@
  * Responsive tweaks for smaller screens.
  */
 
-@media (max-width: 991px) {
+@media (max-width: 992px) {
     body {
-        padding-top: 64px;
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+
+    .navbar {
+        padding: 0.5rem 1rem;
     }
 
     .navbar .container {
@@ -12,97 +17,90 @@
     }
 
     .navbar-collapse {
-        margin-top: 12px;
+        margin-top: 10px;
     }
 
-    .hero-section {
-        padding-top: 110px;
+    .nav-link {
+        padding: 12px 10px !important;
     }
 
-    .header-img {
-        width: 280px;
-        height: 320px;
+    header {
+        padding-top: 60px;
     }
 
     .section-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-section {
+    body {
+        margin-left: 4vw;
+        margin-right: 4vw;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    header {
         text-align: center;
     }
 
-    .hero-metrics {
-        grid-template-columns: 1fr;
+    .header-visual {
+        margin-top: 1.5rem;
     }
 
-    .cv-download {
-        justify-content: center;
-    }
-
-    .hero-portrait {
-        margin-top: 32px;
-    }
-
-    .floating-card {
-        position: static;
-        margin-top: 16px;
-        justify-content: center;
-    }
-
-    .floating-card.secondary {
-        margin-top: 12px;
-    }
-
-    section {
-        padding: 72px 0;
-        margin: 24px 0;
-    }
-
-    .resource-controls {
-        grid-template-columns: 1fr;
-    }
-
-    .filter-group,
-    .resource-filters {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 576px) {
-    .navbar-brand {
-        font-size: 1rem;
-    }
-
-    .brand-mark {
-        width: 32px;
-        height: 32px;
-    }
-
-    .section-title {
-        font-size: 2rem;
+    .hero-highlights {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
     }
 
     .header-img {
-        width: 240px;
-        height: 280px;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+
+    .cv-download {
+        flex-direction: column;
+    }
+
+    section {
+        padding: 80px 0;
+    }
+
+    .search-bar {
+        width: 90%;
     }
 
     .portfolio-img {
-        height: 200px;
+        height: 180px;
     }
 
-    .contact-card {
+    .contact-info {
         text-align: center;
-    }
-
-    .contact-link {
-        justify-content: center;
+        margin-bottom: 2rem;
     }
 
     .social-links {
         justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .lecture-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lecture-categories .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .lecture-img {
+        height: 150px;
     }
 }
