@@ -1,0 +1,176 @@
+/**
+ * Shared components and reusable UI pieces.
+ */
+
+/* ==== Card Styles ==== */
+.card {
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95));
+    border: 1px solid rgba(59, 130, 246, 0.08);
+    border-radius: 18px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(59, 130, 246, 0.25);
+}
+
+/* ==== Button Styles ==== */
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    transform: translateY(-2px);
+}
+
+/* ==== Theme and Language Toggle ==== */
+.theme-toggle, .lang-toggle {
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: 12px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover, .lang-toggle:hover {
+    transform: scale(1.2);
+}
+
+/* ==== Footer ==== */
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 40px 0;
+    font-size: 1.1rem;
+}
+
+/* ==== CV Download Section ==== */
+.cv-download {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.cv-btn {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cv-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ghost-btn {
+    background: transparent;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: var(--primary-color);
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+.ghost-btn:hover {
+    background: rgba(59, 130, 246, 0.08);
+    transform: translateY(-2px);
+}
+
+/* ==== Collapse Animation ==== */
+.collapse.show {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+}
+
+/* ==== Scroll to Top Button ==== */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    transform: translateY(-4px);
+}
+
+/* ==== Preloader ==== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(37, 99, 235, 0.2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
