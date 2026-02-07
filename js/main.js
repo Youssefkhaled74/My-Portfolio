@@ -34,58 +34,75 @@ function closemenu(){
 // })
 
 // Preloader
+const preloader = document.getElementById('preloader');
 window.addEventListener('load', () => {
+    if (!preloader) {
+        return;
+    }
     setTimeout(() => {
-        document.getElementById('preloader').classList.add('hide');
+        preloader.classList.add('hide');
     }, 500);
 });
 
 // Initialize AOS (Animate On Scroll)
-AOS.init({
-    duration: 1000,
-    once: true
-});
+if (typeof AOS !== 'undefined') {
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+}
 
 // Theme Toggle System
 const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
 const htmlRoot = document.documentElement;
-const savedTheme = localStorage.getItem('theme') || 'light';
+const savedTheme = localStorage.getItem('theme') || 'dark';
 htmlRoot.setAttribute('data-theme', savedTheme);
-themeToggle.className = savedTheme === 'dark' ? 'fas fa-sun theme-toggle' : 'fas fa-moon theme-toggle';
+if (themeToggle) {
+    if (themeIcon) {
+        themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlRoot.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    htmlRoot.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    themeToggle.className = newTheme === 'dark' ? 'fas fa-sun theme-toggle' : 'fas fa-moon theme-toggle';
-});
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlRoot.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlRoot.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        if (themeIcon) {
+            themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
 
 // Scroll to Top Button
 const scrollTopBtn = document.getElementById('scrollTop');
 
 window.addEventListener('scroll', () => {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollTopBtn.classList.add('active');
-    } else {
-        scrollTopBtn.classList.remove('active');
+    if (scrollTopBtn) {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
     }
     
     // Shrink navbar on scroll
     const navbar = document.querySelector('.navbar');
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    if (navbar && (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)) {
         navbar.classList.add('navbar-shrink');
-    } else {
+    } else if (navbar) {
         navbar.classList.remove('navbar-shrink');
     }
 });
 
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
 
 // Language Toggle System
 const langToggle = document.getElementById('langToggle');
@@ -213,18 +230,20 @@ const translations = {
 const savedLang = localStorage.getItem('language') || 'en';
 htmlRoot.setAttribute('lang', savedLang);
 htmlRoot.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
-langToggle.textContent = savedLang === 'ar' ? 'EN' : 'AR';
-updateTranslations(savedLang);
+if (langToggle) {
+    langToggle.textContent = savedLang === 'ar' ? 'EN' : 'AR';
+    updateTranslations(savedLang);
 
-langToggle.addEventListener('click', () => {
-    const currentLang = htmlRoot.getAttribute('lang');
-    const newLang = currentLang === 'ar' ? 'en' : 'ar';
-    htmlRoot.setAttribute('lang', newLang);
-    htmlRoot.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-    localStorage.setItem('language', newLang);
-    langToggle.textContent = newLang === 'ar' ? 'EN' : 'AR';
-    updateTranslations(newLang);
-});
+    langToggle.addEventListener('click', () => {
+        const currentLang = htmlRoot.getAttribute('lang');
+        const newLang = currentLang === 'ar' ? 'en' : 'ar';
+        htmlRoot.setAttribute('lang', newLang);
+        htmlRoot.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
+        localStorage.setItem('language', newLang);
+        langToggle.textContent = newLang === 'ar' ? 'EN' : 'AR';
+        updateTranslations(newLang);
+    });
+}
 
 function updateTranslations(lang) {
     document.querySelectorAll('[data-translate]').forEach(element => {
@@ -242,9 +261,9 @@ function updateTranslations(lang) {
 }
 
 // Initialize EmailJS
-(function() {
+if (typeof emailjs !== 'undefined') {
     emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
-})();
+}
 
 // Contact Form Submission
 const contactForm = document.getElementById('contactForm');
