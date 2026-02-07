@@ -403,7 +403,7 @@
                     <p data-translate="contact_desc">Available for backend development, API architecture, and performance consulting.</p>
                 </div>
                 <div class="contact-actions">
-                    <a class="btn btn-primary" href="mailto:youssefkhaled@example.com" data-translate="contact_email">Email me</a>
+                    <a class="btn btn-primary" href="mailto:youssefblackendev@gmail.com" id="contactEmailBtn" data-translate="contact_email">Email me</a>
                     <a class="btn btn-ghost" href="https://wa.me/0000000000" data-translate="contact_whatsapp">WhatsApp</a>
                 </div>
             </div>
@@ -418,6 +418,22 @@
     <button class="lang-fab" id="langToggle" title="Toggle Language" aria-label="Toggle language">
         AR
     </button>
+
+    <div class="contact-modal" id="contactModal" aria-hidden="true">
+        <div class="contact-modal__backdrop" data-close="true"></div>
+        <div class="contact-modal__panel" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+            <div class="contact-modal__header">
+                <h3 id="contactModalTitle" data-translate="contact_modal_title">Choose a subject</h3>
+                <button class="contact-modal__close" type="button" data-close="true" aria-label="Close">×</button>
+            </div>
+            <p class="contact-modal__subtitle" data-translate="contact_modal_desc">Pick a topic and we will open your email client.</p>
+            <div class="contact-modal__options" id="contactModalOptions"></div>
+            <div class="contact-modal__actions">
+                <button class="btn btn-ghost btn-sm" type="button" data-close="true" data-translate="contact_modal_cancel">Cancel</button>
+                <button class="btn btn-primary btn-sm" type="button" id="contactModalSend" data-translate="contact_modal_send">Compose email</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -638,3 +638,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Contact email subject chooser
+document.addEventListener('DOMContentLoaded', function() {
+    const emailBtn = document.getElementById('contactEmailBtn');
+    if (!emailBtn) {
+        return;
+    }
+
+    const subjects = {
+        en: [
+            "Backend project inquiry",
+            "API architecture consultation",
+            "Performance & scaling help",
+            "Freelance collaboration"
+        ],
+        ar: [
+            "استفسار عن مشروع باك إند",
+            "استشارة هندسة API",
+            "مساعدة في الأداء والتوسع",
+            "تعاون فريلانس"
+        ]
+    };
+
+    emailBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        const lang = htmlRoot.getAttribute('lang') || 'en';
+        const list = subjects[lang] || subjects.en;
+        const message = lang === 'ar'
+            ? `اختار الموضوع بكتابة الرقم:\\n1) ${list[0]}\\n2) ${list[1]}\\n3) ${list[2]}\\n4) ${list[3]}`
+            : `Choose a subject by number:\\n1) ${list[0]}\\n2) ${list[1]}\\n3) ${list[2]}\\n4) ${list[3]}`;
+        const choice = prompt(message, "1");
+        if (!choice) {
+            return;
+        }
+
+        const idx = parseInt(choice, 10) - 1;
+        const subject = list[idx] || list[0];
+        const body = lang === 'ar'
+            ? "مرحبًا يوسف،\\n\\n"
+            : "Hi Youssef,\\n\\n";
+        const mailto = `mailto:youssefblackendev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
+    });
+});
