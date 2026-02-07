@@ -238,6 +238,9 @@ const translations = {
         freelance_maktabty_desc: "Library platform with inventory, orders, and admin dashboard.",
         freelance_sgsolar_desc: "Solar energy services website with service catalog and customer collection.",
         freelance_fifa_desc: "Interactive interface with tables, statistics, and highlights."
+        ,
+        freelance_yeesooh_desc: "Project description coming soon.",
+        freelance_insave_desc: "Project description coming soon."
     },
     ar: {
         navbar_brand: "يوسف خالد",
@@ -370,6 +373,9 @@ const translations = {
         freelance_maktabty_desc: "منصة مكتبة تشمل المخزون والطلبات ولوحة الإدارة.",
         freelance_sgsolar_desc: "موقع خدمات الطاقة الشمسية مع كتالوج خدمات وجمع العملاء.",
         freelance_fifa_desc: "واجهة تفاعلية مع الجداول والإحصاءات واللقطات."
+        ,
+        freelance_yeesooh_desc: "وصف المشروع قادم قريبًا.",
+        freelance_insave_desc: "وصف المشروع قادم قريبًا."
     }
 };
 

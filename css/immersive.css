@@ -711,6 +711,24 @@
     padding: 10px;
 }
 
+.freelance-media--placeholder {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.08);
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+[data-theme="dark"] .freelance-media--placeholder,
+.timeline-body .freelance-media--placeholder {
+    background: rgba(148, 163, 184, 0.12);
+    color: #e2e8f0;
+}
+
 .freelance-body {
     display: flex;
     flex-direction: column;
