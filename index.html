@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4f50f622f4.js" crossorigin="anonymous"></script>
     <!-- AOS for Animations -->
@@ -36,10 +36,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#proof">Proof</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects" data-translate="nav_projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proof" data-translate="nav_proof">Proof</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-translate="nav_about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-translate="nav_contact">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center nav-actions">
                     <a class="btn btn-primary btn-sm" href="./Youssef khaled Back-end Developer.pdf" download>Download CV</a>
@@ -53,27 +53,23 @@
         <div class="container">
             <div class="row align-items-center hero-grid">
                 <div class="col-lg-7" data-aos="fade-right">
-                    <div class="status-pill">
-                        <span class="pulse"></span>
-                        <span>Open to backend roles � Laravel / PHP</span>
-                    </div>
-                    <h1 class="hero-title">Backend engineer who ships reliable systems.</h1>
-                    <p class="hero-subtitle">I design scalable APIs, data models, and infrastructure that keep products fast, secure, and resilient. Strong focus on Laravel, performance, and production readiness.</p>
+                    <h1 class="hero-title" data-translate="hero_title">Backend engineer who ships reliable systems.</h1>
+                    <p class="hero-subtitle" data-translate="hero_subtitle">I design scalable APIs, data models, and infrastructure that keep products fast, secure, and resilient. Strong focus on Laravel, performance, and production readiness.</p>
                     <div class="hero-actions">
-                        <a class="btn btn-primary" href="#contact">Start a project</a>
-                        <a class="btn btn-ghost" href="#cases">See case studies</a>
+                        <a class="btn btn-primary" href="#contact" data-translate="hero_cta_primary">Start a project</a>
+                        <a class="btn btn-ghost" href="#projects" data-translate="hero_cta_secondary">See case studies</a>
                     </div>
                     <div class="hero-metrics">
                         <div class="metric">
-                            <span class="metric-label">Experience</span>
+                            <span class="metric-label" data-translate="metric_experience">Experience</span>
                             <strong>3+ yrs</strong>
                         </div>
                         <div class="metric">
-                            <span class="metric-label">Projects delivered</span>
+                            <span class="metric-label" data-translate="metric_projects">Projects delivered</span>
                             <strong>25+</strong>
                         </div>
                         <div class="metric">
-                            <span class="metric-label">Uptime focus</span>
+                            <span class="metric-label" data-translate="metric_uptime">Uptime focus</span>
                             <strong>99.9%</strong>
                         </div>
                     </div>
@@ -82,9 +78,9 @@
                     <div class="hero-visual">
                         <div class="signal-stack">
                             <div class="signal-panel">
-                                <p class="signal-label">System focus</p>
-                                <h3>Backend systems</h3>
-                                <p>Architecture, security, and performance that scale.</p>
+                                <p class="signal-label" data-translate="signal_focus_label">System focus</p>
+                                <h3 data-translate="signal_focus_title">Backend systems</h3>
+                                <p data-translate="signal_focus_desc">Architecture, security, and performance that scale.</p>
                                 <div class="signal-tags">
                                     <span>APIs</span>
                                     <span>Queues</span>
@@ -92,14 +88,14 @@
                                 </div>
                             </div>
                             <div class="signal-panel signal-dark">
-                                <p class="signal-label">Reliability</p>
-                                <h3>99.9% uptime mindset</h3>
-                                <p>Release checks, rollback plans, and clean monitoring.</p>
+                                <p class="signal-label" data-translate="signal_reliability_label">Reliability</p>
+                                <h3 data-translate="signal_reliability_title">99.9% uptime mindset</h3>
+                                <p data-translate="signal_reliability_desc">Release checks, rollback plans, and clean monitoring.</p>
                             </div>
                             <div class="signal-panel">
-                                <p class="signal-label">Delivery</p>
-                                <h3>Shipping cadence</h3>
-                                <p>Predictable releases with resilient data models.</p>
+                                <p class="signal-label" data-translate="signal_delivery_label">Delivery</p>
+                                <h3 data-translate="signal_delivery_title">Shipping cadence</h3>
+                                <p data-translate="signal_delivery_desc">Predictable releases with resilient data models.</p>
                             </div>
                         </div>
                     </div>
@@ -111,167 +107,133 @@
         <!-- Projects -->
     <section id="projects" class="projects-section">
         <div class="container">
-            <div class="section-intro project-intro" data-aos="fade-up">
-                <p class="eyebrow">Projects</p>
-                <h2>Full portfolio of shipped products</h2>
-                <p>All projects below are from my work at Evyx. Each one will include full details and multiple links.</p>
-                <div class="project-intro-actions">
-                    <span class="project-note">Scrollable gallery · tap any card</span>
-                    <a href="#contact" class="btn btn-ghost btn-sm">Let’s build yours</a>
-                </div>
+            <div class="section-intro" data-aos="fade-up">
+                <p class="eyebrow" data-translate="projects_eyebrow">Projects</p>
+                <h2 data-translate="projects_title">Full portfolio of shipped products</h2>
+                <p data-translate="projects_desc">All projects below are from my work at Evyx. Each one will include full details and multiple links.</p>
             </div>
-        </div>
-        <div class="project-rail" data-aos="fade-up">
-            <article class="project-tile">
-                <div class="tile-media"><img src="ProjectsPhotos/asklawyer.png" alt="Ask Lawyer project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+            <div class="project-grid">
+                <article class="project-card" data-aos="fade-up">
+                    <div class="project-media"><img src="ProjectsPhotos/asklawyer.png" alt="Ask Lawyer project"></div>
+                    <div class="project-body">
                         <h3>Ask Lawyer</h3>
-                        <span class="tile-tag">Legal</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile">
-                <div class="tile-media"><img src="ProjectsPhotos/backoffice.png" alt="Backoffice project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="project-media"><img src="ProjectsPhotos/backoffice.png" alt="Backoffice project"></div>
+                    <div class="project-body">
                         <h3>Backoffice</h3>
-                        <span class="tile-tag">Ops</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile tile-wide">
-                <div class="tile-media"><img src="ProjectsPhotos/ceaser.png" alt="Ceaser project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-media"><img src="ProjectsPhotos/ceaser.png" alt="Ceaser project"></div>
+                    <div class="project-body">
                         <h3>Ceaser</h3>
-                        <span class="tile-tag">Business</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile">
-                <div class="tile-media"><img src="ProjectsPhotos/egypin.png" alt="Egypin project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="project-media"><img src="ProjectsPhotos/egypin.png" alt="Egypin project"></div>
+                    <div class="project-body">
                         <h3>Egypin</h3>
-                        <span class="tile-tag">Payments</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile">
-                <div class="tile-media"><img src="ProjectsPhotos/empon.png" alt="Empon project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-media"><img src="ProjectsPhotos/empon.png" alt="Empon project"></div>
+                    <div class="project-body">
                         <h3>Empon</h3>
-                        <span class="tile-tag">Retail</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile tile-tall">
-                <div class="tile-media"><img src="ProjectsPhotos/ezzelmnofy.png" alt="Ezzelmnofy project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="project-media"><img src="ProjectsPhotos/ezzelmnofy.png" alt="Ezzelmnofy project"></div>
+                    <div class="project-body">
                         <h3>Ezzelmnofy</h3>
-                        <span class="tile-tag">Commerce</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile">
-                <div class="tile-media"><img src="ProjectsPhotos/fakka.png" alt="Fakka project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-media"><img src="ProjectsPhotos/fakka.png" alt="Fakka project"></div>
+                    <div class="project-body">
                         <h3>Fakka</h3>
-                        <span class="tile-tag">Delivery</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile tile-wide">
-                <div class="tile-media"><img src="ProjectsPhotos/lamavie.png" alt="Lamavie project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="project-media"><img src="ProjectsPhotos/lamavie.png" alt="Lamavie project"></div>
+                    <div class="project-body">
                         <h3>Lamavie</h3>
-                        <span class="tile-tag">Health</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile">
-                <div class="tile-media"><img src="ProjectsPhotos/maxliss.png" alt="Maxliss project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-media"><img src="ProjectsPhotos/maxliss.png" alt="Maxliss project"></div>
+                    <div class="project-body">
                         <h3>Maxliss</h3>
-                        <span class="tile-tag">Lifestyle</span>
+                        <p data-translate="project_placeholder">Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span data-translate="link_apple">Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span data-translate="link_play">Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span data-translate="link_dashboard">Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
-            <article class="project-tile">
-                <div class="tile-media"><img src="ProjectsPhotos/peking.png" alt="Peking project"></div>
-                <div class="tile-body">
-                    <div class="tile-header">
+                </article>
+                <article class="project-card" data-aos="fade-up" data-aos-delay="450">
+                    <div class="project-media"><img src="ProjectsPhotos/peking.png" alt="Peking project"></div>
+                    <div class="project-body">
                         <h3>Peking</h3>
-                        <span class="tile-tag">Food</span>
+                        <p>Project description coming soon.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-apple"></i><span>Apple Store</span></a>
+                            <a href="#" class="btn btn-ghost btn-sm"><i class="fa-brands fa-google-play"></i><span>Google Play</span></a>
+                            <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+                        </div>
                     </div>
-                    <p>Project description coming soon.</p>
-                    <div class="tile-links">
-                        <a href="#" class="btn btn-ghost btn-sm">Apple Store</a>
-                        <a href="#" class="btn btn-ghost btn-sm">Google Play</a>
-                        <a href="#" class="btn btn-primary btn-sm">Dashboard</a>
-                    </div>
-                </div>
-            </article>
+                </article>
+            </div>
         </div>
     </section>
 
@@ -280,28 +242,28 @@
     <section id="proof" class="proof-section">
         <div class="container">
             <div class="section-intro" data-aos="fade-up">
-                <p class="eyebrow">Proof</p>
-                <h2>Backend outcomes that keep products healthy</h2>
+                <p class="eyebrow" data-translate="proof_eyebrow">Proof</p>
+                <h2 data-translate="proof_title">Backend outcomes that keep products healthy</h2>
             </div>
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="proof-card">
-                        <h3>Performance</h3>
-                        <p>Optimized data access layers and caching for faster response times.</p>
+                        <h3 data-translate="proof_perf_title">Performance</h3>
+                        <p data-translate="proof_perf_desc">Optimized data access layers and caching for faster response times.</p>
                         <strong>35%+ faster</strong>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="proof-card">
-                        <h3>Reliability</h3>
-                        <p>Zero-downtime deployments and guardrails for safe releases.</p>
+                        <h3 data-translate="proof_rel_title">Reliability</h3>
+                        <p data-translate="proof_rel_desc">Zero-downtime deployments and guardrails for safe releases.</p>
                         <strong>99.9% uptime</strong>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="proof-card">
-                        <h3>Scale</h3>
-                        <p>Multi-tenant designs supporting growing teams and data volume.</p>
+                        <h3 data-translate="proof_scale_title">Scale</h3>
+                        <p data-translate="proof_scale_desc">Multi-tenant designs supporting growing teams and data volume.</p>
                         <strong>10x growth ready</strong>
                     </div>
                 </div>
@@ -315,8 +277,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h2>About me</h2>
-                    <p>I am Youssef Khaled Anwar, backend developer and statistics graduate focused on reliable web systems. I lead backend efforts at Evyx Company and mentor developers through learning communities.</p>
+                    <h2 data-translate="about_title">About me</h2>
+                    <p data-translate="about_desc">I am Youssef Khaled Anwar, backend developer and statistics graduate focused on reliable web systems. I lead backend efforts at Evyx Company and mentor developers through learning communities.</p>
                     <div class="about-tags">
                         <span>Laravel</span>
                         <span>PHP</span>
@@ -327,13 +289,13 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="about-card">
-                        <h3>What you get</h3>
+                        <h3 data-translate="about_card_title">What you get</h3>
                         <ul>
-                            <li>Clear system architecture and clean data models.</li>
-                            <li>Scalable APIs with documented endpoints.</li>
-                            <li>Production readiness: monitoring, logging, and security.</li>
+                            <li data-translate="about_card_item_1">Clear system architecture and clean data models.</li>
+                            <li data-translate="about_card_item_2">Scalable APIs with documented endpoints.</li>
+                            <li data-translate="about_card_item_3">Production readiness: monitoring, logging, and security.</li>
                         </ul>
-                        <a class="btn btn-ghost" href="./Youssef khaled.pdf" download>Download full CV</a>
+                        <a class="btn btn-ghost" href="./Youssef khaled.pdf" download data-translate="about_cv">Download full CV</a>
                     </div>
                 </div>
             </div>
@@ -345,12 +307,12 @@
         <div class="container">
             <div class="contact-card" data-aos="fade-up">
                 <div>
-                    <h2>Let�s build your backend roadmap</h2>
-                    <p>Available for backend development, API architecture, and performance consulting.</p>
+                    <h2 data-translate="contact_title">Let�s build your backend roadmap</h2>
+                    <p data-translate="contact_desc">Available for backend development, API architecture, and performance consulting.</p>
                 </div>
                 <div class="contact-actions">
-                    <a class="btn btn-primary" href="mailto:youssefkhaled@example.com">Email me</a>
-                    <a class="btn btn-ghost" href="https://wa.me/0000000000">WhatsApp</a>
+                    <a class="btn btn-primary" href="mailto:youssefkhaled@example.com" data-translate="contact_email">Email me</a>
+                    <a class="btn btn-ghost" href="https://wa.me/0000000000" data-translate="contact_whatsapp">WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -361,6 +323,9 @@
     <button class="theme-fab" id="themeToggle" title="Toggle Theme" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
     </button>
+    <button class="lang-fab" id="langToggle" title="Toggle Language" aria-label="Toggle language">
+        AR
+    </button>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -370,4 +335,5 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
 
