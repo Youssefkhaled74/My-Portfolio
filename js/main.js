@@ -232,7 +232,7 @@ const translations = {
         tag_database: "Database",
         knowledge_all: "View all lectures",
         freelance_eyebrow: "Freelance",
-        freelance_title: "Selected freelance work outside Evyx",
+        freelance_title: "Selected freelance work",
         freelance_desc: "A separate showcase for independent projects with their own visual style.",
         tag_freelance: "Freelance",
         freelance_maktabty_desc: "Library platform with inventory, orders, and admin dashboard.",
@@ -241,6 +241,8 @@ const translations = {
         ,
         freelance_yeesooh_desc: "Project description coming soon.",
         freelance_insave_desc: "Project description coming soon."
+        ,
+        freelance_liimo_desc: "Project description coming soon."
     },
     ar: {
         navbar_brand: "يوسف خالد",
@@ -367,7 +369,7 @@ const translations = {
         tag_database: "قواعد البيانات",
         knowledge_all: "عرض كل المحاضرات",
         freelance_eyebrow: "فريلانس",
-        freelance_title: "مشاريع مستقلة خارج Evyx",
+        freelance_title: "مشاريع مستقلة",
         freelance_desc: "عرض منفصل لمشاريع مستقلة بطابع بصري مختلف.",
         tag_freelance: "فريلانس",
         freelance_maktabty_desc: "منصة مكتبة تشمل المخزون والطلبات ولوحة الإدارة.",
@@ -376,6 +378,8 @@ const translations = {
         ,
         freelance_yeesooh_desc: "وصف المشروع قادم قريبًا.",
         freelance_insave_desc: "وصف المشروع قادم قريبًا."
+        ,
+        freelance_liimo_desc: "وصف المشروع قادم قريبًا."
     }
 };
 
