@@ -119,6 +119,7 @@ const translations = {
         nav_tracks: "All Tracks",
         nav_projects: "Projects",
         nav_proof: "Proof",
+        nav_knowledge: "Knowledge",
         hero_title: "Backend engineer who ships reliable systems.",
         hero_subtitle: "I design scalable APIs, data models, and infrastructure that keep products fast, secure, and resilient. Strong focus on Laravel, performance, and production readiness.",
         hero_cta_primary: "Start a project",
@@ -208,7 +209,19 @@ const translations = {
         contact_submit: "Submit",
         contact_success: "Message sent successfully!",
         contact_error: "Failed to send message. Please try again.",
-        footer: "Copyright © 2025 Youssef Khaled. Made with <i class='fa-solid fa-heart text-danger'></i>"
+        footer: "Copyright © 2025 Youssef Khaled. Made with <i class='fa-solid fa-heart text-danger'></i>",
+        knowledge_eyebrow: "Knowledge Hub",
+        knowledge_title: "Backend topics, practical and structured",
+        knowledge_desc: "Bilingual lectures with categories. Read in-page or download PDF.",
+        filter_all: "All",
+        filter_database: "Database",
+        filter_performance: "Performance",
+        filter_security: "Security",
+        lecture_concurrency_title: "Concurrency & Locking in Laravel",
+        lecture_concurrency_desc: "How to prevent race conditions with transactions and row locks.",
+        lecture_read: "Read",
+        lecture_pdf: "PDF",
+        tag_database: "Database"
     },
     ar: {
         navbar_brand: "يوسف خالد",
@@ -222,6 +235,7 @@ const translations = {
         nav_tracks: "جميع المسارات",
         nav_projects: "المشاريع",
         nav_proof: "الإنجازات",
+        nav_knowledge: "المعرفة",
         hero_title: "مهندس خلفية يسلّم أنظمة موثوقة.",
         hero_subtitle: "أصمم واجهات API قابلة للتوسع، نماذج بيانات، وبنية تحتية تحافظ على سرعة المنتج وأمانه واستقراره. تركيز قوي على Laravel والأداء والجاهزية الإنتاجية.",
         hero_cta_primary: "ابدأ مشروعًا",
@@ -311,7 +325,19 @@ const translations = {
         contact_submit: "إرسال",
         contact_success: "تم إرسال الرسالة بنجاح!",
         contact_error: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
-        footer: "حقوق النشر © 2025 يوسف خالد. صنع بـ <i class='fa-solid fa-heart text-danger'></i>"
+        footer: "حقوق النشر © 2025 يوسف خالد. صنع بـ <i class='fa-solid fa-heart text-danger'></i>",
+        knowledge_eyebrow: "مركز المعرفة",
+        knowledge_title: "مواضيع خلفية عملية ومنظمة",
+        knowledge_desc: "محاضرات ثنائية اللغة مع تصنيفات. اقرأ داخل الموقع أو حمّل PDF.",
+        filter_all: "الكل",
+        filter_database: "قواعد البيانات",
+        filter_performance: "الأداء",
+        filter_security: "الأمان",
+        lecture_concurrency_title: "التزامن والأقفال في Laravel",
+        lecture_concurrency_desc: "كيف تمنع تعارضات التحديث باستخدام المعاملات والأقفال.",
+        lecture_read: "قراءة",
+        lecture_pdf: "PDF",
+        tag_database: "قواعد البيانات"
     }
 };
 
@@ -464,6 +490,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Knowledge Hub filtering
+document.addEventListener('DOMContentLoaded', function() {
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.knowledge-card');
+
+    if (!chips.length || !cards.length) {
+        return;
+    }
+
+    chips.forEach(chip => {
+        chip.addEventListener('click', function() {
+            chips.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            const filter = this.getAttribute('data-filter');
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                card.style.display = (filter === 'all' || category === filter) ? 'block' : 'none';
+            });
+        });
+    });
+});
+
 // Lecture view functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Create modal for viewing lectures
@@ -502,7 +551,10 @@ document.addEventListener('DOMContentLoaded', function() {
     viewLectureButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
-            const lecturePath = this.getAttribute('data-lecture');
+            const lecturePathDefault = this.getAttribute('data-lecture');
+            const lecturePathAr = this.getAttribute('data-lecture-ar');
+            const currentLang = htmlRoot.getAttribute('lang');
+            const lecturePath = (currentLang === 'ar' && lecturePathAr) ? lecturePathAr : lecturePathDefault;
             const lectureType = this.getAttribute('data-type') || 
                                 (lecturePath && lecturePath.endsWith('.md') ? 'markdown' : 'html');
             
