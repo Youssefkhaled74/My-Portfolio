@@ -118,6 +118,7 @@ const translations = {
         nav_contact: "Contact",
         nav_tracks: "All Tracks",
         nav_projects: "Projects",
+        nav_freelance: "Freelance",
         nav_proof: "Proof",
         nav_knowledge: "Knowledge",
         hero_title: "Backend engineer who ships reliable systems.",
@@ -221,7 +222,15 @@ const translations = {
         lecture_concurrency_desc: "How to prevent race conditions with transactions and row locks.",
         lecture_read: "Read",
         lecture_pdf: "PDF",
-        tag_database: "Database"
+        tag_database: "Database",
+        knowledge_all: "View all lectures",
+        freelance_eyebrow: "Freelance",
+        freelance_title: "Selected freelance work outside Evyx",
+        freelance_desc: "A separate showcase for independent projects with their own visual style.",
+        tag_freelance: "Freelance",
+        freelance_maktabty_desc: "Library platform with inventory, orders, and admin dashboard.",
+        freelance_sgsolar_desc: "Solar energy services website with service catalog and customer collection.",
+        freelance_fifa_desc: "Interactive interface with tables, statistics, and highlights."
     },
     ar: {
         navbar_brand: "يوسف خالد",
@@ -234,6 +243,7 @@ const translations = {
         nav_contact: "اتصل بي",
         nav_tracks: "جميع المسارات",
         nav_projects: "المشاريع",
+        nav_freelance: "فريلانس",
         nav_proof: "الإنجازات",
         nav_knowledge: "المعرفة",
         hero_title: "مهندس خلفية يسلّم أنظمة موثوقة.",
@@ -337,7 +347,15 @@ const translations = {
         lecture_concurrency_desc: "كيف تمنع تعارضات التحديث باستخدام المعاملات والأقفال.",
         lecture_read: "قراءة",
         lecture_pdf: "PDF",
-        tag_database: "قواعد البيانات"
+        tag_database: "قواعد البيانات",
+        knowledge_all: "عرض كل المحاضرات",
+        freelance_eyebrow: "فريلانس",
+        freelance_title: "مشاريع مستقلة خارج Evyx",
+        freelance_desc: "عرض منفصل لمشاريع مستقلة بطابع بصري مختلف.",
+        tag_freelance: "فريلانس",
+        freelance_maktabty_desc: "منصة مكتبة تشمل المخزون والطلبات ولوحة الإدارة.",
+        freelance_sgsolar_desc: "موقع خدمات الطاقة الشمسية مع كتالوج خدمات وجمع العملاء.",
+        freelance_fifa_desc: "واجهة تفاعلية مع الجداول والإحصاءات واللقطات."
     }
 };
 
@@ -560,8 +578,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (lecturePath && lecturePath !== '#') {
                 // Set modal title based on lecture title
-                const lectureTitle = this.closest('.card-body').querySelector('.card-title').textContent.trim();
-                document.getElementById('lectureModalLabel').textContent = lectureTitle;
+                const knowledgeCard = this.closest('.knowledge-card');
+                const lectureTitleEl = knowledgeCard ? knowledgeCard.querySelector('h3') : null;
+                document.getElementById('lectureModalLabel').textContent = lectureTitleEl ? lectureTitleEl.textContent.trim() : 'Lecture';
                 
                 // Set open in new tab link
                 const openInNewTabBtn = document.getElementById('openInNewTab');
@@ -602,7 +621,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         })
                         .catch(error => {
-                            markdownContent.innerHTML = `<div class="alert alert-danger">Error loading content: ${error.message}</div>`;
+                            const isFile = window.location.protocol === 'file:';
+                            const hint = isFile
+                                ? 'Open the site with a local server (http://) or use “Open in New Tab”.'
+                                : 'Please use “Open in New Tab”.';
+                            markdownContent.innerHTML = `<div class="alert alert-danger">Error loading content: ${error.message}. ${hint}</div>`;
                         });
                 }
                 
