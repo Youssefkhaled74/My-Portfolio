@@ -163,6 +163,13 @@ const translations = {
         contact_desc: "Available for backend development, API architecture, and performance consulting.",
         contact_email: "Email me",
         contact_whatsapp: "WhatsApp",
+        contact_modal_title: "Choose a subject",
+        contact_modal_desc: "Pick a topic and we will open your email client.",
+        contact_modal_name: "Your name",
+        contact_modal_email: "Your email",
+        contact_modal_message: "Message",
+        contact_modal_cancel: "Cancel",
+        contact_modal_send: "Compose email",
         header_greeting: "Hi, I'm <span class='text-primary'>Youssef Khaled</span>",
         header_roles: "Laravel Full-Stack Developer | PHP Backend Developer | Data Analyst",
         header_position: "Back-end Developer at Evyx Company | B.Sc. Student",
@@ -288,6 +295,13 @@ const translations = {
         contact_desc: "متاح لتطوير الخلفية وهندسة API واستشارات الأداء.",
         contact_email: "راسلني",
         contact_whatsapp: "واتساب",
+        contact_modal_title: "اختر الموضوع",
+        contact_modal_desc: "اختر موضوعًا وسيتم فتح تطبيق البريد.",
+        contact_modal_name: "اسمك",
+        contact_modal_email: "بريدك الإلكتروني",
+        contact_modal_message: "الرسالة",
+        contact_modal_cancel: "إلغاء",
+        contact_modal_send: "كتابة البريد",
         header_greeting: "مرحباً، أنا <span class='text-primary'>يوسف خالد</span>",
         header_roles: "مطور لارافيل كامل التكامل | مطور خلفية PHP | محلل بيانات",
         header_position: "مطور خلفية في شركة Evyx | طالب بكالوريوس",
@@ -639,10 +653,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Contact email subject chooser
+// Contact email subject chooser (custom modal)
 document.addEventListener('DOMContentLoaded', function() {
     const emailBtn = document.getElementById('contactEmailBtn');
-    if (!emailBtn) {
+    const modal = document.getElementById('contactModal');
+    const optionsWrap = document.getElementById('contactModalOptions');
+    const nameInput = document.getElementById('contactModalName');
+    const emailInput = document.getElementById('contactModalEmail');
+    const messageInput = document.getElementById('contactModalMessage');
+    const sendBtn = document.getElementById('contactModalSend');
+    if (!emailBtn || !modal || !optionsWrap || !sendBtn) {
         return;
     }
 
@@ -661,24 +681,54 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
     };
 
-    emailBtn.addEventListener('click', function(event) {
-        event.preventDefault();
+    function openModal() {
         const lang = htmlRoot.getAttribute('lang') || 'en';
         const list = subjects[lang] || subjects.en;
-        const message = lang === 'ar'
-            ? `اختار الموضوع بكتابة الرقم:\\n1) ${list[0]}\\n2) ${list[1]}\\n3) ${list[2]}\\n4) ${list[3]}`
-            : `Choose a subject by number:\\n1) ${list[0]}\\n2) ${list[1]}\\n3) ${list[2]}\\n4) ${list[3]}`;
-        const choice = prompt(message, "1");
-        if (!choice) {
-            return;
-        }
+        optionsWrap.innerHTML = list.map((subject, i) => {
+            const checked = i === 0 ? 'checked' : '';
+            return `<label class=\"contact-option\"><input type=\"radio\" name=\"contactSubject\" value=\"${subject}\" ${checked}> <span>${subject}</span></label>`;
+        }).join('');
+        if (nameInput) nameInput.value = '';
+        if (emailInput) emailInput.value = '';
+        if (messageInput) messageInput.value = '';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+    }
 
-        const idx = parseInt(choice, 10) - 1;
-        const subject = list[idx] || list[0];
-        const body = lang === 'ar'
-            ? "مرحبًا يوسف،\\n\\n"
-            : "Hi Youssef,\\n\\n";
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    emailBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        openModal();
+    });
+
+    modal.addEventListener('click', function(event) {
+        if (event.target && event.target.dataset && event.target.dataset.close) {
+            closeModal();
+        }
+    });
+
+    sendBtn.addEventListener('click', function() {
+        const selected = optionsWrap.querySelector('input[name=\"contactSubject\"]:checked');
+        const subject = selected ? selected.value : subjects.en[0];
+        const lang = htmlRoot.getAttribute('lang') || 'en';
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const message = messageInput ? messageInput.value.trim() : '';
+        const greeting = lang === 'ar' ? "مرحبًا يوسف،" : "Hi Youssef,";
+        const bodyLines = [greeting, ""];
+        if (name) bodyLines.push((lang === 'ar' ? "الاسم: " : "Name: ") + name);
+        if (email) bodyLines.push((lang === 'ar' ? "البريد: " : "Email: ") + email);
+        if (message) {
+            bodyLines.push("");
+            bodyLines.push(message);
+        }
+        const body = bodyLines.join("\\n");
         const mailto = `mailto:youssefblackendev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailto;
+        closeModal();
     });
 });

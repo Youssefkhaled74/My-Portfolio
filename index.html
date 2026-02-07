@@ -427,6 +427,20 @@
                 <button class="contact-modal__close" type="button" data-close="true" aria-label="Close">×</button>
             </div>
             <p class="contact-modal__subtitle" data-translate="contact_modal_desc">Pick a topic and we will open your email client.</p>
+            <div class="contact-modal__fields">
+                <label class="contact-field">
+                    <span data-translate="contact_modal_name">Your name</span>
+                    <input type="text" id="contactModalName" placeholder="Name">
+                </label>
+                <label class="contact-field">
+                    <span data-translate="contact_modal_email">Your email</span>
+                    <input type="email" id="contactModalEmail" placeholder="Email">
+                </label>
+                <label class="contact-field">
+                    <span data-translate="contact_modal_message">Message</span>
+                    <textarea id="contactModalMessage" rows="4" placeholder="Write your message"></textarea>
+                </label>
+            </div>
             <div class="contact-modal__options" id="contactModalOptions"></div>
             <div class="contact-modal__actions">
                 <button class="btn btn-ghost btn-sm" type="button" data-close="true" data-translate="contact_modal_cancel">Cancel</button>
