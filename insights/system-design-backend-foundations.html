@@ -1,0 +1,465 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Design Fundamentals for Backend Engineers | Youssef Khaled</title>
+
+  <meta name="description" content="محاضرة عربية شاملة في System Design Fundamentals لمهندسي Backend: Requirements, APIs, Data, Caching, Reliability, Observability, Security, Scaling، مع مصطلحات إنجليزي للمقابلات." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="System Design Fundamentals for Backend Engineers" />
+  <meta property="og:description" content="محاضرة عربية عميقة في System Design + Caching Patterns + Production Fundamentals لأي Backend Engineer." />
+  <meta property="og:url" content="/insights/system-design-backend-foundations.html" />
+  <meta property="og:image" content="/assets/images/projects/backoffice.png" />
+
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="System Design Fundamentals for Backend Engineers" />
+  <meta property="twitter:description" content="محاضرة عربية عميقة في System Design و Caching Patterns وكل Fundamentals مهمة لأي Backend Engineer." />
+  <meta property="twitter:image" content="/assets/images/projects/backoffice.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/insights.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "System Design Fundamentals for Backend Engineers",
+    "description": "محاضرة عربية شاملة في System Design Fundamentals لمهندسي Backend مع تغطية Caching وProduction Systems وScalability.",
+    "author": {"@type": "Person", "name": "Youssef Khaled"},
+    "datePublished": "2026-02-14",
+    "dateModified": "2026-02-14",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "/insights/system-design-backend-foundations.html"}
+  }
+  </script>
+</head>
+
+<body class="insights-body article-page-ar">
+  <div class="article-progress">
+    <div id="readProgress" class="article-progress__bar"></div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg fixed-top insights-topbar">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html#hero"><span class="brand-mark">YK</span> Insight</a>
+      <div class="d-flex gap-2">
+        <a class="btn btn-sm btn-outline-light" href="index.html">كل المقالات</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="article-wrap">
+    <section class="container" id="articlePrintable">
+      <header class="article-header">
+        <div class="article-meta">
+          <span>تاريخ النشر: 14 فبراير 2026</span>
+          <span>Category: System Design</span>
+          <span>مدة القراءة: 30–40 دقيقة</span>
+        </div>
+
+        <h1>System Design Fundamentals for Backend Engineers</h1>
+
+        <p>
+          لو أنت <strong>Backend Engineer</strong> وعايز تبني Systems تستحمل <strong>scale</strong> وتعيش في
+          <strong>production</strong> بثبات، فالمحاضرة دي معمولة كمرجع عملي. الشرح بالعربي، والمصطلحات الأساسية بالـ
+          <strong>English</strong> عشان تفضل مرتبطة بسوق الشغل والمقابلات التقنية.
+        </p>
+
+        <div class="article-header-actions">
+          <button id="downloadLecturePdf" class="insight-btn insight-btn-primary" type="button">Download PDF</button>
+          <a class="insight-btn insight-btn-ghost" href="../index.html#contact">احجز استشارة Backend</a>
+        </div>
+      </header>
+
+      <article class="article-content">
+
+        <div class="article-callout">
+          <strong>الهدف من المحاضرة:</strong> تحويل طريقة تفكيرك من
+          <em>Feature Implementation</em> إلى <em>System Thinking</em>:
+          تخطيط + Trade-offs + تشغيل في الإنتاج (Production Ready).
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>0) خريطة المحاضرة | Lecture Map</h2>
+        <ul>
+          <li><strong>Requirements:</strong> FR/NFR + Success Metrics</li>
+          <li><strong>Capacity Planning:</strong> QPS, storage, bandwidth, growth</li>
+          <li><strong>API Design:</strong> HTTP, pagination, idempotency, versioning</li>
+          <li><strong>Data:</strong> modeling, indexes, transactions, consistency</li>
+          <li><strong>Caching:</strong> layers, patterns, invalidation, stampede</li>
+          <li><strong>Async & Messaging:</strong> queues, retries, DLQ, outbox</li>
+          <li><strong>Reliability:</strong> timeouts, circuit breaker, graceful degradation</li>
+          <li><strong>Observability:</strong> logs, metrics, tracing, alerting</li>
+          <li><strong>Security:</strong> authz/authn, secrets, rate limiting, audit</li>
+          <li><strong>Scaling:</strong> vertical/horizontal, read replicas, sharding</li>
+          <li><strong>Deployment:</strong> migrations, rollback, blue/green, canary</li>
+        </ul>
+
+        <!-- ========================================================= -->
+        <h2>1) يعني إيه System Design أساسًا؟</h2>
+        <p>
+          <strong>System Design</strong> هو فن اختيار <strong>Architecture</strong> و<strong>Data Flow</strong> و
+          <strong>Trade-offs</strong> بطريقة تخلي النظام يحقق <strong>Business Goals</strong> تحت قيود حقيقية:
+          <strong>Cost</strong>، <strong>Time</strong>، <strong>Traffic</strong>، <strong>Reliability</strong>، وفريق محدود.
+          أنت مش بتختار Tools عشان trendy… أنت بتختار قرارات تقلل المخاطر وتضمن <strong>Predictable Behavior</strong>.
+        </p>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Architecture, Data Flow, Trade-offs, Constraints, Predictable Behavior, Production Ready
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>2) Requirements: أول خطوة قبل أي Diagram</h2>
+
+        <h3>2.1 Functional Requirements (FR)</h3>
+        <p>
+          إيه اللي النظام <strong>لازم</strong> يعمله؟ مثال: “User creates order, pays, tracks delivery”.
+          اكتبها كبنود واضحة (use-cases).
+        </p>
+
+        <h3>2.2 Non-Functional Requirements (NFR)</h3>
+        <p>
+          دي اللي بتفرق Junior عن Senior. لازم تتحول لأرقام/حدود قدر الإمكان:
+        </p>
+        <ul>
+          <li><strong>Latency:</strong> p95 &lt; 200ms (مثال)</li>
+          <li><strong>Availability:</strong> 99.9% ولا 99.99%؟</li>
+          <li><strong>Throughput:</strong> QPS / RPS في الذروة</li>
+          <li><strong>Consistency:</strong> Strong vs Eventual</li>
+          <li><strong>Durability:</strong> هل البيانات لازم متضيعش؟</li>
+          <li><strong>Cost:</strong> budget / constraints</li>
+          <li><strong>Security:</strong> PII, audit, encryption, compliance</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>قاعدة ذهبية:</strong> لو ما كتبتش NFRs بوضوح، هتصمم نظام “كويس على الورق” ويفشل في الإنتاج.<br />
+          <strong>EN Keywords:</strong> FR, NFR, Latency, Availability, Throughput, Consistency, Durability
+        </div>
+
+        <h3>2.3 Success Metrics (SLO/SLI) بشكل بسيط</h3>
+        <ul>
+          <li><strong>SLI:</strong> قياس فعلي (p95 latency, error rate)</li>
+          <li><strong>SLO:</strong> الهدف (مثلاً error rate &lt; 0.1%)</li>
+          <li><strong>SLA:</strong> التزام تجاري مع العميل (ممكن يكون أعلى كلفة)</li>
+        </ul>
+
+        <!-- ========================================================= -->
+        <h2>3) Capacity Planning: أرقام بسرعة (بدون فلسفة)</h2>
+        <p>
+          قبل ما تقول “هنعمل Microservices / Sharding”، لازم تفهم الحجم المتوقع:
+        </p>
+        <ul>
+          <li><strong>Traffic:</strong> DAU/MAU، requests per user، peak factor</li>
+          <li><strong>QPS:</strong> (Requests per day / 86400) × peak</li>
+          <li><strong>Storage:</strong> record size × writes/day × retention</li>
+          <li><strong>Bandwidth:</strong> response size × QPS</li>
+          <li><strong>Growth:</strong> 2× في سنة؟ 10×؟</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Capacity Planning, QPS/RPS, Peak Factor, Storage, Retention, Bandwidth
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>4) HTTP & API Design (أساسيات لا غنى عنها)</h2>
+
+        <h3>4.1 HTTP Fundamentals</h3>
+        <ul>
+          <li><strong>Methods:</strong> GET, POST, PUT, PATCH, DELETE</li>
+          <li><strong>Status Codes:</strong> 200/201/204، 400، 401، 403، 404، 409، 429، 500</li>
+          <li><strong>Idempotency:</strong> GET/PUT/DELETE غالبًا Idempotent، لكن POST غالبًا لا</li>
+          <li><strong>Retries:</strong> مش كل error ينفع تعيد عليه</li>
+        </ul>
+
+        <h3>4.2 API Contracts</h3>
+        <ul>
+          <li><strong>Resource naming:</strong> /users/{id}/orders</li>
+          <li><strong>Versioning:</strong> /v1 أو headers</li>
+          <li><strong>Pagination:</strong> Cursor-based أفضل من Offset مع الداتا الكبيرة</li>
+          <li><strong>Validation:</strong> schema واضحة للـ request/response</li>
+          <li><strong>Backward compatibility:</strong> ما تكسرش clients</li>
+        </ul>
+
+        <h3>4.3 Idempotency Keys (مهم جدًا)</h3>
+        <p>
+          في عمليات حساسة زي الدفع/إنشاء طلب، استخدم <strong>Idempotency-Key</strong> عشان لو العميل كرر الطلب بالغلط،
+          ما يحصلش <strong>duplicate write</strong>.
+        </p>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Idempotency, Retries, Cursor Pagination, Backward Compatibility
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>5) Data Modeling & Database Fundamentals</h2>
+
+        <h3>5.1 Data Modeling</h3>
+        <ul>
+          <li><strong>Entities:</strong> Users, Orders, Payments…</li>
+          <li><strong>Relationships:</strong> 1-1, 1-M, M-M</li>
+          <li><strong>Normalization vs Denormalization:</strong> صحة البيانات مقابل سرعة القراءة</li>
+        </ul>
+
+        <h3>5.2 Indexing & Query Planning</h3>
+        <ul>
+          <li>Index للأعمدة الأكثر استخدامًا في filters</li>
+          <li>Composite indexes بترتيب مناسب</li>
+          <li>تجنب full scans قدر الإمكان</li>
+          <li>استخدم <strong>EXPLAIN</strong> بدل التخمين</li>
+        </ul>
+
+        <h3>5.3 Transactions & Isolation</h3>
+        <ul>
+          <li><strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability</li>
+          <li><strong>Isolation Levels:</strong> Read Committed / Repeatable Read / Serializable</li>
+          <li><strong>Deadlocks:</strong> لازم يكون عندك retry strategy للـ deadlock errors</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Entities, Relationships, Indexes, EXPLAIN, ACID, Isolation Levels, Deadlocks
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>6) Concurrency & Race Conditions</h2>
+        <p>
+          أي نظام فيه inventory/booking/money لازم يتعامل مع السباقات (<strong>Race Conditions</strong>).
+          الحل مش “حظ” — الحل Strategy واضحة.
+        </p>
+        <ul>
+          <li><strong>Pessimistic Locking:</strong> SELECT ... FOR UPDATE</li>
+          <li><strong>Optimistic Locking:</strong> version column (Compare-And-Set)</li>
+          <li><strong>Unique Constraints:</strong> تمنع duplication على مستوى DB</li>
+          <li><strong>Idempotency:</strong> تمنع duplicate writes بسبب retries</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Race Condition, Locking, Optimistic Concurrency, CAS, Idempotency
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>7) Caching Fundamentals بعمق</h2>
+        <p>
+          Caching مش مجرد Redis تحطه وخلاص. ده قرار Architecture يتبني على:
+          <strong>Read/Write ratio</strong> + معدل تغيّر الداتا + مدى قبول <strong>stale data</strong>.
+        </p>
+
+        <h3>7.1 أنواع Caching حسب المكان</h3>
+        <ul>
+          <li><strong>Client Cache:</strong> browser cache, mobile local storage</li>
+          <li><strong>CDN Cache:</strong> static assets + edge caching</li>
+          <li><strong>Reverse Proxy Cache:</strong> Nginx / Varnish</li>
+          <li><strong>Application Cache:</strong> Redis / Memcached</li>
+          <li><strong>Database Cache:</strong> buffer pools / query cache (حسب DB)</li>
+        </ul>
+
+        <h3>7.2 Caching Patterns المشهورة</h3>
+        <ul>
+          <li><strong>Cache-Aside (Lazy Loading):</strong> app reads cache → on miss read DB → populate cache</li>
+          <li><strong>Read-Through:</strong> cache layer fetches DB on miss</li>
+          <li><strong>Write-Through:</strong> write to cache + DB synchronously</li>
+          <li><strong>Write-Back/Behind:</strong> write cache first → persist DB async (أسرع لكن أخطر)</li>
+          <li><strong>Refresh-Ahead:</strong> refresh keys before TTL expires</li>
+        </ul>
+
+        <h3>7.3 إمتى تستخدم إيه؟</h3>
+        <ul>
+          <li><strong>Cache-Aside:</strong> مناسب جدًا للـ read-heavy مع data تتغير بمعدل متوسط</li>
+          <li><strong>Write-Through:</strong> للبيانات الحساسة اللي stale فيها مؤذي</li>
+          <li><strong>Write-Behind:</strong> high throughput مع controls قوية (durability + replay)</li>
+        </ul>
+
+        <h3>7.4 مشاكل الكاش اللي لازم تكون عارفها</h3>
+        <ul>
+          <li><strong>Cache Invalidation:</strong> أصعب نقطة → event-based invalidation / versioned keys</li>
+          <li><strong>Cache Stampede:</strong> انتهاء keys معًا → ضغط على DB</li>
+          <li><strong>Hot Keys:</strong> key واحدة عليها traffic عالي جدًا</li>
+          <li><strong>Cold Start:</strong> بعد deploy/restart cache فاضية</li>
+          <li><strong>Inconsistent Reads:</strong> replication lag / multi-node pitfalls</li>
+        </ul>
+
+        <h3>7.5 Best Practices</h3>
+        <ul>
+          <li><strong>TTL with jitter</strong> لتقليل simultaneous expiration</li>
+          <li><strong>Key schema</strong> ثابتة: namespace:entity:id:version</li>
+          <li>راقب <strong>hit ratio</strong> و<strong>eviction rate</strong> و<strong>latency</strong></li>
+          <li>fallback للـ DB لازم يبقى safe مع <strong>rate limiting</strong></li>
+          <li>وثّق invalidation policy عند كل write</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Cache Layers, Cache-Aside, Read/Write-Through, Invalidation, Stampede, Hot Keys, TTL Jitter
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>8) Async Processing & Messaging</h2>
+        <p>
+          مش كل حاجة ينفع تتعمل “داخل request”. استخدم async لما:
+          المهمة طويلة، أو محتاج تمتص spikes، أو عندك integrations بتقع كتير.
+        </p>
+
+        <h3>8.1 Queues & Jobs</h3>
+        <ul>
+          <li><strong>Use cases:</strong> emails, PDF generation, webhooks, image processing</li>
+          <li><strong>Delivery:</strong> غالبًا at-least-once → consumers لازم تكون idempotent</li>
+          <li><strong>DLQ:</strong> Dead Letter Queue للرسائل اللي بتفشل</li>
+          <li><strong>Backpressure:</strong> لما consumer مش لاحق</li>
+        </ul>
+
+        <h3>8.2 Outbox Pattern (مهم جدًا)</h3>
+        <p>
+          لو بتكتب في DB وبتبعت event/message، تجنّب إن DB تنجح والـ publish يفشل (أو العكس).
+          الحل: تكتب الحدث في جدول Outbox داخل نفس transaction، وبعدين worker ينشره.
+        </p>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Queue, Background Jobs, At-least-once, DLQ, Backpressure, Outbox Pattern
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>9) Reliability Fundamentals (Production Ready)</h2>
+
+        <h3>9.1 Timeout Budget</h3>
+        <ul>
+          <li>كل dependency لازم لها timeout واضح</li>
+          <li>بدون timeout = thread starvation + cascading failures</li>
+        </ul>
+
+        <h3>9.2 Retry Policy</h3>
+        <ul>
+          <li>retries محدودة + <strong>exponential backoff + jitter</strong></li>
+          <li>أعد المحاولة فقط في الحالات المناسبة (idempotent operations)</li>
+          <li>4xx غالبًا مش محتاجة retry</li>
+        </ul>
+
+        <h3>9.3 Circuit Breaker</h3>
+        <p>
+          يحميك من إن dependency واقعة تسحب النظام كله معاها.
+          (Open/Closed/Half-open)
+        </p>
+
+        <h3>9.4 Graceful Degradation</h3>
+        <ul>
+          <li>اقفل feature غير أساسية بدل ما النظام يقع كله</li>
+          <li>serve stale cache لو ينفع</li>
+          <li>partial responses بدل 500</li>
+        </ul>
+
+        <h3>9.5 Disaster Recovery</h3>
+        <ul>
+          <li><strong>Backups</strong> + <strong>Restore drills</strong></li>
+          <li><strong>RPO/RTO</strong> متفق عليهم</li>
+          <li>Runbooks واضحة للـ on-call</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Timeouts, Retries, Backoff, Jitter, Circuit Breaker, Graceful Degradation, RPO/RTO
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>10) Observability: Logs, Metrics, Tracing</h2>
+        <ul>
+          <li><strong>Structured Logs:</strong> JSON + correlation IDs</li>
+          <li><strong>Metrics:</strong> p95/p99 latency, error rate, throughput, saturation</li>
+          <li><strong>Tracing:</strong> request journey عبر services</li>
+          <li><strong>Alerting:</strong> على user impact (مش CPU spikes بس)</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>Golden Rule:</strong> “If you can’t measure it, you can’t improve it.”<br />
+          <strong>EN Keywords:</strong> Observability, Logs, Metrics, Tracing, Alerting, SLO
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>11) Security Baseline لأي Backend API</h2>
+        <ul>
+          <li><strong>Validation:</strong> على كل input عند boundary</li>
+          <li><strong>Authentication:</strong> JWT / sessions / OAuth2 (حسب الحالة)</li>
+          <li><strong>Authorization:</strong> RBAC / ABAC / permissions boundaries</li>
+          <li><strong>Secrets:</strong> لا تضع secrets في source code + rotation</li>
+          <li><strong>Rate limiting:</strong> حماية من abuse و brute force</li>
+          <li><strong>Audit logs:</strong> للعمليات الحساسة</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> AuthN, AuthZ, RBAC, Secrets Management, Rate Limiting, Audit Logs
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>12) Scaling Strategy: رأسي ولا أفقي؟</h2>
+        <p>
+          قبل ما تفكر في <strong>Horizontal scaling</strong>، اتأكد إنك صححت:
+          <strong>query performance</strong> + <strong>cache behavior</strong> + bottlenecks.
+          Scaling الحقيقي ييجي بعد efficiency.
+        </p>
+
+        <ul>
+          <li><strong>Vertical Scaling:</strong> حل سريع لكنه محدود</li>
+          <li><strong>Horizontal Scaling:</strong> stateless app + shared state stores</li>
+          <li><strong>Read Replicas:</strong> للفصل بين reads و writes</li>
+          <li><strong>Sharding:</strong> لما single DB مش مكفي (يزود التعقيد)</li>
+          <li><strong>Load shedding:</strong> queue-based أو rate limiting وقت الذروة</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Vertical/Horizontal, Stateless, Read Replicas, Sharding, Load Shedding
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>13) Deployment & Change Management</h2>
+
+        <h3>13.1 Database Migrations بدون كسر الإنتاج</h3>
+        <ul>
+          <li>Backward compatible migrations (add columns first, then use, then remove old)</li>
+          <li>avoid long locks (خاصة على جداول كبيرة)</li>
+          <li>feature flags للتدرّج</li>
+        </ul>
+
+        <h3>13.2 Rollback Strategy</h3>
+        <ul>
+          <li>Rollback مش بس “ارجع كود” — لازم البيانات تكون قابلة للتعايش</li>
+          <li>Blue/Green أو Canary لتقليل المخاطر</li>
+        </ul>
+
+        <div class="article-callout">
+          <strong>EN Keywords:</strong> Migrations, Backward Compatible, Feature Flags, Blue/Green, Canary, Rollback
+        </div>
+
+        <!-- ========================================================= -->
+        <h2>14) Backend System Design Checklist (قبل ما تقول Done)</h2>
+        <ul>
+          <li>هل عندك <strong>NFRs</strong> واضحة (latency, availability, throughput)؟</li>
+          <li>هل عندك <strong>Capacity estimates</strong> (QPS/storage/growth)؟</li>
+          <li>هل <strong>API contracts</strong> واضحة + versioning + pagination + idempotency؟</li>
+          <li>هل data model مبني على queries + indexes + EXPLAIN؟</li>
+          <li>هل caching strategy موثقة (pattern + invalidation + TTL)؟</li>
+          <li>هل failure modes متوقعة (timeouts/retries/circuit breaker)؟</li>
+          <li>هل عندك observability (logs/metrics/tracing/alerts)؟</li>
+          <li>هل security baseline متحقق (authz/secrets/rate limit/audit)؟</li>
+          <li>هل deployment plan فيه gradual rollout + rollback؟</li>
+        </ul>
+
+        <!-- ========================================================= -->
+        <h2>الخلاصة</h2>
+        <p>
+          الـ Backend القوي مش اللي يعرف framework بس، لكن اللي يقدر يدير complexity بقرارات بسيطة وواضحة.
+          اعتبر <strong>Caching</strong> و<strong>Reliability</strong> و<strong>Observability</strong> أجزاء أساسية من أي Feature،
+          مش إضافات لاحقة.
+        </p>
+
+        <div class="article-footer-actions">
+          <a class="insight-btn insight-btn-primary" href="index.html">اقرأ مقالات أكثر</a>
+          <a class="insight-btn insight-btn-ghost" href="../index.html#contact">تواصل لمشروع Backend</a>
+        </div>
+
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../js/insights.js"></script>
+</body>
+</html>
