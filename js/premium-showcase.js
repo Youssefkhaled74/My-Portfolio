@@ -34,6 +34,53 @@
     );
   }
 
+  const githubLinks = {
+    "FIFA World Cup": "https://github.com/Youssefkhaled74/Php-FifaWorldCup.git",
+    Yeesooh: "https://github.com/Youssefkhaled74/Laravel-YesOoh.git",
+    Maktabty: "https://github.com/Youssefkhaled74/Maktabty.git",
+    "In Save": "https://github.com/Youssefkhaled74/Laravel-KsaProject.git",
+    "Lumi Cashier": "https://github.com/Youssefkhaled74/Lumi-Cashier.git",
+    "SG Solar": "https://github.com/Youssefkhaled74/SGsolar-laravel.git",
+  };
+
+  function getProjectDetails(row) {
+    const title = row.dataset.title || "Project";
+    const defaultProblem = "The product needed a stable backend flow to support growth, cleaner operations, and maintainable delivery.";
+    const defaultRole = "I designed and implemented backend architecture, API contracts, business logic, and admin operations.";
+    const defaultSolution = "Implemented modular Laravel backend services with secure validation, clear data models, and scalable dashboard workflows.";
+    const stack = parseStack(row.dataset.stack);
+    return {
+      title: title,
+      type: row.dataset.kind === "evyx" ? "Evyx Product" : "Freelance Build",
+      image: row.dataset.image || "",
+      desc: row.dataset.desc || "",
+      impact: row.dataset.impact ? row.dataset.impact.split("|") : [],
+      features: row.dataset.impact ? row.dataset.impact.split("|") : [],
+      stack: stack,
+      problem: row.dataset.problem || defaultProblem,
+      role: row.dataset.role || defaultRole,
+      solution: row.dataset.solution || defaultSolution,
+      github: row.dataset.github || githubLinks[title] || "",
+    };
+  }
+
+  function updateFeatureStory(project) {
+    feature.querySelector("[data-title]").textContent = project.title;
+    feature.querySelector("[data-desc]").textContent = project.desc;
+    feature.querySelector("[data-type]").textContent = project.type;
+    feature.querySelector("[data-impact]").innerHTML = project.impact.map(function (x) {
+      return "<span>" + escapeHTML(x) + "</span>";
+    }).join("");
+    feature.querySelector("[data-features]").innerHTML = project.features.map(function (x) {
+      return "<span>" + escapeHTML(x) + "</span>";
+    }).join("");
+    feature.querySelector("[data-stack]").innerHTML = project.stack.map(function (x) {
+      return "<span>" + escapeHTML(x) + "</span>";
+    }).join("");
+    feature.querySelector("[data-problem]").textContent = project.problem;
+    feature.querySelector("[data-role]").textContent = project.role;
+  }
+
   function activate(row) {
     projects.forEach(function (p) {
       p.classList.remove("active");
@@ -41,26 +88,24 @@
     row.classList.add("active");
 
     if (!feature) return;
+    const project = getProjectDetails(row);
     const featureImage = feature.querySelector("img");
     featureImage.src = row.dataset.image;
     featureImage.alt = row.dataset.title + " preview";
-    feature.querySelector("[data-title]").textContent = row.dataset.title;
-    feature.querySelector("[data-desc]").textContent = row.dataset.desc;
-    feature.querySelector("[data-type]").textContent = row.dataset.kind === "evyx" ? "Evyx Product" : "Freelance Build";
-    feature.querySelector("[data-impact]").innerHTML = row.dataset.impact
-      .split("|")
-      .map(function (x) {
-        return "<span>" + escapeHTML(x) + "</span>";
-      })
-      .join("");
-    feature.querySelector("[data-stack]").innerHTML = parseStack(row.dataset.stack)
-      .map(function (x) {
-        return "<span>" + escapeHTML(x) + "</span>";
-      })
-      .join("");
+    updateFeatureStory(project);
+    feature.dataset.currentTitle = project.title;
+  }
+
+  function ensureImageBox(image, extraClass) {
+    if (!image || image.closest(".project-image-box")) return;
+    const box = document.createElement("div");
+    box.className = "project-image-box " + (extraClass || "");
+    image.parentNode.insertBefore(box, image);
+    box.appendChild(image);
   }
 
   projects.forEach(function (row, index) {
+    ensureImageBox(row.querySelector("img"), "row-image-box");
     row.insertAdjacentHTML("beforeend", renderTags(row.dataset.stack));
     row.setAttribute("data-aos-delay", String(Math.min(index * 45, 260)));
     row.style.setProperty("--x", "50%");
@@ -80,6 +125,7 @@
   });
 
   if (projects[0]) activate(projects[0]);
+  ensureImageBox(feature ? feature.querySelector("img") : null, "feature-image-box");
 
   tabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
@@ -121,5 +167,57 @@
     card.addEventListener("mouseleave", function () {
       card.style.transform = "";
     });
+  });
+
+  const modal = document.getElementById("caseStudyModal");
+  const openCaseStudy = document.querySelector("[data-open-case-study]");
+  const closeTargets = Array.from(document.querySelectorAll("[data-close-case-study]"));
+
+  function populateModal(project) {
+    if (!modal) return;
+    modal.querySelector("[data-modal-image]").src = project.image;
+    modal.querySelector("[data-modal-image]").alt = project.title + " full preview";
+    modal.querySelector("[data-modal-title]").textContent = project.title;
+    modal.querySelector("[data-modal-type]").textContent = project.type;
+    modal.querySelector("[data-modal-desc]").textContent = project.desc;
+    modal.querySelector("[data-modal-problem]").textContent = project.problem;
+    modal.querySelector("[data-modal-role]").textContent = project.role;
+    modal.querySelector("[data-modal-solution]").textContent = project.solution;
+    modal.querySelector("[data-modal-features]").innerHTML = project.features.map(function (x) { return "<span>" + escapeHTML(x) + "</span>"; }).join("");
+    modal.querySelector("[data-modal-impact]").innerHTML = project.impact.map(function (x) { return "<span>" + escapeHTML(x) + "</span>"; }).join("");
+    modal.querySelector("[data-modal-stack]").innerHTML = project.stack.map(function (x) { return "<span>" + escapeHTML(x) + "</span>"; }).join("");
+    const github = modal.querySelector("[data-modal-github]");
+    if (project.github) {
+      github.href = project.github;
+      github.style.display = "";
+    } else {
+      github.style.display = "none";
+    }
+  }
+
+  function openModal() {
+    const active = document.querySelector(".project-row.active");
+    if (!active || !modal) return;
+    populateModal(getProjectDetails(active));
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+
+  if (openCaseStudy) {
+    openCaseStudy.addEventListener("click", openModal);
+  }
+  closeTargets.forEach(function (target) {
+    target.addEventListener("click", closeModal);
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeModal();
   });
 })();

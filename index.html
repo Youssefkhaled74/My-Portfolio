@@ -66,6 +66,15 @@
               <div class="terminal-line info">â†³ Evyx products + freelance case studies loaded</div>
               <div class="terminal-line">status: production-ready portfolio</div>
             </div>
+            <div class="backend-console reveal-up" aria-label="Backend event stream">
+              <div class="console-head"><span class="pulse-dot"></span> Live Backend Stream</div>
+              <div class="console-item"><code>API request authenticated</code></div>
+              <div class="console-item"><code>Queue job processed</code></div>
+              <div class="console-item"><code>Payment webhook received</code></div>
+              <div class="console-item"><code>Admin dashboard synced</code></div>
+              <div class="console-item"><code>Notification sent</code></div>
+              <div class="console-item"><code>Report generated</code></div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,8 +100,14 @@
             <span class="project-type" data-type>Evyx Product</span>
             <h3 data-title>Ask Lawyer</h3>
             <p data-desc>Legal consultation product with user journeys, service requests, admin workflow, notifications, and structured backend operations.</p>
+            <div class="story-grid">
+              <div class="story-item"><h5>Problem</h5><p data-problem>Teams needed a reliable workflow for legal requests and user management at scale.</p></div>
+              <div class="story-item"><h5>My Role</h5><p data-role>Designed and implemented backend architecture, API flow, and admin operations.</p></div>
+            </div>
+            <div class="story-item story-item-wide"><h5>Key Features</h5><div class="impact-list" data-features><span>Mobile app backend</span><span>Admin workflow</span><span>Role-based access</span></div></div>
             <div class="impact-list" data-impact><span>Mobile app backend</span><span>Admin workflow</span><span>Role-based access</span></div>
             <div class="feature-stack mt-3" data-stack><span>Laravel</span><span>REST APIs</span><span>MySQL</span></div>
+            <button class="btn btn-primary btn-sm mt-3 case-study-trigger" type="button" data-open-case-study><i class="fa-solid fa-up-right-from-square"></i> View Case Study</button>
           </div>
         </article>
         <div class="project-rail reveal-up">
@@ -146,6 +161,48 @@
     </div>
   </section>
 
+  <section id="capabilities" class="capabilities-section">
+    <div class="container">
+      <div class="section-intro reveal-up"><p class="eyebrow">Backend Capabilities</p><h2>Delivery-focused backend engineering across core product layers.</h2></div>
+      <div class="capabilities-grid">
+        <article class="capability-card reveal-up"><i class="fa-solid fa-plug-circle-bolt"></i><h3>REST APIs</h3><p>Clean endpoints, validation, serialization, and predictable contracts.</p></article>
+        <article class="capability-card reveal-up"><i class="fa-solid fa-table-columns"></i><h3>Admin Dashboards</h3><p>Operational panels that simplify workflows and improve decision speed.</p></article>
+        <article class="capability-card reveal-up"><i class="fa-solid fa-user-shield"></i><h3>Authentication & Roles</h3><p>Secure auth pipelines, role-based access, and policy enforcement.</p></article>
+        <article class="capability-card reveal-up"><i class="fa-solid fa-credit-card"></i><h3>Payment Flows</h3><p>Webhook-safe transactions, reconciliation logic, and failure handling.</p></article>
+        <article class="capability-card reveal-up"><i class="fa-solid fa-clock-rotate-left"></i><h3>Queues & Jobs</h3><p>Async processing for notifications, reports, and heavy business tasks.</p></article>
+        <article class="capability-card reveal-up"><i class="fa-solid fa-chart-line"></i><h3>Reports & Analytics</h3><p>KPIs, operational snapshots, and query-friendly reporting structure.</p></article>
+        <article class="capability-card reveal-up"><i class="fa-solid fa-database"></i><h3>Database Design</h3><p>Scalable schema design, indexing, constraints, and optimized queries.</p></article>
+        <article class="capability-card reveal-up"><i class="fa-solid fa-bell"></i><h3>Notifications</h3><p>In-app and external notification pipelines with robust delivery logic.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="architecture-section">
+    <div class="container">
+      <div class="section-intro reveal-up"><p class="eyebrow">Architecture Flow</p><h2>How requests move through production backend systems.</h2></div>
+      <div class="architecture-flow reveal-up">
+        <div class="flow-node">Client App</div>
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="flow-node">API Layer</div>
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="flow-node">Business Logic</div>
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="flow-node">Database</div>
+        <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="flow-node">Admin Dashboard</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack-visual-section">
+    <div class="container">
+      <div class="section-intro reveal-up"><p class="eyebrow">Tech Stack</p><h2>Core technologies used in products and freelance delivery.</h2></div>
+      <div class="stack-visual-grid reveal-up">
+        <span>Laravel</span><span>PHP</span><span>MySQL</span><span>REST APIs</span><span>Bootstrap</span><span>JavaScript</span><span>Git</span><span>GitHub</span><span>Admin Panels</span><span>Queues</span>
+      </div>
+    </div>
+  </section>
+
   <section id="insights" class="knowledge-section">
     <div class="container">
       <div class="section-intro reveal-up"><p class="eyebrow">Insights</p><h2>Backend essays that prove how you think.</h2><p>Keep this section because it makes you look like an engineer, not just someone who lists tools.</p><a href="insights/index.html" class="btn btn-ghost btn-sm">Browse all insights</a></div>
@@ -173,6 +230,27 @@
 
   <button class="scroll-top" id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
   <button class="theme-fab" id="themeToggle" title="Toggle Theme" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  <div class="case-modal" id="caseStudyModal" aria-hidden="true">
+    <div class="case-modal-backdrop" data-close-case-study></div>
+    <article class="case-modal-card" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
+      <button class="case-close" type="button" data-close-case-study aria-label="Close case study"><i class="fa-solid fa-xmark"></i></button>
+      <div class="project-image-box modal-image-box"><img src="assets/images/projects/asklawyer.png" alt="Case study preview" data-modal-image></div>
+      <div class="case-modal-body">
+        <span class="project-type" data-modal-type>Evyx Product</span>
+        <h3 id="caseModalTitle" data-modal-title>Ask Lawyer</h3>
+        <p data-modal-desc>Legal consultation product with user journeys and admin workflows.</p>
+        <div class="story-grid">
+          <div class="story-item"><h5>Problem</h5><p data-modal-problem></p></div>
+          <div class="story-item"><h5>My Role</h5><p data-modal-role></p></div>
+          <div class="story-item story-item-wide"><h5>Solution</h5><p data-modal-solution></p></div>
+        </div>
+        <div class="story-item story-item-wide"><h5>Key Features</h5><div class="impact-list" data-modal-features></div></div>
+        <div class="story-item story-item-wide"><h5>Impact</h5><div class="impact-list" data-modal-impact></div></div>
+        <div class="feature-stack mt-3" data-modal-stack></div>
+        <a href="#" class="btn btn-ghost btn-sm mt-3" target="_blank" rel="noopener" data-modal-github><i class="fa-brands fa-github"></i> View GitHub</a>
+      </div>
+    </article>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -181,4 +259,3 @@
   <script src="js/premium-showcase.js"></script>
 </body>
 </html>
-
