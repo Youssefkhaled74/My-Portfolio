@@ -1,0 +1,446 @@
+/* Drop-in upgrade for index-wow.html. Keep this file after immersive.css */
+.wow-body {
+    overflow-x: hidden;
+}
+
+.wow-body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.045) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    z-index: -1;
+}
+
+.wow-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.wow-hero {
+    padding: 150px 0 110px;
+    position: relative;
+}
+
+.wow-pill,
+.case-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #7dd3fc;
+    background: rgba(56, 189, 248, 0.11);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.wow-title {
+    max-width: 900px;
+    margin: 18px 0 22px;
+    font-size: clamp(3.2rem, 6.7vw, 7rem);
+    line-height: 0.88;
+    text-wrap: balance;
+}
+
+.wow-subtitle,
+.muted-text {
+    color: rgba(226, 232, 240, 0.78);
+    font-size: 1.13rem;
+    line-height: 1.85;
+    max-width: 680px;
+}
+
+[data-theme="light"] .wow-subtitle,
+[data-theme="light"] .muted-text {
+    color: rgba(15, 23, 42, 0.72);
+}
+
+.wow-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 32px 0;
+}
+
+.wow-actions .btn,
+.contact-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 999px;
+}
+
+.wow-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 720px;
+}
+
+.wow-metrics div,
+.proof-tile,
+.decision-card,
+.profile-card,
+.terminal-card,
+.mini-project,
+.case-study-card {
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.85));
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.36);
+    backdrop-filter: blur(18px);
+}
+
+[data-theme="light"] .wow-metrics div,
+[data-theme="light"] .proof-tile,
+[data-theme="light"] .decision-card,
+[data-theme="light"] .profile-card,
+[data-theme="light"] .terminal-card,
+[data-theme="light"] .mini-project,
+[data-theme="light"] .case-study-card {
+    background: rgba(255, 255, 255, 0.86);
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.09);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+}
+
+.wow-metrics div {
+    border-radius: 22px;
+    padding: 20px;
+}
+
+.wow-metrics strong {
+    display: block;
+    font-size: 2.15rem;
+    color: #f8fafc;
+    line-height: 1;
+}
+
+[data-theme="light"] .wow-metrics strong {
+    color: #0f172a;
+}
+
+.wow-metrics span {
+    display: block;
+    margin-top: 8px;
+    color: rgba(226, 232, 240, 0.68);
+    font-weight: 600;
+}
+
+[data-theme="light"] .wow-metrics span {
+    color: rgba(15, 23, 42, 0.62);
+}
+
+.terminal-card {
+    border-radius: 28px;
+    overflow: hidden;
+    transform: rotate(1.5deg);
+}
+
+.terminal-bar {
+    display: flex;
+    gap: 8px;
+    padding: 18px 22px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.terminal-bar span {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: #38bdf8;
+    opacity: 0.8;
+}
+
+.terminal-bar span:nth-child(2) { background: #f59e0b; }
+.terminal-bar span:nth-child(3) { background: #22c55e; }
+
+.terminal-card pre {
+    margin: 0;
+    padding: 26px;
+    color: #bae6fd;
+    white-space: pre-wrap;
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+.stack-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.stack-cloud span,
+.case-tags span,
+.about-tags span {
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    background: rgba(56, 189, 248, 0.1);
+    color: #e0f2fe;
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+[data-theme="light"] .stack-cloud span,
+[data-theme="light"] .case-tags span,
+[data-theme="light"] .about-tags span {
+    color: #0f172a;
+    background: rgba(14, 165, 233, 0.1);
+}
+
+.wow-section {
+    padding: 105px 0;
+}
+
+.featured-work .section-intro,
+.proof-wall .section-intro,
+.freelance-showcase .section-intro {
+    max-width: 760px;
+    margin-bottom: 38px;
+}
+
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.case-study-card {
+    border-radius: 32px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 260px 1fr;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.case-study-card:hover,
+.mini-project:hover,
+.decision-card:hover,
+.proof-tile:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.5);
+}
+
+.case-study-card--large {
+    grid-row: span 2;
+    grid-template-rows: 410px 1fr;
+}
+
+.case-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.22), transparent 40%),
+        linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(2, 6, 23, 0.95));
+}
+
+[data-theme="light"] .case-image {
+    background: linear-gradient(145deg, #e0f2fe, #ffffff);
+}
+
+.case-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 24px rgba(2, 6, 23, 0.35));
+}
+
+.case-content {
+    padding: 28px;
+}
+
+.case-content h3,
+.decision-card h3,
+.profile-card h3 {
+    font-size: 2.25rem;
+    margin: 10px 0;
+}
+
+.case-content p,
+.case-content li,
+.decision-card p,
+.profile-row,
+.proof-tile span,
+.mini-project small,
+.about-wow p,
+.contact-wow p {
+    color: rgba(226, 232, 240, 0.75);
+    line-height: 1.75;
+}
+
+[data-theme="light"] .case-content p,
+[data-theme="light"] .case-content li,
+[data-theme="light"] .decision-card p,
+[data-theme="light"] .profile-row,
+[data-theme="light"] .proof-tile span,
+[data-theme="light"] .mini-project small,
+[data-theme="light"] .about-wow p,
+[data-theme="light"] .contact-wow p {
+    color: rgba(15, 23, 42, 0.68);
+}
+
+.case-content ul {
+    padding-left: 18px;
+}
+
+.case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.systems-section h2,
+.about-wow h2,
+.contact-wow h2,
+.featured-work h2,
+.proof-wall h2,
+.freelance-showcase h2 {
+    font-size: clamp(2.4rem, 4vw, 4.8rem);
+    line-height: 0.95;
+}
+
+.decision-grid,
+.proof-grid,
+.mini-project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.decision-card,
+.proof-tile,
+.profile-card {
+    border-radius: 26px;
+    padding: 26px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.decision-card i {
+    font-size: 1.65rem;
+    color: #38bdf8;
+}
+
+.proof-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.proof-tile strong {
+    display: block;
+    font-size: 2.15rem;
+    margin-bottom: 12px;
+    color: #f8fafc;
+}
+
+[data-theme="light"] .proof-tile strong {
+    color: #0f172a;
+}
+
+.mini-project-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mini-project {
+    border-radius: 26px;
+    padding: 18px;
+    text-decoration: none;
+    color: #f8fafc;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+[data-theme="light"] .mini-project {
+    color: #0f172a;
+}
+
+.mini-project img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 10px;
+    margin-bottom: 16px;
+}
+
+.mini-project span {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.profile-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.profile-row i {
+    color: #22c55e;
+    margin-top: 5px;
+}
+
+.profile-card .btn {
+    margin-top: 14px;
+}
+
+.wow-contact-card {
+    align-items: flex-start;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.2), transparent 38%),
+        rgba(2, 6, 23, 0.92) !important;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+@media (max-width: 992px) {
+    .wow-title { font-size: clamp(3rem, 12vw, 5rem); }
+    .case-study-grid,
+    .decision-grid,
+    .proof-grid,
+    .mini-project-grid {
+        grid-template-columns: 1fr;
+    }
+    .case-study-card--large {
+        grid-row: auto;
+        grid-template-rows: 300px 1fr;
+    }
+    .wow-metrics {
+        grid-template-columns: 1fr;
+    }
+    .terminal-card {
+        transform: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .wow-hero { padding-top: 115px; }
+    .wow-section { padding: 78px 0; }
+    .case-study-card,
+    .case-study-card--large {
+        grid-template-rows: 230px 1fr;
+        border-radius: 24px;
+    }
+    .case-content,
+    .decision-card,
+    .proof-tile,
+    .profile-card {
+        padding: 22px;
+    }
+}
