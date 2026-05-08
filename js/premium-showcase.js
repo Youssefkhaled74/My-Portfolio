@@ -10,21 +10,103 @@
   }
 
   ready(function () {
-    const projects = Array.from(document.querySelectorAll("[data-project-row]"));
-    const feature = document.querySelector("[data-project-feature]");
-    const tabs = Array.from(document.querySelectorAll("[data-filter]"));
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    var projects = Array.prototype.slice.call(document.querySelectorAll("[data-project-row]"));
+    var feature = document.querySelector("[data-project-feature]");
+    var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     if (!projects.length) return;
 
-    const githubLinks = {
+    var githubLinks = {
       "FIFA World Cup": "https://github.com/Youssefkhaled74/Php-FifaWorldCup.git",
-      Yeesooh: "https://github.com/Youssefkhaled74/Laravel-YesOoh.git",
-      Maktabty: "https://github.com/Youssefkhaled74/Maktabty.git",
+      "Yeesooh": "https://github.com/Youssefkhaled74/Laravel-YesOoh.git",
+      "Maktabty": "https://github.com/Youssefkhaled74/Maktabty.git",
       "In Save": "https://github.com/Youssefkhaled74/Laravel-KsaProject.git",
       "Lumi Cashier": "https://github.com/Youssefkhaled74/Lumi-Cashier.git",
-      "SG Solar": "https://github.com/Youssefkhaled74/SGsolar-laravel.git",
+      "SG Solar": "https://github.com/Youssefkhaled74/SGsolar-laravel.git"
+    };
+
+    var projectMeta = {
+      "Ask Lawyer": {
+        problem: "Legal consultations need trust, clear request tracking, and controlled dashboard operations.",
+        solution: "A Laravel backend with request flows, roles, notifications, and admin visibility for service handling.",
+        features: "Consultation requests|Admin workflow|Notifications|Role-based access"
+      },
+      "Backoffice": {
+        problem: "Internal teams need a reliable control layer for users, records, reports, and daily operations.",
+        solution: "A structured dashboard backend that keeps operational data organized and easy to manage.",
+        features: "Operations dashboard|User records|Reporting|Admin UX"
+      },
+      "Ceaser": {
+        problem: "Restaurant platforms need branch, menu, QR, and location logic to work together cleanly.",
+        solution: "A Laravel backend with menu management, QR flows, map integration, and multi-branch operations.",
+        features: "QR menus|Branch logic|Google Maps|Dashboard control"
+      },
+      "Egypin": {
+        problem: "Digital product operations need secure validation, clean orders, and admin-level visibility.",
+        solution: "A backend structure for order processing, user actions, validation, and dashboard management.",
+        features: "Order flow|Validation|Admin dashboard|Product operations"
+      },
+      "Empon": {
+        problem: "Business apps need modular endpoints that can support app and dashboard workflows together.",
+        solution: "A modular Laravel API layer with authentication, clean endpoints, and maintainable modules.",
+        features: "Authentication|Modular backend|REST endpoints|Dashboard actions"
+      },
+      "Ezzelmnofy": {
+        problem: "Content and service platforms need simple content management without messy backend structure.",
+        solution: "A Laravel content backend with categories, media handling, and dashboard-based management.",
+        features: "CMS logic|Categories|Media handling|Admin control"
+      },
+      "Fakka": {
+        problem: "Transaction-focused products need auditability, validation, and clear admin visibility.",
+        solution: "A transaction-aware backend with records, validations, and dashboard monitoring.",
+        features: "Transactions|Audit records|Validation|Admin visibility"
+      },
+      "Lamavie": {
+        problem: "Commerce products need catalog, orders, and mobile-ready API flows.",
+        solution: "A Laravel commerce backend with catalog management, order logic, and clean API delivery.",
+        features: "Catalog|Orders|Mobile APIs|Admin management"
+      },
+      "Maxliss": {
+        problem: "Product showcase platforms need clean content structure and easy operational updates.",
+        solution: "A dashboard-managed backend for products, sections, content, and structured data.",
+        features: "Product showcase|CMS dashboard|Structured data|Admin control"
+      },
+      "Peking": {
+        problem: "Restaurant products need menu, ordering, branch, and dashboard flows in one backend.",
+        solution: "A restaurant backend with menu systems, order structure, and branch operations.",
+        features: "Menu system|Orders|Branch operations|Dashboard"
+      },
+      "FIFA World Cup": {
+        problem: "Tournament data needs a clear interface for groups, teams, matches, and statistics.",
+        solution: "A native PHP tournament platform that organizes World Cup data and screens.",
+        features: "Groups|Teams|Statistics|Native PHP"
+      },
+      "Yeesooh": {
+        problem: "A creative company needed a professional website to present services and portfolio work.",
+        solution: "A Laravel website with service presentation, portfolio sections, and a simple contact journey.",
+        features: "Company website|Services|Portfolio|Contact flow"
+      },
+      "Maktabty": {
+        problem: "Library operations need inventory, book records, users, and order handling in one place.",
+        solution: "A PHP/MySQL platform for inventory, books, orders, users, and admin management.",
+        features: "Inventory|Books|Orders|Admin dashboard"
+      },
+      "In Save": {
+        problem: "Lost-item reporting needs a fast, organized workflow for users and support teams.",
+        solution: "A Laravel-based reporting flow designed around item details, location context, and follow-up.",
+        features: "Lost items|Reporting flow|Security support|API backend"
+      },
+      "Lumi Cashier": {
+        problem: "Sales teams need fast cashier flows, invoice handling, and daily operational reports.",
+        solution: "A Laravel POS-style backend for products, invoices, daily sales, and reporting.",
+        features: "Cashier flow|Invoices|Daily reports|Sales operations"
+      },
+      "SG Solar": {
+        problem: "A solar services business needed a credible website that turns service interest into leads.",
+        solution: "A Laravel service website with catalog presentation, lead collection, and contact conversion.",
+        features: "Services catalog|Lead collection|Business website|Contact conversion"
+      }
     };
 
     function escapeHTML(value) {
@@ -34,80 +116,83 @@
           "<": "&lt;",
           ">": "&gt;",
           '"': "&quot;",
-          "'": "&#39;",
+          "'": "&#39;"
         }[character];
       });
     }
 
     function parseList(value) {
       if (!value) return [];
-      return String(value)
-        .split("|")
-        .map(function (item) {
-          return item.trim();
-        })
-        .filter(Boolean);
+      return String(value).split("|").map(function (item) { return item.trim(); }).filter(Boolean);
     }
 
     function renderPills(items, className) {
-      const list = Array.isArray(items) ? items : parseList(items);
-      const classAttr = className ? ' class="' + className + '"' : "";
-      if (!list.length) return "";
-      return list
-        .map(function (item) {
-          return "<span" + classAttr + ">" + escapeHTML(item) + "</span>";
-        })
-        .join("");
-    }
-
-    function getProject(row) {
-      const title = row.dataset.title || "Project";
-      const impact = parseList(row.dataset.impact);
-      const stack = parseList(row.dataset.stack);
-      const type = row.dataset.kind === "evyx" ? "Evyx Product" : "Freelance Build";
-
-      return {
-        title: title,
-        type: type,
-        image: row.dataset.image || "",
-        desc: row.dataset.desc || "",
-        impact: impact,
-        features: parseList(row.dataset.features).length ? parseList(row.dataset.features) : impact,
-        stack: stack,
-        problem: row.dataset.problem || "The product needed a stable backend flow to support growth, cleaner operations, and maintainable delivery.",
-        role: row.dataset.role || "I designed and implemented backend architecture, API contracts, business logic, and admin operations.",
-        solution: row.dataset.solution || "Implemented modular Laravel backend services with secure validation, clear data models, and scalable dashboard workflows.",
-        github: row.dataset.github || githubLinks[title] || "",
-      };
+      var list = Array.isArray(items) ? items : parseList(items);
+      var attr = className ? ' class="' + className + '"' : "";
+      return list.map(function (item) { return "<span" + attr + ">" + escapeHTML(item) + "</span>"; }).join("");
     }
 
     function setText(selector, value, scope) {
-      const element = (scope || document).querySelector(selector);
+      var element = (scope || document).querySelector(selector);
       if (element) element.textContent = value || "";
     }
 
     function setHTML(selector, value, scope) {
-      const element = (scope || document).querySelector(selector);
+      var element = (scope || document).querySelector(selector);
       if (element) element.innerHTML = value || "";
     }
 
     function setImage(image, src, alt) {
       if (!image || !src) return;
-      if (image.getAttribute("src") !== src) {
-        image.src = src;
-      }
+      if (image.getAttribute("src") !== src) image.src = src;
       image.alt = alt || "Project preview";
       image.loading = "lazy";
       image.decoding = "async";
     }
 
+    function ensureImageBox(image, extraClass) {
+      if (!image) return null;
+      image.loading = image.loading || "lazy";
+      image.decoding = image.decoding || "async";
+
+      var existing = image.closest(".project-image-box");
+      if (existing) {
+        if (extraClass) existing.classList.add(extraClass);
+        return existing;
+      }
+
+      var box = document.createElement("div");
+      box.className = "project-image-box" + (extraClass ? " " + extraClass : "");
+      image.parentNode.insertBefore(box, image);
+      box.appendChild(image);
+      return box;
+    }
+
+    function getProject(row) {
+      var title = row.dataset.title || "Project";
+      var meta = projectMeta[title] || {};
+      var stack = parseList(row.dataset.stack);
+      var impact = parseList(row.dataset.impact);
+      var features = parseList(row.dataset.features || meta.features).length ? parseList(row.dataset.features || meta.features) : impact;
+
+      return {
+        title: title,
+        type: row.dataset.kind === "evyx" ? "Evyx Product" : "Freelance Build",
+        image: row.dataset.image || "",
+        desc: row.dataset.desc || "",
+        impact: impact,
+        features: features,
+        stack: stack,
+        problem: row.dataset.problem || meta.problem || "The product needed a stable backend flow, cleaner operations, and reliable delivery.",
+        role: row.dataset.role || "Backend architecture, API contracts, business logic, database structure, and admin operations.",
+        solution: row.dataset.solution || meta.solution || "A maintainable Laravel backend with secure validation, clean modules, and dashboard-ready workflows.",
+        github: row.dataset.github || githubLinks[title] || ""
+      };
+    }
+
     function updateFeature(project) {
       if (!feature) return;
-
-      const image = feature.querySelector("img");
-      const body = feature.querySelector(".feature-body");
-
-      setImage(image, project.image, project.title + " preview");
+      setImage(feature.querySelector("img"), project.image, project.title + " preview");
       setText("[data-title]", project.title, feature);
       setText("[data-desc]", project.desc, feature);
       setText("[data-type]", project.type, feature);
@@ -117,125 +202,52 @@
       setHTML("[data-features]", renderPills(project.features, ""), feature);
       setHTML("[data-stack]", renderPills(project.stack, ""), feature);
 
-      feature.dataset.currentTitle = project.title;
-
+      var body = feature.querySelector(".feature-body");
       if (body && !prefersReducedMotion.matches) {
         body.classList.remove("is-changing");
-        void body.offsetWidth;
-        body.classList.add("is-changing");
+        window.requestAnimationFrame(function () { body.classList.add("is-changing"); });
       }
-    }
-
-    function ensureImageBox(image, extraClass) {
-      if (!image) return null;
-
-      image.loading = image.loading || "lazy";
-      image.decoding = image.decoding || "async";
-
-      const existing = image.closest(".project-image-box");
-      if (existing) {
-        if (extraClass) existing.classList.add(extraClass);
-        return existing;
-      }
-
-      const box = document.createElement("div");
-      box.className = "project-image-box" + (extraClass ? " " + extraClass : "");
-      image.parentNode.insertBefore(box, image);
-      box.appendChild(image);
-      return box;
     }
 
     function addStackTags(row) {
       if (row.querySelector(".project-tags")) return;
-
-      const stack = parseList(row.dataset.stack).slice(0, 5);
-      if (!stack.length) return;
-
-      const tags = document.createElement("div");
-      tags.className = "project-tags";
-      tags.setAttribute("aria-label", "Project technologies");
-      tags.innerHTML = renderPills(stack, "project-tag-pill");
-      row.appendChild(tags);
+      var tags = parseList(row.dataset.stack).slice(0, 4);
+      if (!tags.length) return;
+      var element = document.createElement("div");
+      element.className = "project-tags";
+      element.setAttribute("aria-label", "Project technologies");
+      element.innerHTML = renderPills(tags, "project-tag-pill");
+      row.appendChild(element);
     }
 
     function activate(row, options) {
-      const config = Object.assign({ scroll: false }, options || {});
-
-      projects.forEach(function (projectRow) {
-        const active = projectRow === row;
-        projectRow.classList.toggle("active", active);
-        projectRow.setAttribute("aria-pressed", String(active));
+      var config = Object.assign({ scroll: false }, options || {});
+      projects.forEach(function (item) {
+        var active = item === row;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-pressed", String(active));
       });
-
       updateFeature(getProject(row));
-
       if (config.scroll && feature && window.innerWidth < 992) {
         feature.scrollIntoView({ behavior: prefersReducedMotion.matches ? "auto" : "smooth", block: "start" });
       }
     }
 
-    function attachPointerGlow(row) {
-      if (!canHover.matches || prefersReducedMotion.matches) return;
-
-      let frame = 0;
-      let nextX = "50%";
-      let nextY = "50%";
-
-      function apply() {
-        row.style.setProperty("--x", nextX);
-        row.style.setProperty("--y", nextY);
-        frame = 0;
-      }
-
-      row.addEventListener(
-        "pointermove",
-        function (event) {
-          const rect = row.getBoundingClientRect();
-          nextX = event.clientX - rect.left + "px";
-          nextY = event.clientY - rect.top + "px";
-
-          if (!frame) {
-            frame = window.requestAnimationFrame(apply);
-          }
-        },
-        { passive: true }
-      );
-
-      row.addEventListener("pointerleave", function () {
-        nextX = "50%";
-        nextY = "50%";
-        if (!frame) frame = window.requestAnimationFrame(apply);
-      });
-    }
-
     function initRows() {
-      projects.forEach(function (row, index) {
-        const image = row.querySelector("img");
-        ensureImageBox(image, "row-image-box");
+      projects.forEach(function (row) {
+        ensureImageBox(row.querySelector("img"), "row-image-box");
         addStackTags(row);
-
         row.setAttribute("role", "button");
         row.setAttribute("tabindex", "0");
         row.setAttribute("aria-pressed", row.classList.contains("active") ? "true" : "false");
-        row.style.setProperty("--x", "50%");
-        row.style.setProperty("--y", "50%");
 
-        if (!row.hasAttribute("data-aos-delay")) {
-          row.setAttribute("data-aos-delay", String(Math.min(index * 35, 220)));
-        }
-
-        row.addEventListener("click", function () {
-          activate(row, { scroll: false });
-        });
-
+        row.addEventListener("click", function () { activate(row, { scroll: false }); });
         row.addEventListener("keydown", function (event) {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
             activate(row, { scroll: true });
           }
         });
-
-        attachPointerGlow(row);
       });
     }
 
@@ -243,19 +255,18 @@
       tabs.forEach(function (tab) {
         tab.type = "button";
         tab.setAttribute("aria-pressed", tab.classList.contains("active") ? "true" : "false");
-
         tab.addEventListener("click", function () {
-          const filter = tab.dataset.filter || "all";
-          let firstVisible = null;
+          var filter = tab.dataset.filter || "all";
+          var firstVisible = null;
 
           tabs.forEach(function (button) {
-            const active = button === tab;
+            var active = button === tab;
             button.classList.toggle("active", active);
             button.setAttribute("aria-pressed", String(active));
           });
 
           projects.forEach(function (row) {
-            const visible = filter === "all" || row.dataset.kind === filter;
+            var visible = filter === "all" || row.dataset.kind === filter;
             row.classList.toggle("is-hidden", !visible);
             row.hidden = !visible;
             if (visible && !firstVisible) firstVisible = row;
@@ -267,38 +278,27 @@
     }
 
     function initRevealObserver() {
-      const revealItems = Array.from(document.querySelectorAll(".reveal-up"));
-      if (!revealItems.length) return;
-
+      var items = Array.prototype.slice.call(document.querySelectorAll(".reveal-up"));
+      if (!items.length) return;
       if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
-        revealItems.forEach(function (item) {
-          item.classList.add("in-view");
-        });
+        items.forEach(function (item) { item.classList.add("in-view"); });
         return;
       }
-
-      const observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("in-view");
-            observer.unobserve(entry.target);
-          });
-        },
-        { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
-      );
-
-      revealItems.forEach(function (item) {
-        observer.observe(item);
-      });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -6% 0px", threshold: 0.1 });
+      items.forEach(function (item) { observer.observe(item); });
     }
 
     function initModal() {
-      const modal = document.getElementById("caseStudyModal");
-      const openButton = document.querySelector("[data-open-case-study]");
-      const closeTargets = Array.from(document.querySelectorAll("[data-close-case-study]"));
-      let lastFocused = null;
-
+      var modal = document.getElementById("caseStudyModal");
+      var openButton = document.querySelector("[data-open-case-study]");
+      var closeTargets = Array.prototype.slice.call(document.querySelectorAll("[data-close-case-study]"));
+      var lastFocused = null;
       if (!modal || !openButton) return;
 
       function populate(project) {
@@ -313,7 +313,7 @@
         setHTML("[data-modal-impact]", renderPills(project.impact, ""), modal);
         setHTML("[data-modal-stack]", renderPills(project.stack, ""), modal);
 
-        const github = modal.querySelector("[data-modal-github]");
+        var github = modal.querySelector("[data-modal-github]");
         if (github) {
           if (project.github) {
             github.href = project.github;
@@ -326,16 +326,14 @@
       }
 
       function openModal() {
-        const active = document.querySelector(".project-row.active") || projects[0];
+        var active = document.querySelector(".project-row.active:not([hidden])") || projects[0];
         if (!active) return;
-
         lastFocused = document.activeElement;
         populate(getProject(active));
         modal.classList.add("open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("modal-open");
-
-        const close = modal.querySelector("[data-close-case-study]");
+        var close = modal.querySelector("[data-close-case-study]");
         if (close) close.focus({ preventScroll: true });
       }
 
@@ -343,40 +341,19 @@
         modal.classList.remove("open");
         modal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("modal-open");
-
-        if (lastFocused && typeof lastFocused.focus === "function") {
-          lastFocused.focus({ preventScroll: true });
-        }
+        if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus({ preventScroll: true });
       }
 
       openButton.addEventListener("click", openModal);
-
-      closeTargets.forEach(function (target) {
-        target.addEventListener("click", closeModal);
-      });
-
+      closeTargets.forEach(function (target) { target.addEventListener("click", closeModal); });
       document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && modal.classList.contains("open")) {
-          closeModal();
-        }
+        if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
       });
     }
 
-    projects.forEach(function (row) {
-      const img = row.querySelector("img");
-      if (img) {
-        img.loading = "lazy";
-        img.decoding = "async";
-      }
-    });
-
-    if (feature) {
-      const featureImg = feature.querySelector("img");
-      ensureImageBox(featureImg, "feature-image-box");
-    }
-
-    document.querySelectorAll(".freelance-card > img, .project-feature img, .case-modal img").forEach(function (img) {
-      img.loading = img.closest(".case-modal") ? "lazy" : img.loading || "lazy";
+    ensureImageBox(feature ? feature.querySelector("img") : null, "feature-image-box");
+    document.querySelectorAll(".freelance-card > img, .case-modal img").forEach(function (img) {
+      img.loading = img.loading || "lazy";
       img.decoding = "async";
     });
 
@@ -385,12 +362,7 @@
     initRevealObserver();
     initModal();
 
-    const initiallyActive = projects.find(function (row) {
-      return row.classList.contains("active") && !row.hidden;
-    }) || projects[0];
-
-    if (initiallyActive) {
-      activate(initiallyActive, { scroll: false });
-    }
+    var initiallyActive = projects.filter(function (row) { return !row.hidden; }).find(function (row) { return row.classList.contains("active"); }) || projects[0];
+    if (initiallyActive) activate(initiallyActive, { scroll: false });
   });
 })();

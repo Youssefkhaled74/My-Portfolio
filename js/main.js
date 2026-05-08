@@ -78,13 +78,13 @@
     if (typeof AOS === "undefined") return;
 
     AOS.init({
-      duration: prefersReducedMotion.matches ? 0 : 650,
+      duration: prefersReducedMotion.matches ? 0 : 420,
       easing: "ease-out-cubic",
       once: true,
       mirror: false,
-      offset: 80,
+      offset: 60,
       disable: function () {
-        return prefersReducedMotion.matches;
+        return prefersReducedMotion.matches || window.innerWidth < 700;
       },
     });
   }
