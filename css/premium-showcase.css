@@ -1224,16 +1224,50 @@ body.modal-open { overflow: hidden; }
 }
 
 /* Experience section */
-.experience-grid {
+.experience-timeline {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  left: 184px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(0, 217, 255, 0.45), rgba(0, 217, 255, 0.12));
+}
+.experience-item {
+  display: grid;
+  grid-template-columns: 170px 28px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 14px;
+}
+.experience-rail-meta {
+  margin-top: 8px;
+  color: #8fb0cd;
+  font: 700 0.74rem/1.25 var(--font-code);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+}
+.experience-dot {
+  width: 14px;
+  height: 14px;
+  margin-top: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 217, 255, 0.72);
+  background: #031019;
+  box-shadow: 0 0 0 5px rgba(0, 217, 255, 0.14);
 }
 .experience-card {
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 18px;
   background: linear-gradient(170deg, rgba(10, 17, 28, 0.95), rgba(5, 8, 14, 0.98));
-  padding: 16px;
+  padding: 16px 16px 14px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
   transition: border-color 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
 }
@@ -1281,13 +1315,30 @@ body.modal-open { overflow: hidden; }
   gap: 6px;
 }
 .experience-card li {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.45;
 }
 
 @media (max-width: 991px) {
-  .experience-grid {
+  .experience-timeline::before {
+    left: 12px;
+  }
+  .experience-item {
     grid-template-columns: 1fr;
+    row-gap: 8px;
+    padding-left: 34px;
+    position: relative;
+  }
+  .experience-dot {
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    margin: 0;
+  }
+  .experience-rail-meta {
+    text-align: left;
+    margin-top: 0;
+    padding-left: 2px;
   }
 }
 .projects-empty-message {
