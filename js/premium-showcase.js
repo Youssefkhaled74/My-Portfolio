@@ -11,9 +11,36 @@
 
   ready(function () {
     var projects = Array.prototype.slice.call(document.querySelectorAll("[data-project-row]"));
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var siteGlow = document.querySelector(".site-mouse-glow");
+    var isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+
+    function initGlobalMouseGlow() {
+      if (!siteGlow || prefersReducedMotion.matches || isCoarsePointer) return;
+
+      var rafId = 0;
+      function updateGlow(x, y) {
+        document.documentElement.style.setProperty("--mx", x + "px");
+        document.documentElement.style.setProperty("--my", y + "px");
+      }
+
+      window.addEventListener("mousemove", function (event) {
+        if (rafId) return;
+        var nextX = event.clientX;
+        var nextY = event.clientY;
+        rafId = window.requestAnimationFrame(function () {
+          updateGlow(nextX, nextY);
+          rafId = 0;
+        });
+      });
+
+      updateGlow(window.innerWidth * 0.5, window.innerHeight * 0.42);
+    }
+
+    initGlobalMouseGlow();
+
     var feature = document.querySelector("[data-project-feature]");
     var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
-    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     if (!projects.length) return;
 

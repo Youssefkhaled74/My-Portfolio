@@ -39,11 +39,10 @@
     <div class="preloader" id="preloader">
         <div class="spinner"></div>
     </div>
+    <span aria-hidden="true" class="site-mouse-glow"></span>
     <nav class="navbar navbar-expand-lg timeline-nav">
         <div class="container">
-            <a class="navbar-brand" href="#hero"><img alt="Youssef Khaled logo" class="brand-logo" decoding="async"
-                    fetchpriority="high" height="358" loading="eager" src="assets/images/youssef-khaled-logo.png"
-                    width="360" />Youssef Khaled</a>
+            <a class="navbar-brand" href="#hero">Youssef Khaled</a>
             <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button"><i
                     class="fa-solid fa-bars"></i></button>
@@ -51,8 +50,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#projects">Selected Work</a></li>
                     <li class="nav-item"><a class="nav-link" href="#capabilities">Backend Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#insights">Engineering Notes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About + CV</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center nav-actions"></div>
@@ -63,61 +61,43 @@
         <div class="container">
             <div class="row align-items-center hero-grid">
                 <div class="col-lg-7" data-aos="fade-right">
-                    <span class="hero-kicker"><i class="fa-solid fa-bolt"></i> Laravel Backend Engineer | Product-Focused Systems</span>
-                    <h1 class="hero-title">I design and ship Laravel backend systems that keep real products stable, observable, and ready to scale.</h1>
-                    <p class="hero-subtitle">From REST APIs and admin dashboards to queue jobs, integrations, and business rules, I build backend foundations teams can ship on without friction.</p>
+                    <span class="hero-kicker"><i class="fa-solid fa-bolt"></i> Professional Focus</span>
+                    <h1 class="hero-title">Backend first.<br />Data driven.<br />Cloud ready.</h1>
+                    <p class="hero-subtitle">Building reliable backend products with clear data insights and cloud-ready execution.</p>
                     <div class="hero-actions">
                         <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-layer-group"></i> View Selected Work</a>
                         <a class="btn btn-ghost" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
                     </div>
                     <div class="hero-metrics">
-                        <span class="metric">REST APIs</span>
-                        <span class="metric">Admin Dashboards</span>
-                        <span class="metric">Queue Jobs</span>
-                        <span class="metric">Clean Architecture</span>
-                        <span class="metric">Laravel</span>
-                        <span class="metric">MySQL</span>
-                        <span class="metric">Product Systems</span>
+                        <span class="metric">Mid Level Backend Developer</span>
+                        <span class="metric">Data Analyst</span>
+                        <span class="metric">Junior Cloud Engineer</span>
                     </div>
                 </div>
                 <div class="col-lg-5" data-aos="fade-left">
                     <div class="hero-visual">
-                        <div class="command-center">
-                            <div class="console-top">
-                                <span class="console-title">BACKEND CONTROL CENTER</span>
-                                <span class="console-status"><i class="fa-solid fa-circle"></i> Production Ready</span>
+                        <div class="hero-profile-card">
+                            <div class="hero-profile-orb">
+                                <img alt="Youssef Khaled portrait" decoding="async" fetchpriority="high" height="358"
+                                    loading="eager" src="assets/images/youssef-khaled-logo.png" width="360" />
                             </div>
-                            <div class="pipeline-grid">
-                                <div class="pipeline-card">
-                                    <p class="pipeline-label">API GATEWAY</p>
-                                    <strong>412 req/min</strong>
-                                    <small>Auth, validation, throttling</small>
-                                </div>
-                                <div class="pipeline-card">
-                                    <p class="pipeline-label">QUEUE WORKERS</p>
-                                    <strong>98% success</strong>
-                                    <small>Mail, events, scheduled jobs</small>
-                                </div>
-                                <div class="pipeline-card">
-                                    <p class="pipeline-label">ADMIN OPS</p>
-                                    <strong>24/7 visibility</strong>
-                                    <small>Moderation, reports, workflow</small>
-                                </div>
-                                <div class="pipeline-card">
-                                    <p class="pipeline-label">DATA LAYER</p>
-                                    <strong>MySQL + cache</strong>
-                                    <small>Indexes, transactions, audits</small>
-                                </div>
+                            <div class="hero-social-links" aria-label="Social media links">
+                                <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i
+                                        class="fa-brands fa-instagram"></i></a>
+                                <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i
+                                        class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" target="_blank" rel="noopener" aria-label="Snapchat"><i
+                                        class="fa-brands fa-snapchat"></i></a>
+                                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i
+                                        class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#" target="_blank" rel="noopener" aria-label="X"><i
+                                        class="fa-brands fa-x-twitter"></i></a>
                             </div>
-                            <div class="terminal-line">$ php artisan system:health --env=production</div>
-                            <div class="terminal-line ok">API contracts stable | queue lag normal | integrations synced</div>
-                        </div>
-                        <div aria-label="Backend event stream" class="backend-console reveal-up">
-                            <div class="console-head"><span class="pulse-dot"></span> System Event Stream</div>
-                            <div class="console-item"><code>[API] POST /v1/orders validated and persisted</code></div>
-                            <div class="console-item"><code>[QUEUE] invoice.dispatch completed in 190ms</code></div>
-                            <div class="console-item"><code>[ADMIN] dashboard counters refreshed</code></div>
-                            <div class="console-item"><code>[INTEGRATION] payment webhook acknowledged</code></div>
+                            <div class="hero-role-stack">
+                                <span><i class="fa-solid fa-server"></i>Mid Level Backend Developer</span>
+                                <span><i class="fa-solid fa-chart-line"></i>Data Analyst</span>
+                                <span><i class="fa-solid fa-cloud"></i>Junior Cloud Engineer</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -467,120 +447,6 @@
             </div>
         </div>
     </section>
-    <section class="freelance-section" id="freelance">
-        <div class="container">
-            <div class="section-intro reveal-up">
-                <p class="eyebrow">Client Delivery</p>
-                <h2>Freelance builds presented as real product work.</h2>
-                <p>Independent projects focused on practical business outcomes: websites, POS logic, inventory, service
-                    catalogs, reporting flows, and backend operations.</p>
-            </div>
-            <div class="freelance-grid">
-                <article class="freelance-card reveal-up"><img alt="FIFA World Cup" decoding="async" height="188"
-                        loading="lazy" src="assets/images/fifaworldcup.png" width="268" />
-                    <div class="freelance-body">
-                        <div class="freelance-meta"><span class="freelance-tag">2022</span><span
-                                class="freelance-tag"><i class="fa-brands fa-php"></i> PHP</span></div>
-                        <h3>FIFA World Cup</h3>
-                        <p>Native PHP tournament management project with teams, groups, statistics, and clear data
-                            screens.</p><a class="btn btn-ghost btn-sm"
-                            href="https://github.com/Youssefkhaled74/Php-FifaWorldCup.git" rel="noopener"
-                            target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                    </div>
-                </article>
-                <article class="freelance-card reveal-up"><img alt="Yeesooh" decoding="async" height="200"
-                        loading="lazy" src="assets/images/yesooh.jpg" width="200" />
-                    <div class="freelance-body">
-                        <div class="freelance-meta"><span class="freelance-tag">2024</span><span
-                                class="freelance-tag"><i class="fa-brands fa-laravel"></i> Laravel</span></div>
-                        <h3>Yeesooh</h3>
-                        <p>Laravel website for a creative/advertising company with service pages, portfolio
-                            presentation, and contact flow.</p><a class="btn btn-ghost btn-sm"
-                            href="https://github.com/Youssefkhaled74/Laravel-YesOoh.git" rel="noopener"
-                            target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                    </div>
-                </article>
-                <article class="freelance-card reveal-up"><img alt="Maktabty" decoding="async" height="225"
-                        loading="lazy" src="assets/images/maktabty.png" width="225" />
-                    <div class="freelance-body">
-                        <div class="freelance-meta"><span class="freelance-tag">2023</span><span
-                                class="freelance-tag"><i class="fa-brands fa-php"></i> PHP</span></div>
-                        <h3>Maktabty</h3>
-                        <p>Library management platform for books, inventory, users, orders, and admin operations.</p><a
-                            class="btn btn-ghost btn-sm" href="https://github.com/Youssefkhaled74/Maktabty.git"
-                            rel="noopener" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                    </div>
-                </article>
-                <article class="freelance-card reveal-up"><img alt="In Save" decoding="async" height="116"
-                        loading="lazy" src="assets/images/insave.png" width="377" />
-                    <div class="freelance-body">
-                        <div class="freelance-meta"><span class="freelance-tag">2024</span><span
-                                class="freelance-tag"><i class="fa-brands fa-laravel"></i> Laravel</span></div>
-                        <h3>In Save</h3>
-                        <p>Lost-item reporting concept with structured submissions, location context, and support-team
-                            follow-up flow.</p><a class="btn btn-ghost btn-sm"
-                            href="https://github.com/Youssefkhaled74/Laravel-KsaProject.git" rel="noopener"
-                            target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                    </div>
-                </article>
-                <article class="freelance-card reveal-up"><img alt="Lumi Cashier" decoding="async" height="137"
-                        loading="lazy" src="assets/images/lumi.png" width="277" />
-                    <div class="freelance-body">
-                        <div class="freelance-meta"><span class="freelance-tag">2026</span><span
-                                class="freelance-tag"><i class="fa-brands fa-laravel"></i> Laravel</span></div>
-                        <h3>Lumi Cashier</h3>
-                        <p>POS and sales-management system for products, invoices, daily operations, and reporting.</p>
-                        <a class="btn btn-ghost btn-sm" href="https://github.com/Youssefkhaled74/Lumi-Cashier.git"
-                            rel="noopener" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                    </div>
-                </article>
-                <article class="freelance-card reveal-up"><img alt="SG Solar" decoding="async" height="184"
-                        loading="lazy" src="assets/images/sgsolar.png" width="1000" />
-                    <div class="freelance-body">
-                        <div class="freelance-meta"><span class="freelance-tag">2025</span><span
-                                class="freelance-tag"><i class="fa-brands fa-laravel"></i> Laravel</span></div>
-                        <h3>SG Solar</h3>
-                        <p>Solar services website with catalog presentation, lead collection, and conversion-focused
-                            contact flow.</p><a class="btn btn-ghost btn-sm"
-                            href="https://github.com/Youssefkhaled74/SGsolar-laravel.git" rel="noopener"
-                            target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-    <section class="proof-section" id="proof">
-        <div class="container">
-            <div class="section-intro reveal-up">
-                <p class="eyebrow">Engineering Signal</p>
-                <h2>Why a hiring team should keep reading.</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="proof-card reveal-up">
-                        <h3>Product delivery mindset</h3>
-                        <p>I focus on backend decisions that make features easier to ship, maintain, monitor, and
-                            operate.</p>
-                        <strong>Production-ready thinking</strong>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="proof-card reveal-up">
-                        <h3>Business logic depth</h3>
-                        <p>Experience with orders, transactions, dashboards, catalogs, reporting, permissions, and
-                            service workflows.</p><strong>Real product flows</strong>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="proof-card reveal-up">
-                        <h3>Clear technical communication</h3>
-                        <p>Projects are presented as case studies so teams can quickly understand the problem, role,
-                            stack, and impact.</p><strong>Company-ready portfolio</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="capabilities-section" id="capabilities">
         <div class="container">
             <div class="section-intro reveal-up">
@@ -624,60 +490,6 @@
                 <article class="capability-card reveal-up"><i class="fa-solid fa-bell"></i>
                     <h3>Notifications</h3>
                     <p>Build in-app and external notification flows that are triggered from real product events.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-    <section class="architecture-section" id="architecture">
-        <div class="container">
-            <div class="section-intro reveal-up">
-                <p class="eyebrow">Architecture Thinking</p>
-                <h2>How I structure backend work from request to operation.</h2>
-            </div>
-            <div class="architecture-flow reveal-up">
-                <div class="flow-node">Client / Mobile App</div>
-                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="flow-node">API Contracts</div>
-                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="flow-node">Business Rules</div>
-                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="flow-node">Database Layer</div>
-                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="flow-node">Admin Operations</div>
-            </div>
-        </div>
-    </section>
-    <section class="stack-visual-section">
-        <div class="container">
-            <div class="section-intro reveal-up">
-                <p class="eyebrow">Tech Stack</p>
-                <h2>Core technologies used in products and freelance delivery.</h2>
-            </div>
-            <div class="stack-visual-grid reveal-up"><span>Laravel</span><span>PHP</span><span>MySQL</span><span>REST
-                    APIs</span><span>Authentication</span><span>Queues</span><span>Jobs</span><span>Admin
-                    Panels</span><span>Reports</span><span>Bootstrap</span><span>JavaScript</span><span>Git</span><span>GitHub</span><span>Database
-                    Design</span></div>
-        </div>
-    </section>
-    <section class="knowledge-section" id="insights">
-        <div class="container">
-            <div class="section-intro reveal-up">
-                <p class="eyebrow">Engineering Notes</p>
-                <h2>Short technical writing that shows how I think as a backend developer.</h2>
-                <p>This section supports the portfolio with technical thinking, not just project screenshots.</p><a
-                    class="btn btn-ghost btn-sm" href="insights/index.html">Browse all insights</a>
-            </div>
-            <div class="knowledge-grid">
-                <article class="knowledge-card reveal-up">
-                    <div class="knowledge-header">
-                        <h3>System Design Fundamentals for Backend Engineers</h3><span class="knowledge-tag">System
-                            Design</span>
-                    </div>
-                    <p>A practical note on building backend systems that stay maintainable when features, users, and
-                        operations grow.</p>
-                    <div class="knowledge-links"><a class="btn btn-primary btn-sm"
-                            href="insights/system-design-backend-foundations.html">Read article</a><a
-                            class="btn btn-ghost btn-sm" href="insights/index.html">More articles</a></div>
                 </article>
             </div>
         </div>
@@ -782,3 +594,4 @@
 </body>
 
 </html>
+
