@@ -1293,6 +1293,7 @@ body.modal-open { overflow: hidden; }
 .experience-company {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   padding: 5px 9px;
   border-radius: 999px;
   border: 1px solid rgba(0, 217, 255, 0.25);
@@ -1301,6 +1302,19 @@ body.modal-open { overflow: hidden; }
   font: 700 0.66rem/1 var(--font-code);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+.experience-company img {
+  width: 44px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1px 3px;
+}
+.experience-company i {
+  font-size: 0.78rem;
+  color: #8cecff;
 }
 .experience-meta {
   margin: 0 0 10px;
