@@ -1104,12 +1104,18 @@ body.modal-open { overflow: hidden; }
 .project-card:hover { border-color: rgba(0, 217, 255, 0.38); transform: translateY(-3px); box-shadow: 0 24px 36px rgba(0, 0, 0, 0.34); }
 .project-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .project-card-media {
-  width: 76px; height: 58px; padding: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 12px;
+  width: 96px; height: 72px; padding: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px;
   background: #ffffff;
   display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 22px rgba(2, 8, 23, 0.28);
 }
-.project-card-media img { width: 100%; height: 100%; object-fit: contain; }
+.project-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: contrast(1.08) saturate(1.06);
+}
 .project-card-badge {
   padding: 6px 9px; border: 1px solid rgba(0, 217, 255, 0.22); border-radius: 999px;
   background: rgba(0, 217, 255, 0.06); color: #9defff; font: 700 0.62rem/1 var(--font-code); letter-spacing: 0.08em; text-transform: uppercase;
@@ -1126,9 +1132,19 @@ body.modal-open { overflow: hidden; }
   display: block;
 }
 .project-card h4 { margin: 2px 0 0; font-size: 1.2rem; letter-spacing: -0.02em; }
-.project-card-summary { margin: 0; color: #a8b9d0; font-size: 0.92rem; line-height: 1.5; }
+.project-card-summary {
+  margin: 0;
+  color: #b2c1d6;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .project-card-points { margin: 0; padding-left: 16px; color: #cfdef3; display: grid; gap: 4px; }
 .project-card-points li { font-size: 0.82rem; line-height: 1.38; }
+.project-card-points li:nth-child(n+3) { display: none; }
 .project-card-stack { display: flex; flex-wrap: wrap; gap: 8px; }
 .project-card-stack span {
   display: inline-flex; align-items: center; padding: 6px 10px;
@@ -1180,7 +1196,7 @@ body.modal-open { overflow: hidden; }
   min-height: 320px !important;
   max-width: 100% !important;
   border-radius: 14px !important;
-  padding: 12px !important;
+  padding: 14px !important;
 }
 .project-card .project-card-summary,
 .project-card .project-card-points {
@@ -1199,6 +1215,11 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 640px) {
   .projects-grid {
     grid-template-columns: 1fr !important;
+  }
+  .project-card-media {
+    width: 84px;
+    height: 64px;
+    padding: 8px;
   }
 }
 
