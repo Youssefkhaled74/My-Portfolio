@@ -50,6 +50,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#projects">Selected Work</a></li>
                     <li class="nav-item"><a class="nav-link" href="#capabilities">Backend Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About + CV</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
@@ -111,344 +112,485 @@
     <section class="projects-section" id="projects">
         <div class="container">
             <div class="section-intro reveal-up">
-                <p class="eyebrow">Selected Systems</p>
-                <h2>Production-minded backends across company products and client builds.</h2>
-                <p>A case-study style showcase of real systems I worked on: what problem each product solves, the
-                    backend role, the stack, key features, and the delivery value.</p>
+                <p class="eyebrow">Case Studies</p>
+                <h2>Selected Backend Work</h2>
+                <p>A collection of Laravel backend systems, dashboards, APIs, and cloud-ready products built for real
+                    business operations.</p>
             </div>
             <div aria-label="Project filters" class="showcase-tabs reveal-up">
-                <button class="showcase-tab active" data-filter="all" type="button">All Work</button>
-                <button class="showcase-tab" data-filter="evyx" type="button">Evyx Company</button>
-                <button class="showcase-tab" data-filter="freelance" type="button">Freelance</button>
+                <button aria-pressed="true" class="showcase-tab active" data-filter="all" type="button">All
+                    Projects</button>
+                <button aria-pressed="false" class="showcase-tab" data-filter="evyx" type="button">Evyx
+                    Products</button>
+                <button aria-pressed="false" class="showcase-tab" data-filter="techpack"
+                    type="button">TechPack</button>
+                <button aria-pressed="false" class="showcase-tab" data-filter="freelance"
+                    type="button">Freelance</button>
             </div>
-            <div class="project-cinema">
-                <article class="project-feature reveal-up" data-project-feature="">
-                    <img alt="Project preview" decoding="async" height="500" loading="lazy"
+            <article aria-label="Featured project case study" class="featured-project reveal-up"
+                data-project-id="asklawyer" data-filters="evyx"
+                data-desc="Legal consultation platform backend supporting request lifecycles, lawyer/admin workflows, notifications, and service operations."
+                data-features="Consultation requests|Request lifecycle|Role-based access|Notifications|Admin workflow"
+                data-github="" data-image="assets/images/projects/asklawyer.png"
+                data-impact="Faster service handling|Operational visibility|Reliable client workflows"
+                data-problem="Legal service requests need strict role permissions, clear status progression, and reliable admin visibility."
+                data-role="Designed Laravel APIs, request lifecycle logic, admin operations, and role/permission boundaries for product workflows."
+                data-solution="A production-ready backend architecture that keeps legal request operations trackable, auditable, and easy to manage."
+                data-stack="Laravel|REST APIs|MySQL|Notifications|Queue Jobs" data-title="Ask Lawyer"
+                data-type="Evyx Product">
+                <div class="featured-project-media">
+                    <img alt="Ask Lawyer backend product logo" decoding="async" height="500" loading="lazy"
                         src="assets/images/projects/asklawyer.png" width="500" />
-                    <div class="feature-body">
-                        <span class="project-type" data-type="">Evyx Product</span>
-                        <h3 data-title="">Ask Lawyer</h3>
-                        <p data-desc="">Legal consultation platform backend supporting client requests, lawyer/admin
-                            workflows, notifications, and structured service management.</p>
-                        <div class="story-grid">
-                            <div class="story-item">
-                                <h5>Problem</h5>
-                                <p data-problem="">Legal service requests can become hard to track without clear roles,
-                                    request states, and admin visibility.</p>
-                            </div>
-                            <div class="story-item">
-                                <h5>My Role</h5>
-                                <p data-role="">Implemented Laravel backend flows, API contracts, request lifecycle
-                                    logic, permissions, and dashboard operations.</p>
-                            </div>
-                        </div>
-                        <div class="story-item story-item-wide">
-                            <h5>Key Features</h5>
-                            <div class="impact-list" data-features=""><span>Mobile app backend</span><span>Admin
-                                    workflow</span><span>Role-based access</span></div>
-                        </div>
-                        <div class="impact-list" data-impact=""><span>Mobile app backend</span><span>Admin
-                                workflow</span><span>Role-based access</span></div>
-                        <div class="feature-stack mt-3" data-stack=""><span>Laravel</span><span>REST
-                                APIs</span><span>MySQL</span></div>
-                        <button class="btn btn-primary btn-sm mt-3 case-study-trigger" data-open-case-study=""
-                            type="button"><i class="fa-solid fa-up-right-from-square"></i> View Case Study</button>
+                </div>
+                <div class="featured-project-body">
+                    <span class="featured-badge">Featured Case Study</span>
+                    <h3>Ask Lawyer</h3>
+                    <p class="featured-value">A backend platform that keeps legal consultation requests structured,
+                        secure, and operationally visible.</p>
+                    <p class="featured-role"><strong>Role:</strong> Laravel backend architecture, API contracts,
+                        permissions, and admin workflow orchestration.</p>
+                    <ul class="featured-highlights">
+                        <li>Request lifecycle engine with clear service states</li>
+                        <li>Role-based permissions for lawyers, clients, and admins</li>
+                        <li>Notification triggers and dashboard operations</li>
+                        <li>API contracts designed for mobile reliability</li>
+                    </ul>
+                    <div class="feature-stack"><span>Laravel</span><span>REST APIs</span><span>MySQL</span><span>Queue
+                            Jobs</span><span>Notifications</span></div>
+                    <div class="featured-actions">
+                        <button class="btn btn-primary case-study-trigger" data-open-case-study=""
+                            data-project-target="asklawyer" type="button"><i
+                                class="fa-solid fa-up-right-from-square"></i> View Case Study</button>
+                        <a class="btn btn-ghost" href="#project-asklawyer"><i class="fa-solid fa-circle-info"></i> View
+                            Details</a>
                     </div>
+                </div>
+            </article>
+            <div class="projects-groups reveal-up" id="projectsGrid">
+                <div class="projects-group">
+                    <h3 class="projects-group-title">Evyx Projects</h3>
+                    <div class="projects-grid">
+                <article class="project-card" data-project-id="asklawyer" data-filters="evyx"
+                    data-desc="Legal consultation platform backend with robust lifecycle and permission handling."
+                    data-features="Consultation requests|Role-based access|Admin workflow"
+                    data-github="" data-image="assets/images/projects/asklawyer.png"
+                    data-impact="Clear request tracking|Faster operations|Reliable service flow"
+                    data-problem="Multi-role legal workflows needed strict process control."
+                    data-role="Built Laravel backend APIs, request states, and dashboard operations."
+                    data-solution="Delivered structured request lifecycle and admin visibility."
+                    data-stack="Laravel|REST APIs|MySQL" data-title="Ask Lawyer" data-type="Evyx Product"
+                    id="project-asklawyer">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Ask Lawyer logo" src="assets/images/projects/asklawyer.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Ask Lawyer</h4>
+                    <p class="project-card-summary">Backend for legal service requests and admin moderation at
+                        operational scale.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: multi-step consultation operations</li>
+                        <li>Built: secure role-based request lifecycle</li>
+                        <li>Value: clearer tracking and faster handling</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>REST APIs</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="asklawyer"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
                 </article>
-                <div class="project-rail reveal-up">
-                    <article aria-label="Show Ask Lawyer project details" class="project-row active" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Legal consultation platform backend supporting client requests, lawyer/admin workflows, notifications, and structured service management."
-                        data-features="Consultation requests|Request lifecycle|Role-based access|Admin workflow|Notifications"
-                        data-image="assets/images/projects/asklawyer.png"
-                        data-impact="Clear request tracking|Operational visibility|Mobile-ready APIs" data-kind="evyx"
-                        data-problem="Legal service requests can become hard to track without clear roles, request states, and admin visibility."
-                        data-project-row=""
-                        data-role="Implemented Laravel backend flows, API contracts, request lifecycle logic, permissions, and dashboard operations."
-                        data-solution="A structured service-request backend with role-based access, notification triggers, and admin tools for managing consultations."
-                        data-stack="Laravel|REST APIs|MySQL" data-title="Ask Lawyer"><img alt="Ask Lawyer"
-                            decoding="async" height="500" loading="lazy" src="assets/images/projects/asklawyer.png"
-                            width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Ask Lawyer</h4>
-                            <p>Legal service backend with request tracking and admin operations.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Backoffice project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Internal operations platform for managing business data, users, records, reporting, and day-to-day product control through a centralized dashboard."
-                        data-features="Operations dashboard|User management|Reporting|Data control|Admin UX"
-                        data-image="assets/images/projects/backoffice.png"
-                        data-impact="Faster operations|Cleaner data management|Better admin visibility" data-kind="evyx"
-                        data-problem="Internal teams need one reliable place to manage records, users, reports, and operational data."
-                        data-project-row=""
-                        data-role="Built backend modules, dashboard workflows, data models, and management actions for internal users."
-                        data-solution="A centralized Laravel backoffice that organizes operational data and gives teams faster control over daily workflows."
-                        data-stack="Laravel|Admin Panel|MySQL" data-title="Backoffice"><img alt="Backoffice"
-                            decoding="async" height="500" loading="lazy" src="assets/images/projects/backoffice.png"
-                            width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Backoffice</h4>
-                            <p>Centralized dashboard for internal operations and reporting.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Ceaser project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Restaurant backend with branch-aware menus, QR journeys, location features, dashboard management, and scalable API structure."
-                        data-features="QR menus|Branch logic|Google Maps|Menu management|Dashboard control"
-                        data-image="assets/images/projects/ceaser.png"
-                        data-impact="Cleaner restaurant operations|Better customer access|Scalable branch structure"
-                        data-kind="evyx"
-                        data-problem="Restaurant operations need menus, branches, QR access, and location logic to work together without manual friction."
-                        data-project-row=""
-                        data-role="Implemented backend flows for menus, branches, QR behavior, location handling, and admin controls."
-                        data-solution="A Laravel restaurant backend that connects customer-facing flows with dashboard management for operations."
-                        data-stack="Laravel|Nova/Admin|Google Maps" data-title="Ceaser"><img alt="Ceaser"
-                            decoding="async" height="500" loading="lazy" src="assets/images/projects/ceaser.png"
-                            width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Ceaser</h4>
-                            <p>Restaurant platform backend with QR, branches, and dashboard control.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Egypin project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Digital product operations backend for order handling, user actions, secure validation, and dashboard-based product management."
-                        data-features="Order flow|Secure validation|User actions|Product operations|Dashboard management"
-                        data-image="assets/images/projects/egypin.png"
-                        data-impact="Traceable orders|Reduced manual handling|Better operations control"
-                        data-kind="evyx"
-                        data-problem="Digital product platforms need reliable order processing, validation, and admin visibility to avoid operational errors."
-                        data-project-row=""
-                        data-role="Worked on backend order flows, validation logic, user actions, and dashboard management structure."
-                        data-solution="A structured API and dashboard backend that keeps digital product operations traceable and easier to manage."
-                        data-stack="Laravel|APIs|MySQL" data-title="Egypin"><img alt="Egypin" decoding="async"
-                            height="500" loading="lazy" src="assets/images/projects/egypin.png" width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Egypin</h4>
-                            <p>Digital product backend with order flow and validation logic.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Empon project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Business application backend with modular APIs, authentication, admin actions, and clean endpoints for mobile and web clients."
-                        data-features="Modular backend|Authentication|REST endpoints|Admin actions|Mobile-ready APIs"
-                        data-image="assets/images/projects/empon.png"
-                        data-impact="Maintainable modules|Reusable API logic|Clear client contracts" data-kind="evyx"
-                        data-problem="Business apps need maintainable modules that support mobile clients and dashboards without duplicating logic."
-                        data-project-row=""
-                        data-role="Built modular backend endpoints, authentication flows, data structures, and admin actions."
-                        data-solution="A clean Laravel API layer designed around reusable modules and predictable client contracts."
-                        data-stack="Laravel|REST|MySQL" data-title="Empon"><img alt="Empon" decoding="async"
-                            height="500" loading="lazy" src="assets/images/projects/empon.png" width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Empon</h4>
-                            <p>Modular backend for app, dashboard, and business workflows.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Ezzelmnofy project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Content and service platform backend with categories, media handling, dashboard management, and structured user-facing data."
-                        data-features="Content management|Categories|Media handling|Admin dashboard|Structured data"
-                        data-image="assets/images/projects/ezzelmnofy.png"
-                        data-impact="Easier content updates|Cleaner dashboard control|Organized platform data"
-                        data-kind="evyx"
-                        data-problem="Content-heavy platforms need organized categories, media, and admin workflows to stay easy to update."
-                        data-project-row=""
-                        data-role="Implemented content structure, dashboard actions, category management, and media-related backend flows."
-                        data-solution="A Laravel content backend that gives non-technical users a cleaner way to manage platform content."
-                        data-stack="Laravel|CMS Logic|Database Design" data-title="Ezzelmnofy"><img alt="Ezzelmnofy"
-                            decoding="async" height="500" loading="lazy" src="assets/images/projects/ezzelmnofy.png"
-                            width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Ezzelmnofy</h4>
-                            <p>Content/service backend with dashboard-managed structure.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Fakka project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Transaction-focused backend with wallet-style logic, user actions, validation, audit records, and admin visibility."
-                        data-features="Transaction logic|Validation|Audit records|Admin visibility|User actions"
-                        data-image="assets/images/projects/fakka.png"
-                        data-impact="Traceable transactions|Better monitoring|Reduced operational ambiguity"
-                        data-kind="evyx"
-                        data-problem="Transaction-based products need validation, traceability, and clear records for every important user action."
-                        data-project-row=""
-                        data-role="Worked on transaction logic, record handling, backend validation, and dashboard visibility."
-                        data-solution="A transaction-aware backend that keeps actions traceable and easier to monitor from the admin side."
-                        data-stack="Laravel|Transactions|MySQL" data-title="Fakka"><img alt="Fakka" decoding="async"
-                            height="500" loading="lazy" src="assets/images/projects/fakka.png" width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Fakka</h4>
-                            <p>Transaction-driven backend with audit records and admin visibility.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Lamavie project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Beauty commerce backend with catalog management, order logic, admin content, and mobile-ready API flows."
-                        data-features="Catalog management|Orders|Mobile APIs|Admin content|E-commerce logic"
-                        data-image="assets/images/projects/lamavie.png"
-                        data-impact="Organized catalog|Cleaner orders|Mobile-ready commerce flow" data-kind="evyx"
-                        data-problem="Commerce platforms need catalog, ordering, and admin workflows that stay consistent across mobile and dashboard experiences."
-                        data-project-row=""
-                        data-role="Implemented backend modules for catalog data, order flows, API responses, and dashboard management."
-                        data-solution="A Laravel commerce backend that connects product discovery, ordering, and admin operations."
-                        data-stack="Laravel|E-commerce|REST" data-title="Lamavie">
-                        <img alt="Lamavie" decoding="async" height="500" loading="lazy"
-                            src="assets/images/projects/lamavie.png" width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Lamavie</h4>
-                            <p>Commerce backend for catalog, orders, and mobile APIs.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Maxliss project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Product showcase and operations backend with dashboard-controlled content sections and scalable data structure."
-                        data-features="Product showcase|CMS dashboard|Structured data|Admin control|Content sections"
-                        data-image="assets/images/projects/maxliss.png"
-                        data-impact="Professional product presentation|Easier updates|Cleaner data model"
-                        data-kind="evyx"
-                        data-problem="Product showcase platforms need clean content structure and simple dashboard updates without developer involvement."
-                        data-project-row=""
-                        data-role="Built backend structures for product data, content sections, dashboard management, and database organization."
-                        data-solution="A dashboard-managed backend that makes product content easier to update and present professionally."
-                        data-stack="Laravel|Admin|MySQL" data-title="Maxliss"><img alt="Maxliss" decoding="async"
-                            height="500" loading="lazy" src="assets/images/projects/maxliss.png" width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Maxliss</h4>
-                            <p>Product showcase backend with dashboard content control.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Peking project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Restaurant product backend for menu management, ordering structure, branch operations, and dashboard control."
-                        data-features="Menu system|Orders|Branch operations|Admin dashboard|API structure"
-                        data-image="assets/images/projects/peking.png"
-                        data-impact="Organized restaurant data|Clear order flow|Branch-ready operations"
-                        data-kind="evyx"
-                        data-problem="Food platforms need consistent menu, order, and branch logic across customer and admin experiences."
-                        data-project-row=""
-                        data-role="Implemented backend flows for menu data, ordering structure, branch handling, and dashboard operations."
-                        data-solution="A Laravel restaurant backend that keeps operations organized and ready for customer-facing apps."
-                        data-stack="Laravel|APIs|Admin Dashboard" data-title="Peking"><img alt="Peking" decoding="async"
-                            height="500" loading="lazy" src="assets/images/projects/peking.png" width="500" />
-                        <div><span class="project-company">EVYX PRODUCT</span>
-                            <h4>Peking</h4>
-                            <p>Restaurant backend for menus, orders, branches, and operations.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show FIFA World Cup project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Native PHP tournament platform for organizing teams, groups, fixtures/statistics screens, and World Cup-style data views."
-                        data-features="Teams|Groups|Statistics|Tournament screens|Native PHP"
-                        data-image="assets/images/fifaworldcup.png"
-                        data-impact="Clear data presentation|Practical PHP structure|Portfolio-ready demo"
-                        data-kind="freelance"
-                        data-problem="Tournament data needs a clean structure for teams, groups, matches, and statistics."
-                        data-project-row=""
-                        data-role="Built the PHP/MySQL structure, screens, and data presentation for tournament information."
-                        data-solution="A native PHP project that organizes tournament data into clear user-facing views."
-                        data-stack="PHP|MySQL|HTML/CSS" data-title="FIFA World Cup"><img alt="FIFA World Cup"
-                            decoding="async" height="188" loading="lazy" src="assets/images/fifaworldcup.png"
-                            width="268" />
-                        <div><span class="project-company">FREELANCE</span>
-                            <h4>FIFA World Cup</h4>
-                            <p>Native PHP tournament platform with teams, groups, and stats.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Yeesooh project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Laravel company website for an advertising business with service presentation, portfolio sections, and contact flow."
-                        data-features="Service pages|Portfolio sections|Contact flow|Company website|Laravel Blade"
-                        data-image="assets/images/yesooh.jpg"
-                        data-impact="Better brand presentation|Clear service discovery|Lead-friendly contact flow"
-                        data-kind="freelance"
-                        data-problem="A creative business needed a stronger digital presence to present services and previous work."
-                        data-project-row=""
-                        data-role="Built website structure, content sections, portfolio presentation, and contact journey."
-                        data-solution="A Laravel website designed to communicate services clearly and convert visitors into inquiries."
-                        data-stack="Laravel|Blade|MySQL" data-title="Yeesooh">
-                        <img alt="Yeesooh" decoding="async" height="200" loading="lazy" src="assets/images/yesooh.jpg"
-                            width="200" />
-                        <div><span class="project-company">FREELANCE</span>
-                            <h4>Yeesooh</h4>
-                            <p>Advertising company website with services and portfolio presentation.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Maktabty project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Library management platform for inventory, books, orders, users, and admin workflow using PHP and MySQL."
-                        data-features="Books inventory|Orders|User records|Admin dashboard|PHP/MySQL"
-                        data-image="assets/images/maktabty.png"
-                        data-impact="Organized library workflow|Cleaner inventory tracking|Admin-friendly operations"
-                        data-kind="freelance"
-                        data-problem="Library operations need a single place to track books, users, inventory, and orders."
-                        data-project-row=""
-                        data-role="Implemented PHP/MySQL modules for inventory, user records, orders, and admin management."
-                        data-solution="A practical library management system that organizes operational data and simplifies admin tasks."
-                        data-stack="PHP|MySQL|Bootstrap" data-title="Maktabty"><img alt="Maktabty" decoding="async"
-                            height="225" loading="lazy" src="assets/images/maktabty.png" width="225" />
-                        <div><span class="project-company">FREELANCE</span>
-                            <h4>Maktabty</h4>
-                            <p>Library platform for inventory, books, orders, and admin workflow.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show In Save project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Lost-item reporting concept for organizing item reports, location context, and follow-up workflows for support teams."
-                        data-features="Lost-item reports|Location context|Support workflow|API backend|Structured submissions"
-                        data-image="assets/images/insave.png"
-                        data-impact="More organized reporting|Faster follow-up|Clearer support workflow"
-                        data-kind="freelance"
-                        data-problem="Lost-item reports need structure, context, and follow-up steps to help support teams respond faster."
-                        data-project-row=""
-                        data-role="Designed backend reporting flow, data structure, and API-ready logic for lost-item submissions."
-                        data-solution="A Laravel reporting workflow that captures item details and keeps follow-up easier to manage."
-                        data-stack="Laravel|APIs|MySQL" data-title="In Save">
-                        <img alt="In Save" decoding="async" height="116" loading="lazy" src="assets/images/insave.png"
-                            width="377" />
-                        <div><span class="project-company">FREELANCE</span>
-                            <h4>In Save</h4>
-                            <p>Lost-item reporting backend concept with support workflow.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show Lumi Cashier project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="POS and sales-management system for products, invoices, daily operations, and reporting workflows."
-                        data-features="Cashier flow|Invoices|Product sales|Daily reports|POS logic"
-                        data-image="assets/images/lumi.png"
-                        data-impact="Faster sales flow|Cleaner invoices|Better daily reporting" data-kind="freelance"
-                        data-problem="Small sales operations need fast invoicing, product tracking, and daily reports without messy manual work."
-                        data-project-row=""
-                        data-role="Implemented product, invoice, sales, and reporting logic with a dashboard-oriented backend structure."
-                        data-solution="A Laravel POS-style system that supports cashier operations and daily business visibility."
-                        data-stack="Laravel|POS Logic|MySQL" data-title="Lumi Cashier"><img alt="Lumi Cashier"
-                            decoding="async" height="137" loading="lazy" src="assets/images/lumi.png" width="277" />
-                        <div><span class="project-company">FREELANCE</span>
-                            <h4>Lumi Cashier</h4>
-                            <p>POS backend for products, invoices, sales, and reports.</p>
-                        </div>
-                    </article>
-                    <article aria-label="Show SG Solar project details" class="project-row" data-aos="fade-up"
-                        data-aos-duration="650" data-aos-once="true"
-                        data-desc="Solar energy services website with service catalog, lead collection, company presentation, and conversion-focused contact flow."
-                        data-features="Service catalog|Lead collection|Company profile|Contact conversion|Laravel Blade"
-                        data-image="assets/images/sgsolar.png"
-                        data-impact="Clearer service presentation|Lead-friendly website|Professional business presence"
-                        data-kind="freelance"
-                        data-problem="A service business needed a credible website to explain offerings and convert visitor interest into inquiries."
-                        data-project-row=""
-                        data-role="Built Laravel website structure, service catalog, content sections, and contact conversion flow."
-                        data-solution="A professional service website that presents solar offerings clearly and supports lead collection."
-                        data-stack="Laravel|Blade|MySQL" data-title="SG Solar"><img alt="SG Solar" decoding="async"
-                            height="184" loading="lazy" src="assets/images/sgsolar.png" width="1000" />
-                        <div><span class="project-company">FREELANCE</span>
-                            <h4>SG Solar</h4>
-                            <p>Solar services website with catalog and lead collection flow.</p>
-                        </div>
-                    </article>
+                <article class="project-card" data-project-id="backoffice" data-filters="evyx"
+                    data-desc="Centralized operations backend for records, users, workflows, and reports."
+                    data-features="User management|Reporting|Admin operations" data-github=""
+                    data-image="assets/images/projects/backoffice.png"
+                    data-impact="Faster control|Cleaner operations|Higher visibility"
+                    data-problem="Internal teams needed one reliable operational dashboard."
+                    data-role="Implemented backend modules and dashboard business logic."
+                    data-solution="Unified backoffice backend with maintainable modules."
+                    data-stack="Laravel|Admin Panel|MySQL" data-title="Backoffice" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Backoffice logo" src="assets/images/projects/backoffice.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Backoffice</h4>
+                    <p class="project-card-summary">Internal operations dashboard backend for day-to-day business
+                        control.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: fragmented operations data</li>
+                        <li>Built: centralized admin workflows</li>
+                        <li>Value: better reporting and visibility</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>Admin Panel</span><span>MySQL</span>
+                    </div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="backoffice"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="ceaser" data-filters="evyx"
+                    data-desc="Restaurant backend covering QR menus, branch logic, and dashboard operations."
+                    data-features="QR menus|Branch logic|Dashboard control" data-github=""
+                    data-image="assets/images/projects/ceaser.png"
+                    data-impact="Smoother branch operations|Better customer access|Scalable menu flow"
+                    data-problem="Menu, branch, and QR journeys needed one coherent backend."
+                    data-role="Developed API logic for menus, branches, and admin controls."
+                    data-solution="Connected customer journey and operations via Laravel backend."
+                    data-stack="Laravel|Nova/Admin|Google Maps" data-title="Ceaser" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Ceaser logo" src="assets/images/projects/ceaser.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Ceaser</h4>
+                    <p class="project-card-summary">Restaurant backend linking QR experiences, branches, and admin
+                        workflows.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: disconnected branch operations</li>
+                        <li>Built: menu + branch + QR backend</li>
+                        <li>Value: reliable service experience</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>Google Maps</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="ceaser"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="egypin" data-filters="evyx"
+                    data-desc="Digital operations backend for order validation, user actions, and admin control."
+                    data-features="Order flow|Secure validation|Admin dashboard" data-github=""
+                    data-image="assets/images/projects/egypin.png"
+                    data-impact="Traceable order flow|Less manual overhead|Operational confidence"
+                    data-problem="Digital product orders needed strict validation and operational tracking."
+                    data-role="Worked on order APIs, validation rules, and dashboard logic."
+                    data-solution="Structured backend workflows for predictable order operations."
+                    data-stack="Laravel|APIs|MySQL" data-title="Egypin" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Egypin logo" src="assets/images/projects/egypin.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Egypin</h4>
+                    <p class="project-card-summary">Order and validation backend for digital product operations.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: fragile order handling</li>
+                        <li>Built: validation-first backend flow</li>
+                        <li>Value: better reliability and control</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="egypin"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="empon" data-filters="evyx"
+                    data-desc="Modular business backend with authentication, clean endpoints, and admin actions."
+                    data-features="Modular APIs|Authentication|Admin actions" data-github=""
+                    data-image="assets/images/projects/empon.png"
+                    data-impact="Maintainable modules|Reusable logic|Cleaner contracts"
+                    data-problem="The product needed a modular backend without duplicated logic."
+                    data-role="Implemented modular services, auth flows, and endpoint standards."
+                    data-solution="Reusable Laravel API modules for web and mobile clients."
+                    data-stack="Laravel|REST|MySQL" data-title="Empon" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Empon logo" src="assets/images/projects/empon.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Empon</h4>
+                    <p class="project-card-summary">Modular backend architecture for business operations and product
+                        clients.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: duplicated service logic</li>
+                        <li>Built: clean modular API structure</li>
+                        <li>Value: easier maintenance and scaling</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>REST</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="empon"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="lamavie" data-filters="evyx"
+                    data-desc="Commerce backend for catalog, order operations, and mobile-ready APIs."
+                    data-features="Catalog management|Order logic|Mobile APIs" data-github=""
+                    data-image="assets/images/projects/lamavie.png"
+                    data-impact="Cleaner catalog flow|Reliable checkout operations|Mobile-ready backend"
+                    data-problem="Commerce operations needed consistent product and order handling."
+                    data-role="Built backend modules for catalogs, ordering, and API responses."
+                    data-solution="Structured Laravel commerce backend with predictable flows."
+                    data-stack="Laravel|E-commerce|REST" data-title="Lamavie" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Lamavie logo" src="assets/images/projects/lamavie.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Lamavie</h4>
+                    <p class="project-card-summary">Product catalog and order backend designed for commerce
+                        reliability.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: inconsistent commerce flow</li>
+                        <li>Built: backend catalog + order engine</li>
+                        <li>Value: stable and reusable APIs</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>E-commerce</span><span>REST</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="lamavie"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="peking" data-filters="evyx"
+                    data-desc="Restaurant product backend for menus, orders, branch operations, and admin dashboards."
+                    data-features="Menu system|Order flow|Branch operations" data-github=""
+                    data-image="assets/images/projects/peking.png"
+                    data-impact="Organized data flows|Consistent operations|Branch-ready scaling"
+                    data-problem="Restaurant platform needed cohesive menu, order, and branch logic."
+                    data-role="Implemented API and dashboard backend modules for operations."
+                    data-solution="Unified Laravel backend across customer and admin journeys."
+                    data-stack="Laravel|APIs|Admin Dashboard" data-title="Peking" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Peking logo" src="assets/images/projects/peking.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Peking</h4>
+                    <p class="project-card-summary">Backend system for menus, orders, and branch-level operations.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: fragmented restaurant workflows</li>
+                        <li>Built: unified branch-aware backend</li>
+                        <li>Value: smoother operations at scale</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>Admin</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="peking"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="ezzelmnofy" data-filters="evyx"
+                    data-desc="Content and service platform backend with category, media, and dashboard workflows."
+                    data-features="Content management|Categories|Media handling" data-github=""
+                    data-image="assets/images/projects/ezzelmnofy.png"
+                    data-impact="Cleaner content operations|Easier updates|Better admin structure"
+                    data-problem="Content-heavy platforms needed a simpler and structured backend CMS flow."
+                    data-role="Implemented backend structure, category logic, and media-related admin operations."
+                    data-solution="Built a Laravel content backend optimized for maintainability and dashboard control."
+                    data-stack="Laravel|CMS Logic|Database Design" data-title="Ezzelmnofy" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Ezzelmnofy logo" src="assets/images/projects/ezzelmnofy.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Ezzelmnofy</h4>
+                    <p class="project-card-summary">Content/service backend with dashboard-managed structure and cleaner
+                        media workflows.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: hard-to-manage content operations</li>
+                        <li>Built: structured CMS-style backend modules</li>
+                        <li>Value: faster content updates and control</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>CMS Logic</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="ezzelmnofy"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="fakka" data-filters="evyx"
+                    data-desc="Transaction-focused backend with validation, audit records, and dashboard visibility."
+                    data-features="Transaction logic|Validation|Audit records" data-github=""
+                    data-image="assets/images/projects/fakka.png"
+                    data-impact="Traceable transactions|Safer operations|Clear admin monitoring"
+                    data-problem="Transaction products needed reliable record tracking and validation checks."
+                    data-role="Implemented transaction backend logic, validation rules, and admin visibility modules."
+                    data-solution="A Laravel backend that keeps sensitive actions auditable and operationally clear."
+                    data-stack="Laravel|Transactions|MySQL" data-title="Fakka" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Fakka logo"
+                                src="assets/images/projects/fakka.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo"
+                                src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Fakka</h4>
+                    <p class="project-card-summary">Transaction-driven backend with auditability and operations-focused
+                        monitoring.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: low transaction traceability</li>
+                        <li>Built: validation + audit workflow backend</li>
+                        <li>Value: safer, clearer transaction operations</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>Transactions</span><span>MySQL</span>
+                    </div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="fakka"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="maxliss" data-filters="evyx"
+                    data-desc="Product showcase backend with structured content control and admin management."
+                    data-features="Product showcase|CMS dashboard|Structured data" data-github=""
+                    data-image="assets/images/projects/maxliss.png"
+                    data-impact="Cleaner content updates|Professional product presentation|Scalable data model"
+                    data-problem="Showcase products needed organized data and easier content operations."
+                    data-role="Built backend structures for products, dashboard controls, and content organization."
+                    data-solution="A Laravel backend for structured product presentation and maintainable updates."
+                    data-stack="Laravel|Admin|MySQL" data-title="Maxliss" data-type="Evyx Product">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Maxliss logo"
+                                src="assets/images/projects/maxliss.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo"
+                                src="assets/images/evyx.png" /></span>
+                    </div>
+                    <h4>Maxliss</h4>
+                    <p class="project-card-summary">Showcase backend for products, sections, and dashboard-managed
+                        content.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: unstructured product content flow</li>
+                        <li>Built: manageable CMS-like backend modules</li>
+                        <li>Value: faster updates and cleaner data</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>Admin</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="maxliss"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                    </div>
+                </div>
+                <div class="projects-group">
+                    <h3 class="projects-group-title">Freelance Projects</h3>
+                    <div class="projects-grid">
+                <article class="project-card" data-project-id="yeesooh" data-filters="freelance"
+                    data-desc="Laravel website backend for service presentation, portfolio sections, and contact flow."
+                    data-features="Service pages|Portfolio sections|Contact flow"
+                    data-github="https://github.com/Youssefkhaled74/Laravel-YesOoh.git"
+                    data-image="assets/images/yesooh.jpg"
+                    data-impact="Stronger brand delivery|Better lead flow|Clear content management"
+                    data-problem="Business website needed professional structure and conversion-focused backend."
+                    data-role="Built Laravel pages, content handling, and inquiry flow."
+                    data-solution="Clean service website backend with manageable content sections."
+                    data-stack="Laravel|Blade|MySQL" data-title="Yeesooh" data-type="Freelance">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Yeesooh project logo" src="assets/images/yesooh.jpg" /></div>
+                        <span class="project-card-badge">Freelance</span>
+                    </div>
+                    <h4>Yeesooh</h4>
+                    <p class="project-card-summary">Service business backend for content pages and conversion-ready contact
+                        journey.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: weak digital conversion flow</li>
+                        <li>Built: structured Laravel business site</li>
+                        <li>Value: clearer services and lead intake</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>Blade</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="yeesooh"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="insave" data-filters="freelance"
+                    data-desc="Lost-item reporting backend with structured submissions and support workflow."
+                    data-features="Reporting flow|Location context|Support pipeline"
+                    data-github="https://github.com/Youssefkhaled74/Laravel-KsaProject.git"
+                    data-image="assets/images/insave.png"
+                    data-impact="Organized reporting|Faster follow-up|Cleaner support workflow"
+                    data-problem="Lost-item reporting needed a clean backend process for support teams."
+                    data-role="Designed reporting API logic and backend data structure."
+                    data-solution="Laravel workflow that captures context and improves follow-up."
+                    data-stack="Laravel|APIs|MySQL" data-title="In Save" data-type="Freelance">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="In Save project logo" src="assets/images/insave.png" /></div>
+                        <span class="project-card-badge">Freelance</span>
+                    </div>
+                    <h4>In Save</h4>
+                    <p class="project-card-summary">Backend concept for lost-item reporting and response operations.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: unclear reporting lifecycle</li>
+                        <li>Built: structured reporting backend</li>
+                        <li>Value: faster support actionability</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="insave"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="lumicashier" data-filters="freelance"
+                    data-desc="POS backend for invoices, products, and day-to-day sales operations."
+                    data-features="Cashier flow|Invoices|Daily reports"
+                    data-github="https://github.com/Youssefkhaled74/Lumi-Cashier.git"
+                    data-image="assets/images/lumi.png"
+                    data-impact="Faster sales ops|Cleaner invoices|Operational visibility"
+                    data-problem="Small business sales workflows needed better structure and speed."
+                    data-role="Implemented POS-style backend for products, invoices, and reports."
+                    data-solution="Laravel operational backend designed for cashier efficiency."
+                    data-stack="Laravel|POS Logic|MySQL" data-title="Lumi Cashier" data-type="Freelance">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Lumi Cashier project logo" src="assets/images/lumi.png" /></div>
+                        <span class="project-card-badge">Freelance</span>
+                    </div>
+                    <h4>Lumi Cashier</h4>
+                    <p class="project-card-summary">POS backend engine for sales operations and invoice reliability.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: slow cashier workflows</li>
+                        <li>Built: sales and invoice backend logic</li>
+                        <li>Value: better operational visibility</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>POS</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="lumicashier"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="sgsolar" data-filters="freelance"
+                    data-desc="Solar services website backend with catalog content, lead flow, and contact conversion."
+                    data-features="Service catalog|Lead collection|Contact conversion"
+                    data-github="https://github.com/Youssefkhaled74/SGsolar-laravel.git"
+                    data-image="assets/images/sgsolar.png"
+                    data-impact="Clearer service showcase|More qualified leads|Professional business presence"
+                    data-problem="Solar business website needed a conversion-focused backend flow and manageable content."
+                    data-role="Built Laravel content structure, service pages, and inquiry conversion workflow."
+                    data-solution="Delivered a clean Laravel business website backend optimized for leads."
+                    data-stack="Laravel|Blade|MySQL" data-title="SG Solar" data-type="Freelance">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="SG Solar project logo" src="assets/images/sgsolar.png" /></div>
+                        <span class="project-card-badge">Freelance</span>
+                    </div>
+                    <h4>SG Solar</h4>
+                    <p class="project-card-summary">Solar business backend with service catalog and lead conversion
+                        flow.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: low-conversion service presentation</li>
+                        <li>Built: structured Laravel service website backend</li>
+                        <li>Value: better inquiry and lead quality</li>
+                    </ul>
+                    <div class="project-card-stack"><span>Laravel</span><span>Blade</span><span>MySQL</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="sgsolar"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="fifaworldcup" data-filters="freelance"
+                    data-desc="Native PHP tournament platform for teams, groups, and match statistics."
+                    data-features="Teams|Groups|Statistics"
+                    data-github="https://github.com/Youssefkhaled74/Php-FifaWorldCup.git"
+                    data-image="assets/images/fifaworldcup.png"
+                    data-impact="Clear data presentation|Structured tournament views|Solid PHP practice"
+                    data-problem="Tournament data needed clean structure for teams, groups, and results."
+                    data-role="Built PHP/MySQL backend structures and data screens for tournament entities."
+                    data-solution="A practical tournament management backend with clear data hierarchy."
+                    data-stack="PHP|MySQL|HTML/CSS" data-title="FIFA World Cup" data-type="Freelance">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="FIFA World Cup project logo"
+                                src="assets/images/fifaworldcup.png" /></div>
+                        <span class="project-card-badge">Freelance</span>
+                    </div>
+                    <h4>FIFA World Cup</h4>
+                    <p class="project-card-summary">Tournament backend platform with structured teams, groups, and
+                        statistics data.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: scattered tournament data management</li>
+                        <li>Built: structured tournament backend entities</li>
+                        <li>Value: clearer tournament operations flow</li>
+                    </ul>
+                    <div class="project-card-stack"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="fifaworldcup"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                <article class="project-card" data-project-id="maktabty" data-filters="freelance"
+                    data-desc="Library management backend for books, inventory, orders, and user records."
+                    data-features="Inventory|Books|Orders"
+                    data-github="https://github.com/Youssefkhaled74/Maktabty.git"
+                    data-image="assets/images/maktabty.png"
+                    data-impact="Organized inventory|Cleaner order flow|Admin-friendly operations"
+                    data-problem="Library operations needed one reliable backend for catalog and order handling."
+                    data-role="Implemented PHP/MySQL modules for inventory, users, and order workflows."
+                    data-solution="A complete management backend for library operations and records."
+                    data-stack="PHP|MySQL|Bootstrap" data-title="Maktabty" data-type="Freelance">
+                    <div class="project-card-head">
+                        <div class="project-card-media"><img alt="Maktabty project logo"
+                                src="assets/images/maktabty.png" /></div>
+                        <span class="project-card-badge">Freelance</span>
+                    </div>
+                    <h4>Maktabty</h4>
+                    <p class="project-card-summary">Library operations backend for inventory, users, and order
+                        workflows.</p>
+                    <ul class="project-card-points">
+                        <li>Problem: fragmented library record handling</li>
+                        <li>Built: unified inventory and order backend</li>
+                        <li>Value: smoother day-to-day library operations</li>
+                    </ul>
+                    <div class="project-card-stack"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                    <button class="project-card-cta" data-open-case-study="" data-project-target="maktabty"
+                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                </article>
+                    </div>
                 </div>
             </div>
+            <p class="projects-empty-message" hidden>No projects found in this track yet. Add your TechPack projects to
+                show them here.</p>
         </div>
     </section>
     <section class="capabilities-section" id="capabilities">
@@ -494,6 +636,95 @@
                 <article class="capability-card reveal-up"><i class="fa-solid fa-bell"></i>
                     <h3>Notifications</h3>
                     <p>Build in-app and external notification flows that are triggered from real product events.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <div class="section-intro reveal-up">
+                <p class="eyebrow">Career Journey</p>
+                <h2>Professional Experience</h2>
+                <p>A focused timeline of backend leadership, Laravel product delivery, mentoring, and technical content
+                    creation.</p>
+            </div>
+            <div class="experience-grid">
+                <article class="experience-card reveal-up">
+                    <header>
+                        <h3>Remote Laravel Backend Developer</h3>
+                        <span class="experience-company">TechPack</span>
+                    </header>
+                    <p class="experience-meta">2026 • Riyadh, Saudi Arabia</p>
+                    <ul>
+                        <li>Developed authentication, database, workflow, and integration modules.</li>
+                        <li>Built and maintained Laravel APIs for web and mobile applications.</li>
+                    </ul>
+                </article>
+                <article class="experience-card reveal-up">
+                    <header>
+                        <h3>Team Leader Back-end Developer</h3>
+                        <span class="experience-company">Evyx Company</span>
+                    </header>
+                    <p class="experience-meta">Dec '24 — Present • Cairo, Egypt</p>
+                    <ul>
+                        <li>Designed scalable Laravel backends and RESTful APIs for product systems.</li>
+                        <li>Collaborated with product and mobile teams to deliver features end-to-end.</li>
+                    </ul>
+                </article>
+                <article class="experience-card reveal-up">
+                    <header>
+                        <h3>Full-Stack Developer</h3>
+                        <span class="experience-company">YesOoh Company</span>
+                    </header>
+                    <p class="experience-meta">Jan '23 • Cairo, Egypt</p>
+                    <ul>
+                        <li>Built a Laravel-based web app with user authentication and dynamic dashboards.</li>
+                        <li>Implemented REST APIs and backend workflows for core features.</li>
+                    </ul>
+                </article>
+                <article class="experience-card reveal-up">
+                    <header>
+                        <h3>Assistant Instructor</h3>
+                        <span class="experience-company">SSD Academy</span>
+                    </header>
+                    <p class="experience-meta">Jan '22 • Cairo, Egypt</p>
+                    <ul>
+                        <li>Delivered Laravel sessions and guided students through debugging tasks.</li>
+                        <li>Co-created backend learning content and practice exercises.</li>
+                    </ul>
+                </article>
+                <article class="experience-card reveal-up">
+                    <header>
+                        <h3>Freelance Developer</h3>
+                        <span class="experience-company">Independent</span>
+                    </header>
+                    <p class="experience-meta">Jan '21 — Present • Cairo, Egypt</p>
+                    <ul>
+                        <li>Completed multiple full-stack and backend projects for business workflows.</li>
+                        <li>Maintained production-ready codebases, with deliverables shared on GitHub.</li>
+                    </ul>
+                </article>
+                <article class="experience-card reveal-up">
+                    <header>
+                        <h3>Back-end Track Instructor</h3>
+                        <span class="experience-company">Telegram Channel</span>
+                    </header>
+                    <p class="experience-meta">Jan '22 — Present • Cairo, Egypt</p>
+                    <ul>
+                        <li>Taught PHP, Laravel, and MySQL fundamentals to junior developers.</li>
+                        <li>Structured practical backend tracks focused on real implementation.</li>
+                    </ul>
+                </article>
+                <article class="experience-card reveal-up">
+                    <header>
+                        <h3>Content Creator</h3>
+                        <span class="experience-company">YouTube Channel</span>
+                    </header>
+                    <p class="experience-meta">Jan '22 — Present • Cairo, Egypt</p>
+                    <ul>
+                        <li>Published tutorials explaining Laravel backend concepts and project workflows.</li>
+                        <li>Created practical videos to simplify backend development for learners.</li>
+                    </ul>
                 </article>
             </div>
         </div>
@@ -598,4 +829,6 @@
 </body>
 
 </html>
+
+
 
