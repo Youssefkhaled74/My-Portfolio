@@ -1,0 +1,100 @@
+{
+  "lessons": [
+    {
+      "id": "requirements",
+      "title": "Understand the problem before the solution",
+      "category": "Foundations",
+      "summary": "The first sentence in a brief rarely tells the whole story. Turn it into clear rules you can test.",
+      "explanation": "“Build a booking system” is not enough to start. Who can book? Can they cancel? When is a booking confirmed? What happens when two people claim the last seat? Before choosing tools, write down the business rules and the states the system must prevent. Define the first release's limits too: expected usage, operating budget, and acceptable latency. Agree on these assumptions and revisit them; do not invent numbers.",
+      "scenario": "Throughout this guide, we use a workshop with 20 seats. One invariant: confirmed bookings must never exceed capacity. One product decision: does a pending booking reserve a seat, and for how long? Those answers change both the data model and the behavior.",
+      "review": "If AI starts generating controllers and tables before addressing cancellation and confirmation, pause and write the scenarios. Well-organized code can implement the wrong rule very efficiently.",
+      "exercise": "Write three acceptance criteria for booking a seat, and two questions to ask the product owner before implementation.",
+      "answer": "Possible criteria: a signed-in user can book an available seat; they cannot confirm two bookings for the same workshop; confirmed bookings never exceed capacity. Ask when a booking becomes confirmed and how cancellations and pending-booking expiry work. The right answer depends on product rules, not the framework.",
+      "takeaway": "I can describe success and failure before reading the implementation."
+    },
+    {
+      "id": "http",
+      "title": "Follow the request all the way through",
+      "category": "Foundations",
+      "summary": "An endpoint is an agreement with its clients: inputs, outcomes, errors, and retry behavior.",
+      "explanation": "Understand the path from client to server, middleware, business logic, and storage. GET is for reading; a read link should not confirm a booking. POST can create a resource, but does not automatically prevent duplicates. Idempotency means repeating an operation does not add to its intended effect; it need not return an identical response. Agree on error formats, input limits, and pagination for lists.",
+      "scenario": "The server creates a booking, but the connection drops before the response arrives. The user tries again. You can design an idempotency key tied to the user and an input fingerprint, with atomic duplicate prevention. Repeating the same request returns the recorded outcome; reusing the key with different inputs is a conflict handled according to your API contract.",
+      "review": "Review the API as a client. Are validation errors clear? Is invalid input distinguished from a conflict with booking state? What is the documented retry contract?",
+      "exercise": "Two identical booking requests arrive simultaneously. Is checking for an existing booking before creating it enough?",
+      "answer": "No. Both requests can pass the check before either writes. You need a database constraint or another suitable atomic mechanism, plus a clear contract for duplicate requests. Retries are part of the design, not just a button in the interface.",
+      "takeaway": "I can explain API behavior for success, errors, and retries."
+    },
+    {
+      "id": "data",
+      "title": "Protect your rules in the database",
+      "category": "Data & security",
+      "summary": "Validation alone is not enough. Concurrent requests can break rules that passed a single-request test.",
+      "explanation": "Start with relationships and constraints: a user has bookings, and each booking belongs to a workshop. Use foreign keys and unique constraints that match product rules. A transaction groups related changes, but its presence alone does not prevent every concurrency issue. In Laravel, lockForUpdate inside a transaction can lock the record you coordinate on; locking and isolation details depend on your database.",
+      "scenario": "One seat remains and two people try to book it. An educational approach: lock the workshop row within a transaction, check availability, decrement it, and record the booking. Every capacity-changing path must follow the same coordination rule. Another option is an atomic conditional update that decrements only when capacity is positive, checking affected rows. Choose for your design and test using the production database engine.",
+      "review": "Review cancellation too: can it return the same seat twice? Avoid slow external calls inside a lock without a good reason; they make other requests wait longer.",
+      "exercise": "How would you test that the last seat cannot be sold to two people?",
+      "answer": "Send genuinely concurrent attempts using test data. Verify that only one succeeds and the final database state is consistent. Two sequential requests do not test a race condition. Also check repeated cancellation.",
+      "takeaway": "I can identify the invariant that must hold under concurrent requests."
+    },
+    {
+      "id": "security",
+      "title": "Signed in does not mean allowed",
+      "category": "Data & security",
+      "summary": "Authentication tells you who a user is. Authorization determines what they can do to a particular resource.",
+      "explanation": "A valid token is not permission to read any booking. Check access to the requested resource for every action: viewing, updating, cancelling, and exporting. Deny access unless explicitly allowed, and grant only the necessary permissions. Hiding a cancel button is not protection; the server must enforce the decision.",
+      "scenario": "A user owns booking 41. They change the URL to 42 and see someone else's booking. Authentication worked; resource ownership checks did not. Use a policy or another centralized authorization mechanism that accounts for ownership, role, and booking state.",
+      "review": "Do not treat a user_id supplied by the client as proof of identity. Test different users, membership states, and roles rather than only an admin account.",
+      "exercise": "Write two failure cases for an endpoint that displays a user's booking.",
+      "answer": "A signed-out visitor cannot see the booking, and a signed-in user cannot see someone else's booking. Define whether the second case returns 403 or 404 to conceal the resource's existence. Either way, its contents must not leak.",
+      "takeaway": "I can distinguish identity verification from resource authorization."
+    },
+    {
+      "id": "queues",
+      "title": "Design for failure and retries",
+      "category": "Quality & operations",
+      "summary": "Moving work to a queue changes when it runs. You still need to reason about duplication, ordering, and recovery.",
+      "explanation": "Emails and reports are examples of work that can run in the background. Set attempt limits, timeouts, retry delays, and a way to detect permanent failure. A job may run again, so make its effects safe to repeat where possible. In Laravel, dispatching after commit prevents workers from acting on data that has not yet been committed.",
+      "scenario": "The booking is confirmed but the confirmation email fails. A delayed email should not automatically cancel the booking. Treat the notification as a separate, reviewable operation. If you need stronger protection against losing the event between committing the booking and dispatching the job, study the transactional outbox pattern. afterCommit alone does not close that gap.",
+      "review": "If an external service performs an operation but its response is lost, blindly retrying can repeat the effect. Use provider-supported idempotency keys or reconcile the operation's state before retrying.",
+      "exercise": "A job writes a notification to your database. How do you stop it creating the same notification twice?",
+      "answer": "Give the event and recipient a stable identity, and protect that pair with an appropriate database constraint. Repeated execution should safely reuse the recorded result. Test running it twice. A temporary lock alone is not a permanent record of what happened.",
+      "takeaway": "I can explain what happens when a job fails or runs twice."
+    },
+    {
+      "id": "performance",
+      "title": "Measure before you scale",
+      "category": "Quality & operations",
+      "summary": "A bigger server is not the automatic answer to slowness. First find where the time goes.",
+      "explanation": "Loading the user with a separate query for every booking in a list makes query count grow with the list: a form of N+1. Eager loading can fetch required relationships together, but choose fields and page sizes carefully to avoid loading unnecessary data. Inspect query plans and measurements before adding indexes or caching.",
+      "scenario": "A workshop description can be cached, but confirming the last seat must use the source of truth and your concurrency mechanism. When is the cache invalidated? How stale may the information become? Does the cache key isolate users when the result is private?",
+      "review": "Ask AI for a performance hypothesis and a measurement method. Compare query count and response time for the same scenario before and after the change, rather than accepting “the code is faster.”",
+      "exercise": "Does caching the available-seat count for an hour solve overbooking?",
+      "answer": "No. The cache may show an old count and does not protect writes. You can use it for display with clear expectations, but the booking decision must atomically verify the authoritative data.",
+      "takeaway": "I can justify an optimization with measurements and explain the cost of stale data."
+    },
+    {
+      "id": "production",
+      "title": "Know when it works—and when it stops",
+      "category": "Quality & operations",
+      "summary": "A successful request on your machine is a start. Quality needs evidence before release and useful signals after it.",
+      "explanation": "Derive tests from product rules: successful booking, denied access, full capacity, and duplicate attempts. Test small logic with unit tests and request/database behavior with integration tests. In production, logs record events, metrics reveal numerical trends, and traces connect parts of a request's journey. Use a request ID for correlation without logging secrets or unnecessary personal data.",
+      "scenario": "Booking errors increase after a release. You need the application version, start time, and error type, and a way to connect a failed request to a slow query or dependency. Plan rollback before deployment and check database compatibility with the previous version. Rolling back code does not automatically restore data.",
+      "review": "If every test only checks a successful response, add assertions for database effects and failure cases. If AI proposes deleting a used column, review migration and compatibility plans before applying it.",
+      "exercise": "What evidence would you collect when a user says booking sometimes hangs?",
+      "answer": "The incident time and request ID if available; response time and error rate; related events; and database/external-service timings. Find a reproducible scenario. Averages can hide slow requests: inspect latency distribution, such as p95, alongside the sample size and time window.",
+      "takeaway": "I can verify behavior with tests and investigate a production failure."
+    },
+    {
+      "id": "ai-review",
+      "title": "Let AI assist; own the decision",
+      "category": "Working with AI",
+      "summary": "Even when a tool writes most of the implementation, you need to explain it, question its assumptions, and verify its behavior.",
+      "explanation": "Work in small cycles: clarify the task, request a plan and assumptions, review them, implement a limited change, then inspect the diff and run tests. Supply the framework version, relevant files, and project rules. The tool's explanation is not proof of correctness. Consult version-appropriate documentation and run the scenario yourself. This is a suggested workflow, not a promise about any particular tool.",
+      "scenario": "AI generates a booking transaction and a passing test. Is that test actually concurrent? Was access checked? What happens if cancellation runs twice? If you cannot answer, reduce the change and understand that part first. Use suitable synthetic examples rather than including project secrets or users' data in your prompt.",
+      "review": "Also inspect new dependencies, migrations, swallowed errors, and tests changed just to pass. Ask for the choices and alternatives, then make the final decision based on your requirements and evidence.",
+      "exercise": "Write an AI review request for the booking feature that is more specific than “review the code.”",
+      "answer": "Review creation and cancellation in the specified files. Rules: capacity cannot exceed 20, and each user has one active booking. Look for authorization, duplication, and concurrency failures. For each finding, identify its location, a reproduction scenario, and a test that exposes it. Separate confirmed issues from assumptions and ask for missing context before editing.",
+      "takeaway": "I can verify a tool's proposal independently and own the merge decision."
+    }
+  ]
+}
