@@ -10,120 +10,67 @@
         name="description" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Youssef Khaled | Laravel Backend Engineer Portfolio</title>
-    <link crossorigin="" href="https://unpkg.com" rel="preconnect" />
-    <link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect" />
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
         rel="stylesheet" />
-    <script crossorigin="anonymous" defer="" src="https://kit.fontawesome.com/4f50f622f4.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
-    <link href="css/layout.css" rel="stylesheet" />
-    <link href="css/components.css" rel="stylesheet" />
-    <link href="css/sections.css" rel="stylesheet" />
-    <link href="css/responsive.css" rel="stylesheet" />
-    <link href="css/immersive.css" rel="stylesheet" />
-    <link href="css/premium-showcase.css" rel="stylesheet" />
     <meta content="Youssef Khaled | Laravel Backend Engineer" property="og:title" />
     <meta
         content="Laravel backend portfolio featuring Evyx product systems, freelance builds, REST APIs, dashboards, and production-focused backend engineering."
         property="og:description" />
     <meta content="website" property="og:type" />
     <meta content="summary_large_image" name="twitter:card" />
+    <meta name="theme-color" content="#163c32" />
+    <link rel="stylesheet" href="css/portfolio.css" />
 </head>
 
 <body class="timeline-body">
-    <div class="preloader" id="preloader">
-        <div class="spinner"></div>
-    </div>
-    <span aria-hidden="true" class="site-mouse-glow"></span>
-    <nav class="navbar navbar-expand-lg timeline-nav">
-        <div class="container">
-            <a class="navbar-brand" href="#hero">Youssef Khaled</a>
-            <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-                class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button"><i
-                    class="fa-solid fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#projects">Selected Work</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#capabilities">Backend Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About + CV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-                <div class="d-flex align-items-center nav-actions"></div>
-            </div>
-        </div>
+
+    <a class="skip-link" href="#projects">Skip to content</a>
+    <nav class="portfolio-nav" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a class="brand" href="#hero" aria-label="Youssef Khaled home"><span class="brand-symbol">y<span>k.</span></span><span>Youssef Khaled<span class="brand-caption">BACKEND ENGINEER</span></span></a>
+        <button class="menu-toggle" aria-label="Open navigation" aria-controls="mainNav" aria-expanded="false">☰</button>
+        <div class="nav-links" id="mainNav"><a href="#projects">Work</a><a href="#capabilities">Expertise</a><a href="#experience">Experience</a><a href="#insights">Notes</a><a href="#about">About</a><a class="nav-contact" href="#contact">Let’s talk <span>↗</span></a></div>
+      </div>
     </nav>
+    <main>
     <header class="timeline-hero" id="hero">
-        <div class="container">
-            <div class="row align-items-center hero-grid">
-                <div class="col-lg-7" data-aos="fade-right">
-                    <span class="hero-kicker"><i class="fa-solid fa-bolt"></i> Professional Focus</span>
-                    <h1 class="hero-title">Backend Systems.<br /><span class="hero-accent">Data Insights.</span><br />Cloud
-                        Execution.</h1>
-                    <p class="hero-subtitle">I build reliable backend products powered by practical analytics and cloud-ready
-                        delivery.</p>
-                    <div class="hero-actions">
-                        <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-layer-group"></i> View Selected Work</a>
-                        <a class="btn btn-ghost" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
-                    </div>
-                    <div class="hero-metrics">
-                        <span class="metric">Mid Level Backend Developer</span>
-                        <span class="metric">Data Analyst</span>
-                        <span class="metric">Junior Cloud Engineer</span>
-                    </div>
-                </div>
-                <div class="col-lg-5" data-aos="fade-left">
-                    <div class="hero-visual">
-                        <div class="hero-profile-card">
-                            <div class="hero-profile-orb">
-                                <img alt="Youssef Khaled portrait" decoding="async" fetchpriority="high" height="358"
-                                    loading="eager" src="assets/images/youssef-khaled-logo.png" width="360" />
-                            </div>
-                            <div class="hero-social-links" aria-label="Social media links">
-                                <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i
-                                        class="fa-brands fa-instagram"></i></a>
-                                <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i
-                                        class="fa-brands fa-facebook-f"></i></a>
-                                <a href="#" target="_blank" rel="noopener" aria-label="Snapchat"><i
-                                        class="fa-brands fa-snapchat"></i></a>
-                                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i
-                                        class="fa-brands fa-linkedin-in"></i></a>
-                                <a href="#" target="_blank" rel="noopener" aria-label="X"><i
-                                        class="fa-brands fa-x-twitter"></i></a>
-                                <a href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><i
-                                        class="fa-brands fa-whatsapp"></i></a>
-                            </div>
-                            <div class="hero-role-stack">
-                                <span><i class="fa-solid fa-server"></i>Mid Level Backend Developer</span>
-                                <span><i class="fa-solid fa-chart-line"></i>Data Analyst</span>
-                                <span><i class="fa-solid fa-cloud"></i>Junior Cloud Engineer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker"><span class="status-dot"></span> BASED IN CAIRO · BUILDING BEYOND BORDERS</p>
+          <h1>The logic behind<br>your next <span class="hero-accent">big idea.</span></h1>
+          <p class="hero-subtitle">I’m Youssef, a Laravel backend engineer. I turn complex business needs into reliable APIs, thoughtful systems, and products that work.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore my work <span>↗</span></a><a class="btn btn-ghost" href="pdf/Youssef_Khaled_Backend_Developer.pdf" download>Download CV <span>↓</span></a></div>
+          <div class="hero-proof"><div class="mini-avatar"><img src="assets/images/youssef-khaled-logo.png" alt="" width="44" height="44"></div><p>Backend engineer. Problem solver.<br><strong>Always a student of the craft.</strong></p></div>
         </div>
+        <div class="system-visual" aria-label="Illustration of a Laravel backend connecting APIs, data, and background jobs">
+          <div class="system-top"><span><span class="status-dot"></span> THE BACKEND, CONNECTED</span><span>01 / SYSTEM VIEW</span></div>
+          <div class="system-map"><div class="system-node node-client"><span class="node-icon">⌘</span><span>Web & mobile<small>THE EXPERIENCE</small></span></div><span class="connector connector-one"></span><span class="request-label">HTTPS / JSON</span><div class="system-node node-core"><span class="core-mark">{ }</span><span>Laravel<small>THE ENGINE</small></span><span class="node-spark">✳</span></div><span class="connector connector-two"></span><div class="system-bottom"><div class="system-node"><span class="node-icon">▤</span><span>MySQL<small>STRUCTURED DATA</small></span></div><div class="system-node"><span class="node-icon">↻</span><span>Queue jobs<small>BACKGROUND WORK</small></span></div></div></div>
+          <div class="system-code"><div><span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span><span class="code-file">a little of what I do.php</span></div><code><span class="syntax">Route</span>::get('/great-ideas', function () {<br>&nbsp;&nbsp;return <span class="syntax">Product</span>::build([<br>&nbsp;&nbsp;&nbsp;&nbsp;'foundation' =&gt; <span class="string">'built to last'</span>,<br>&nbsp;&nbsp;]);<br>});</code></div>
+          <div class="system-caption"><span>Clean architecture. Real-world thinking.</span><span>↗</span></div>
+        </div>
+      </div>
+      <div class="container hero-bottom"><span>GOOD PRODUCTS START WITH STRONG FOUNDATIONS</span><a href="#projects">SCROLL TO EXPLORE ↓</a></div>
     </header>
+    <div class="stack-strip"><div class="container"><span class="stack-label">MY EVERYDAY TOOLKIT</span><span>Laravel</span><span>PHP</span><span>MySQL</span><span>REST APIs</span><span>Queues & Jobs</span><span>Git</span></div></div>
     <section class="projects-section" id="projects">
         <div class="container">
             <div class="section-intro reveal-up">
-                <p class="eyebrow">Case Studies</p>
-                <h2>Selected Backend Work</h2>
+                <p class="eyebrow">01 / SELECTED WORK</p>
+                <h2>Real problems.<br><span class="serif-accent">Thoughtful solutions.</span></h2>
                 <p>A collection of Laravel backend systems, dashboards, APIs, and cloud-ready products built for real
                     business operations.</p>
             </div>
+            <div class="project-toolbar"><p class="project-count" aria-live="polite">16 projects · built with purpose</p></div>
             <div aria-label="Project filters" class="showcase-tabs reveal-up">
                 <button aria-pressed="true" class="showcase-tab active" data-filter="all" type="button">All
                     Projects</button>
                 <button aria-pressed="false" class="showcase-tab" data-filter="evyx" type="button">Evyx
                     Products</button>
-                <button aria-pressed="false" class="showcase-tab" data-filter="techpack"
-                    type="button">TechPack</button>
+
                 <button aria-pressed="false" class="showcase-tab" data-filter="freelance"
                     type="button">Freelance</button>
             </div>
@@ -159,10 +106,8 @@
                             Jobs</span><span>Notifications</span></div>
                     <div class="featured-actions">
                         <button class="btn btn-primary case-study-trigger" data-open-case-study=""
-                            data-project-target="asklawyer" type="button"><i
-                                class="fa-solid fa-up-right-from-square"></i> View Case Study</button>
-                        <a class="btn btn-ghost" href="#project-asklawyer"><i class="fa-solid fa-circle-info"></i> View
-                            Details</a>
+                            data-project-target="asklawyer" type="button"><span class="ui-arrow" aria-hidden="true">↗</span> View Case Study</button>
+
                     </div>
                 </div>
             </article>
@@ -181,8 +126,8 @@
                     data-stack="Laravel|REST APIs|MySQL" data-title="Ask Lawyer" data-type="Evyx Product"
                     id="project-asklawyer">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Ask Lawyer logo" src="assets/images/projects/asklawyer.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Ask Lawyer logo" src="assets/images/projects/asklawyer.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Ask Lawyer</h4>
                     <p class="project-card-summary">Backend for legal service requests and admin moderation at
@@ -194,7 +139,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>REST APIs</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="asklawyer"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="backoffice" data-filters="evyx"
                     data-desc="Centralized operations backend for records, users, workflows, and reports."
@@ -206,8 +151,8 @@
                     data-solution="Unified backoffice backend with maintainable modules."
                     data-stack="Laravel|Admin Panel|MySQL" data-title="Backoffice" data-type="Evyx Product">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Backoffice logo" src="assets/images/projects/backoffice.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Backoffice logo" src="assets/images/projects/backoffice.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Backoffice</h4>
                     <p class="project-card-summary">Internal operations dashboard backend for day-to-day business
@@ -220,7 +165,7 @@
                     <div class="project-card-stack"><span>Laravel</span><span>Admin Panel</span><span>MySQL</span>
                     </div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="backoffice"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="ceaser" data-filters="evyx"
                     data-desc="Restaurant backend covering QR menus, branch logic, and dashboard operations."
@@ -232,8 +177,8 @@
                     data-solution="Connected customer journey and operations via Laravel backend."
                     data-stack="Laravel|Nova/Admin|Google Maps" data-title="Ceaser" data-type="Evyx Product">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Ceaser logo" src="assets/images/projects/ceaser.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Ceaser logo" src="assets/images/projects/ceaser.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Ceaser</h4>
                     <p class="project-card-summary">Restaurant backend linking QR experiences, branches, and admin
@@ -245,7 +190,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>Google Maps</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="ceaser"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="egypin" data-filters="evyx"
                     data-desc="Digital operations backend for order validation, user actions, and admin control."
@@ -257,8 +202,8 @@
                     data-solution="Structured backend workflows for predictable order operations."
                     data-stack="Laravel|APIs|MySQL" data-title="Egypin" data-type="Evyx Product">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Egypin logo" src="assets/images/projects/egypin.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Egypin logo" src="assets/images/projects/egypin.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Egypin</h4>
                     <p class="project-card-summary">Order and validation backend for digital product operations.</p>
@@ -269,7 +214,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="egypin"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="empon" data-filters="evyx"
                     data-desc="Modular business backend with authentication, clean endpoints, and admin actions."
@@ -281,8 +226,8 @@
                     data-solution="Reusable Laravel API modules for web and mobile clients."
                     data-stack="Laravel|REST|MySQL" data-title="Empon" data-type="Evyx Product">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Empon logo" src="assets/images/projects/empon.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Empon logo" src="assets/images/projects/empon.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Empon</h4>
                     <p class="project-card-summary">Modular backend architecture for business operations and product
@@ -294,7 +239,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>REST</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="empon"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="lamavie" data-filters="evyx"
                     data-desc="Commerce backend for catalog, order operations, and mobile-ready APIs."
@@ -306,8 +251,8 @@
                     data-solution="Structured Laravel commerce backend with predictable flows."
                     data-stack="Laravel|E-commerce|REST" data-title="Lamavie" data-type="Evyx Product">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Lamavie logo" src="assets/images/projects/lamavie.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Lamavie logo" src="assets/images/projects/lamavie.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Lamavie</h4>
                     <p class="project-card-summary">Product catalog and order backend designed for commerce
@@ -319,7 +264,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>E-commerce</span><span>REST</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="lamavie"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="peking" data-filters="evyx"
                     data-desc="Restaurant product backend for menus, orders, branch operations, and admin dashboards."
@@ -331,8 +276,8 @@
                     data-solution="Unified Laravel backend across customer and admin journeys."
                     data-stack="Laravel|APIs|Admin Dashboard" data-title="Peking" data-type="Evyx Product">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Peking logo" src="assets/images/projects/peking.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Peking logo" src="assets/images/projects/peking.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Peking</h4>
                     <p class="project-card-summary">Backend system for menus, orders, and branch-level operations.</p>
@@ -343,7 +288,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>Admin</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="peking"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="ezzelmnofy" data-filters="evyx"
                     data-desc="Content and service platform backend with category, media, and dashboard workflows."
@@ -355,8 +300,8 @@
                     data-solution="Built a Laravel content backend optimized for maintainability and dashboard control."
                     data-stack="Laravel|CMS Logic|Database Design" data-title="Ezzelmnofy" data-type="Evyx Product">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Ezzelmnofy logo" src="assets/images/projects/ezzelmnofy.png" /></div>
-                        <span class="project-card-badge project-card-badge--logo"><img alt="Evyx logo" src="assets/images/evyx.png" /></span>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Ezzelmnofy logo" src="assets/images/projects/ezzelmnofy.png" /></div>
+                        <span class="project-card-badge project-card-badge--logo"><img loading="lazy" decoding="async" alt="Evyx logo" src="assets/images/evyx.png" /></span>
                     </div>
                     <h4>Ezzelmnofy</h4>
                     <p class="project-card-summary">Content/service backend with dashboard-managed structure and cleaner
@@ -368,7 +313,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>CMS Logic</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="ezzelmnofy"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="fakka" data-filters="evyx"
                     data-desc="Transaction-focused backend with validation, audit records, and dashboard visibility."
@@ -396,7 +341,7 @@
                     <div class="project-card-stack"><span>Laravel</span><span>Transactions</span><span>MySQL</span>
                     </div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="fakka"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="maxliss" data-filters="evyx"
                     data-desc="Product showcase backend with structured content control and admin management."
@@ -423,7 +368,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>Admin</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="maxliss"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                     </div>
                 </div>
@@ -441,7 +386,7 @@
                     data-solution="Clean service website backend with manageable content sections."
                     data-stack="Laravel|Blade|MySQL" data-title="Yeesooh" data-type="Freelance">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Yeesooh project logo" src="assets/images/yesooh.jpg" /></div>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Yeesooh project logo" src="assets/images/yesooh.jpg" /></div>
                         <span class="project-card-badge">Freelance</span>
                     </div>
                     <h4>Yeesooh</h4>
@@ -454,7 +399,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>Blade</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="yeesooh"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="insave" data-filters="freelance"
                     data-desc="Lost-item reporting backend with structured submissions and support workflow."
@@ -467,7 +412,7 @@
                     data-solution="Laravel workflow that captures context and improves follow-up."
                     data-stack="Laravel|APIs|MySQL" data-title="In Save" data-type="Freelance">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="In Save project logo" src="assets/images/insave.png" /></div>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="In Save project logo" src="assets/images/insave.png" /></div>
                         <span class="project-card-badge">Freelance</span>
                     </div>
                     <h4>In Save</h4>
@@ -479,7 +424,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>APIs</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="insave"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="lumicashier" data-filters="freelance"
                     data-desc="POS backend for invoices, products, and day-to-day sales operations."
@@ -492,7 +437,7 @@
                     data-solution="Laravel operational backend designed for cashier efficiency."
                     data-stack="Laravel|POS Logic|MySQL" data-title="Lumi Cashier" data-type="Freelance">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="Lumi Cashier project logo" src="assets/images/lumi.png" /></div>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="Lumi Cashier project logo" src="assets/images/lumi.png" /></div>
                         <span class="project-card-badge">Freelance</span>
                     </div>
                     <h4>Lumi Cashier</h4>
@@ -504,7 +449,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>POS</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="lumicashier"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="sgsolar" data-filters="freelance"
                     data-desc="Solar services website backend with catalog content, lead flow, and contact conversion."
@@ -517,7 +462,7 @@
                     data-solution="Delivered a clean Laravel business website backend optimized for leads."
                     data-stack="Laravel|Blade|MySQL" data-title="SG Solar" data-type="Freelance">
                     <div class="project-card-head">
-                        <div class="project-card-media"><img alt="SG Solar project logo" src="assets/images/sgsolar.png" /></div>
+                        <div class="project-card-media"><img loading="lazy" decoding="async" alt="SG Solar project logo" src="assets/images/sgsolar.png" /></div>
                         <span class="project-card-badge">Freelance</span>
                     </div>
                     <h4>SG Solar</h4>
@@ -530,7 +475,7 @@
                     </ul>
                     <div class="project-card-stack"><span>Laravel</span><span>Blade</span><span>MySQL</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="sgsolar"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="fifaworldcup" data-filters="freelance"
                     data-desc="Native PHP tournament platform for teams, groups, and match statistics."
@@ -557,7 +502,7 @@
                     </ul>
                     <div class="project-card-stack"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="fifaworldcup"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                 <article class="project-card" data-project-id="maktabty" data-filters="freelance"
                     data-desc="Library management backend for books, inventory, orders, and user records."
@@ -584,56 +529,55 @@
                     </ul>
                     <div class="project-card-stack"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
                     <button class="project-card-cta" data-open-case-study="" data-project-target="maktabty"
-                        type="button">View Details <i class="fa-solid fa-arrow-right"></i></button>
+                        type="button">View Details <span class="ui-arrow" aria-hidden="true">↗</span></button>
                 </article>
                     </div>
                 </div>
             </div>
-            <p class="projects-empty-message" hidden>No projects found in this track yet. Add your TechPack projects to
-                show them here.</p>
+            <p class="projects-empty-message" hidden>No projects in this category.</p><button class="btn btn-ghost more-projects" id="moreProjects" type="button" hidden aria-controls="projectsGrid">Explore all 16 projects <span>↓</span></button>
         </div>
     </section>
     <section class="capabilities-section" id="capabilities">
         <div class="container">
             <div class="section-intro reveal-up">
-                <p class="eyebrow">Backend Capabilities</p>
-                <h2>What I can contribute to a backend team from day one.</h2>
+                <p class="eyebrow">02 / WHAT I BRING</p>
+                <h2>Built for the whole backend.</h2>
             </div>
             <div class="capabilities-grid">
-                <article class="capability-card reveal-up"><i class="fa-solid fa-plug-circle-bolt"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>REST APIs</h3>
                     <p>Build predictable endpoints with validation, resources, authentication, and clean client
                         contracts.</p>
                 </article>
-                <article class="capability-card reveal-up"><i class="fa-solid fa-table-columns"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>Admin Dashboards</h3>
                     <p>Create operational panels that help teams manage records, workflows, reports, and product data.
                     </p>
                 </article>
-                <article class="capability-card reveal-up"><i class="fa-solid fa-user-shield"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>Authentication &amp; Roles</h3>
                     <p>Implement secure access flows, permissions, policies, and role-based user experiences.</p>
                 </article>
-                <article class="capability-card reveal-up"><i class="fa-solid fa-credit-card"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>Payment Flows</h3>
                     <p>Design transaction-aware logic with webhook handling, status tracking, and failure-safe
                         workflows.</p>
                 </article>
-                <article class="capability-card reveal-up"><i class="fa-solid fa-clock-rotate-left"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>Queues &amp; Jobs</h3>
                     <p>Move heavy or delayed work into reliable background jobs for reports, notifications, and
                         processing.</p>
                 </article>
-                <article class="capability-card reveal-up"><i class="fa-solid fa-chart-line"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>Reports &amp; Analytics</h3>
                     <p>Structure backend data for useful KPIs, operational dashboards, and query-friendly reporting.</p>
                 </article>
-                <article class="capability-card reveal-up"><i class="fa-solid fa-database"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>Database Design</h3>
                     <p>Design maintainable schemas, relationships, constraints, indexing, and performance-aware queries.
                     </p>
                 </article>
-                <article class="capability-card reveal-up"><i class="fa-solid fa-bell"></i>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>Notifications</h3>
                     <p>Build in-app and external notification flows that are triggered from real product events.</p>
                 </article>
@@ -643,8 +587,8 @@
     <section class="experience-section" id="experience">
         <div class="container">
             <div class="section-intro reveal-up">
-                <p class="eyebrow">Career Journey</p>
-                <h2>Professional Experience</h2>
+                <p class="eyebrow">03 / THE JOURNEY</p>
+                <h2>Experience that adds up.</h2>
                 <p>A focused timeline of backend leadership, Laravel product delivery, mentoring, and technical content
                     creation.</p>
             </div>
@@ -737,7 +681,7 @@
                         <header>
                             <h3>Back-end Track Instructor</h3>
                             <span class="experience-company">
-                                <i class="fa-brands fa-telegram"></i>
+                                <span class="ui-arrow" aria-hidden="true">↗</span>
                                 Telegram Channel
                             </span>
                         </header>
@@ -755,7 +699,7 @@
                         <header>
                             <h3>Content Creator</h3>
                             <span class="experience-company">
-                                <i class="fa-brands fa-youtube"></i>
+                                <span class="ui-arrow" aria-hidden="true">↗</span>
                                 YouTube Channel
                             </span>
                         </header>
@@ -769,16 +713,17 @@
             </div>
         </div>
     </section>
+<section class="notes-section" id="insights"><div class="container"><div class="section-intro"><p class="eyebrow">04 / NOTES FROM THE WORKBENCH</p><h2>Build. Learn. Pass it on.</h2><p>Practical backend knowledge, shared in English and Arabic.</p></div><div class="notes-grid"><a class="note-card" href="insights/system-design-backend-foundations.html"><span class="note-category">SYSTEM DESIGN <span>01 ↗</span></span><h3>Think beyond<br> the endpoint.</h3><p>System design foundations, caching patterns, and the decisions behind reliable backends.</p><span class="note-link">Read the Arabic guide ↗</span></a><a class="note-card" href="content/en/concurrency-locking-laravel.pdf"><span class="note-category">DATABASES <span>02 ↗</span></span><h3>When requests<br> collide.</h3><p>Transactions, concurrency, and locking in Laravel. Keep your data consistent under pressure.</p><span class="note-link">Read the English PDF ↗</span></a><a class="note-card" href="content/en/scaling-laravel-1k-5m.pdf"><span class="note-category">PERFORMANCE <span>03 ↗</span></span><h3>Ready for<br> what’s next.</h3><p>Exploring how Laravel applications scale from a thousand users to millions.</p><span class="note-link">Read the English PDF ↗</span></a></div><div class="notes-footer"><a href="insights/index.html">Explore the writing archive ↗</a><a href="lectures.html">English & Arabic learning resources ↗</a></div></div></section>
     <section class="about-section" id="about">
         <div class="container">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6 reveal-up">
-                    <h2>About me</h2>
+                    <p class="eyebrow">05 / THE PERSON BEHIND THE CODE</p><div class="about-profile"><img src="assets/images/youssef-khaled-logo.png" alt="Youssef Khaled" width="88" height="88" loading="lazy"><h2>Engineer by trade.<br>Curious by nature.</h2></div>
                     <p>I am Youssef Khaled Anwar, a Laravel Backend Developer with hands-on experience building product
                         backends at Evyx and delivering freelance client systems. I focus on REST APIs, database design,
                         admin dashboards, authentication, permissions, reports, transactions, and maintainable business
                         logic. My goal is to write backend code that is clear for developers, useful for operations, and
-                        reliable for real users.</p>
+                        reliable for real users.</p><p class="about-secondary">Beyond backend development, I also work with data analysis and continue developing my skills as a junior cloud engineer.</p>
                     <div class="about-tags">
                         <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Queues</span><span>APIs</span><span>Dashboards</span>
                     </div>
@@ -802,26 +747,24 @@
     </section>
     <section class="contact-section" id="contact">
         <div class="container">
-            <div class="contact-card reveal-up">
+            <div class="contact-card reveal-up"><p class="eyebrow">06 / LET’S CONNECT</p>
                 <div>
-                    <h2>Looking for a Laravel backend developer who can ship real product features?</h2>
+                    <h2>Have something in mind?<br>Let’s build it right.</h2>
                     <p>Send me the role, product idea, or technical scope, and I will respond with how I can help build
                         the backend foundation.</p>
                 </div>
-                <div class="contact-actions"><a class="btn btn-primary" href="mailto:youssefblackenddev@gmail.com"
+                <div class="contact-actions"><a class="contact-address" href="mailto:youssefblackenddev@gmail.com">youssefblackenddev@gmail.com ↗</a><a class="btn btn-primary" href="mailto:youssefblackenddev@gmail.com"
                         id="contactEmailBtn">Email me</a><a class="btn btn-ghost"
                         href="https://wa.me/201064338132">WhatsApp</a></div>
             </div>
         </div>
     </section>
-    <button class="scroll-top" id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
-    <button aria-label="Toggle theme" class="theme-fab" id="themeToggle" title="Toggle Theme"><i
-            class="fas fa-moon"></i></button>
+</main><footer class="container site-footer"><a class="brand" href="#hero"><span class="brand-symbol">yk.</span><span>Youssef Khaled</span></a><span>Thoughtfully built. From Cairo, Egypt.</span><a href="https://github.com/Youssefkhaled74" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="#hero">Back to top ↑</a></footer><button class="scroll-top" id="scrollTop" aria-label="Back to top" hidden>↑</button>
+
     <div aria-hidden="true" class="case-modal" id="caseStudyModal">
         <div class="case-modal-backdrop" data-close-case-study=""></div>
         <article aria-labelledby="caseModalTitle" aria-modal="true" class="case-modal-card" role="dialog">
-            <button aria-label="Close case study" class="case-close" data-close-case-study="" type="button"><i
-                    class="fa-solid fa-xmark"></i></button>
+            <button aria-label="Close case study" class="case-close" data-close-case-study="" type="button"><span aria-hidden="true">×</span></button>
             <div class="project-image-box modal-image-box"><img alt="Case study preview" data-modal-image=""
                     decoding="async" height="500" loading="lazy" src="assets/images/projects/asklawyer.png"
                     width="500" /></div>
@@ -856,16 +799,11 @@
                     <div class="impact-list" data-modal-impact=""></div>
                 </div>
                 <div class="feature-stack mt-3" data-modal-stack=""></div>
-                <a class="btn btn-ghost btn-sm mt-3" data-modal-github="" href="#" rel="noopener" target="_blank"><i
-                        class="fa-brands fa-github"></i> View GitHub</a>
+                <a class="btn btn-ghost btn-sm mt-3" data-modal-github="" href="#" rel="noopener" target="_blank"><span class="ui-arrow" aria-hidden="true">↗</span> View GitHub</a>
             </div>
         </article>
     </div>
-    <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/premium-showcase.js"></script>
+    <script src="js/portfolio.js" defer></script>
 </body>
 
 </html>

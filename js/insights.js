@@ -35,8 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             filters.forEach(function (btn) {
                 btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
             });
             button.classList.add('active');
+            button.setAttribute('aria-pressed', 'true');
             applyFilters();
         });
     });
