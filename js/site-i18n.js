@@ -35,7 +35,8 @@
       attributes.forEach(attribute => {
         if (!element.hasAttribute(attribute)) return;
         if (!(attribute in originals)) originals[attribute] = element.getAttribute(attribute);
-        element.setAttribute(attribute, originals[attribute].split('|').map(t).join('|'));
+        const next = originals[attribute].split('|').map(t).join('|');
+        if (element.getAttribute(attribute) !== next) element.setAttribute(attribute, next);
       });
     });
   }
@@ -77,4 +78,10 @@
     if (anchor) window.scrollBy({ top: anchor.getBoundingClientRect().top - offset, behavior: 'instant' });
   }));
   setLanguage(language, false);
+  let queued = false;
+  new MutationObserver(() => {
+    if (queued) return;
+    queued = true;
+    queueMicrotask(() => { queued = false; localize(); });
+  }).observe(document.body, { childList: true, subtree: true, characterData: true });
 })();

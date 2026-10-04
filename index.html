@@ -6,32 +6,37 @@
     <meta charset="utf-8" />
     <meta content="IE=edge" http-equiv="X-UA-Compatible" />
     <meta
-        content="Portfolio of Youssef Khaled, a Laravel Backend Engineer focused on REST APIs, admin dashboards, database design, business logic, queues, reports, and production-ready backend systems."
+        content="Portfolio of Youssef Khaled, a Software Engineer working with React, .NET, C#, Laravel, PHP, REST APIs, databases, and reliable web applications."
         name="description" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Youssef Khaled | Laravel Backend Engineer Portfolio</title>
+    <title>Youssef Khaled | Software Engineer Portfolio</title>
 <link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500;600;700;800;900&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
         rel="stylesheet" />
-    <meta content="Youssef Khaled | Laravel Backend Engineer" property="og:title" />
+    <meta content="Youssef Khaled | Software Engineer" property="og:title" />
     <meta
-        content="Laravel backend portfolio featuring Evyx product systems, freelance builds, REST APIs, dashboards, and production-focused backend engineering."
+        content="Software engineering portfolio featuring product systems, freelance builds, React, .NET, Laravel, APIs, and thoughtful web experiences."
         property="og:description" />
     <meta content="website" property="og:type" />
     <meta content="summary_large_image" name="twitter:card" />
-    <meta name="theme-color" content="#163c32" />
+    <meta name="theme-color" content="#101311" />
     <link rel="stylesheet" href="css/portfolio.css" />
+    <link rel="stylesheet" href="css/portfolio-polish.css" />
+    <link rel="stylesheet" href="css/engineering-studio.css" />
+    <link rel="stylesheet" href="css/portfolio-arabic.css" />
 </head>
 
 <body class="timeline-body">
+    <div class="reading-progress" aria-hidden="true"></div>
 
     <a class="skip-link" href="#projects">Skip to content</a>
     <nav class="portfolio-nav" aria-label="Main navigation">
       <div class="container nav-inner">
-        <a class="brand" href="#hero" aria-label="Youssef Khaled home"><span class="brand-symbol">y<span>k.</span></span><span>Youssef Khaled<span class="brand-caption">BACKEND ENGINEER</span></span></a>
+        <a class="brand" href="#hero" aria-label="Youssef Khaled home"><span class="brand-symbol">y<span>k.</span></span><span>Youssef Khaled<span class="brand-caption">SOFTWARE ENGINEER</span></span></a>
+        <div class="language-switch" aria-label="Language / اللغة"><button type="button" data-set-language="en" lang="en" aria-pressed="true">EN</button><button type="button" data-set-language="ar" lang="ar" aria-pressed="false">عربي</button></div>
         <button class="menu-toggle" aria-label="Open navigation" aria-controls="mainNav" aria-expanded="false">☰</button>
         <div class="nav-links" id="mainNav"><a href="#projects">Work</a><a href="#capabilities">Expertise</a><a href="#experience">Experience</a><a href="#insights">Notes</a><a href="insights/backend-after-ai.html" lang="ar-EG" class="arabic-nav-link">بالمصري ↗</a><a href="#about">About</a><a class="nav-contact" href="#contact">Let’s talk <span>↗</span></a></div>
       </div>
@@ -41,33 +46,36 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="hero-kicker"><span class="status-dot"></span> BASED IN CAIRO · BUILDING BEYOND BORDERS</p>
-          <h1>The logic behind<br>your next <span class="hero-accent">big idea.</span></h1>
-          <p class="hero-subtitle">I’m Youssef, a Laravel backend engineer. I turn complex business needs into reliable APIs, thoughtful systems, and products that work.</p>
+          <p class="studio-label">YOUSSEF KHALED / SOFTWARE ENGINEER</p>
+          <h1>Ideas into<br><span class="hero-accent">interfaces.</span><br>Code into <span class="outline-word">impact.</span></h1>
+          <p class="hero-subtitle">I’m Youssef, a software engineer. I connect thoughtful interfaces with reliable systems, turning complex business needs into web applications, APIs, and products that work.</p>
           <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore my work <span>↗</span></a><a class="btn btn-ghost" href="pdf/Youssef_Khaled_Backend_Developer.pdf" download>Download CV <span>↓</span></a></div>
-          <div class="hero-proof"><div class="mini-avatar"><img src="assets/images/youssef-khaled-logo.png" alt="" width="44" height="44"></div><p>Backend engineer. Problem solver.<br><strong>Always a student of the craft.</strong></p></div>
+          <div class="hero-proof"><div class="mini-avatar"><img src="assets/images/youssef-khaled-logo.png" alt="" width="44" height="44"></div><p>Software engineer. Problem solver.<br><strong>Always a student of the craft.</strong></p></div>
         </div>
-        <div class="system-visual" aria-label="Illustration of a Laravel backend connecting APIs, data, and background jobs">
-          <div class="system-top"><span><span class="status-dot"></span> THE BACKEND, CONNECTED</span><span>01 / SYSTEM VIEW</span></div>
-          <div class="system-map"><div class="system-node node-client"><span class="node-icon">⌘</span><span>Web & mobile<small>THE EXPERIENCE</small></span></div><span class="connector connector-one"></span><span class="request-label">HTTPS / JSON</span><div class="system-node node-core"><span class="core-mark">{ }</span><span>Laravel<small>THE ENGINE</small></span><span class="node-spark">✳</span></div><span class="connector connector-two"></span><div class="system-bottom"><div class="system-node"><span class="node-icon">▤</span><span>MySQL<small>STRUCTURED DATA</small></span></div><div class="system-node"><span class="node-icon">↻</span><span>Queue jobs<small>BACKGROUND WORK</small></span></div></div></div>
+        <div class="system-visual" aria-label="Illustration of web interfaces connecting to application services, data, and background jobs">
+          <div class="system-top"><span><span class="status-dot"></span> ENGINEERING PLAYGROUND</span><span>01 / LIVE DEMO</span></div>
+          <div class="studio-console"><span class="console-label">FROM A CLICK TO A RESPONSE</span><button class="run-system" type="button">Run a request <span aria-hidden="true">↗</span></button></div>
+          <div class="system-map"><div class="system-node node-client"><span class="node-icon">⌘</span><span>React UI<small>THE EXPERIENCE</small></span></div><span class="connector connector-one"></span><span class="request-label">HTTPS / JSON</span><div class="system-node node-core"><span class="core-mark">{ }</span><span>App services<small>LARAVEL · .NET</small></span><span class="node-spark">✳</span></div><span class="connector connector-two"></span><div class="system-bottom"><div class="system-node"><span class="node-icon">▤</span><span>MySQL<small>STRUCTURED DATA</small></span></div><div class="system-node"><span class="node-icon">↻</span><span>Queue jobs<small>BACKGROUND WORK</small></span></div></div></div>
           <div class="system-code"><div><span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span><span class="code-file">a little of what I do.php</span></div><code><span class="syntax">Route</span>::get('/great-ideas', function () {<br>&nbsp;&nbsp;return <span class="syntax">Product</span>::build([<br>&nbsp;&nbsp;&nbsp;&nbsp;'foundation' =&gt; <span class="string">'built to last'</span>,<br>&nbsp;&nbsp;]);<br>});</code></div>
-          <div class="system-caption"><span>Clean architecture. Real-world thinking.</span><span>↗</span></div>
+          <div class="system-caption"><span class="request-status" role="status">An illustrative flow. Press run to follow a request.</span><span aria-hidden="true">↗</span></div>
         </div>
       </div>
       <div class="container hero-bottom"><span>GOOD PRODUCTS START WITH STRONG FOUNDATIONS</span><a href="#projects">SCROLL TO EXPLORE ↓</a></div>
     </header>
-    <div class="stack-strip"><div class="container"><span class="stack-label">MY EVERYDAY TOOLKIT</span><span>Laravel</span><span>PHP</span><span>MySQL</span><span>REST APIs</span><span>Queues & Jobs</span><span>Git</span></div></div>
+    <div class="stack-strip"><div class="container"><span class="stack-label">MY ENGINEERING TOOLKIT</span><span>React</span><span>JavaScript</span><span>.NET / C#</span><span>Laravel / PHP</span><span>SQL</span><span>Git</span></div></div>
     <section class="projects-section" id="projects">
         <div class="container">
             <div class="section-intro reveal-up">
                 <p class="eyebrow">01 / SELECTED WORK</p>
                 <h2>Real problems.<br><span class="serif-accent">Thoughtful solutions.</span></h2>
-                <p>A collection of Laravel backend systems, dashboards, APIs, and cloud-ready products built for real
+                <p>A collection of product systems, dashboards, APIs, and web applications built for real
                     business operations.</p>
             </div>
-            <div class="project-toolbar"><p class="project-count" aria-live="polite">16 projects · built with purpose</p></div>
+            <div class="project-toolbar"><label class="project-search-label" for="projectSearch">Find your kind of project</label><input id="projectSearch" class="project-search" type="search" placeholder="Search projects, APIs, MySQL…" autocomplete="off"><p class="project-count" aria-live="polite">20 projects · built with purpose</p></div>
             <div aria-label="Project filters" class="showcase-tabs reveal-up">
                 <button aria-pressed="true" class="showcase-tab active" data-filter="all" type="button">All
                     Projects</button>
+                <button aria-pressed="false" class="showcase-tab" data-filter="techpack" type="button">TechPack · Saudi Arabia</button>
                 <button aria-pressed="false" class="showcase-tab" data-filter="evyx" type="button">Evyx
                     Products</button>
 
@@ -111,7 +119,26 @@
                     </div>
                 </div>
             </article>
+            <p class="project-empty" hidden>No projects found. Try another name or technology, or choose All Projects.</p>
             <div class="projects-groups reveal-up" id="projectsGrid">
+<div class="projects-group techpack-group" id="techpack-projects">
+<div class="company-project-header"><img src="assets/images/techpack.jpg" alt="Technical Package Group logo" width="76" height="76"><div><p class="eyebrow">COMPANY PROJECTS / SAUDI ARABIA</p><h3>Technical Package <span>TechPack</span></h3><p>Four backend projects from my work with the Saudi Arabia-based company.</p></div><a href="#experience">My role ↗</a></div>
+<div class="projects-grid"><article class="project-card techpack-project" data-project-id="personal-shipper" data-filters="techpack" data-title="Personal Shipper" data-type="Technical Package · Saudi Arabia" data-desc="User backend for the Personal Shipper project, delivered with Technical Package in Saudi Arabia." data-image="assets/images/projects/personal-shipper.png" data-github="https://github.com/Technical-Package/Personal-Shipper-User_back" data-stack="Backend|User application" data-features="User backend" data-problem="Support the user-facing side of the Personal Shipper application." data-role="Backend development as part of my work with Technical Package." data-solution="A dedicated backend repository for the user application." data-impact="Part of the Technical Package project portfolio">
+<div class="project-card-head"><div class="project-card-media"><img src="assets/images/projects/personal-shipper.png" alt="Personal Shipper logo" loading="lazy" decoding="async"></div><span class="project-card-badge project-card-badge--logo"><img src="assets/images/techpack.jpg" alt="Technical Package logo" loading="lazy"></span></div>
+<h4>Personal Shipper</h4><p class="project-card-summary">User backend for the Personal Shipper project, delivered with Technical Package in Saudi Arabia.</p><div class="project-card-stack"><span>Backend</span><span>User application</span></div>
+<button class="project-card-cta" data-open-case-study data-project-target="personal-shipper" type="button">View Details <span aria-hidden="true">↗</span></button></article>
+<article class="project-card techpack-project" data-project-id="albhkaly" data-filters="techpack" data-title="Albhkaly Family Tree" data-type="Technical Package · Saudi Arabia" data-desc="Backend project for Albhkaly Family Tree, delivered with Technical Package in Saudi Arabia." data-image="assets/images/projects/albhkaly.png" data-github="https://github.com/Technical-Package/albhkaly_backend" data-stack="Backend|Family tree" data-features="Family tree application" data-problem="Provide a backend foundation for a family-tree application." data-role="Backend development as part of my work with Technical Package." data-solution="A dedicated backend project supporting the Albhkaly application." data-impact="Part of the Technical Package project portfolio">
+<div class="project-card-head"><div class="project-card-media"><img src="assets/images/projects/albhkaly.png" alt="Albhkaly Family Tree logo" loading="lazy" decoding="async"></div><span class="project-card-badge project-card-badge--logo"><img src="assets/images/techpack.jpg" alt="Technical Package logo" loading="lazy"></span></div>
+<h4>Albhkaly Family Tree</h4><p class="project-card-summary">Backend project for Albhkaly Family Tree, delivered with Technical Package in Saudi Arabia.</p><div class="project-card-stack"><span>Backend</span><span>Family tree</span></div>
+<button class="project-card-cta" data-open-case-study data-project-target="albhkaly" type="button">View Details <span aria-hidden="true">↗</span></button></article>
+<article class="project-card techpack-project" data-project-id="afaq" data-filters="techpack" data-title="Afaq" data-type="Technical Package · Saudi Arabia" data-desc="Laravel application backend for Afaq, part of my work with Technical Package in Saudi Arabia." data-image="assets/images/projects/afaq.png" data-github="https://github.com/Youssefkhaled74/afaq_back-main" data-stack="Laravel|PHP|Sanctum" data-features="Laravel application|Sanctum authentication" data-problem="Provide a structured application backend for the Afaq project." data-role="Backend development as part of my work with Technical Package." data-solution="A Laravel 10 codebase with Sanctum and a modular application structure." data-impact="Part of the Technical Package project portfolio">
+<div class="project-card-head"><div class="project-card-media"><img src="assets/images/projects/afaq.png" alt="Afaq logo" loading="lazy" decoding="async"></div><span class="project-card-badge project-card-badge--logo"><img src="assets/images/techpack.jpg" alt="Technical Package logo" loading="lazy"></span></div>
+<h4>Afaq</h4><p class="project-card-summary">Laravel application backend for Afaq, part of my work with Technical Package in Saudi Arabia.</p><div class="project-card-stack"><span>Laravel</span><span>PHP</span><span>Sanctum</span></div>
+<button class="project-card-cta" data-open-case-study data-project-target="afaq" type="button">View Details <span aria-hidden="true">↗</span></button></article>
+<article class="project-card techpack-project" data-project-id="hima-plus" data-filters="techpack" data-title="Hima Plus" data-type="Technical Package · Saudi Arabia" data-desc="Commerce and service APIs covering products, orders, quotations, shipping, payments, and chat." data-image="assets/images/projects/hima-plus.png" data-github="https://github.com/Youssefkhaled74/himaPlus-backend" data-stack="Laravel|PHP|REST APIs|JWT" data-features="Products and carts|Orders and quotations|Shipping and shipments|Payment callbacks|Chat and ratings" data-problem="Connect product browsing, service requests, and order operations through application APIs." data-role="Backend development as part of my work with Technical Package." data-solution="Laravel API modules for authentication, commerce, service workflows, shipments, payment callbacks, and conversations." data-impact="Part of the Technical Package project portfolio">
+<div class="project-card-head"><div class="project-card-media"><img src="assets/images/projects/hima-plus.png" alt="Hima Plus logo" loading="lazy" decoding="async"></div><span class="project-card-badge project-card-badge--logo"><img src="assets/images/techpack.jpg" alt="Technical Package logo" loading="lazy"></span></div>
+<h4>Hima Plus</h4><p class="project-card-summary">Commerce and service APIs covering products, orders, quotations, shipping, payments, and chat.</p><div class="project-card-stack"><span>Laravel</span><span>PHP</span><span>REST APIs</span><span>JWT</span></div>
+<button class="project-card-cta" data-open-case-study data-project-target="hima-plus" type="button">View Details <span aria-hidden="true">↗</span></button></article></div></div>
                 <div class="projects-group">
                     <h3 class="projects-group-title">Evyx Projects</h3>
                     <div class="projects-grid">
@@ -534,16 +561,32 @@
                     </div>
                 </div>
             </div>
-            <p class="projects-empty-message" hidden>No projects in this category.</p><button class="btn btn-ghost more-projects" id="moreProjects" type="button" hidden aria-controls="projectsGrid">Explore all 16 projects <span>↓</span></button>
+            <p class="projects-empty-message" hidden>No projects in this category.</p><button class="btn btn-ghost more-projects" id="moreProjects" type="button" hidden aria-controls="projectsGrid">Explore all 20 projects <span>↓</span></button>
         </div>
     </section>
     <section class="capabilities-section" id="capabilities">
         <div class="container">
             <div class="section-intro reveal-up">
                 <p class="eyebrow">02 / WHAT I BRING</p>
-                <h2>Built for the whole backend.</h2>
+                <h2>From interface to architecture.</h2>
             </div>
             <div class="capabilities-grid">
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
+                    <h3>React &amp; Web Interfaces</h3>
+                    <p>Component-based interfaces with React, JavaScript, HTML, and CSS, connecting user interactions to application APIs.</p>
+                </article>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
+                    <h3>.NET &amp; C#</h3>
+                    <p>Application development with C#, .NET, and ASP.NET Core, with a focus on structured services and clear API contracts.</p>
+                </article>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
+                    <h3>Software Design</h3>
+                    <p>Object-oriented programming, separation of concerns, and maintainable modules that keep software easier to extend.</p>
+                </article>
+                <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
+                    <h3>Git &amp; Collaboration</h3>
+                    <p>Version control, focused changes, debugging, and clear communication throughout the development process.</p>
+                </article>
                 <article class="capability-card reveal-up"><span class="ui-arrow" aria-hidden="true">↗</span>
                     <h3>REST APIs</h3>
                     <p>Build predictable endpoints with validation, resources, authentication, and clean client
@@ -589,7 +632,7 @@
             <div class="section-intro reveal-up">
                 <p class="eyebrow">03 / THE JOURNEY</p>
                 <h2>Experience that adds up.</h2>
-                <p>A focused timeline of backend leadership, Laravel product delivery, mentoring, and technical content
+                <p>A timeline of software delivery, backend engineering, mentoring, and technical content
                     creation.</p>
             </div>
             <div class="experience-timeline">
@@ -599,12 +642,13 @@
                     <div class="experience-card">
                         <header>
                             <h3>Remote Laravel Backend Developer</h3>
-                            <span class="experience-company">TechPack</span>
+                            <span class="experience-company"><img src="assets/images/techpack.jpg" alt="Technical Package logo">Technical Package (TechPack)</span>
                         </header>
                         <p class="experience-meta">Riyadh, Saudi Arabia</p>
                         <ul>
                             <li>Developed authentication, database, workflow, and integration modules.</li>
                             <li>Built and maintained Laravel APIs for web and mobile applications.</li>
+                            <li>Projects: Personal Shipper, Albhkaly Family Tree, Afaq, and Hima Plus. <a class="company-work-link" href="#techpack-projects" data-show-techpack>Explore company projects ↗</a></li>
                         </ul>
                     </div>
                 </article>
@@ -719,20 +763,20 @@
             <div class="row align-items-center g-4">
                 <div class="col-lg-6 reveal-up">
                     <p class="eyebrow">05 / THE PERSON BEHIND THE CODE</p><div class="about-profile"><img src="assets/images/youssef-khaled-logo.png" alt="Youssef Khaled" width="88" height="88" loading="lazy"><h2>Engineer by trade.<br>Curious by nature.</h2></div>
-                    <p>I am Youssef Khaled Anwar, a Laravel Backend Developer with hands-on experience building product
-                        backends at Evyx and delivering freelance client systems. I focus on REST APIs, database design,
+                    <p>I am Youssef Khaled Anwar, a Software Engineer with hands-on experience building product
+                        backends at Technical Package in Saudi Arabia and Evyx in Egypt, alongside freelance client systems. I focus on REST APIs, database design,
                         admin dashboards, authentication, permissions, reports, transactions, and maintainable business
-                        logic. My goal is to write backend code that is clear for developers, useful for operations, and
-                        reliable for real users.</p><p class="about-secondary">Beyond backend development, I also work with data analysis and continue developing my skills as a junior cloud engineer.</p>
+                        logic. My goal is to build software that is clear for developers, useful for operations, and
+                        reliable for real users.</p><p class="about-secondary">My toolkit spans React and JavaScript for interfaces, .NET and C# for application development, and Laravel and PHP for backend systems. I also explore data analysis and cloud engineering.</p>
                     <div class="about-tags">
-                        <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Queues</span><span>APIs</span><span>Dashboards</span>
+                        <span>React</span><span>JavaScript</span><span>HTML &amp; CSS</span><span>.NET</span><span>C#</span><span>ASP.NET Core</span><span>Laravel</span><span>PHP</span><span>MySQL</span><span>REST APIs</span><span>Git</span>
                     </div>
                 </div>
                 <div class="col-lg-6 reveal-up">
                     <div class="about-card">
                         <h3>How I add value to a team</h3>
                         <ul>
-                            <li>Translate product requirements into clean backend modules and API contracts.</li>
+                            <li>Translate product requirements into clear application modules, interfaces, and API contracts.</li>
                             <li>Build admin workflows that reduce manual work and improve operational visibility.</li>
                             <li>Design database structures and business logic that are easier to maintain and extend.
                             </li>
@@ -751,7 +795,7 @@
                 <div>
                     <h2>Have something in mind?<br>Let’s build it right.</h2>
                     <p>Send me the role, product idea, or technical scope, and I will respond with how I can help build
-                        the backend foundation.</p>
+                        the software foundation.</p>
                 </div>
                 <div class="contact-actions"><a class="contact-address" href="mailto:youssefblackenddev@gmail.com">youssefblackenddev@gmail.com ↗</a><a class="btn btn-primary" href="mailto:youssefblackenddev@gmail.com"
                         id="contactEmailBtn">Email me</a><a class="btn btn-ghost"
@@ -803,7 +847,10 @@
             </div>
         </article>
     </div>
+    <script src="js/translations.js" defer></script>
+    <script src="js/site-i18n.js" defer></script>
     <script src="js/portfolio.js" defer></script>
+    <script src="js/engineering-studio.js" defer></script>
 </body>
 
 </html>

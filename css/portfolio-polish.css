@@ -1,0 +1,76 @@
+/* Portfolio-specific refinement; resource and lecture pages keep their own styles. */
+.reading-progress{position:fixed;inset:0 0 auto;height:3px;background:#7caa43;z-index:60;transform:scaleX(0);transform-origin:left;pointer-events:none}
+.timeline-body{background:#fafbf7}
+.portfolio-nav{background:rgba(250,251,247,.88)}
+.nav-links>a:not(.nav-contact){transition:color .2s}
+.nav-contact{background:white;box-shadow:0 3px 10px #203d3505}
+.timeline-hero{position:relative;background:radial-gradient(ellipse at 88% 25%,#dceac550,transparent 55%)}
+.hero-copy h1{font-size:clamp(44px,5.1vw,73px);line-height:1.04;letter-spacing:-.055em}
+.hero-accent{position:relative;display:inline-block}
+.hero-accent:after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:9px;border-top:2px solid #9cb575;border-radius:50%;transform:rotate(-3deg)}
+.hero-subtitle{margin-top:32px;font-size:16px}
+.hero-actions .btn{border-radius:9px;padding:15px 23px}
+.hero-actions .btn-primary{box-shadow:0 8px 20px #164b3b20}
+.system-visual{border-radius:22px;padding:25px;box-shadow:0 24px 65px #203d3512,inset 0 1px 0 #fff;transform:rotate(1deg)}
+.system-code{border-radius:12px;padding:18px}
+.system-code code{font-size:10px}
+.system-node{box-shadow:0 5px 12px #203d3506}
+.node-core{box-shadow:0 8px 22px #164b3b25}
+.connector{background:linear-gradient(#92a47d,#164b3b);position:relative}
+.connector:after{content:'';position:absolute;left:-2px;top:0;width:5px;height:5px;border-radius:50%;background:#648b38;animation:request-flow 2.5s ease-in-out infinite}
+@keyframes request-flow{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(22px);opacity:0}}
+.stack-strip{background:#eef2e7}.stack-strip .container{flex-wrap:wrap}.stack-strip span{white-space:nowrap}.stack-strip span:not(.stack-label){transition:color .2s}.stack-strip span:hover{color:#668a3e}
+.projects-section .section-intro{max-width:660px}
+.project-toolbar{float:none;margin:28px 0 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.project-search-label{font:10px var(--mono);color:var(--muted)}
+.project-search{width:min(100%,330px);padding:12px 15px;border:1px solid #ccd7c4;border-radius:8px;background:white;color:var(--ink);font:12px Inter,Arial,sans-serif;min-height:44px}
+.project-search:focus-visible{outline:2px solid #648b38;outline-offset:3px}
+.project-count{margin-left:auto}.project-empty{padding:30px;border:1px dashed #b6c6aa;border-radius:12px;background:#f0f4e9}
+.showcase-tabs{gap:9px}.showcase-tab{border-radius:30px;min-height:42px;padding-inline:20px;transition:background .2s,color .2s,box-shadow .2s}.showcase-tab:hover{box-shadow:0 3px 10px #203d3510}
+.featured-project{border-radius:18px;box-shadow:0 14px 40px #203d3507}.featured-project-media{background-color:#e7eedb}.featured-project-body{padding:40px}.featured-badge{border-radius:20px;padding:8px 13px}
+.project-card{border-radius:15px;padding:20px;box-shadow:0 4px 16px #203d3503;transition:transform .25s,box-shadow .25s,border-color .25s}.project-card:hover{transform:translateY(-5px);border-color:#aac096;box-shadow:0 18px 35px #203d3510}
+.project-card-head{border-radius:10px;overflow:hidden}.project-card-cta{transition:color .2s}.project-card-cta:hover{color:#547c31}.project-card-cta .ui-arrow{transition:transform .2s}.project-card-cta:hover .ui-arrow{transform:translate(2px,-2px)}
+.note-card{border-radius:14px;transition:box-shadow .2s,transform .2s}.note-card:hover{box-shadow:0 12px 30px #203d350b;transform:translateY(-3px)}
+.contact-card{border-radius:20px;box-shadow:0 20px 45px #164b3b15}
+@media(max-width:1050px){.hero-copy h1{font-size:52px}.system-code code{font-size:9px}}
+@media(max-width:760px){.hero-copy h1{font-size:clamp(42px,9vw,62px)}.hero-subtitle{font-size:14px}.system-visual{transform:none;padding:22px}.hero-actions .btn{padding:13px 16px}.project-toolbar{gap:10px}.project-search-label{width:100%}.project-search{width:100%}.project-count{margin:4px 0 0}.featured-project-body{padding:26px}.project-card{padding:17px}}
+/* Grow the layout and its typography together on desktop displays. */
+@media(min-width:1200px){
+  .timeline-body .container{width:min(1600px,calc(100% - clamp(96px,12vw,240px)))}
+  .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(48px,5vw,96px)}
+  .hero-copy h1{font-size:clamp(60px,4.5vw,88px)}
+  .hero-subtitle{font-size:clamp(16px,1vw,19px);max-width:580px}
+  .hero-kicker{font-size:clamp(9px,.62vw,12px)}
+  .timeline-hero{padding-top:clamp(64px,5vw,96px)}
+  .hero-bottom{margin-top:clamp(36px,3.5vw,68px);font-size:10px}
+  .nav-links{font-size:14px;gap:clamp(20px,1.6vw,32px)}
+  .brand{font-size:16px}.brand-caption{font-size:9px}
+  .hero-actions .btn{font-size:14px}.hero-proof p{font-size:12px}
+  .system-visual{padding:clamp(25px,2vw,38px);transform:none}
+  .system-top{font-size:9px}.system-caption{font-size:11px}
+  .system-map{padding-top:28px;padding-bottom:24px}
+  .system-node{font-size:16px}.system-node small{font-size:8px}
+  .node-client{width:220px}.node-core{width:270px}
+  .system-bottom .system-node{font-size:14px;padding:15px 12px}
+  .system-bottom small{font-size:7px}
+  .request-label{top:105px;font-size:8px}
+  .system-code code{font-size:clamp(11px,.72vw,14px)}
+  .code-file{font-size:9px}.system-code{padding:20px 24px}
+  .stack-strip .stack-label{font-size:10px;max-width:130px}
+  .stack-strip span{font-size:20px}
+  h2{font-size:clamp(40px,2.8vw,54px)}
+  .section-intro>p:last-child:not(.eyebrow){font-size:16px;max-width:650px}
+  .projects-grid{gap:26px}.project-card{padding:24px}
+  .projects-section .project-card-summary{font-size:14px}
+  .project-card-stack span{font-size:10px}
+  .featured-project-body{padding:clamp(36px,3vw,56px)}
+  .featured-project h3{font-size:38px}.featured-value{font-size:16px}
+  .featured-role,.featured-highlights{font-size:14px}
+}
+@media(min-width:2000px){
+  .timeline-body .container{width:min(1840px,calc(100% - 280px))}
+  .hero-copy h1{font-size:clamp(88px,4.2vw,104px)}
+  .hero-subtitle{max-width:660px;font-size:21px}
+  .projects-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){.connector:after{animation:none}.system-visual{transform:none}.project-card:hover,.note-card:hover{transform:none}}

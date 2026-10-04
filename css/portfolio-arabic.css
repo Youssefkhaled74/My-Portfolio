@@ -1,0 +1,37 @@
+.language-switch{display:flex;align-items:center;border:1px solid #45533a;direction:ltr;flex-shrink:0;gap:2px;padding:3px;margin-inline-start:auto}
+.language-switch button{background:transparent;border:0;color:#c1ceb7;padding:7px 9px;font:11px 'Alexandria',sans-serif;min-height:36px}
+.language-switch button[aria-pressed=true]{background:var(--lime);color:#17220e}
+html[dir=rtl]{--heading:'Alexandria',Tahoma,sans-serif;--mono:'Alexandria',Tahoma,sans-serif}
+html[dir=rtl] body{font-family:'Alexandria',Tahoma,sans-serif}
+html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3,html[dir=rtl] h4{letter-spacing:0}
+html[dir=rtl] .hero-copy h1{font-family:'Alexandria',Tahoma,sans-serif;font-size:clamp(46px,4.7vw,88px);line-height:1.4;letter-spacing:-.035em;font-weight:800}
+html[dir=rtl] .hero-accent{font-family:'Alexandria',Tahoma,sans-serif;font-weight:800;letter-spacing:-.035em}
+html[dir=rtl] .outline-word{-webkit-text-stroke:1px #bbcba7}
+html[dir=rtl] .hero-subtitle{line-height:2.1;font-size:16px}
+html[dir=rtl] .hero-kicker,html[dir=rtl] .studio-label,html[dir=rtl] .eyebrow,html[dir=rtl] .hero-bottom,html[dir=rtl] .system-top,html[dir=rtl] .console-label,html[dir=rtl] .brand-caption,html[dir=rtl] .note-category{letter-spacing:0;line-height:1.8}
+html[dir=rtl] .studio-label{font-size:12px}
+html[dir=rtl] .brand-symbol,html[dir=rtl] .system-code,html[dir=rtl] .request-label{direction:ltr}
+html[dir=rtl] .stack-strip span:not(.stack-label){direction:ltr;unicode-bidi:isolate}
+html[dir=rtl] .system-code{font-family:'JetBrains Mono',monospace;text-align:left}
+html[dir=rtl] .system-code code,html[dir=rtl] .code-file{font-family:'JetBrains Mono',monospace}
+html[dir=rtl] .request-label{left:auto;right:calc(50% + 9px);font:7px 'JetBrains Mono',monospace}
+html[dir=rtl] .node-spark{margin-left:0;margin-right:auto}
+html[dir=rtl] .system-node small{letter-spacing:0;font-size:8px}
+html[dir=rtl] .hero-proof p{font-size:12px;line-height:2}
+html[dir=rtl] .hero-actions .btn{font-size:12px}
+html[dir=rtl] .project-count{margin-left:0;margin-right:auto}
+html[dir=rtl] .project-search{font-family:'Alexandria',Tahoma,sans-serif}
+html[dir=rtl] .project-card-cta{text-align:right}
+html[dir=rtl] .project-card-badge{right:auto;left:9px}
+html[dir=rtl] .featured-highlights,html[dir=rtl] .experience-card ul,html[dir=rtl] .about-card ul{padding-left:0;padding-right:20px}
+html[dir=rtl] .company-project-header>a{margin-left:0;margin-right:auto}
+html[dir=rtl] .company-project-header h3 span{margin-left:0;margin-right:10px}
+html[dir=rtl] .company-project-header h3{font-size:26px;line-height:1.6}
+html[dir=rtl] .capability-card p,html[dir=rtl] .note-card p,html[dir=rtl] .project-card-summary,html[dir=rtl] .about-section p{line-height:2.1}
+html[dir=rtl] .case-close{right:auto;left:15px}
+html[dir=rtl] .contact-address{direction:ltr;text-align:right;unicode-bidi:isolate}
+html[dir=rtl] .nav-links .nav-contact{margin-left:0;margin-right:12px}
+html[dir=rtl] .contact-card h2{letter-spacing:0;line-height:1.5}
+@media(min-width:761px) and (max-width:1250px){.nav-inner{gap:14px}.nav-links{gap:10px;font-size:11px}.brand{font-size:12px}.brand-caption{font-size:7px}.nav-links .nav-contact{margin-left:0;padding:10px}html[dir=rtl] .nav-links .nav-contact{margin-right:0}}
+@media(max-width:760px){.nav-inner{gap:12px}.language-switch{margin-inline-start:auto}.language-switch button{padding:5px 7px;font-size:10px}.brand{font-size:12px}.brand-caption{font-size:6px}.brand-symbol{width:35px;height:35px}.hero-kicker{flex-wrap:wrap}html[dir=rtl] .hero-copy h1{font-size:clamp(42px,8.5vw,64px);line-height:1.5}html[dir=rtl] .hero-subtitle{font-size:13px}html[dir=rtl] .project-count{margin:4px 0 0}html[dir=rtl] .company-project-header>a{margin:0 72px 0 0}html[dir=rtl] .company-project-header h3 span{margin:7px 0 0}html[dir=rtl] .nav-links .nav-contact{margin:8px 0}html[dir=rtl] .system-top{font-size:6px}html[dir=rtl] .console-label{font-size:8px}html[dir=rtl] .system-bottom small{font-size:6px}html[dir=rtl] .run-system{font-size:10px}html[dir=rtl] .hero-bottom{font-size:7px}.brand-caption{letter-spacing:.8px}}
+@media(max-width:390px){html[dir=rtl] .hero-copy h1{font-size:41px}.brand{gap:8px}.nav-inner{gap:8px}.brand-caption{font-size:5px}.menu-toggle{width:35px;height:35px}}
